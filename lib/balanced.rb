@@ -1,0 +1,1 @@
+require 'balanced/version' unless defined? Balanced::VERSION
