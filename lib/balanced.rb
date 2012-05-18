@@ -4,8 +4,9 @@ require 'balanced/version' unless defined? Balanced::VERSION
 module Balanced
   autoload :Client, 'balanced/client'
   autoload :Utils, 'balanced/utils'
-  autoload :Resource, 'balanced/resource'
-  autoload :ApiKey, 'balanced/api_key'
+  autoload :Resource, 'balanced/base'
+  autoload :ApiKey, 'balanced/resources'
+  autoload :Marketplace, 'balanced/resources'
 
   @client = nil
   @config = {
@@ -59,4 +60,7 @@ module Balanced
     end
   end
 
+  # configure on import so we don't have to configure for creating
+  # an api key
+  configure
 end

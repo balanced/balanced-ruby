@@ -2,10 +2,10 @@ require "balanced"
 
 describe "ApiKey Resource" do
   before(:each) do
-    Balanced.configure
+    # Balanced.configure
   end
 
-  it "should create my api key and let me access it" do
+  it "should create my api key and let me access the secret" do
     key = Balanced::ApiKey.new.save
     key.should_not eq(nil)
     # make sure my secret is there.
