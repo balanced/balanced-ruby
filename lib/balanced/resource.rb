@@ -69,17 +69,20 @@ module Balanced
 
     def construct_from_response payload
       klass = Balanced.from_uri(payload['uri'])
-      record = {}
+      instance = klass.new payload
       payload.each do |name, value|
-        record.instance_variable_set "@#{name}", value.to_s
+        klass.class_eval {
+          attr_accessor name.to_s
+        }
+        instance.instance_variable_set "@#{name}", value
       end
-      klass.new record
+      instance
     end
 
     def reload response = nil
       if response
         return if response.body.to_s.length.zero?
-        fresh = self.construct_from_response response
+        fresh = self.construct_from_response response.body
       else
         fresh = self.find(@attributes['uri'])
       end

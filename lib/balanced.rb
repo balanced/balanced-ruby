@@ -45,15 +45,17 @@ module Balanced
     def from_uri uri
       parsed_uri = URI.parse(uri)
       split_uri = parsed_uri.path.sub(/\/$/, '').split('/')
+      # this is such an ugly hack, basically, we're trying to
+      # see if we have the symbol that matches the capitalized
+      #
       class_name = Balanced::Utils.classify(split_uri[-1])
-      klass = Balanced.const_get(class_name)
-
-      if klass
-        return klass
+      begin
+        klass = Balanced.const_get class_name
+      rescue NameError
+        class_name = Utils.classify(split_uri[-2])
+        klass = Balanced.const_get(class_name)
       end
-
-      class_name = Utils.classify(split_uri[-2])
-      Balanced.const_get(class_name)
+      klass
     end
   end
 
