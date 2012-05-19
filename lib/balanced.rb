@@ -43,9 +43,13 @@ module Balanced
       self.client.delete uri
     end
 
-    def from_uri uri
+    def split_the_uri uri
       parsed_uri = URI.parse(uri)
-      split_uri = parsed_uri.path.sub(/\/$/, '').split('/')
+      parsed_uri.path.sub(/\/$/, '').split('/')
+    end
+
+    def from_uri uri
+      split_uri = split_the_uri(uri)
       # this is such an ugly hack, basically, we're trying to
       # see if we have the symbol that matches the capitalized
       #
@@ -57,6 +61,17 @@ module Balanced
         klass = Balanced.const_get(class_name)
       end
       klass
+    end
+
+    def is_collection uri
+      split_uri = split_the_uri(uri)
+      class_name = Balanced::Utils.classify(split_uri[-1])
+      begin
+        Balanced.const_get class_name
+      rescue NameError
+        false
+      end
+      true
     end
   end
 

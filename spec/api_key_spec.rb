@@ -2,7 +2,6 @@ require "balanced"
 
 describe "ApiKey Resource" do
   before(:each) do
-    # Balanced.configure
   end
 
   it "should create my api key and let me access the secret" do
@@ -11,5 +10,11 @@ describe "ApiKey Resource" do
     # make sure my secret is there.
     key.secret.should_not eq(nil)
   end
+
+  it "should construct the merchant sub resource as an instance of Balanced::Merchant" do
+    key = Balanced::ApiKey.new.save
+    (key.merchant.instance_of? Balanced::Merchant).should == true
+  end
+
 
 end

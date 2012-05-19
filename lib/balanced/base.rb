@@ -74,6 +74,29 @@ module Balanced
         klass.class_eval {
           attr_accessor name.to_s
         }
+        # here is where our interpretations will begin.
+        # if the value is a sub-resource, lets instantiate the class
+        # and set it correctly
+        if value.instance_of? Hash and value.has_key? 'uri'
+          value = construct_from_response value
+        elsif name =~ /_uri$/
+          modified_name = name.sub(/_uri$/, '')
+          klass.instance_eval {
+            define_method(modified_name) {
+              values_class = Balanced.from_uri(value)
+              # if uri is a collection -> this would definitely be if it ends in a symbol
+              # then we should allow a lazy executor of the query pager
+              if Balanced.is_collection(value)
+                # TODO: return the pager
+                p "TODO: return the pager for this class: #{values_class}"
+                values_class.new
+              else
+                values_class.find(value)
+              end
+            }
+          }
+        end
+
         instance.instance_variable_set "@#{name}", value
       end
       instance
