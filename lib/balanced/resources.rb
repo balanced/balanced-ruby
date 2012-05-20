@@ -5,6 +5,15 @@ module Balanced
 
   class Account < Resource
 
+
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
+
     def debit (amount=nil,
         appears_on_statement_as=nil,
         hold_uri=nil,
@@ -64,7 +73,11 @@ module Balanced
   class Merchant < Resource
 
     def self.me
-
+      # TODO: use query
+      response = Balanced.get collection_path
+      return nil if response.body.to_s.length.zero? or response.body['total'] == 0
+      payload = response.body
+      construct_from_response payload['items'][0]
     end
 
   end
@@ -72,6 +85,11 @@ module Balanced
   class Marketplace < Resource
 
     def self.my_marketplace
+      # TODO: use query
+      response = Balanced.get collection_path
+      return nil if response.body.to_s.length.zero? or response.body['total'] == 0
+      payload = response.body
+      construct_from_response payload['items'][0]
     end
 
     def create_buyer email_address, card_uri, name=nil, meta={}
@@ -101,18 +119,35 @@ module Balanced
 
   class Hold < Resource
 
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
+
     def void
       @is_void = true
       save
     end
 
-    def capture amount, appears_on_statement_as, meta, description
+    def capture amount=nil, appears_on_statement_as=nil, meta={}, description=nil
+      amount ||= self.amount
       self.account.debit(amount, appears_on_statement_as, self.uri, meta, description)
     end
 
   end
 
   class Debit < Resource
+
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
 
     def refund amount=nil, description=nil
       refund = Refund.new(
@@ -127,15 +162,46 @@ module Balanced
   end
 
   class Credit < Resource
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
+
   end
 
   class Refund < Resource
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
+
   end
 
   class Transaction < Resource
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
+
   end
 
   class Card < Resource
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
 
     def debit amount=nil, appears_on_statement_as=nil, holds_uri=nil, meta=nil, description=nil
       self.account.debit(amount, appears_on_statement_as, holds_uri, meta, description, self.uri)
@@ -147,6 +213,13 @@ module Balanced
   end
 
   class BankAccount < Resource
+    def initialize attributes = {}
+      Balanced::Utils.stringify_keys! attributes
+      unless attributes.has_key? 'uri'
+        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+      end
+      super attributes
+    end
 
     def debit amount, appears_on_statement_as=nil, meta=mil, description=nil
       self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
