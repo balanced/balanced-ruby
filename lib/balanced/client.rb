@@ -45,11 +45,13 @@ module Balanced
     end
 
     def url
-      URI::HTTP.build(
-          :scheme => @config[:scheme],
+      _url = URI::HTTP.build(
           :host => @config[:host],
           :port => @config[:port],
-      ).to_s
+      )
+      # wow. yes, this is what you actually have to do.
+      _url.scheme = @config[:scheme]
+      _url
     end
 
     # wtf..

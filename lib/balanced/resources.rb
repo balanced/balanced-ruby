@@ -17,7 +17,7 @@ module Balanced
     def debit (amount=nil,
         appears_on_statement_as=nil,
         hold_uri=nil,
-        meta=nil,
+        meta={},
         description=nil,
         source_uri=nil)
       debit = Debit.new(
@@ -80,6 +80,10 @@ module Balanced
       construct_from_response payload['items'][0]
     end
 
+    def me
+      self.class.me
+    end
+
   end
 
   class Marketplace < Resource
@@ -90,6 +94,10 @@ module Balanced
       return nil if response.body.to_s.length.zero? or response.body['total'] == 0
       payload = response.body
       construct_from_response payload['items'][0]
+    end
+
+    def my_marketplace
+      self.class.my_marketplace
     end
 
     def create_buyer email_address, card_uri, name=nil, meta={}
@@ -203,7 +211,7 @@ module Balanced
       super attributes
     end
 
-    def debit amount=nil, appears_on_statement_as=nil, holds_uri=nil, meta=nil, description=nil
+    def debit amount=nil, appears_on_statement_as=nil, holds_uri=nil, meta={}, description=nil
       self.account.debit(amount, appears_on_statement_as, holds_uri, meta, description, self.uri)
     end
 
@@ -221,11 +229,11 @@ module Balanced
       super attributes
     end
 
-    def debit amount, appears_on_statement_as=nil, meta=mil, description=nil
+    def debit amount, appears_on_statement_as=nil, meta={}, description=nil
       self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
     end
 
-    def credit amount, description=nil, meta=nil
+    def credit amount, description=nil, meta={}
       self.account.credit(amount, description, meta, self.uri)
     end
   end

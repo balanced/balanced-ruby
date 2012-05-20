@@ -49,3 +49,36 @@ refund = debit.refund()  # the full amount!
 # notice how Balanced refunds you your fees?
 raise "Woah, fees are incorrect" if (refund.fee + debit.fee) != 0
 
+# ok, we have a merchant that's signing up, let's create an account for them
+# first, lets create their bank account
+bank_account = Balanced::BankAccount.new(
+    :account_number => "1234567890",
+    :bank_code => "12",
+    :name => "Jack Q Merchant",
+).save
+
+merchant = marketplace.create_merchant(
+    "merchant@example.org",
+    {
+      :type => "person",
+      :name => "Billy Jones",
+      :street_address => "801 High St.",
+      :postal_code => "94301",
+      :country => "USA",
+      :dob => "1842-01",
+      :phone_number => "+16505551234",
+    },
+    bank_account.uri,
+    "Jack Q Merchant",
+)
+
+# oh our buyer is interested in buying something for 130.00$
+another_debit = buyer.debit(13000, "MARKETPLACE.COM")
+
+# lets credit our merchant 110.00$
+credit = merchant.credit(11000, "Buyer purchased something on MARKETPLACE.COM")
+
+# our fee is 15% so, we earned ~20
+mp_credit = marketplace.owner_account.credit(2000, "Our commission from MARKETPLACE.COM")
+
+# and there you have it :)

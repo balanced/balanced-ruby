@@ -10,9 +10,9 @@ module Balanced
 
   @client = nil
   @config = {
-      :scheme => 'http',
-      :host => 'localhost',
-      :port => 5000,
+      :scheme => 'https',
+      :host => 'api.balancedpayments.com',
+      :port => 443,
       :version => '1',
   }
 
@@ -69,7 +69,7 @@ module Balanced
       begin
         Balanced.const_get class_name
       rescue NameError
-        false
+        return false
       end
       true
     end
