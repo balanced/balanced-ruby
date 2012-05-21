@@ -1,12 +1,11 @@
 require 'uri'
 require 'balanced/version' unless defined? Balanced::VERSION
+require 'balanced/client'
+require 'balanced/utils'
+require 'balanced/base'
+require 'balanced/resources'
 
 module Balanced
-  autoload :Client, 'balanced/client'
-  autoload :Utils, 'balanced/utils'
-  autoload :Resource, 'balanced/base'
-  autoload :ApiKey, 'balanced/resources'
-  autoload :Marketplace, 'balanced/resources'
 
   @client = nil
   @config = {

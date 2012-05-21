@@ -1,5 +1,10 @@
 $:.unshift("/Users/mahmoud/code/poundpay/ruby/balanced-ruby/lib")
 require 'balanced'
+begin
+  Balanced::Card
+rescue NameError
+  raise "wtf"
+end
 
 # create our new api key
 api_key = Balanced::ApiKey.new.save
