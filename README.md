@@ -27,3 +27,9 @@ See https://www.balancedpayments.com/docs/ruby for tutorials and documentation.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+### Building Documentation
+
+Documentation is build using YARD - http://rubydoc.info/docs/yard
+
+    yard doc -e doc/balanced_plugin.rb -p doc/balanced_templates/ 'lib/**/resources.rb' --one-file
