@@ -50,7 +50,12 @@ module Balanced
             }
           end
 
-          instance.instance_variable_set "@#{name}", value
+          instance.class.instance_eval {
+            define_method(name) { self[name] }                       # Get.
+            define_method("#{name}=") { |value| self[name] = value } # Set.
+            define_method("#{name}?") { !!self[name] }               # Present.
+          }
+          instance.send("#{name}=".to_s, value)
         end
         instance
       end

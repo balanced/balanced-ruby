@@ -9,9 +9,9 @@ module Balanced
 
   @client = nil
   @config = {
-      :scheme => 'http',
-      :host => 'localhost',
-      :port => 5000,
+      :scheme => 'https',
+      :host => 'api.balancedpayments.com',
+      :port => 443,
       :version => '1',
   }
 

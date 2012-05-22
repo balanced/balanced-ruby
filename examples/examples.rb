@@ -23,6 +23,13 @@ puts "what's my merchant?, easy: Merchant.me: ", Balanced::Merchant.me
 raise "Marketplace.my_marketplace should not be nil" if Balanced::Marketplace.my_marketplace.nil?
 puts "what's my marketplace?, easy: Marketplace.my_marketplace: ", Balanced::Marketplace.my_marketplace
 
+puts "My marketplace's name is: #{marketplace.name}"
+puts "Changing it to TestFooey"
+marketplace.name = "TestFooey"
+marketplace.save
+puts "My marketplace name is now: #{Balanced::Marketplace.my_marketplace.name}"
+raise "Marketplace name is NOT TestFooey!" if Balanced::Marketplace.my_marketplace.name != "TestFooey"
+
 puts "cool! let's create a new card."
 card = Balanced::Card.new(
   :card_number => "5105105105105100",
