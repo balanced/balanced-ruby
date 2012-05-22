@@ -1,9 +1,13 @@
+# Balanced - Online Marketplace Payments
+#
+# View {Documentation Online}[https://www.balancedpayments.com/docs/ruby]
+#
 module Balanced
 
   # Your ApiKey is used to authenticate when performing operations on the
   # Balanced API.
   #
-  # *NOTE:* Never give out or expose your ApiKey. You can POST to this
+  # *NOTE:* Never give out or expose your ApiKey. You may POST to this
   # endpoint to create new ApiKeys and then DELETE any old keys.
   #
   class ApiKey < Resource
@@ -73,14 +77,14 @@ module Balanced
       credit.save
     end
 
-    # Associates the Card represented by card_uri to this Account.
+    # Associates the Card represented by +card_uri+ with this Account.
     #
     def add_card card_uri
       self.card_uri = card_uri
       save
     end
 
-    # Associates the BankAccount represented by bank_account_uri to this
+    # Associates the BankAccount represented by +bank_account_uri+ with this
     # Account.
     #
     def add_bank_account bank_account_uri
@@ -89,6 +93,38 @@ module Balanced
     end
 
     # Adds the role Merchant to this Account.
+    #
+    # The merchant data for a *person* should look like:
+    #
+    #    {
+    #      :type => "person",
+    #      :name => "William James",        # Legal name
+    #      :street_address => "167 West 74th Street",
+    #      :postal_code => "10023",
+    #      :country_code => "USA",          # ISO 3166-1 alpha-3
+    #      :dob => "1842-01",
+    #      :phone_number => "+16505551234"
+    #    }
+    #
+    # For a *business*, the payload should look like:
+    #
+    #    {
+    #      :name => "Levain Bakery",
+    #      :tax_id => "253912384",          # Optional
+    #      :street_address => "167 West 74th Street",
+    #      :postal_code => "10023",
+    #      :phone_number => "+16505551234",
+    #      :country_code => "USA",          # ISO 3166-1 alpha-3
+    #      :person => {
+    #         :name => "William James",     # Legal name
+    #         :tax_id => "393483992",       # Optional
+    #         :street_address => "167 West 74th Street",  # Home address
+    #         :postal_code => "10023",
+    #         :dob => "1842-01-01",
+    #         :phone_number => "+16505551234",
+    #         :country_code => "USA"        # ISO 3166-1 alpha-3
+    #       }
+    #    }
     #
     def promote_to_merchant merchant_data
       self.merchant = merchant
@@ -143,8 +179,6 @@ module Balanced
 
     # Create a buyer Account associated with this Marketplace.
     #
-    # This may return a 409 error if the email_address already exists.
-    #
     def create_buyer email_address, card_uri, name=nil, meta={}
       account = Account.new(
         :uri => self.accounts_uri,
@@ -159,7 +193,9 @@ module Balanced
     # Creates a Merchant Account associated with this Marketplace.
     #
     # This method may return 300 if you have not supplied enough information
-    # for Balanced to identify the merchant.
+    # for Balanced to identify the Merchant. You may re-submit the request
+    # with more information, or redirect the Merchant to the supplied url
+    # so they may manually sign up.
     #
     def create_merchant email_address, merchant, bank_account_uri=nil, name=nil, meta={}
       account = Account.new(
@@ -179,8 +215,12 @@ module Balanced
   # reservation is guaranteed until the +expires_at+ date. You may capture
   # the Hold at any time before then which will create a Debit and transfer
   # the funds to your Marketplace. If you do not capture the Hold it will
-  # be marked as invalid which is represented by the +is_valid+ field being
-  # set to +false+.
+  # be marked as invalid which is represented by the +is_void+ field being
+  # set to +true+.
+  #
+  # By default a Hold is created using the most recently added funding source
+  # on the Account. You may specify a specific funding source such as a Card
+  # or BankAccount uri.
   #
   class Hold < Resource
 
@@ -212,6 +252,15 @@ module Balanced
   # A Debit represents a transfer of funds from a buyer's Account to your
   # Marketplace.
   #
+  # A Debit may be created directly, or it will be created as a side-effect
+  # of capturing a Hold. If you create a Debit directly it will implicitly
+  # create the associated Hold if the funding source supports this.
+  #
+  # If no Hold is specified the Debit will by default be created using the
+  # most recently added funding source associated with the Account. You
+  # cannot change the funding source between creating a Hold and capturing
+  # it.
+  #
   class Debit < Resource
 
     def initialize attributes = {}
@@ -240,6 +289,10 @@ module Balanced
 
   # A Credit represents a transfer of funds from your Marketplace to a
   # Merchant's Account within your Marketplace.
+  #
+  # By default, a Credit is sent to the most recently added funding
+  # destination associated with an Account. You may specify a specific
+  # funding source.
   #
   class Credit < Resource
     def initialize attributes = {}
