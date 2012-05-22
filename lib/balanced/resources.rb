@@ -44,7 +44,7 @@ module Balanced
 
     def credit amount, description=nil, meta={}, destination_uri=nil
       credit = Credit.new(
-          :uri => self.debits_uri,
+          :uri => self.credits_uri,
           :amount => amount,
           :meta => meta,
           :description => description,
