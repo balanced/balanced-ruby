@@ -31,6 +31,7 @@ module Balanced
     # Returns a new Debit that represents a flow of money from this
     # Account to your Marketplace.
     #
+    # @return [Debit]
     def debit (amount=nil,
         appears_on_statement_as=nil,
         hold_uri=nil,
@@ -53,6 +54,11 @@ module Balanced
     # Account which can be transferred via a Debit to your Marketplace
     # up to 7 days later.
     #
+    # @param [String] source_uri A specific funding source such as a Card
+    #    associated with this account. If not specified the most recently
+    #    added Card is used.
+    # @return [Hold] A Hold representing the reservation of funds from
+    #    this Account to your Marketplace.
     def hold amount, meta={}, source_uri=nil
       hold = Hold.new(
           :uri => self.holds_uri,
@@ -66,6 +72,10 @@ module Balanced
     # Returns a new Credit representing a transfer of funds from your
     # Marketplace to this Account.
     #
+    # @param [String] destination_uri A specific funding destination such as
+    #    a BankAccount already associated with this account.
+    # @return [Credit] A Credit representing the transfer of funds from
+    #    your Marketplace to this Account.
     def credit amount, description=nil, meta={}, destination_uri=nil
       credit = Credit.new(
           :uri => self.credits_uri,
@@ -79,6 +89,7 @@ module Balanced
 
     # Associates the Card represented by +card_uri+ with this Account.
     #
+    # @return [Card]
     def add_card card_uri
       self.card_uri = card_uri
       save
@@ -87,6 +98,7 @@ module Balanced
     # Associates the BankAccount represented by +bank_account_uri+ with this
     # Account.
     #
+    # @return [BankAccount]
     def add_bank_account bank_account_uri
       self.bank_account_uri = bank_account_uri
       save
@@ -139,6 +151,7 @@ module Balanced
 
     # Returns the Merchant associated with your Marketplace.
     #
+    # @return [Merchant]
     def self.me
       # TODO: use query
       response = Balanced.get collection_path
@@ -149,6 +162,7 @@ module Balanced
 
     # Returns the Merchant associated with your Marketplace.
     #
+    # @return [Merchant]
     def me
       self.class.me
     end
@@ -162,6 +176,7 @@ module Balanced
     # Returns an instance representing the marketplace associated with
     # the current API key.
     #
+    # @return [Marketplace]
     def self.my_marketplace
       # TODO: use query
       response = Balanced.get collection_path
@@ -173,12 +188,14 @@ module Balanced
     # Returns an instance representing the marketplace associated with
     # the current API key.
     #
+    # @return [Marketplace]
     def my_marketplace
       self.class.my_marketplace
     end
 
     # Create a buyer Account associated with this Marketplace.
     #
+    # @return [Account]
     def create_buyer email_address, card_uri, name=nil, meta={}
       account = Account.new(
         :uri => self.accounts_uri,
@@ -197,6 +214,7 @@ module Balanced
     # with more information, or redirect the Merchant to the supplied url
     # so they may manually sign up.
     #
+    # @return [Account]
     def create_merchant email_address, merchant, bank_account_uri=nil, name=nil, meta={}
       account = Account.new(
         :uri => self.accounts_uri,
@@ -242,6 +260,7 @@ module Balanced
     # Captures a valid Hold and returns a Debit representing the transfer of
     # funds from the buyer's Account to your Marketplace.
     #
+    # @return [Debit]
     def capture amount=nil, appears_on_statement_as=nil, meta={}, description=nil
       amount ||= self.amount
       self.account.debit(amount, appears_on_statement_as, self.uri, meta, description)
@@ -275,6 +294,7 @@ module Balanced
     # amount of the Debit, you may create many Refunds up to the sum total
     # of the original Debit's amount.
     #
+    # @return [Refund]
     def refund amount=nil, description=nil
       refund = Refund.new(
           :uri => self.refunds_uri,
@@ -352,12 +372,14 @@ module Balanced
     # If +appears_on_statement_as+ is nil, then Balanced will use the
     # +domain_name+ property from your Marketplace.
     #
+    # @return [Debit]
     def debit amount=nil, appears_on_statement_as=nil, holds_uri=nil, meta={}, description=nil
       self.account.debit(amount, appears_on_statement_as, holds_uri, meta, description, self.uri)
     end
 
     # Creates a Hold of funds from this Card to your Marketplace.
     #
+    # @return [Hold]
     def hold amount=nil, meta=nil
       self.account.hold(amount, meta, self.uri)
     end
@@ -379,15 +401,16 @@ module Balanced
 
     # Creates a Debit of funds from this BankAccount to your Marketplace.
     #
-    # If +appears_on_statement_as+ is nil, then Balanced will use the
-    # +domain_name+ property from your Marketplace.
-    #
+    # @param [String] appears_on_statement_as If nil then Balanced will use
+    #    the +domain_name+ property from your Marketplace.
+    # @return [Debit]
     def debit amount, appears_on_statement_as=nil, meta={}, description=nil
       self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
     end
 
     # Creates a Credit of funds from your Marketplace to this Account.
     #
+    # @return [Credit]
     def credit amount, description=nil, meta={}
       self.account.credit(amount, description, meta, self.uri)
     end

@@ -1,6 +1,6 @@
 # Balanced
 
-TODO: Write a gem description
+Online Marketplace Payments
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+See https://www.balancedpayments.com/docs/ruby for tutorials and documentation.
 
 ## Contributing
 
