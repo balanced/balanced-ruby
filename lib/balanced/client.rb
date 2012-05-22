@@ -1,3 +1,4 @@
+require 'logger'
 require "uri"
 require "faraday"
 require "faraday_middleware"
@@ -5,17 +6,12 @@ require "faraday_middleware"
 module Balanced
   class Client
 
-    HTTP_HEADERS = {
-       'Accept' => 'application/json',
-       'Accept-Charset' => 'utf-8',
-       'User-Agent' => "balanced-ruby/#{Balanced::VERSION}",
-    }
-
     DEFAULTS = {
       :scheme => 'http',
       :host => 'localhost',
       :port => 5000,
       :version => '1',
+      :logging_level => 'WARN',
     }
 
     attr :api_key, true
@@ -30,24 +26,29 @@ module Balanced
 
 
     def build_conn
+      logger = Logger.new(STDOUT)
+      logger.level = Logger.const_get(DEFAULTS[:logging_level].to_s)
+
       @conn = Faraday.new url do |cxn|
         cxn.request  :json
 
-        cxn.response :logger
+        cxn.response :logger, logger
         cxn.response :json
+        cxn.response :raise_error  # raise exceptions on 40x, 50x responses
         cxn.adapter  Faraday.default_adapter
       end
       @conn.path_prefix = '/'
+      @conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
     end
 
     def inspect  # :nodoc:
-      "<Balanced::Client @api_key=#{@api_key}, @url=#{url}>"
+      "<Balanced::Client @api_key=#@api_key, @url=#{url}>"
     end
 
     def url
       _url = URI::HTTP.build(
-          :host => @config[:host],
-          :port => @config[:port],
+        :host => @config[:host],
+        :port => @config[:port],
       )
       # wow. yes, this is what you actually have to do.
       _url.scheme = @config[:scheme]
