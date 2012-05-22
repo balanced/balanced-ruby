@@ -83,8 +83,8 @@ module Balanced
     # delegate the query to the pager module
 
     def find uri, options={}
-      payload = Balanced.get :uri => uri
-      construct_from_response payload
+      response = Balanced.get uri
+      self.class.construct_from_response response.body
     end
 
     def save
@@ -100,7 +100,7 @@ module Balanced
     end
 
     def destroy
-      Balanced.delete :uri => self.attributes['uri']
+      Balanced.delete self.attributes['uri']
     end
 
     def reload response = nil
