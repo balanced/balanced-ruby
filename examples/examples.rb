@@ -30,6 +30,7 @@ card = Balanced::Card.new(
   :expiration_year => "2015",
 ).save
 
+
 # create our account
 buyer = marketplace.create_buyer("buyer@example.org", card.uri)
 
@@ -85,5 +86,11 @@ credit = merchant.credit(11000, "Buyer purchased something on MARKETPLACE.COM")
 
 # our fee is 15% so, we earned ~20
 mp_credit = marketplace.owner_account.credit(2000, "Our commission from MARKETPLACE.COM")
+
+# ok lets invalid a card
+card['is_valid'] = false
+card.save
+
+raise "This card is NOT VALID" if card.is_valid
 
 # and there you have it :)
