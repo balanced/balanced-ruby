@@ -6,6 +6,16 @@ rescue NameError
   raise "wtf"
 end
 
+host = ENV['BALANCED_HOST'] or nil
+options = {}
+if host then
+  options[:scheme] = 'http'
+  options[:host] = host
+  options[:port] = 5000
+end
+
+Balanced.configure(nil, options)
+
 puts "create our new api key"
 api_key = Balanced::ApiKey.new.save
 puts "Our secret is: ", api_key.secret
