@@ -6,6 +6,16 @@ rescue NameError
   raise "wtf"
 end
 
+host = ENV['BALANCED_HOST'] or nil
+options = {}
+if host then
+  options[:scheme] = 'http'
+  options[:host] = host
+  options[:port] = 5000
+end
+
+Balanced.configure(nil, options)
+
 puts "create our new api key"
 api_key = Balanced::ApiKey.new.save
 puts "Our secret is: ", api_key.secret
@@ -99,6 +109,12 @@ puts "ok lets invalid a card"
 card['is_valid'] = false
 card.save
 
-raise "This card is NOT VALID" if card.is_valid
+raise "This card is INCORRECTLY VALID" if card.is_valid
+
+puts "invalidating a bank account"
+bank_account['is_valid'] = false
+bank_account.save
+
+raise "This card is INCORRECTLY VALID" if bank_account.is_valid
 
 puts "and there you have it :)"
