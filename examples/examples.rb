@@ -99,6 +99,12 @@ puts "ok lets invalid a card"
 card['is_valid'] = false
 card.save
 
-raise "This card is NOT VALID" if card.is_valid
+raise "This card is INCORRECTLY VALID" if card.is_valid
+
+puts "invalidating a bank account"
+bank_account['is_valid'] = false
+bank_account.save
+
+raise "This card is INCORRECTLY VALID" if bank_account.is_valid
 
 puts "and there you have it :)"
