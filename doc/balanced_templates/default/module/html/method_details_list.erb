@@ -1,6 +1,6 @@
 <% scopes(method_listing(false)) do |list, scope| %>
   <div id="<%= scope %>_method_details" class="method_details_list">
-    <h4><%= scope.to_s.capitalize %> Method Details</h4>
+    <h5><%= scope.to_s.capitalize %> Methods</h5>
 
     <% list.each_with_index do |meth, i| %>
       <%= yieldall :object => meth, :owner => object, :index => i %>
