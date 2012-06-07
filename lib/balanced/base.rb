@@ -60,6 +60,11 @@ module Balanced
         instance
       end
 
+      def find uri
+        response = Balanced.get uri
+        construct_from_response response.body
+      end
+
     end
 
     attr_reader :attributes
@@ -87,9 +92,8 @@ module Balanced
 
     # delegate the query to the pager module
 
-    def find uri, options={}
-      response = Balanced.get uri
-      self.class.construct_from_response response.body
+    def find uri
+      self.class.find uri
     end
 
     def save
