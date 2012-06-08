@@ -1,4 +1,4 @@
-require "balanced"
+require "spec_helper"
 
 describe "the utils module" do
   it "should correctly translate underscored names" do
