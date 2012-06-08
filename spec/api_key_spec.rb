@@ -1,4 +1,4 @@
-require "balanced"
+require "spec_helper"
 
 describe "ApiKey Resource" do
   before(:each) do
