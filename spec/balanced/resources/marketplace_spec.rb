@@ -28,7 +28,6 @@ describe Balanced::Marketplace do
     )
   end
 
-
   describe "create_merchant" do
     use_vcr_cassette
 

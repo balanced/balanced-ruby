@@ -6,7 +6,6 @@ describe Balanced::ApiKey do
     before do
       @key = Balanced::ApiKey.new.save
     end
-
     describe "#secret" do
       subject { @key.secret }
       it { should_not be_nil }

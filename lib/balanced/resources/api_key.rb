@@ -5,13 +5,12 @@ module Balanced
   #
   # *NOTE:* Never give out or expose your ApiKey. You may POST to this
   # endpoint to create new ApiKeys and then DELETE any old keys.
-  #
   class ApiKey < Resource
     def save
       Balanced.configure nil
       super
     end
-
+    def wut; end;
   end
 
 end
