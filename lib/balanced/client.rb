@@ -55,23 +55,6 @@ module Balanced
       _url
     end
 
-    # wtf..
-    def get *args
-      op(:get, *args)
-    end
-
-    def post *args
-      op(:post, *args)
-    end
-
-    def put *args
-      op(:put, *args)
-    end
-
-    def delete *args
-      op(:delete, *args)
-    end
-
     private
 
     def op (method, *args)
@@ -81,6 +64,14 @@ module Balanced
       @conn.send(method, *args)
     end
 
+    def method_missing(method, *args, &block)
+      case method
+        when :get, :post, :put, :delete
+          op method, *args
+        else
+          super
+      end
+    end
   end
 
 end
