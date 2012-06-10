@@ -26,22 +26,6 @@ module Balanced
       @client = Balanced::Client.new(api_key, @config)
     end
 
-    def get uri, params = {}
-      self.client.get uri, params
-    end
-
-    def post uri, data = {}
-      self.client.post uri, data
-    end
-
-    def put uri, data = {}
-      self.client.put uri, data
-    end
-
-    def delete uri
-      self.client.delete uri
-    end
-
     def split_the_uri uri
       parsed_uri = URI.parse(uri)
       parsed_uri.path.sub(/\/$/, '').split('/')
@@ -71,6 +55,15 @@ module Balanced
         return false
       end
       true
+    end
+
+    def method_missing(method, *args, &block)
+      case method
+        when :get, :post, :put, :delete
+          self.client.send method, *args
+        else
+          super
+      end
     end
   end
 
