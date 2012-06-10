@@ -113,5 +113,11 @@ describe Balanced::Account do
         -> { @buyer.add_card(@new_card) }.should_not raise_error
       end
     end
+
+    describe "#promote_to_merchant" do
+      it do
+        -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
+      end
+    end
   end
 end

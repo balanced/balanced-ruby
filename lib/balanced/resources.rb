@@ -20,7 +20,7 @@ module Balanced
   #
   class Account < Resource
 
-    attr_writer :bank_account_uri, :card_uri
+    attr_writer :bank_account_uri, :card_uri, :merchant
 
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
@@ -141,7 +141,7 @@ module Balanced
     #    }
     #
     def promote_to_merchant merchant_data
-      self.merchant = merchant
+      self.merchant = merchant_data
       save
     end
 
