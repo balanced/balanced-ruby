@@ -2,9 +2,22 @@ require 'rubygems'
 require 'bundler/setup'
 
 require 'balanced'
+require 'vcr'
 
 RSpec.configure do |config|
 end
+
+
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :faraday
+end
+
+RSpec.configure do |c|
+  c.extend VCR::RSpec::Macros
+end
+
 
 MERCHANT_URI_REGEX = /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*/
 HOLDS_URI_REGEX = /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/holds/

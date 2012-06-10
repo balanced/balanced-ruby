@@ -2,7 +2,8 @@ require "spec_helper"
 
 
 describe Balanced::Marketplace do
-  before :all do
+  use_vcr_cassette
+  before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
@@ -28,6 +29,7 @@ describe Balanced::Marketplace do
   end
 
   describe "create_merchant" do
+    use_vcr_cassette
 
     describe "class" do
       subject { @merchant }

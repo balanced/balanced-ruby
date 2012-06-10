@@ -1,14 +1,17 @@
 require "spec_helper"
 
 describe Balanced::Account do
-  before :all do
+  use_vcr_cassette
+  before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
   end
 
   describe "merchant" do
-    before :all do
+    use_vcr_cassette
+
+    before do
       @bank_account = Balanced::BankAccount.new(
         :account_number => "1234567890",
         :bank_code => "321174851",
@@ -26,6 +29,7 @@ describe Balanced::Account do
     end
 
     describe "new" do
+      use_vcr_cassette
       it do
         -> do
           @merchant = Balanced::Account.new(
@@ -40,6 +44,7 @@ describe Balanced::Account do
     end
 
     describe "#save" do
+      use_vcr_cassette
       before do
         @new_bank_account = Balanced::BankAccount.new(
           :account_number => "0987654321",
@@ -61,6 +66,7 @@ describe Balanced::Account do
     end
 
     describe "#add_bank_account" do
+      use_vcr_cassette
       before do
         @bank_account = Balanced::BankAccount.new(
           :account_number => "1234567890",
@@ -91,7 +97,9 @@ describe Balanced::Account do
   end
 
   describe "buyer" do
-    before :all do
+    use_vcr_cassette
+
+    before do
       @card = Balanced::Card.new(
         :card_number => "5105105105105100",
         :expiration_month => "12",
@@ -114,6 +122,8 @@ describe Balanced::Account do
     end
 
     describe "#promote_to_merchant" do
+      use_vcr_cassette
+
       it do
         -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
       end
