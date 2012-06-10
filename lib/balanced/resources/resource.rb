@@ -128,6 +128,6 @@ module Balanced
         instance_variable_set ivar, other.instance_variable_get(ivar)
       end
     end
-
   end
 end
+
