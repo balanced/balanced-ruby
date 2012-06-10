@@ -55,16 +55,11 @@ module Balanced
     end
 
     private
-
-    def op (method, *args)
-      @conn.basic_auth(api_key, '') unless api_key.nil?
-      @conn.send(method, *args)
-    end
-
     def method_missing(method, *args, &block)
       case method
       when :get, :post, :put, :delete
-        op method, *args
+        @conn.basic_auth(api_key, '') unless api_key.nil?
+        @conn.send method, *args
       else
         super
       end
