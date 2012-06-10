@@ -25,7 +25,9 @@ module Balanced
         klass = Balanced.from_uri(payload[:uri])
         instance = klass.new payload
         payload.each do |name, value|
-          klass.class_eval { attr_accessor name.to_s }
+          klass.class_eval {
+            attr_accessor name.to_s
+          }
           # here is where our interpretations will begin.
           # if the value is a sub-resource, lets instantiate the class
           # and set it correctly
@@ -48,6 +50,12 @@ module Balanced
               }
             }
           end
+
+          instance.class.instance_eval {
+            define_method(name) { @attributes[name] }                       # Get.
+            define_method("#{name}=") { |value| @attributes[name] = value } # Set.
+            define_method("#{name}?") { !!@attributes[name].nil? }               # Present.
+          }
           instance.send("#{name}=".to_s, value)
         end
         instance
@@ -62,7 +70,7 @@ module Balanced
 
     attr_accessor :attributes
 
-    def initialize(attributes = {})
+    def initialize attributes = {}
       @attributes = attributes
     end
 

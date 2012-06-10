@@ -298,6 +298,16 @@ describe Balanced::Account do
       describe "when executing" do
         use_vcr_cassette
         before do
+
+          @merchant_attributes = {
+            :type => "person",
+            :name => "Billy Jones",
+            :street_address => "801 High St.",
+            :postal_code => "94301",
+            :country => "USA",
+            :dob => "1842-01",
+            :phone_number => "+16505551234",
+          }
           card = Balanced::Card.new(
             :card_number => "4111111111111111",
             :expiration_month => "12",
@@ -319,6 +329,15 @@ describe Balanced::Account do
         use_vcr_cassette
 
         before do
+         @merchant_attributes = {
+            :type => "person",
+            :name => "Billy Jones",
+            :street_address => "801 High St.",
+            :postal_code => "94301",
+            :country => "USA",
+            :dob => "1842-01",
+            :phone_number => "+16505551234",
+          }
           card = Balanced::Card.new(
             :card_number => "4111111111111111",
             :expiration_month => "12",
