@@ -1,19 +1,26 @@
 require "balanced"
+require "pry"
 
-describe "ApiKey Resource" do
-  before(:each) do
+
+describe Balanced::ApiKey do
+
+  before :all do
+    @key = Balanced::ApiKey.new.save
   end
 
-  it "should create my api key and let me access the secret" do
-    key = Balanced::ApiKey.new.save
-    key.should_not eq(nil)
-    # make sure my secret is there.
-    key.secret.should_not eq(nil)
+  subject { @key }
+  it { should_not be_nil }
+
+  describe "#secret" do
+    subject { @key.secret }
+    it { should_not be_nil }
+    it { should_not be_empty }
   end
 
-  it "should construct the merchant sub resource as an instance of Balanced::Merchant" do
-    key = Balanced::ApiKey.new.save
-    (key.merchant.instance_of? Balanced::Merchant).should == true
+  describe "#merchant" do
+    subject { @key.merchant }
+    it { should_not be_nil }
+    it { should be_instance_of Balanced::Merchant }
   end
 
 
