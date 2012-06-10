@@ -1,4 +1,5 @@
-require "balanced"
+require "spec_helper"
+
 
 describe Balanced::Marketplace do
   before :all do

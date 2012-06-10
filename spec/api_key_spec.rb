@@ -1,6 +1,4 @@
-require "balanced"
-require "pry"
-
+require "spec_helper"
 
 describe Balanced::ApiKey do
 

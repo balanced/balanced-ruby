@@ -1,5 +1,4 @@
-require "balanced"
-require "pry"
+require "spec_helper"
 
 describe Balanced::Account do
   before :all do
