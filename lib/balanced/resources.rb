@@ -11,6 +11,11 @@ module Balanced
   # endpoint to create new ApiKeys and then DELETE any old keys.
   #
   class ApiKey < Resource
+    def save
+      Balanced.configure nil
+      super
+    end
+
   end
 
   # An Account represents a user within your Marketplace. An Account can have

@@ -14,13 +14,12 @@ module Balanced
       :logging_level => 'WARN',
     }
 
-    attr :api_key, true
     attr_reader :conn
-    attr_accessor :config
+    attr_accessor :api_key, :config
 
     def initialize(api_key, options={})
       @api_key = api_key.nil? ? api_key : api_key.strip
-      @config = DEFAULTS.merge! options
+      @config = DEFAULTS.merge options
       build_conn
     end
 
@@ -41,9 +40,9 @@ module Balanced
       @conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
     end
 
-    def inspect  # :nodoc:
-      "<Balanced::Client @api_key=#@api_key, @url=#{url}>"
-    end
+    #def inspect  # :nodoc:
+      #"<Balanced::Client @api_key=#{api_key}, @url=#{url}>"
+    #end
 
     def url
       _url = URI::HTTP.build(
@@ -58,18 +57,16 @@ module Balanced
     private
 
     def op (method, *args)
-      unless @api_key.nil?
-        @conn.basic_auth(@api_key, '')
-      end
+      @conn.basic_auth(api_key, '') unless api_key.nil?
       @conn.send(method, *args)
     end
 
     def method_missing(method, *args, &block)
       case method
-        when :get, :post, :put, :delete
-          op method, *args
-        else
-          super
+      when :get, :post, :put, :delete
+        op method, *args
+      else
+        super
       end
     end
   end
