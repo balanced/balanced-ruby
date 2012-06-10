@@ -28,6 +28,12 @@ describe Balanced::Marketplace do
   end
 
   describe "create_merchant" do
+
+    describe "class" do
+      subject { @merchant }
+      it { should be_instance_of Balanced::Account }
+    end
+
     describe "attributes" do
       describe "#id" do
         subject { @merchant.id }
