@@ -53,35 +53,35 @@ describe Balanced::Marketplace do
       end
       describe "#uri" do
         subject { @merchant.uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*/ }
+        it { should match MERCHANT_URI_REGEX }
       end
       describe "#holds_uri" do
         subject { @merchant.holds_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/holds/ }
+        it { should match HOLDS_URI_REGEX }
       end
       describe "#bank_accounts_uri" do
         subject { @merchant.bank_accounts_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/bank_accounts/ }
+        it { should match BANK_ACCOUNTS_URI_REGEX }
       end
       describe "#refunds_uri" do
         subject { @merchant.refunds_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/refunds/ }
+        it { should match REFUNDS_URI_REGEX }
       end
       describe "#debits_uri" do
         subject { @merchant.debits_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/debits/ }
+        it { should match DEBITS_URI_REGEX }
       end
       describe "#transactions_uri" do
         subject { @merchant.transactions_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/transactions/ }
+        it { should match TRANSACTIONS_URI_REGEX }
       end
       describe "#credits_uri" do
         subject { @merchant.credits_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/credits/ }
+        it { should match CREDITS_URI_REGEX }
       end
       describe "#cards_uri" do
         subject { @merchant.cards_uri }
-        it { should match /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/cards/ }
+        it { should match CARDS_URI_REGEX }
       end
     end
   end
