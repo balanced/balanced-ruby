@@ -353,70 +353,70 @@ describe Balanced::Account do
         subject { @cards.items.size }
         it { should eql 2 }
       end
+    end
 
-      describe "#promote_to_merchant" do
+    describe "#promote_to_merchant" do
 
-        describe "when executing" do
-          use_vcr_cassette
-          before do
+      describe "when executing" do
+        use_vcr_cassette
+        before do
 
-            @merchant_attributes = {
-              :type => "person",
-              :name => "Billy Jones",
-              :street_address => "801 High St.",
-              :postal_code => "94301",
-              :country => "USA",
-              :dob => "1842-01",
-              :phone_number => "+16505551234",
-            }
-            card = Balanced::Card.new(
-              :card_number => "4111111111111111",
-              :expiration_month => "12",
-              :expiration_year => "2015",
-            ).save
-            @buyer = Balanced::Account.new(
-              :uri => @marketplace.accounts_uri,
-              :email_address => "buyer5@example.org",
-              :card_uri => card.uri,
-              :name => "Jack Q Buyer"
-            ).save
-          end
-
-          it do
-            -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
-          end
-        end
-        describe "after executing" do
-          use_vcr_cassette
-
-          before do
-            @merchant_attributes = {
-              :type => "person",
-              :name => "Billy Jones",
-              :street_address => "801 High St.",
-              :postal_code => "94301",
-              :country => "USA",
-              :dob => "1842-01",
-              :phone_number => "+16505551234",
-            }
-            card = Balanced::Card.new(
-              :card_number => "4111111111111111",
-              :expiration_month => "12",
-              :expiration_year => "2015",
-            ).save
-            @buyer = Balanced::Account.new(
-              :uri => @marketplace.accounts_uri,
-              :email_address => "buyer6@example.org",
-              :card_uri => card.uri,
-              :name => "Jack Q Buyer"
-            ).save
-            @buyer.promote_to_merchant @merchant_attributes
-          end
-          subject { @buyer.roles }
-          it { should include("merchant") }
+          @merchant_attributes = {
+            :type => "person",
+            :name => "Billy Jones",
+            :street_address => "801 High St.",
+            :postal_code => "94301",
+            :country => "USA",
+            :dob => "1842-01",
+            :phone_number => "+16505551234",
+          }
+          card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "12",
+            :expiration_year => "2015",
+          ).save
+          @buyer = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "buyer5@example.org",
+            :card_uri => card.uri,
+            :name => "Jack Q Buyer"
+          ).save
         end
 
+        it do
+          -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
+        end
       end
+      describe "after executing" do
+        use_vcr_cassette
+
+        before do
+          @merchant_attributes = {
+            :type => "person",
+            :name => "Billy Jones",
+            :street_address => "801 High St.",
+            :postal_code => "94301",
+            :country => "USA",
+            :dob => "1842-01",
+            :phone_number => "+16505551234",
+          }
+          card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "12",
+            :expiration_year => "2015",
+          ).save
+          @buyer = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "buyer6@example.org",
+            :card_uri => card.uri,
+            :name => "Jack Q Buyer"
+          ).save
+          @buyer.promote_to_merchant @merchant_attributes
+        end
+        subject { @buyer.roles }
+        it { should include("merchant") }
+      end
+
     end
   end
 end
