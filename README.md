@@ -36,9 +36,11 @@ The spec suite is a work in progress.  Existing specs can either be run
 using [guard](https://github.com/guard/guard) or rake.
 
 Guard
+
     $ bundle exec guard
 
 Rake
+
     $ rake spec
 
 We use [VCR](https://www.relishapp.com/myronmarston/vcr/docs) to stub
