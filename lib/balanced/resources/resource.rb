@@ -1,3 +1,4 @@
+require 'pry'
 module Balanced
   class Resource
 
@@ -24,9 +25,7 @@ module Balanced
         klass = Balanced.from_uri(payload[:uri])
         instance = klass.new payload
         payload.each do |name, value|
-          klass.class_eval {
-            attr_accessor name.to_s
-          }
+          klass.class_eval { attr_accessor name.to_s }
           # here is where our interpretations will begin.
           # if the value is a sub-resource, lets instantiate the class
           # and set it correctly
@@ -37,7 +36,7 @@ module Balanced
             klass.instance_eval {
               define_method(modified_name) {
                 values_class = Balanced.from_uri(value)
-                # if uri is a collection -> this would definitely be if it ends in a symbol
+                 # if uri is a collection -> this would definitely be if it ends in a symbol
                 # then we should allow a lazy executor of the query pager
                 if Balanced.is_collection(value)
                   # TODO: return the pager
@@ -49,12 +48,6 @@ module Balanced
               }
             }
           end
-
-          instance.class.instance_eval {
-            define_method(name) { self[name] }                       # Get.
-            define_method("#{name}=") { |value| self[name] = value } # Set.
-            define_method("#{name}?") { !!self[name] }               # Present.
-          }
           instance.send("#{name}=".to_s, value)
         end
         instance
@@ -67,28 +60,11 @@ module Balanced
 
     end
 
-    attr_reader :attributes
+    attr_accessor :attributes
 
-    def initialize attributes = {}
+    def initialize(attributes = {})
       @attributes = attributes
-      self.attributes = attributes
     end
-
-    def attributes= attributes = {}
-      attributes.each_pair { |k, v|
-        respond_to?(name = "#{k}=") and send(name, v) or (self[k] = v)
-      }
-    end
-
-    def read_attribute key
-      attributes[key.to_s]
-    end
-    alias [] read_attribute
-
-    def write_attribute key, value
-      attributes[key] = value
-    end
-    alias []= write_attribute
 
     # delegate the query to the pager module
 
@@ -97,7 +73,7 @@ module Balanced
     end
 
     def save
-      uri = self.attributes.delete('uri') { |key| nil }
+      uri = @attributes.delete('uri') { |key| nil }
       method = :post
       if uri.nil?
         uri = self.class.collection_path
@@ -109,7 +85,7 @@ module Balanced
     end
 
     def destroy
-      Balanced.delete self.attributes['uri']
+      Balanced.delete @attributes[:uri]
     end
 
     def reload response = nil
@@ -117,7 +93,7 @@ module Balanced
         return if response.body.to_s.length.zero?
         fresh = self.class.construct_from_response response.body
       else
-        fresh = self.find(@attributes['uri'])
+        fresh = self.find(@attributes[:uri])
       end
       fresh and copy_from fresh
       self
@@ -126,6 +102,16 @@ module Balanced
     def copy_from other
       other.instance_variables.each do |ivar|
         instance_variable_set ivar, other.instance_variable_get(ivar)
+      end
+    end
+
+    def method_missing(method, *args, &block)
+      case method
+        when /(.+)\=$/
+          attr = method.to_s.chop
+          @attributes[attr] = args[0]
+        else
+          super
       end
     end
   end

@@ -6,8 +6,6 @@ module Balanced
   #
   class Account < Resource
 
-    attr_writer :bank_account_uri, :card_uri, :merchant
-
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
