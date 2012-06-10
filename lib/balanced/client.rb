@@ -23,7 +23,6 @@ module Balanced
       build_conn
     end
 
-
     def build_conn
       logger = Logger.new(STDOUT)
       logger.level = Logger.const_get(DEFAULTS[:logging_level].to_s)
@@ -55,6 +54,7 @@ module Balanced
     end
 
     private
+
     def method_missing(method, *args, &block)
       case method
       when :get, :post, :put, :delete
@@ -64,6 +64,6 @@ module Balanced
         super
       end
     end
-  end
 
+  end
 end

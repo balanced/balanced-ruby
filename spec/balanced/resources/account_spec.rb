@@ -143,30 +143,63 @@ describe Balanced::Account do
     end
 
     describe "#add_bank_account" do
-      use_vcr_cassette
-      before do
-        @bank_account = Balanced::BankAccount.new(
-          :account_number => "1234567890",
-          :bank_code => "321174851",
-          :name => "Jack Q Merchant"
-        ).save
+      describe "when executing" do
+        use_vcr_cassette
 
-        @merchant = Balanced::Account.new(
-          :uri => @marketplace.accounts_uri,
-          :email_address => "merchant1@example.org",
-          :merchant => @merchant_attributes,
-          :bank_account_uri => @bank_account.uri,
-          :name => "Jack Q Merchant"
-        ).save
+        before do
+          @bank_account = Balanced::BankAccount.new(
+            :account_number => "1234567890",
+            :bank_code => "321174851",
+            :name => "Jack Q Merchant"
+          ).save
 
-        @new_bank_account = Balanced::BankAccount.new(
-          :account_number => "53434533",
-          :bank_code => "12345678",
-          :name => "Jack Q Merchant"
-        ).save
+          @merchant = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "merchant1@example.org",
+            :merchant => @merchant_attributes,
+            :bank_account_uri => @bank_account.uri,
+            :name => "Jack Q Merchant"
+          ).save
+
+          @new_bank_account = Balanced::BankAccount.new(
+            :account_number => "53434533",
+            :bank_code => "12345678",
+            :name => "Jack Q Merchant"
+          ).save
+        end
+        it { -> { @merchant.add_bank_account(@new_bank_account.uri) }.should_not raise_error }
       end
 
-      it { -> { @merchant.add_bank_account(@new_bank_account.uri) }.should_not raise_error }
+      describe "after executing" do
+        use_vcr_cassette
+        before do
+          @bank_account = Balanced::BankAccount.new(
+            :account_number => "12345678901",
+            :bank_code => "321174851",
+            :name => "Jack Q Merchant"
+          ).save
+
+          @merchant = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "merchant4@example.org",
+            :merchant => @merchant_attributes,
+            :bank_account_uri => @bank_account.uri,
+            :name => "Jack Q Merchant"
+          ).save
+
+          @new_bank_account = Balanced::BankAccount.new(
+            :account_number => "53434533",
+            :bank_code => "12345678",
+            :name => "Jack Q Merchant"
+          ).save
+          @merchant.add_bank_account(@new_bank_account.uri)
+          @bank_accounts = Balanced::BankAccount.find(@merchant.bank_accounts_uri).items
+        end
+
+        subject { @bank_accounts.size }
+        it { should eql 2 }
+      end
+
 
     end
   end
@@ -269,49 +302,44 @@ describe Balanced::Account do
 
 
     describe "#add_card" do
-      use_vcr_cassette
-      before do
-        card = Balanced::Card.new(
-          :card_number => "4111111111111111",
-          :expiration_month => "12",
-          :expiration_year => "2015",
-        ).save
-        @new_card = Balanced::Card.new(
-          :card_number => "4111111111111111",
-          :expiration_month => "1",
-          :expiration_year => "2015",
-        ).save
-        @buyer = Balanced::Account.new(
-          :uri => @marketplace.accounts_uri,
-          :email_address => "buyer3@example.org",
-          :card_uri => card.uri,
-          :name => "Jack Q Buyer"
-        ).save
-      end
-      it do
-        -> { @buyer.add_card(@new_card.uri) }.should_not raise_error
-      end
-    end
-
-    describe "#promote_to_merchant" do
 
       describe "when executing" do
         use_vcr_cassette
         before do
-
-          @merchant_attributes = {
-            :type => "person",
-            :name => "Billy Jones",
-            :street_address => "801 High St.",
-            :postal_code => "94301",
-            :country => "USA",
-            :dob => "1842-01",
-            :phone_number => "+16505551234",
-          }
           card = Balanced::Card.new(
             :card_number => "4111111111111111",
             :expiration_month => "12",
             :expiration_year => "2015",
+          ).save
+          @new_card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "1",
+            :expiration_year => "2015",
+          ).save
+          @buyer = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "buyer3@example.org",
+            :card_uri => card.uri,
+            :name => "Jack Q Buyer"
+          ).save
+        end
+        it do
+          -> { @buyer.add_card(@new_card.uri) }.should_not raise_error
+        end
+      end
+      describe "after executing" do
+        use_vcr_cassette
+
+        before do
+          card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "12",
+            :expiration_year => "2015",
+          ).save
+          @new_card = Balanced::Card.new(
+            :card_number => "5105105105105100",
+            :expiration_month => "1",
+            :expiration_year => "2017",
           ).save
           @buyer = Balanced::Account.new(
             :uri => @marketplace.accounts_uri,
@@ -319,43 +347,76 @@ describe Balanced::Account do
             :card_uri => card.uri,
             :name => "Jack Q Buyer"
           ).save
+          @buyer.add_card(@new_card.uri)
+          @cards = Balanced::Card.find @buyer.cards_uri
         end
-
-        it do
-          -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
-        end
-      end
-      describe "after executing" do
-        use_vcr_cassette
-
-        before do
-         @merchant_attributes = {
-            :type => "person",
-            :name => "Billy Jones",
-            :street_address => "801 High St.",
-            :postal_code => "94301",
-            :country => "USA",
-            :dob => "1842-01",
-            :phone_number => "+16505551234",
-          }
-          card = Balanced::Card.new(
-            :card_number => "4111111111111111",
-            :expiration_month => "12",
-            :expiration_year => "2015",
-          ).save
-          @buyer = Balanced::Account.new(
-            :uri => @marketplace.accounts_uri,
-            :email_address => "buyer5@example.org",
-            :card_uri => card.uri,
-            :name => "Jack Q Buyer"
-          ).save
-          @buyer.promote_to_merchant @merchant_attributes
-        end
-        subject { @buyer.roles }
-        it { should include("merchant") }
+        subject { @cards.items.size }
+        it { should eql 2 }
       end
 
+      describe "#promote_to_merchant" do
 
+        describe "when executing" do
+          use_vcr_cassette
+          before do
+
+            @merchant_attributes = {
+              :type => "person",
+              :name => "Billy Jones",
+              :street_address => "801 High St.",
+              :postal_code => "94301",
+              :country => "USA",
+              :dob => "1842-01",
+              :phone_number => "+16505551234",
+            }
+            card = Balanced::Card.new(
+              :card_number => "4111111111111111",
+              :expiration_month => "12",
+              :expiration_year => "2015",
+            ).save
+            @buyer = Balanced::Account.new(
+              :uri => @marketplace.accounts_uri,
+              :email_address => "buyer5@example.org",
+              :card_uri => card.uri,
+              :name => "Jack Q Buyer"
+            ).save
+          end
+
+          it do
+            -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
+          end
+        end
+        describe "after executing" do
+          use_vcr_cassette
+
+          before do
+            @merchant_attributes = {
+              :type => "person",
+              :name => "Billy Jones",
+              :street_address => "801 High St.",
+              :postal_code => "94301",
+              :country => "USA",
+              :dob => "1842-01",
+              :phone_number => "+16505551234",
+            }
+            card = Balanced::Card.new(
+              :card_number => "4111111111111111",
+              :expiration_month => "12",
+              :expiration_year => "2015",
+            ).save
+            @buyer = Balanced::Account.new(
+              :uri => @marketplace.accounts_uri,
+              :email_address => "buyer6@example.org",
+              :card_uri => card.uri,
+              :name => "Jack Q Buyer"
+            ).save
+            @buyer.promote_to_merchant @merchant_attributes
+          end
+          subject { @buyer.roles }
+          it { should include("merchant") }
+        end
+
+      end
     end
   end
 end
