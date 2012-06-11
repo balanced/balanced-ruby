@@ -22,14 +22,11 @@ module Balanced
     attr_accessor 'config'
 
     def configure(api_key=nil, options={})
-      options = @config.merge options
-      @config = options
-      @client = Balanced::Client.new(api_key, @config)
+      @client = Balanced::Client.new(api_key, @config.merge(options))
     end
 
     def split_the_uri uri
-      parsed_uri = URI.parse(uri)
-      parsed_uri.path.sub(/\/$/, '').split('/')
+      URI.parse(uri).path.sub(/\/$/, '').split('/')
     end
 
     def from_uri uri
