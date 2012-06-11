@@ -35,8 +35,8 @@ module Balanced
         cxn.response :raise_error  # raise exceptions on 40x, 50x responses
         cxn.adapter  Faraday.default_adapter
       end
-      @conn.path_prefix = '/'
-      @conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
+      conn.path_prefix = '/'
+      conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
     end
 
     #def inspect  # :nodoc:
@@ -44,12 +44,10 @@ module Balanced
     #end
 
     def url
-      _url = URI::HTTP.build(
-        :host => @config[:host],
-        :port => @config[:port],
+      _url = URI::HTTPS.build(
+        :host => config[:host],
+        :port => config[:port]
       )
-      # wow. yes, this is what you actually have to do.
-      _url.scheme = @config[:scheme]
       _url
     end
 
@@ -58,8 +56,8 @@ module Balanced
     def method_missing(method, *args, &block)
       case method
       when :get, :post, :put, :delete
-        @conn.basic_auth(api_key, '') unless api_key.nil?
-        @conn.send method, *args
+        conn.basic_auth(api_key, '') unless api_key.nil?
+        conn.send method, *args
       else
         super
       end

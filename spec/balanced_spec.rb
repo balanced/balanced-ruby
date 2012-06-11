@@ -32,7 +32,7 @@ describe Balanced do
 
       describe "#url" do
         subject { Balanced.client.url.to_s }
-        it { should eql "https://api.balancedpayments.com:443" }
+        it { should eql "https://api.balancedpayments.com" }
       end
     end
 

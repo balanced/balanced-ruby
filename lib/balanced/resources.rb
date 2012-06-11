@@ -1,5 +1,4 @@
 $:.unshift File.join(File.dirname(__FILE__), "balanced", "resources")
-
 require "resource"
 require "account"
 require "api_key"
