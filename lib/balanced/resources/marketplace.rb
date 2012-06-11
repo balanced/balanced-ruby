@@ -1,7 +1,8 @@
 module Balanced
   #
   #
-  class Marketplace < Resource
+  class Marketplace
+    include Balanced::Resource
 
     # Returns an instance representing the marketplace associated with
     # the current API key.

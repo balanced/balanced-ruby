@@ -6,7 +6,8 @@ module Balanced
   # destination associated with an Account. You may specify a specific
   # funding source.
   #
-  class Credit < Resource
+  class Credit
+    include Balanced::Resource
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'

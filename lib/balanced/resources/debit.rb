@@ -11,7 +11,8 @@ module Balanced
   # cannot change the funding source between creating a Hold and capturing
   # it.
   #
-  class Debit < Resource
+  class Debit
+    include Balanced::Resource
 
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes

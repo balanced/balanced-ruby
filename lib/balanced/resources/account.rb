@@ -4,7 +4,8 @@ module Balanced
   # Debits using this Account. If they have the +merchant+ role then you may
   # create Credits to transfer funds to this Account.
   #
-  class Account < Resource
+  class Account
+    include Balanced::Resource
 
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes

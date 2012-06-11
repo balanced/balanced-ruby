@@ -2,7 +2,9 @@ module Balanced
   # A card represents a source of funds for an Account. You may Hold or Debit
   # funds from the account associated with the Card.
   #
-  class Card < Resource
+  class Card
+    include Balanced::Resource
+
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'

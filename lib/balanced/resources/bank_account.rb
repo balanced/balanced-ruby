@@ -4,7 +4,9 @@ module Balanced
   #
   # *NOTE:* The BankAccount resource does not support creating a Hold.
   #
-  class BankAccount < Resource
+  class BankAccount
+    include Balanced::Resource
+
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'

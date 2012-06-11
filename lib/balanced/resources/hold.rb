@@ -10,7 +10,8 @@ module Balanced
   # on the Account. You may specify a specific funding source such as a Card
   # or BankAccount uri.
   #
-  class Hold < Resource
+  class Hold
+    include Balanced::Resource
 
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes

@@ -1,5 +1,6 @@
 module Balanced
-  class Merchant < Resource
+  class Merchant
+    include Balanced::Resource
 
     # Returns the Merchant associated with your Marketplace.
     #

@@ -4,7 +4,9 @@ module Balanced
   # Debit. Funds are returned to your Marketplace's Merchant Account
   # proportional to the amoun of the Refund.
   #
-  class Refund < Resource
+  class Refund
+    include Balanced::Resource
+
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'

@@ -1,71 +1,5 @@
 module Balanced
-  class Resource
-    class << self
-
-      def resource_name
-        Utils.demodulize name
-      end
-
-      def collection_name
-        Utils.pluralize Utils.underscore(resource_name)
-      end
-
-      def collection_path
-        ["/v#{Balanced.config[:version]}", collection_name].compact.join '/'
-      end
-
-      def member_name
-        Utils.underscore resource_name
-      end
-
-      def construct_from_response payload
-        payload = Balanced::Utils.hash_with_indifferent_read_access payload
-        klass = Balanced.from_uri(payload[:uri])
-        instance = klass.new payload
-        payload.each do |name, value|
-          klass.class_eval {
-            attr_accessor name.to_s
-          }
-          # here is where our interpretations will begin.
-          # if the value is a sub-resource, lets instantiate the class
-          # and set it correctly
-          if value.instance_of? Hash and value.has_key? 'uri'
-            value = construct_from_response value
-          elsif name =~ /_uri$/
-            modified_name = name.sub(/_uri$/, '')
-            klass.instance_eval {
-              define_method(modified_name) {
-                values_class = Balanced.from_uri(value)
-                 # if uri is a collection -> this would definitely be if it ends in a symbol
-                # then we should allow a lazy executor of the query pager
-                if Balanced.is_collection(value)
-                  # TODO: return the pager
-                  p "TODO: return the pager for this class: #{values_class}"
-                  values_class.new
-                else
-                  values_class.find(value)
-                end
-              }
-            }
-          end
-
-          instance.class.instance_eval {
-            define_method(name) { @attributes[name] }                       # Get.
-            define_method("#{name}=") { |value| @attributes[name] = value } # Set.
-            define_method("#{name}?") { !!@attributes[name].nil? }               # Present.
-          }
-          instance.send("#{name}=".to_s, value)
-        end
-        instance
-      end
-
-      def find uri
-        response = Balanced.get uri
-        construct_from_response response.body
-      end
-
-    end
-
+  module Resource
     attr_accessor :attributes
 
     def initialize attributes = {}
@@ -120,6 +54,77 @@ module Balanced
           super
       end
     end
+  def self.included(base)
+    base.extend ClassMethods
+  end
+
+  module ClassMethods
+    def resource_name
+      Utils.demodulize name
+    end
+
+    def collection_name
+      Utils.pluralize Utils.underscore(resource_name)
+    end
+
+    def collection_path
+      ["/v#{Balanced.config[:version]}", collection_name].compact.join '/'
+    end
+
+    def member_name
+      Utils.underscore resource_name
+    end
+
+    def construct_from_response payload
+      payload = Balanced::Utils.hash_with_indifferent_read_access payload
+      klass = Balanced.from_uri(payload[:uri])
+      instance = klass.new payload
+      payload.each do |name, value|
+        klass.class_eval {
+          attr_accessor name.to_s
+        }
+        # here is where our interpretations will begin.
+        # if the value is a sub-resource, lets instantiate the class
+        # and set it correctly
+        if value.instance_of? Hash and value.has_key? 'uri'
+          value = construct_from_response value
+        elsif name =~ /_uri$/
+          modified_name = name.sub(/_uri$/, '')
+          klass.instance_eval {
+            define_method(modified_name) {
+              values_class = Balanced.from_uri(value)
+               # if uri is a collection -> this would definitely be if it ends in a symbol
+              # then we should allow a lazy executor of the query pager
+              if Balanced.is_collection(value)
+                # TODO: return the pager
+                p "TODO: return the pager for this class: #{values_class}"
+                values_class.new
+              else
+                values_class.find(value)
+              end
+            }
+          }
+        end
+
+        instance.class.instance_eval {
+          define_method(name) { @attributes[name] }                       # Get.
+          define_method("#{name}=") { |value| @attributes[name] = value } # Set.
+          define_method("#{name}?") { !!@attributes[name].nil? }               # Present.
+        }
+        instance.send("#{name}=".to_s, value)
+      end
+      instance
+    end
+
+    def find uri
+      response = Balanced.get uri
+      construct_from_response response.body
+    end
+
+  end
+
+
+
   end
 end
 
