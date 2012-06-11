@@ -18,8 +18,8 @@ module Balanced
 
   class << self
 
-    attr_accessor 'client'
-    attr_accessor 'config'
+    attr_accessor :client
+    attr_accessor :config
 
     def configure(api_key=nil, options={})
       @client = Balanced::Client.new(api_key, @config.merge(options))

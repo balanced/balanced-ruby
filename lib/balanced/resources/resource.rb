@@ -1,6 +1,5 @@
 module Balanced
   class Resource
-
     class << self
 
       def resource_name
@@ -80,7 +79,7 @@ module Balanced
     end
 
     def save
-      uri = @attributes.delete('uri') { |key| nil }
+      uri = @attributes.delete('uri')
       method = :post
       if uri.nil?
         uri = self.class.collection_path
