@@ -30,7 +30,7 @@ module Balanced
           # here is where our interpretations will begin.
           # if the value is a sub-resource, lets instantiate the class
           # and set it correctly
-          if value.instance_of? Hash and value.has_key? 'uri'
+          if value.instance_of? Hash and value.has_key? :uri
             value = construct_from_response value
           elsif name =~ /_uri$/
             modified_name = name.sub(/_uri$/, '')

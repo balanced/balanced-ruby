@@ -1,4 +1,4 @@
-require "balanced"
+require "spec_helper"
 
 describe "Balanced module" do
   before(:each) do
