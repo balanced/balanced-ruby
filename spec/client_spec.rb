@@ -1,6 +1,5 @@
 require "spec_helper"
 
-
 describe "balanced client" do
 
   it "should allow setting and reading of the api_key" do

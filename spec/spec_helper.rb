@@ -4,11 +4,6 @@ require 'bundler/setup'
 require 'balanced'
 require 'vcr'
 
-RSpec.configure do |config|
-end
-
-
-
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :faraday
