@@ -52,21 +52,20 @@ module Balanced
     #
     # @return [Account]
     def create_merchant email_address, merchant, bank_account_uri=nil, name=nil, meta={}
-      account_attributes = Hash.new(
+      account_attributes = {
           :uri => self.accounts_uri,
           :email_address => email_address,
           :bank_account_uri => bank_account_uri,
           :name => name,
           :meta => meta,
-      )
+      }
 
-      if merchant.is_a? Hash
+      if merchant.respond_to? :keys
         account_attributes[:merchant] = merchant
       else
         account_attributes[:merchant_uri] = merchant
       end
 
-      account_attributes
       account = Account.new account_attributes
       account.save
     end
