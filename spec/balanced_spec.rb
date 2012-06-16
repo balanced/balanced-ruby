@@ -36,7 +36,6 @@ describe Balanced do
       end
     end
 
-<<<<<<< HEAD
     describe "reconfigure with new api key" do
       use_vcr_cassette
       before do
@@ -75,6 +74,4 @@ describe Balanced do
       end
     end
   end
-=======
->>>>>>> a849caf4d94413d98539026fc7d4dc2498125b72
 end
