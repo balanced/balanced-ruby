@@ -24,7 +24,7 @@ module Balanced
     # Cancels an active Hold.
     #
     def void
-      @is_void = true
+      self.is_void = true
       save
     end
 
