@@ -15,7 +15,7 @@ module Balanced
       end
 
       def redirect_uri
-        response.body['redirect_uri']
+        response.headers['Location']
       end
     end
 
