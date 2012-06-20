@@ -16,7 +16,7 @@ module Balanced
     end
 
     # Returns a new Debit that represents a flow of money from this
-    # Account to your Marketplace.
+    # Account to your Marketplace's escrow account.
     #
     # @return [Debit]
     def debit (amount=nil,
