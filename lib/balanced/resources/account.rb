@@ -7,12 +7,31 @@ module Balanced
   class Account
     include Balanced::Resource
 
+    class MoreInformationRequiredError < StandardError
+      attr_reader :response
+
+      def initialize(response)
+        @response = response
+      end
+
+      def redirect_uri
+        response.headers['Location']
+      end
+    end
+
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
         attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
       end
       super attributes
+    end
+
+    def save
+      super
+      if response.status == 300
+        raise MoreInformationRequiredError, response
+      end
     end
 
     # Returns a new Debit that represents a flow of money from this
