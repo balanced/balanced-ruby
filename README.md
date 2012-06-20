@@ -54,5 +54,5 @@ spec/cassettes.  To clear them and regenerate:
 ### Building Documentation
 
 Documentation is build using YARD - http://rubydoc.info/docs/yard
-
-    yard doc -e doc/balanced_plugin.rb -p doc/balanced_templates/ 'lib/**/resources.rb' --one-file
+ 
+    yard doc -e doc/balanced_plugin.rb -p doc/balanced_templates/ --one-file lib/balanced/resources/[^re]*rb

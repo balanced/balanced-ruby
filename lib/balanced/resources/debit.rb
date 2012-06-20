@@ -1,6 +1,6 @@
 module Balanced
   # A Debit represents a transfer of funds from a buyer's Account to your
-  # Marketplace.
+  # Marketplace's escrow account.
   #
   # A Debit may be created directly, or it will be created as a side-effect
   # of capturing a Hold. If you create a Debit directly it will implicitly
