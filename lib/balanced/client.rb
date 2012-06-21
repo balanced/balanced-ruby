@@ -14,16 +14,14 @@ module Balanced
       :logging_level => 'WARN',
     }
 
-    attr :api_key, true
     attr_reader :conn
-    attr_accessor :config
+    attr_accessor :api_key, :config
 
     def initialize(api_key, options={})
       @api_key = api_key.nil? ? api_key : api_key.strip
-      @config = DEFAULTS.merge! options
+      @config = DEFAULTS.merge options
       build_conn
     end
-
 
     def build_conn
       logger = Logger.new(STDOUT)
@@ -37,50 +35,29 @@ module Balanced
         cxn.response :raise_error  # raise exceptions on 40x, 50x responses
         cxn.adapter  Faraday.default_adapter
       end
-      @conn.path_prefix = '/'
-      @conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
+      conn.path_prefix = '/'
+      conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
     end
 
-    def inspect  # :nodoc:
-      "<Balanced::Client @api_key=#@api_key, @url=#{url}>"
-    end
+    #def inspect  # :nodoc:
+      #"<Balanced::Client @api_key=#{api_key}, @url=#{url}>"
+    #end
 
     def url
-      _url = URI::HTTP.build(
-        :host => @config[:host],
-        :port => @config[:port],
-      )
-      # wow. yes, this is what you actually have to do.
-      _url.scheme = @config[:scheme]
-      _url
-    end
-
-    # wtf..
-    def get *args
-      op(:get, *args)
-    end
-
-    def post *args
-      op(:post, *args)
-    end
-
-    def put *args
-      op(:put, *args)
-    end
-
-    def delete *args
-      op(:delete, *args)
+      URI::HTTPS.build :host => config[:host], :port => config[:port]
     end
 
     private
 
-    def op (method, *args)
-      unless @api_key.nil?
-        @conn.basic_auth(@api_key, '')
+    def method_missing(method, *args, &block)
+      case method
+      when :get, :post, :put, :delete
+        conn.basic_auth(api_key, '') unless api_key.nil?
+        conn.send method, *args
+      else
+        super
       end
-      @conn.send(method, *args)
     end
 
   end
-
 end

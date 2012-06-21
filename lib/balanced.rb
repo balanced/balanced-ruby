@@ -1,8 +1,9 @@
+$:.unshift File.join(File.dirname(__FILE__), "balanced", "resources")
+
 require 'uri'
 require 'balanced/version' unless defined? Balanced::VERSION
 require 'balanced/client'
 require 'balanced/utils'
-require 'balanced/base'
 require 'balanced/resources'
 
 module Balanced
@@ -17,34 +18,15 @@ module Balanced
 
   class << self
 
-    attr_accessor 'client'
-    attr_accessor 'config'
+    attr_accessor :client
+    attr_accessor :config
 
     def configure(api_key=nil, options={})
-      options = @config.merge! options
-      @config = options
-      @client = Balanced::Client.new(api_key, @config)
-    end
-
-    def get uri, params = {}
-      self.client.get uri, params
-    end
-
-    def post uri, data = {}
-      self.client.post uri, data
-    end
-
-    def put uri, data = {}
-      self.client.put uri, data
-    end
-
-    def delete uri
-      self.client.delete uri
+      @client = Balanced::Client.new(api_key, @config.merge(options))
     end
 
     def split_the_uri uri
-      parsed_uri = URI.parse(uri)
-      parsed_uri.path.sub(/\/$/, '').split('/')
+      URI.parse(uri).path.sub(/\/$/, '').split('/')
     end
 
     def from_uri uri
@@ -71,6 +53,15 @@ module Balanced
         return false
       end
       true
+    end
+
+    def method_missing(method, *args, &block)
+      case method
+        when :get, :post, :put, :delete
+          self.client.send method, *args
+        else
+          super
+      end
     end
   end
 

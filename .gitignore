@@ -24,3 +24,6 @@ werk
 
 # lib
 Gemfile.lock
+
+# vcr cassettes
+spec/cassettes
