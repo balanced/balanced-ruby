@@ -18,7 +18,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("vcr", '~> 2.2.0')
   gem.add_development_dependency("guard", '~> 1.1.1')
   gem.add_development_dependency("guard-rspec", '~> 1.0.0')
-  gem.add_development_dependency("aws/s3")
   gem.add_development_dependency("yard")
   
   gem.files         = `git ls-files`.split($\)
