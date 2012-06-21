@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("guard-rspec", '~> 1.0.0')
   gem.add_development_dependency("yard")
   gem.add_development_dependency("ruby-debug19")
+  gem.add_development_dependency("rake", '~> 0.9.2')
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
