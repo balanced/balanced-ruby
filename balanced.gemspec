@@ -21,8 +21,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("yard")
   gem.add_development_dependency("ruby-debug19")
 
-
->>>>>>> 75e363109eb488342c84f35265d91067bf78e402
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
