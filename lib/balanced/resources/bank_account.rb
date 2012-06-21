@@ -15,7 +15,7 @@ module Balanced
       super attributes
     end
 
-    # Creates a Debit of funds from this BankAccount to your Marketplace.
+    # Creates a Debit of funds from this BankAccount to your Marketplace's escrow account.
     #
     # @param [String] appears_on_statement_as If nil then Balanced will use
     #    the +domain_name+ property from your Marketplace.
@@ -24,7 +24,7 @@ module Balanced
       self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
     end
 
-    # Creates a Credit of funds from your Marketplace to this Account.
+    # Creates a Credit of funds from your Marketplace's escrow account to this Account.
     #
     # @return [Credit]
     def credit amount, description=nil, meta={}

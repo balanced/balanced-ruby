@@ -2,6 +2,8 @@
 
 Online Marketplace Payments
 
+[![Build Status](https://secure.travis-ci.org/balanced/balanced-ruby.png)](http://travis-ci.org/balanced/balanced-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -25,9 +27,11 @@ See https://www.balancedpayments.com/docs/ruby for tutorials and documentation.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+3. Write your code **and unit tests**
+4. Ensure all tests still pass (`bundle exec rspec`)
+5. Commit your changes (`git commit -am 'Add some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create new pull request
 
 
 ### Specs
@@ -55,4 +59,6 @@ spec/cassettes.  To clear them and regenerate:
 
 Documentation is build using YARD - http://rubydoc.info/docs/yard
  
-    yard doc -e doc/balanced_plugin.rb -p doc/balanced_templates/ --one-file lib/balanced/resources/[^re]*rb
+    export AMAZON_ACCESS_KEY_ID='xxx'
+    export AMAZON_SECRET_ACCESS_KEY='yyy' 
+    ./upload_docs.rb

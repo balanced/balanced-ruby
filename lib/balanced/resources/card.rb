@@ -13,7 +13,7 @@ module Balanced
       super attributes
     end
 
-    # Creates a Debit of funds from this Card to your Marketplace.
+    # Creates a Debit of funds from this Card to your Marketplace's escrow account.
     #
     # If +appears_on_statement_as+ is nil, then Balanced will use the
     # +domain_name+ property from your Marketplace.
