@@ -32,7 +32,7 @@ AWS::S3::Base.establish_connection!(
   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
 )
 
-puts AWS::S3::S3Object.store('docs/ruby_api_documentation.html', 
+puts AWS::S3::S3Object.store('docs/ruby_api_reference.html', 
   open('doc/index.html'), 
   'justice.web',
   :access => :public_read
