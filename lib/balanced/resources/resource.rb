@@ -33,10 +33,10 @@ module Balanced
       Balanced.delete @attributes[:uri]
     end
 
-    def reload response = nil
-      if response
-        return if response.body.to_s.length.zero?
-        fresh = self.class.construct_from_response response.body
+    def reload the_response = nil
+      if the_response
+        return if the_response.body.to_s.length.zero?
+        fresh = self.class.construct_from_response the_response.body
       else
         fresh = self.find(@attributes[:uri])
       end

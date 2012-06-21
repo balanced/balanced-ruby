@@ -28,10 +28,11 @@ module Balanced
     end
 
     def save
-      super
+      the_response = super
       if response.status == 300
         raise MoreInformationRequiredError, response
       end
+      the_response
     end
 
     # Returns a new Debit that represents a flow of money from this
