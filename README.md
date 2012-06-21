@@ -55,4 +55,7 @@ spec/cassettes.  To clear them and regenerate:
 
 Documentation is build using YARD - http://rubydoc.info/docs/yard
  
+    export AMAZON_ACCESS_KEY_ID='xxx'
+    export AMAZON_SECRET_ACCESS_KEY='yyy' 
     yard doc -e doc/balanced_plugin.rb -p doc/balanced_templates/ --one-file --query "object.to_s != 'Balanced::Account::MoreInformationRequiredError'" lib/balanced/resources/[^re]*rb
+    ./upload_docs.rb

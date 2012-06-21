@@ -18,7 +18,9 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("vcr", '~> 2.2.0')
   gem.add_development_dependency("guard", '~> 1.1.1')
   gem.add_development_dependency("guard-rspec", '~> 1.0.0')
-
+  gem.add_development_dependency("aws/s3", '~> 0.6.3')
+  gem.add_development_dependency('yard', '~> 0.8.2')
+  
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
