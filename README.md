@@ -2,6 +2,8 @@
 
 Online Marketplace Payments
 
+[![Build Status](https://secure.travis-ci.org/balanced/balanced-ruby.png)](http://travis-ci.org/balanced/balanced-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
