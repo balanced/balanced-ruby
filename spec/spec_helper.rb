@@ -1,8 +1,14 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'ruby-debug'
 require 'balanced'
 require 'vcr'
+
+begin
+  require 'ruby-debug'
+rescue LoadError
+# ignored
+end
+
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
