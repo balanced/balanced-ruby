@@ -1,9 +1,11 @@
+#!/usr/bin/env gem build
 # -*- encoding: utf-8 -*-
+require "base64"
 require File.expand_path('../lib/balanced/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Mahmoud Abdelkader"]
-  gem.email         = %w(mahmoud@poundpay.com)
+  gem.email         = ["bWFobW91ZEBwb3VuZHBheS5jb20="].map { |i| Base64.decode64(i) }
   gem.description   = %q{Balanced is the payments platform for marketplaces.
     Integrate a payments experience just like Amazon for your marketplace.
     Forget about dealing with banking systems, compliance, fraud, and security.
@@ -13,14 +15,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency("faraday", '~> 0.8')
   gem.add_dependency("faraday_middleware", '~> 0.8.7')
-
-  gem.add_development_dependency("rspec", '~> 2.10')
-  gem.add_development_dependency("vcr", '~> 2.2.0')
-  gem.add_development_dependency("guard", '~> 1.1.1')
-  gem.add_development_dependency("guard-rspec", '~> 1.0.0')
-  gem.add_development_dependency("yard")
-  gem.add_development_dependency("ruby-debug19")
-  gem.add_development_dependency("rake", '~> 0.9.2')
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
