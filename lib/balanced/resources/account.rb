@@ -7,18 +7,6 @@ module Balanced
   class Account
     include Balanced::Resource
 
-    class MoreInformationRequiredError < StandardError
-      attr_reader :response
-
-      def initialize(response)
-        @response = response
-      end
-
-      def redirect_uri
-        response.headers['Location']
-      end
-    end
-
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'

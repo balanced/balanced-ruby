@@ -1,7 +1,9 @@
-require 'logger'
+require "logger"
 require "uri"
 require "faraday"
 require "faraday_middleware"
+require "balanced_exception_middleware"
+
 
 module Balanced
   class Client
@@ -27,12 +29,16 @@ module Balanced
       logger = Logger.new(STDOUT)
       logger.level = Logger.const_get(DEFAULTS[:logging_level].to_s)
 
+      Faraday.register_middleware :response,
+          :handle_balanced_errors => lambda {Faraday::Response::RaiseBalancedError}
+
       @conn = Faraday.new url do |cxn|
         cxn.request  :json
 
         cxn.response :logger, logger
+        cxn.response :handle_balanced_errors
         cxn.response :json
-        cxn.response :raise_error  # raise exceptions on 40x, 50x responses
+        # cxn.response :raise_error  # raise exceptions on 40x, 50x responses
         cxn.adapter  Faraday.default_adapter
       end
       conn.path_prefix = '/'
