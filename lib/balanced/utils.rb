@@ -31,8 +31,15 @@ module Balanced
     end
 
     def hash_with_indifferent_read_access base = {}
-      indifferent = Hash.new { |hash, key| hash[key.to_s] if key.is_a? Symbol }
-      base.each_pair { |key, value| indifferent[key.to_s] = value }
+      indifferent = Hash.new do |hash, key|
+        hash[key.to_s] if key.is_a? Symbol
+      end
+      base.each_pair do |key, value|
+        if value.is_a? Hash
+          value = hash_with_indifferent_read_access value
+        end
+        indifferent[key.to_s] = value
+      end
       indifferent
     end
 

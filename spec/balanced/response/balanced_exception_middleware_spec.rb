@@ -4,7 +4,6 @@ require "faraday"
 describe Faraday::Response::RaiseBalancedError, :type => :response do
   context "when used" do
     let(:raise_server_error) { described_class.new }
-
   end
 
   context "integration test" do
@@ -23,13 +22,20 @@ describe Faraday::Response::RaiseBalancedError, :type => :response do
     let(:connection) do
       Faraday::Connection.new do |builder|
         builder.response :handle_balanced_errors
+        builder.response :json
         builder.adapter :test, stubs
       end
     end
 
-    it "should raise exceptions on client errors" do
+    it "should raise exceptions on bad request errors" do
       stubs.get("/error") {
-        [400, {}, '']
+        [400, {}, JSON.dump({
+            :status =>"Bad Request",
+            :status_code =>400,
+            :description => "Missing expected field expiration_year Your request "\
+                            "id is OHM62bf258abfea11e1aaba026ba7e5e72e.",
+            :request_id => "OHM62bf258abfea11e1aaba026ba7e5e72e"
+        })]
       }
 
       lambda {

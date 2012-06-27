@@ -6,29 +6,42 @@ module Balanced
 
     def initialize(response)
       @response = response
+      super error_message
     end
 
-    def message
-      p response
-      response[:url].to_s
-=begin
-      message = if (body = response[:body]) && !body.empty?
-                  if body.is_a?(String)
-                    body = MultiJson.load(body, :symbolize_keys => true)
-                  end
-                  ": #{body[:error] || body[:message] || ''}"
-                else
-                  ''
-                end
-      "#{response[:method].to_s.upcase} #{response[:url].to_s}: #{response[:status]}#{message}"
-=end
+    def body
+      Utils.hash_with_indifferent_read_access response[:body]
     end
 
+    def error_message
+      set_attrs
+      puts body
+      extra = body[:additional] ? " -- #{body[:additional]}" : ""
+      "#{self.class.name}(#{response[:status]})::#{body[:status]}:: "\
+      "#{response[:method].to_s.upcase} #{response[:url].to_s}: "\
+      "#{body[:category_code]}: #{body[:description]} #{extra}"
+    end
+
+    private
+    def set_attrs
+      body.keys.each do |name|
+        self.class.instance_eval {
+          define_method(name) { body[name] }                       # Get.
+          define_method("#{name}?") { !!body[name].nil? }          # Present.
+        }
+      end
+    end
   end
 
   class MoreInformationRequired < Error
     def redirect_uri
       response.headers['Location']
+    end
+
+    def error_message
+      set_attrs
+      "#{self.class.name} :: #{response[:method].to_s.upcase} #{response[:url].to_s}: "\
+      "#{response[:status]}: \n#{body[:friendly_html]}"
     end
   end
 

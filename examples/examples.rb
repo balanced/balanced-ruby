@@ -116,24 +116,3 @@ bank_account['is_valid'] = false
 bank_account.save
 
 raise "This card is INCORRECTLY VALID" if bank_account.is_valid
-
-
-def create_account(email_address, merchant_data)
-  begin
-    account = marketplace.create_account(email_address)
-  rescue Exception => ex
-    if ex.category_code == 'duplicate-email-address'
-    else
-      # TODO: handle 400 and 409 exceptions as required
-      raise
-    end
-  end
-
-  begin
-    account.add_merchant(merchant_data)
-  rescue Balanced::Account::MoreInformationRequiredError => ex
-    # TODO: redirect to balanced or resubmit request
-  rescue Exception => ex
-    # TODO: handle 400 and 409 exceptions as required
-  end
-end
