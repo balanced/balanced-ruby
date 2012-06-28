@@ -15,7 +15,6 @@ module Balanced
 
     def error_message
       set_attrs
-      puts body
       extra = body[:additional] ? " -- #{body[:additional]}" : ""
       "#{self.class.name}(#{response[:status]})::#{body[:status]}:: "\
       "#{response[:method].to_s.upcase} #{response[:url].to_s}: "\
