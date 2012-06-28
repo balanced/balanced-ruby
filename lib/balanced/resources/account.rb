@@ -15,6 +15,17 @@ module Balanced
       super attributes
     end
 
+    # Attempts to find an existing buyer account by email
+    #
+    # @param [String] email An email of a buyer account
+    # @return [Account] if buyer is found
+    # @return [nil] if buyer is not found
+    def self.find_by_email email
+      response = Balanced.get Balanced::Marketplace.my_marketplace.accounts_uri, {email_address: email}
+      record = response.body["items"].first
+      construct_from_response(record) unless record.nil?
+    end
+
     def save
       the_response = super
       if response.status == 300
