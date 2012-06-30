@@ -55,8 +55,8 @@ puts "our buyer account: #{buyer.uri}"
 puts "hold some amount of funds on the buyer, lets say 15$"
 the_hold = buyer.hold(1500)
 
-puts "the hold has a fee of 35c, here's the fee #{the_hold.fee}"
-raise "The hold's fee is incorrect" if the_hold.fee != 35
+puts "the hold has a fee of 30c, here's the fee #{the_hold.fee}"
+raise "The hold's fee is incorrect" if the_hold.fee != 30
 
 puts "ok, no more holds! lets just capture it (for the full amount)"
 debit = the_hold.capture()
