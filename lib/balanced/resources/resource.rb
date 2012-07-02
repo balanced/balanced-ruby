@@ -170,7 +170,8 @@ module Balanced
     alias where  paginate
 
     def all options = {}
-      paginate(options).to_a
+      pager = paginate(options)
+      pager.to_a
     end
 
   end

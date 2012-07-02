@@ -423,6 +423,7 @@ describe Balanced::Account do
   describe ".find" do
     #use_vcr_cassette
     before do
+      VCR.eject_cassette
       VCR.turn_off!
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
@@ -438,12 +439,8 @@ describe Balanced::Account do
       )
     end
 
-    after do
-
-    end
-
     context "Account.uri" do
-      #use_vcr_cassette
+     # use_vcr_cassette
       it "should return root uri for class" do
         uri = Balanced::Account.uri
         uri.should_not be_nil

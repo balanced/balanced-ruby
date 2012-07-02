@@ -26,7 +26,7 @@ module Balanced
 
     def first
       load! unless @page
-      @resource_class.construct_from_response @page[:items]
+      @resource_class.construct_from_response @page[:items][0]
     end
 
     def total
@@ -48,8 +48,13 @@ module Balanced
     # @yield [record]
     def each
       return enum_for :each unless block_given?
-      load! unless @collection
-      @collection.each { |record| yield record }
+      load! unless @page
+
+      @page[:items].each do |record|
+        p record
+        yield resource_class.construct_from_response record
+      end
+
     end
 
     # @return [nil]
@@ -89,7 +94,7 @@ module Balanced
     # @return [Array, nil] Load (or reload) the pager's collection from the
     #   original, supplied options.
     def load!
-      load_from uri, @options
+      load_from @uri, @options
     end
     alias reload load!
 
@@ -123,13 +128,13 @@ module Balanced
 
     def load_from uri, params
       parsed_uri = URI.parse(uri)
-      params.merge! CGI::parse(parsed_uri.query)
+      params.merge! CGI::parse(parsed_uri.query) if !parsed_uri.query.nil?
       parsed_uri.query = URI::encode_www_form(params)
       @uri = parsed_uri.to_s
 
       response = Balanced.get uri
 
-      @page = Balanced::Utils.hash_with_indifferent_read_access response.payload
+      @page = Balanced::Utils.hash_with_indifferent_read_access response.body
 
     end
 
