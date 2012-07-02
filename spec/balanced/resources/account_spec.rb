@@ -420,6 +420,47 @@ describe Balanced::Account do
     end
   end
 
+  describe ".find" do
+    #use_vcr_cassette
+    before do
+      VCR.turn_off!
+      api_key = Balanced::ApiKey.new.save
+      Balanced.configure api_key.secret
+      @marketplace = Balanced::Marketplace.new.save
+      card = Balanced::Card.new(
+        :card_number => "5105105105105100",
+        :expiration_month => "12",
+        :expiration_year => "2015",
+      ).save
+      Balanced::Marketplace.my_marketplace.create_buyer(
+        "john.doe@example.com",
+        card.uri
+      )
+    end
+
+    after do
+
+    end
+
+    context "Account.uri" do
+      #use_vcr_cassette
+      it "should return root uri for class" do
+        uri = Balanced::Account.uri
+        uri.should_not be_nil
+        uri.should match ACCOUNTS_URI_REGEX
+      end
+    end
+
+    context ".find(:all, {:blah => })" do
+      it "should find the account uri" do
+        Balanced::Account.find(:all,
+            :email_address => "john.doe@example.com",
+        ).should be_instance_of Balanced::Account
+      end
+    end
+
+  end
+
   describe ".find_by_email" do
     use_vcr_cassette
     before do

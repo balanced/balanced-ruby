@@ -20,6 +20,7 @@ RSpec.configure do |c|
 end
 
 
+ACCOUNTS_URI_REGEX = /\/v1\/marketplaces\/TEST-\w*\/accounts/
 MERCHANT_URI_REGEX = /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*/
 HOLDS_URI_REGEX = /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/holds/
 BANK_ACCOUNTS_URI_REGEX = /\/v1\/marketplaces\/TEST-\w*\/accounts\/\w*\/bank_accounts/

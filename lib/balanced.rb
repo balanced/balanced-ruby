@@ -13,6 +13,7 @@ module Balanced
   @client = nil
   @config = {
       :scheme => 'https',
+
       :host => 'api.balancedpayments.com',
       :port => 443,
       :version => '1',
@@ -25,6 +26,10 @@ module Balanced
 
     def configure(api_key=nil, options={})
       @client = Balanced::Client.new(api_key, @config.merge(options))
+    end
+
+    def is_configured_with_api_key?
+      !@client.api_key.nil?
     end
 
     def split_the_uri uri
