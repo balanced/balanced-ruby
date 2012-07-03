@@ -21,9 +21,7 @@ module Balanced
     # @return [Account] if buyer is found
     # @return [nil] if buyer is not found
     def self.find_by_email email
-      response = Balanced.get Balanced::Marketplace.my_marketplace.accounts_uri, {email_address: email}
-      record = response.body["items"].first
-      construct_from_response(record) unless record.nil?
+      self.find(:first, :email_address => email)
     end
 
     def save

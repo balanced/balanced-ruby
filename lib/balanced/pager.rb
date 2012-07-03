@@ -20,7 +20,13 @@ module Balanced
 
     def first
       load! unless @page
+      items.first.nil? ? nil : resource_class.construct_from_response(items.first)
+=begin
+      if items.first.nil?
+        return nil
+      end
       resource_class.construct_from_response items.first
+=end
     end
 
     def total
@@ -131,14 +137,15 @@ module Balanced
 
     def load_from uri, params
       parsed_uri = URI.parse(uri)
-      params.merge! CGI::parse(parsed_uri.query) if !parsed_uri.query.nil?
-      parsed_uri.query = URI::encode_www_form(params)
-      @uri = parsed_uri.to_s
 
-      response = Balanced.get uri
+      unless parsed_uri.query.nil?
+        params.merge! CGI::parse(parsed_uri.query)
+        parsed_uri.query = nil
+      end
 
+      response = Balanced.get parsed_uri.to_s, params
       @page = Balanced::Utils.hash_with_indifferent_read_access response.body
-
+      @uri = @page[:uri]
     end
 
   end

@@ -497,7 +497,7 @@ describe Balanced::Account do
   end
 
   describe ".find_by_email" do
-    use_vcr_cassette
+    use_vcr_cassette  :record => :new_episodes
     before do
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
@@ -514,14 +514,14 @@ describe Balanced::Account do
     end
 
     context "email address is in system" do
-      use_vcr_cassette
+      use_vcr_cassette  :record => :new_episodes
       it "should return account object" do
         Balanced::Account.find_by_email("john.doe@example.com").should be_instance_of Balanced::Account
       end
     end
 
     context "email address does not exist" do
-      use_vcr_cassette
+      use_vcr_cassette  :record => :new_episodes
       it "should return nil" do
         Balanced::Account.find_by_email("foo@bar.com").should be_nil
       end
