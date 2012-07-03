@@ -15,18 +15,12 @@ module Balanced
     def resource_class
       return @resource_class unless @resource_class.nil?
       load! unless @page
-      @resource_class = Balanced.from_uri @page[:items][0][:uri]
-    end
-
-    # @return [Integer] The total record count of the resource in question.
-    # @see Resource.count
-    def count
-      nil
+      @resource_class = Balanced.from_uri items.first[:uri]
     end
 
     def first
       load! unless @page
-      resource_class.construct_from_response @page[:items][0]
+      resource_class.construct_from_response items.first
     end
 
     def total
@@ -44,13 +38,24 @@ module Balanced
       @page[:offset]
     end
 
+    def items
+      load! unless @page
+      @page[:items]
+    end
+
     # @return [Array] Iterates through the current page of records.
     # @yield [record]
     def each
       return enum_for :each unless block_given?
+
       load! unless @page
-      @page[:items].each do |record|
-        yield resource_class.construct_from_response record
+
+      loop do
+        @page[:items].each do |record|
+          yield resource_class.construct_from_response record
+        end
+        break if @page[:next_uri].nil?
+        self.next
       end
 
     end

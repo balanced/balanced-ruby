@@ -132,9 +132,7 @@ module Balanced
                # if uri is a collection -> this would definitely be if it ends in a symbol
               # then we should allow a lazy executor of the query pager
               if Balanced.is_collection(value)
-                # TODO: return the pager
-                p "TODO: return the pager for this class: #{values_class}"
-                values_class.new
+                values_class.all
               else
                 values_class.find(value)
               end

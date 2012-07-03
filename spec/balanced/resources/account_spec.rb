@@ -239,7 +239,7 @@ describe Balanced::Account do
   describe "buyer" do
     describe "#save" do
       describe "when creating" do
-        use_vcr_cassette
+        use_vcr_cassette :record => :new_episodes
         before do
           card = Balanced::Card.new(
             :card_number => "5105105105105100",
@@ -258,7 +258,7 @@ describe Balanced::Account do
 
       describe "after #save" do
         describe "attributes" do
-          use_vcr_cassette
+          use_vcr_cassette :record => :new_episodes
           before do
             card = Balanced::Card.new(
               :card_number => "4111111111111111",
@@ -327,6 +327,12 @@ describe Balanced::Account do
           describe "#cards_uri" do
             subject { @buyer.cards_uri }
             it { should match CARDS_URI_REGEX }
+          end
+          describe "#cards" do
+            subject { @buyer.cards }
+            it { should be_instance_of Array }
+            it { should_not be_empty }
+            it { subject.first.should be_instance_of Balanced::Card }
           end
         end
       end
