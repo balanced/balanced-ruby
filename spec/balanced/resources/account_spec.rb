@@ -8,6 +8,38 @@ describe Balanced::Account do
     @marketplace = Balanced::Marketplace.new.save
   end
 
+  describe "Account.uri" do
+    use_vcr_cassette
+
+    context "when ApiKey is not configured" do
+      use_vcr_cassette
+      before do
+        Balanced.configure nil
+      end
+
+      it "throw an exception that it can not generate the URI" do
+        expect {
+          Balanced::Account.uri
+        }.to raise_error Balanced::Error
+      end
+    end
+
+    context "when ApiKey is configured" do
+      use_vcr_cassette
+      before do
+        api_key = Balanced::ApiKey.new.save
+        Balanced.configure api_key.secret
+        @marketplace = Balanced::Marketplace.new.save
+      end
+
+      it "it matches the resource's uri structure" do
+        uri = Balanced::Account.uri
+        uri.should_not be_nil
+        uri.should match ACCOUNTS_URI_REGEX
+      end
+    end
+  end
+
   describe "merchant" do
     use_vcr_cassette
 
@@ -421,10 +453,9 @@ describe Balanced::Account do
   end
 
   describe ".find" do
-    #use_vcr_cassette
+    use_vcr_cassette
+
     before do
-      VCR.eject_cassette
-      VCR.turn_off!
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
       @marketplace = Balanced::Marketplace.new.save
@@ -439,22 +470,23 @@ describe Balanced::Account do
       )
     end
 
-    context "Account.uri" do
-     # use_vcr_cassette
-      it "should return root uri for class" do
-        uri = Balanced::Account.uri
-        uri.should_not be_nil
-        uri.should match ACCOUNTS_URI_REGEX
+    context "(:all, :some_field => 'op')" do
+      use_vcr_cassette
+      it "should find the account by returning a page with items of one" do
+        response = Balanced::Account.find(:all, :email_address => "john.doe@example.com")
+        response.should be_instance_of Array
+        response[0].should be_instance_of Balanced::Account
       end
     end
 
-    context ":all, {:blah => })" do
-      it "should find the account uri" do
-        response = Balanced::Account.find(:all, :email_address => "john.doe@example.com")
-        response.should be_instance_of Array
-        response.should
+    context "(:first, :some_field => 'op')" do
+      use_vcr_cassette
+      it "should find the account by returning the first item" do
+        response = Balanced::Account.find(:first, :email_address => "john.doe@example.com")
+        response.should be_instance_of Balanced::Account
       end
     end
+
 
   end
 

@@ -15,7 +15,6 @@ module Balanced
     def resource_class
       return @resource_class unless @resource_class.nil?
       load! unless @page
-      debugger
       @resource_class = Balanced.from_uri @page[:items][0][:uri]
     end
 
@@ -27,7 +26,7 @@ module Balanced
 
     def first
       load! unless @page
-      @resource_class.construct_from_response @page[:items][0]
+      resource_class.construct_from_response @page[:items][0]
     end
 
     def total

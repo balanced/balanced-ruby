@@ -89,6 +89,7 @@ module Balanced
       # if there's not a marketplace
       #    if there's an api key, then the merchant is available
       #    if there's no api key, the only resources exposed are purely top level
+      #debugger
       unless Balanced::Marketplace.my_marketplace.nil?
         case self
           when Balanced::Marketplace
@@ -104,7 +105,7 @@ module Balanced
           then
             collection_path
           else
-            raise Balanced::Error "#{self.name} is nested under a marketplace, which is not created or configured."
+            raise Balanced::Error, "#{self.name} is nested under a marketplace, which is not created or configured."
         end
       end
     end
