@@ -37,6 +37,13 @@ module Balanced
       base.each_pair do |key, value|
         if value.is_a? Hash
           value = hash_with_indifferent_read_access value
+        elsif value.respond_to? :each
+          value.map! do |v|
+            if v.is_a? Hash
+               v = hash_with_indifferent_read_access v
+            end
+            v
+          end
         end
         indifferent[key.to_s] = value
       end

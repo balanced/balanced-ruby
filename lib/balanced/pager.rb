@@ -15,6 +15,7 @@ module Balanced
     def resource_class
       return @resource_class unless @resource_class.nil?
       load! unless @page
+      debugger
       @resource_class = Balanced.from_uri @page[:items][0][:uri]
     end
 
@@ -49,9 +50,7 @@ module Balanced
     def each
       return enum_for :each unless block_given?
       load! unless @page
-
       @page[:items].each do |record|
-        p record
         yield resource_class.construct_from_response record
       end
 

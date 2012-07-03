@@ -448,11 +448,11 @@ describe Balanced::Account do
       end
     end
 
-    context ".find(:all, {:blah => })" do
+    context ":all, {:blah => })" do
       it "should find the account uri" do
-        Balanced::Account.find(:all,
-            :email_address => "john.doe@example.com",
-        ).should be_instance_of Balanced::Account
+        response = Balanced::Account.find(:all, :email_address => "john.doe@example.com")
+        response.should be_instance_of Array
+        response.should
       end
     end
 
