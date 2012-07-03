@@ -1,3 +1,6 @@
+require_relative "../pager"
+
+
 module Balanced
   module Resource
     attr_accessor :attributes
@@ -8,8 +11,8 @@ module Balanced
 
     # delegate the query to the pager module
 
-    def find uri
-      self.class.find uri
+    def find *arguments
+      self.class.find arguments
     end
 
     def save
@@ -80,6 +83,33 @@ module Balanced
       Utils.underscore resource_name
     end
 
+    def uri
+      # the uri of a particular resource depends if there's a marketplace created or not
+      # if there's a marketplace, then all resources have their own uri from there and the top level ones
+      # if there's not a marketplace
+      #    if there's an api key, then the merchant is available
+      #    if there's no api key, the only resources exposed are purely top level
+      #debugger
+      unless Balanced::Marketplace.my_marketplace.nil?
+        case self
+          when Balanced::Marketplace
+            then Balanced::Marketplace.my_marketplace.uri
+          when Balanced::ApiKey, Balanced::Merchant
+            then collection_path
+          else
+            Balanced::Marketplace.my_marketplace.send(collection_name + '_uri')
+        end
+      else
+        case self
+          when Balanced::Merchant, Balanced::ApiKey, Balanced::Marketplace
+          then
+            collection_path
+          else
+            raise Balanced::Error, "#{self.name} is nested under a marketplace, which is not created or configured."
+        end
+      end
+    end
+
     def construct_from_response payload
       payload = Balanced::Utils.hash_with_indifferent_read_access payload
       return payload if payload[:uri].nil?
@@ -102,9 +132,7 @@ module Balanced
                # if uri is a collection -> this would definitely be if it ends in a symbol
               # then we should allow a lazy executor of the query pager
               if Balanced.is_collection(value)
-                # TODO: return the pager
-                p "TODO: return the pager for this class: #{values_class}"
-                values_class.new
+                values_class.all
               else
                 values_class.find(value)
               end
@@ -122,14 +150,30 @@ module Balanced
       instance
     end
 
-    def find uri
-      response = Balanced.get uri
-      construct_from_response response.body
+    def find *arguments
+      scope   = arguments.slice!(0)
+      options = arguments.slice!(0) || {}
+      case scope
+        when :all   then all(options)
+        when :first then paginate(options).first
+        else
+          response = Balanced.get scope, options
+          construct_from_response response.body
+      end
+    end
+
+    def paginate options = {}
+      Pager.new uri, options
+    end
+    alias scoped paginate
+    alias where  paginate
+
+    def all options = {}
+      pager = paginate(options)
+      pager.to_a
     end
 
   end
-
-
 
   end
 end

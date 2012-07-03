@@ -8,6 +8,38 @@ describe Balanced::Account do
     @marketplace = Balanced::Marketplace.new.save
   end
 
+  describe "Account.uri" do
+    use_vcr_cassette
+
+    context "when ApiKey is not configured" do
+      use_vcr_cassette
+      before do
+        Balanced.configure nil
+      end
+
+      it "throw an exception that it can not generate the URI" do
+        expect {
+          Balanced::Account.uri
+        }.to raise_error Balanced::Error
+      end
+    end
+
+    context "when ApiKey is configured" do
+      use_vcr_cassette
+      before do
+        api_key = Balanced::ApiKey.new.save
+        Balanced.configure api_key.secret
+        @marketplace = Balanced::Marketplace.new.save
+      end
+
+      it "it matches the resource's uri structure" do
+        uri = Balanced::Account.uri
+        uri.should_not be_nil
+        uri.should match ACCOUNTS_URI_REGEX
+      end
+    end
+  end
+
   describe "merchant" do
     use_vcr_cassette
 
@@ -207,7 +239,7 @@ describe Balanced::Account do
   describe "buyer" do
     describe "#save" do
       describe "when creating" do
-        use_vcr_cassette
+        use_vcr_cassette :record => :new_episodes
         before do
           card = Balanced::Card.new(
             :card_number => "5105105105105100",
@@ -226,7 +258,7 @@ describe Balanced::Account do
 
       describe "after #save" do
         describe "attributes" do
-          use_vcr_cassette
+          use_vcr_cassette :record => :new_episodes
           before do
             card = Balanced::Card.new(
               :card_number => "4111111111111111",
@@ -295,6 +327,12 @@ describe Balanced::Account do
           describe "#cards_uri" do
             subject { @buyer.cards_uri }
             it { should match CARDS_URI_REGEX }
+          end
+          describe "#cards" do
+            subject { @buyer.cards }
+            it { should be_instance_of Array }
+            it { should_not be_empty }
+            it { subject.first.should be_instance_of Balanced::Card }
           end
         end
       end
@@ -420,8 +458,46 @@ describe Balanced::Account do
     end
   end
 
-  describe ".find_by_email" do
+  describe ".find" do
     use_vcr_cassette
+
+    before do
+      api_key = Balanced::ApiKey.new.save
+      Balanced.configure api_key.secret
+      @marketplace = Balanced::Marketplace.new.save
+      card = Balanced::Card.new(
+        :card_number => "5105105105105100",
+        :expiration_month => "12",
+        :expiration_year => "2015",
+      ).save
+      Balanced::Marketplace.my_marketplace.create_buyer(
+        "john.doe@example.com",
+        card.uri
+      )
+    end
+
+    context "(:all, :some_field => 'op')" do
+      use_vcr_cassette
+      it "should find the account by returning a page with items of one" do
+        response = Balanced::Account.find(:all, :email_address => "john.doe@example.com")
+        response.should be_instance_of Array
+        response[0].should be_instance_of Balanced::Account
+      end
+    end
+
+    context "(:first, :some_field => 'op')" do
+      use_vcr_cassette
+      it "should find the account by returning the first item" do
+        response = Balanced::Account.find(:first, :email_address => "john.doe@example.com")
+        response.should be_instance_of Balanced::Account
+      end
+    end
+
+
+  end
+
+  describe ".find_by_email" do
+    use_vcr_cassette  :record => :new_episodes
     before do
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
@@ -438,14 +514,14 @@ describe Balanced::Account do
     end
 
     context "email address is in system" do
-      use_vcr_cassette
+      use_vcr_cassette  :record => :new_episodes
       it "should return account object" do
         Balanced::Account.find_by_email("john.doe@example.com").should be_instance_of Balanced::Account
       end
     end
 
     context "email address does not exist" do
-      use_vcr_cassette
+      use_vcr_cassette  :record => :new_episodes
       it "should return nil" do
         Balanced::Account.find_by_email("foo@bar.com").should be_nil
       end
