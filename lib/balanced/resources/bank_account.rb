@@ -10,7 +10,7 @@ module Balanced
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
-        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+        attributes['uri'] = self.class.uri
       end
       super attributes
     end
@@ -20,14 +20,25 @@ module Balanced
     # @param [String] appears_on_statement_as If nil then Balanced will use
     #    the +domain_name+ property from your Marketplace.
     # @return [Debit]
-    def debit amount, appears_on_statement_as=nil, meta={}, description=nil
-      self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
+    def debit *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { nil }
+      soft_descriptor = args[1] || options.fetch(:appears_on_statement_as) { nil }
+      meta = args[2] || options.fetch(:meta) { nil }
+      description = args[3] || options.fetch(:description) { nil }
+
+      self.account.debit(amount, soft_descriptor, meta, description, self.uri)
     end
 
     # Creates a Credit of funds from your Marketplace's escrow account to this Account.
     #
     # @return [Credit]
-    def credit amount, description=nil, meta={}
+    def credit *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { nil }
+      description = args[1] || options.fetch(:description) { nil }
+      meta = args[2] || options.fetch(:meta) { nil }
+
       self.account.credit(amount, description, meta, self.uri)
     end
   end

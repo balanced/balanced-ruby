@@ -12,7 +12,7 @@ module Balanced
       Balanced.configure nil
       super
     end
-    def wut; end;
+
   end
 
 end

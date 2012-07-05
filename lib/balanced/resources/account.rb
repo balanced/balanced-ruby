@@ -10,7 +10,7 @@ module Balanced
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
-        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+        attributes['uri'] = self.class.uri
       end
       super attributes
     end
@@ -24,28 +24,23 @@ module Balanced
       self.find(:first, :email_address => email)
     end
 
-    def save
-      the_response = super
-      if response.status == 300
-        raise MoreInformationRequiredError, response
-      end
-      the_response
-    end
-
     # Returns a new Debit that represents a flow of money from this
     # Account to your Marketplace's escrow account.
     #
     # @return [Debit]
-    def debit (amount=nil,
-        appears_on_statement_as=nil,
-        hold_uri=nil,
-        meta={},
-        description=nil,
-        source_uri=nil)
+    def debit *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { nil }
+      soft_descriptor = args[1] || options.fetch(:appears_on_statement_as) { nil }
+      hold_uri = args[2] || options.fetch(:hold_uri) { nil }
+      meta = args[3] || options.fetch(:meta) { nil }
+      description = args[4] || options.fetch(:description) { nil }
+      source_uri = args[5] || options.fetch(:source_uri) { nil }
+
       debit = Debit.new(
           :uri => self.debits_uri,
           :amount => amount,
-          :appears_on_statement_as => appears_on_statement_as,
+          :appears_on_statement_as => soft_descriptor,
           :hold_uri => hold_uri,
           :meta => meta,
           :description => description,
@@ -63,7 +58,12 @@ module Balanced
     #    added Card is used.
     # @return [Hold] A Hold representing the reservation of funds from
     #    this Account to your Marketplace.
-    def hold amount, meta={}, source_uri=nil
+    def hold *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { }
+      meta = args[1] || options.fetch(:meta) { nil }
+      source_uri = args[2] || options.fetch(:source_uri) { nil }
+
       hold = Hold.new(
           :uri => self.holds_uri,
           :amount => amount,
@@ -80,7 +80,13 @@ module Balanced
     #    a BankAccount already associated with this account.
     # @return [Credit] A Credit representing the transfer of funds from
     #    your Marketplace to this Account.
-    def credit amount, description=nil, meta={}, destination_uri=nil
+    def credit *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { }
+      description = args[1] || options.fetch(:description) { nil }
+      meta = args[2] || options.fetch(:meta) { nil }
+      destination_uri = args[3] || options.fetch(:destination_uri) { nil }
+
       credit = Credit.new(
           :uri => self.credits_uri,
           :amount => amount,

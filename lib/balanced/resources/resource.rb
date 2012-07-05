@@ -89,23 +89,13 @@ module Balanced
       # if there's not a marketplace
       #    if there's an api key, then the merchant is available
       #    if there's no api key, the only resources exposed are purely top level
-      #debugger
-      unless Balanced::Marketplace.my_marketplace.nil?
-        case self
-          when Balanced::Marketplace
-            then Balanced::Marketplace.my_marketplace.uri
-          when Balanced::ApiKey, Balanced::Merchant
-            then collection_path
-          else
-            Balanced::Marketplace.my_marketplace.send(collection_name + '_uri')
-        end
+      if self == Balanced::Merchant or self == Balanced::Marketplace or self == Balanced::ApiKey
+        collection_path
       else
-        case self
-          when Balanced::Merchant, Balanced::ApiKey, Balanced::Marketplace
-          then
-            collection_path
-          else
-            raise Balanced::Error, "#{self.name} is nested under a marketplace, which is not created or configured."
+        if Balanced::Marketplace.my_marketplace.nil?
+          raise Balanced::Error, "#{self.name} is nested under a marketplace, which is not created or configured."
+        else
+          Balanced::Marketplace.my_marketplace.send(collection_name + '_uri')
         end
       end
     end

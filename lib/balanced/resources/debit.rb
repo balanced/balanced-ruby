@@ -17,7 +17,7 @@ module Balanced
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
-        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+        attributes['uri'] = self.class.uri
       end
       super attributes
     end
@@ -27,7 +27,11 @@ module Balanced
     # of the original Debit's amount.
     #
     # @return [Refund]
-    def refund amount=nil, description=nil
+    def refund *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { nil }
+      description = args[1] || options.fetch(:description) { nil }
+
       refund = Refund.new(
           :uri => self.refunds_uri,
           :debit_uri => self.uri,

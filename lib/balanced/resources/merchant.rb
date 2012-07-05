@@ -6,11 +6,7 @@ module Balanced
     #
     # @return [Merchant]
     def self.me
-      # TODO: use query
-      response = Balanced.get collection_path
-      return nil if response.body.to_s.length.zero? or response.body['total'] == 0
-      payload = response.body
-      construct_from_response payload['items'][0]
+      self.all.first
     end
 
     # Returns the Merchant associated with your Marketplace.

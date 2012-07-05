@@ -338,7 +338,6 @@ describe Balanced::Account do
       end
     end
 
-
     describe "#add_card" do
 
       describe "when executing" do
@@ -453,6 +452,43 @@ describe Balanced::Account do
         end
         subject { @buyer.roles }
         it { should include("merchant") }
+      end
+
+    end
+
+    describe "#debit" do
+      use_vcr_cassette :match_requests_on => [:body], :record => :new_episodes
+      before do
+        card = Balanced::Card.new(
+          :card_number => "4111111111111111",
+          :expiration_month => "12",
+          :expiration_year => "2015",
+        ).save
+        begin
+          @buyer = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "buyer7@example.org",
+            :card_uri => card.uri,
+            :name => "Jack Q Buyer"
+          ).save
+        rescue Balanced::Conflict => ex
+          @buyer = Balanced::Account.find(ex.extras[:account_uri])
+        end
+      end
+      it "takes optional parameters"  do
+        debit = @buyer.debit(
+          :amount => 500,
+          :appears_on_statement_as => "BOBS BURGERS",
+        )
+        debit.should be_instance_of Balanced::Debit
+        debit.amount.should eql 500
+        debit.appears_on_statement_as.should eql "BOBS BURGERS"
+      end
+      it "takes positional parameters" do
+        debit = @buyer.debit(500, "FOO FIGHTER")
+        debit.should be_instance_of Balanced::Debit
+        debit.amount.should eql 500
+        debit.appears_on_statement_as.should eql "FOO FIGHTER"
       end
 
     end

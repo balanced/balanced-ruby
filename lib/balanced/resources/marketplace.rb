@@ -9,11 +9,7 @@ module Balanced
     #
     # @return [Marketplace]
     def self.my_marketplace
-      # TODO: use query
-      response = Balanced.get collection_path
-      return nil if response.body.to_s.length.zero? or response.body['total'] == 0
-      payload = response.body
-      construct_from_response payload['items'][0]
+      Balanced::Merchant.me.marketplace
     end
 
     # Returns an instance representing the marketplace associated with
@@ -27,7 +23,13 @@ module Balanced
     # Create a buyer Account associated with this Marketplace.
     #
     # @return [Account]
-    def create_buyer email_address, card_uri, name=nil, meta={}
+    def create_buyer *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      email_address = args[0] || options.fetch(:email_address) { nil }
+      card_uri = args[1] || options.fetch(:card_uri) { nil }
+      name = args[2] || options.fetch(:name) { nil }
+      meta = args[3] || options.fetch(:meta) { nil }
+
       account = Account.new(
         :uri => self.accounts_uri,
         :email_address => email_address,
@@ -51,7 +53,14 @@ module Balanced
     #   Account.create_merchant('bob@example.com', '/v1/TEST-MRxxxx')
     #
     # @return [Account]
-    def create_merchant email_address, merchant, bank_account_uri=nil, name=nil, meta={}
+    def create_merchant *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      email_address = args[0] || options.fetch(:email_address) { nil }
+      merchant = args[1] || options.fetch(:merchant) { nil }
+      bank_account_uri = args[2] || options.fetch(:bank_account_uri) { nil }
+      name = args[3] || options.fetch(:name) { nil }
+      meta = args[4] || options.fetch(:meta) { nil }
+
       account_attributes = {
           :uri => self.accounts_uri,
           :email_address => email_address,
