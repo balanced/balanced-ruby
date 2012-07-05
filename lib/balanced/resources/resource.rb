@@ -12,7 +12,7 @@ module Balanced
     # delegate the query to the pager module
 
     def find *arguments
-      self.class.find arguments
+      self.class.find *arguments
     end
 
     def save

@@ -8,7 +8,7 @@ module Balanced
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
-        attributes['uri'] = Balanced::Marketplace.my_marketplace.send(self.class.collection_name + '_uri')
+        attributes['uri'] = self.class.uri
       end
       super attributes
     end

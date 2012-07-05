@@ -1,5 +1,6 @@
 $:.unshift("/Users/mahmoud/code/poundpay/ruby/balanced-ruby/lib")
 require 'balanced'
+
 begin
   Balanced::Card
 rescue NameError
@@ -19,12 +20,17 @@ Balanced.configure(nil, options)
 puts "create our new api key"
 api_key = Balanced::ApiKey.new.save
 puts "Our secret is: ", api_key.secret
+secret = api_key.secret
 
-puts "configure with our secret #{api_key}"
-Balanced.configure(api_key.secret)
+puts "configure with our secret #{secret}"
+Balanced.configure(secret)
 
 puts "create our marketplace"
-marketplace = Balanced::Marketplace.new.save
+begin
+  marketplace = Balanced::Marketplace.new.save
+rescue Balanced::Conflict => ex
+  marketplace = Balanced::Marketplace.my_marketplace
+end
 
 raise "Merchant.me should not be nil" if Balanced::Merchant.me.nil?
 puts "what's my merchant?, easy: Merchant.me: ", Balanced::Merchant.me
@@ -34,11 +40,12 @@ raise "Marketplace.my_marketplace should not be nil" if Balanced::Marketplace.my
 puts "what's my marketplace?, easy: Marketplace.my_marketplace: ", Balanced::Marketplace.my_marketplace
 
 puts "My marketplace's name is: #{marketplace.name}"
-puts "Changing it to TestFooey"
-marketplace.name = "TestFooey"
+random_name = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+puts "Changing it to #{random_name}"
+marketplace.name = random_name
 marketplace.save
 puts "My marketplace name is now: #{Balanced::Marketplace.my_marketplace.name}"
-raise "Marketplace name is NOT TestFooey!" if Balanced::Marketplace.my_marketplace.name != "TestFooey"
+raise "Marketplace name is NOT #{random_name}!" if Balanced::Marketplace.my_marketplace.name != random_name
 
 puts "cool! let's create a new card."
 card = Balanced::Card.new(
@@ -49,17 +56,20 @@ card = Balanced::Card.new(
 puts "Our card uri: #{card.uri}"
 
 puts "create our **buyer** account"
-buyer = marketplace.create_buyer("buyer@example.org", card.uri)
+buyer = marketplace.create_buyer(
+    :email_address => "buyer@example.org",
+    :card_uri => card.uri
+)
 puts "our buyer account: #{buyer.uri}"
 
 puts "hold some amount of funds on the buyer, lets say 15$"
-the_hold = buyer.hold(1500)
+the_hold = buyer.hold(:amount => 1500)
 
 puts "the hold has a fee of 30c, here's the fee #{the_hold.fee}"
 raise "The hold's fee is incorrect" if the_hold.fee != 30
 
 puts "ok, no more holds! lets just capture it (for the full amount)"
-debit = the_hold.capture()
+debit = the_hold.capture
 
 puts "hmm, how much money do i have in escrow? should equal the debit amount"
 marketplace = marketplace.reload
@@ -82,8 +92,8 @@ bank_account = Balanced::BankAccount.new(
 ).save
 
 merchant = marketplace.create_merchant(
-    "merchant@example.org",
-    {
+    :email_address => "merchant@example.org",
+    :merchant => {
       :type => "person",
       :name => "Billy Jones",
       :street_address => "801 High St.",
@@ -92,27 +102,34 @@ merchant = marketplace.create_merchant(
       :dob => "1842-01",
       :phone_number => "+16505551234",
     },
-    bank_account.uri,
-    "Jack Q Merchant",
+    :bank_account_uri => bank_account.uri,
+    :name => "Jack Q Merchant",
 )
 
 puts "oh our buyer is interested in buying something for 130.00$"
-another_debit = buyer.debit(13000, "MARKETPLACE.COM")
+another_debit = buyer.debit(
+    :amount => 13000,
+    :appears_on_statement_as => "MARKETPLACE.COM"
+)
 
 puts "lets credit our merchant 110.00$"
-credit = merchant.credit(11000, "Buyer purchased something on MARKETPLACE.COM")
+credit = merchant.credit(
+    :amount => 11000,
+    :description => "Buyer purchased something on MARKETPLACE.COM"
+)
 
 puts "lets assume the marketplace charges 15%, so it earned ~20"
-mp_credit = marketplace.owner_account.credit(2000, "Our commission from MARKETPLACE.COM")
+mp_credit = marketplace.owner_account.credit(
+    :amount => 2000,
+    :description => "Our commission from MARKETPLACE.COM"
+)
 
 puts "ok lets invalid a card"
-card['is_valid'] = false
-card.save
+card.invalidate
 
 raise "This card is INCORRECTLY VALID" if card.is_valid
 
 puts "invalidating a bank account"
-bank_account['is_valid'] = false
-bank_account.save
+bank_account.invalidate
 
 raise "This card is INCORRECTLY VALID" if bank_account.is_valid

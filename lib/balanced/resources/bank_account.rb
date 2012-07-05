@@ -41,5 +41,11 @@ module Balanced
 
       self.account.credit(amount, description, meta, self.uri)
     end
+
+    def invalidate
+      self.is_valid = false
+      save
+    end
+
   end
 end
