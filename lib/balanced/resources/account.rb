@@ -88,11 +88,11 @@ module Balanced
       destination_uri = args[3] || options.fetch(:destination_uri) { nil }
 
       credit = Credit.new(
-          :uri => self.credits_uri,
-          :amount => amount,
-          :meta => meta,
-          :description => description,
-          :destination_uri => destination_uri,
+        :uri => self.credits_uri,
+        :amount => amount,
+        :meta => meta,
+        :description => description,
+        :destination_uri => destination_uri,
       )
       credit.save
     end

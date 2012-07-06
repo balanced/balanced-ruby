@@ -2,6 +2,8 @@ require "cgi"
 
 module Balanced
   class Pager
+    DEFAULT_SEP = /[&;] */n
+
     include Enumerable
 
     # A pager for paginating through resource records.
@@ -21,12 +23,6 @@ module Balanced
     def first
       load! unless @page
       items.first.nil? ? nil : resource_class.construct_from_response(items.first)
-=begin
-      if items.first.nil?
-        return nil
-      end
-      resource_class.construct_from_response items.first
-=end
     end
 
     def total
@@ -55,15 +51,13 @@ module Balanced
       return enum_for :each unless block_given?
 
       load! unless @page
-
       loop do
-        @page[:items].each do |record|
-          yield resource_class.construct_from_response record
+        @page[:items].each do |r|
+          yield resource_class.construct_from_response r
         end
-        break if @page[:next_uri].nil?
+        raise StopIteration if @page[:next_uri].nil?
         self.next
       end
-
     end
 
     # @return [nil]
@@ -138,8 +132,17 @@ module Balanced
     def load_from uri, params
       parsed_uri = URI.parse(uri)
 
+      params ||= {}
+
       unless parsed_uri.query.nil?
-        params.merge! CGI::parse(parsed_uri.query)
+        # The reason we don't use CGI::parse here is because
+        # the balanced api currently can't handle variable[]=value.
+        # Faraday ends up encoding a simple query string like:
+        #    {"limit"=>["10"], "offset"=>["0"]}
+        # to limit[]=10&offset[]=0 and that's cool, but
+        # we have to make sure balanced supports it.
+        query_params = parse_query(parsed_uri.query)
+        params.merge! query_params
         parsed_uri.query = nil
       end
 
@@ -148,5 +151,28 @@ module Balanced
       @uri = @page[:uri]
     end
 
+    # Stolen from Mongrel, with some small modifications:
+    # Parses a query string by breaking it up at the '&'
+    # and ';' characters.  You can also use this to parse
+    # cookies by changing the characters used in the second
+    # parameter (which defaults to '&;').
+    def parse_query(qs, d = nil)
+      params = {}
+
+      (qs || '').split(d ? /[#{d}] */n : DEFAULT_SEP).each do |p|
+        k, v = p.split('=', 2).map { |x| CGI::unescape(x) }
+        if (cur = params[k])
+          if cur.class == Array
+            params[k] << v
+          else
+            params[k] = [cur, v]
+          end
+        else
+          params[k] = v
+        end
+      end
+
+      params
+    end
   end
 end
