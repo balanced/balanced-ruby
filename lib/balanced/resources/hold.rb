@@ -25,7 +25,12 @@ module Balanced
     #
     def void
       self.is_void = true
-      save
+      begin
+        save
+      rescue Balanced::Error
+        self.is_void = false
+        raise
+      end
     end
 
     # Captures a valid Hold and returns a Debit representing the transfer of

@@ -33,7 +33,23 @@ describe Balanced::Hold do
 
       subject { @hold.is_void }
       it { should be_true }
-    end  
+    end
+
+    describe 'when exception is thrown' do
+      use_vcr_cassette
+      before do
+        @hold = @buyer.hold 150
+        @debit = @hold.capture
+      end
+
+      it "should not change void state since its captured" do
+        lambda { @hold.void }.should raise_error(Balanced::Conflict)
+        @hold.is_void.should be_false
+      end
+      # void here.
+
+
+    end
 
   end
 end
