@@ -334,6 +334,11 @@ describe Balanced::Account do
             it { should_not be_empty }
             it { subject.first.should be_instance_of Balanced::Card }
           end
+          describe "#bank_accounts" do
+            subject { @buyer.bank_accounts }
+            it { should be_instance_of Array }
+            it { should be_empty }
+          end
         end
       end
     end
