@@ -26,17 +26,24 @@ module Balanced
     def create_buyer *args
       options = args.last.is_a?(Hash) ? args.pop : {}
       email_address = args[0] || options.fetch(:email_address) { nil }
-      card_uri = args[1] || options.fetch(:card_uri) { nil }
+      card = args[1] || options.fetch(:card_uri) { options.fetch(:card) { nil} }
       name = args[2] || options.fetch(:name) { nil }
       meta = args[3] || options.fetch(:meta) { nil }
 
-      account = Account.new(
-        :uri => self.accounts_uri,
-        :email_address => email_address,
-        :card_uri => card_uri,
-        :name => name,
-        :meta => meta,
-      )
+      account_attributes = {
+          :uri => self.accounts_uri,
+          :email_address => email_address,
+          :name => name,
+          :meta => meta,
+      }
+
+      if card.respond_to? :keys
+        account_attributes[:card] = card
+      else
+        account_attributes[:card_uri] = card
+      end
+
+      account = Account.new account_attributes
       account.save
     end
 
