@@ -62,13 +62,20 @@ module Balanced
       true
     end
 
-    def method_missing(method, *args, &block)
-      case method
-        when :get, :post, :put, :delete
-          self.client.send method, *args
-        else
-          super
-      end
+    def get(*args, &block)
+      self.client.get *args
+    end
+
+    def post(*args, &block)
+      self.client.post *args
+    end
+
+    def put(*args, &block)
+      self.client.put *args
+    end
+
+    def delete(*args, &block)
+      self.client.delete *args
     end
   end
 
