@@ -154,12 +154,12 @@ module Balanced
     end
 
     def adjust_pagination_params(original)
-      params = original.dup
-      per = original.delete(:per)
-      params[:limit] = per unless per.nil?
-      page = original.delete(:page)
-      params[:offset] = (params[:limit] || DEFAULT_LIMIT) * ([page, 1].max - 1) unless page.nil?
-      params
+      adjusted = original.dup
+      per = adjusted.delete(:per)
+      adjusted[:limit] = per unless per.nil?
+      page = adjusted.delete(:page)
+      adjusted[:offset] = (adjusted[:limit] || DEFAULT_LIMIT) * ([page, 1].max - 1) unless page.nil?
+      adjusted
     end
 
     # Stolen from Mongrel, with some small modifications:
