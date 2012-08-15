@@ -14,6 +14,8 @@ module Balanced
       :port => 5000,
       :version => '1',
       :logging_level => 'WARN',
+      :connection_timeout => 2,
+      :read_timeout => 5
     }
 
     attr_reader :conn
@@ -32,7 +34,13 @@ module Balanced
       Faraday.register_middleware :response,
           :handle_balanced_errors => lambda {Faraday::Response::RaiseBalancedError}
 
-      @conn = Faraday.new url do |cxn|
+      options = {
+        :request => {
+          :open_timeout => config[:connection_timeout],
+          :timeout => config[:read_timeout]
+        }
+      }
+      @conn = Faraday.new(url, options) do |cxn|
         cxn.request  :json
 
         cxn.response :logger, logger
