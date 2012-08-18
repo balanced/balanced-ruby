@@ -35,15 +35,27 @@ module Balanced
       load! unless @page
       @page[:limit]
     end
+    alias limit_value limit
 
     def offset
       load! unless @page
       @page[:offset]
     end
+    alias offset_value offset
 
     def items
       load! unless @page
       @page[:items]
+    end
+
+    def current_page
+      (offset / limit) + 1
+    end
+
+    def num_pages
+      num = total / limit
+      num += 1 if total % limit > 0
+      num
     end
 
     # @return [Array] Iterates through the current page of records.
