@@ -16,6 +16,7 @@ module Balanced
       :logging_level => 'WARN',
       :connection_timeout => 2,
       :read_timeout => 5
+      :logger => nil
     }
 
     attr_reader :conn
@@ -28,8 +29,12 @@ module Balanced
     end
 
     def build_conn
-      logger = Logger.new(STDOUT)
-      logger.level = Logger.const_get(DEFAULTS[:logging_level].to_s)
+      if config[:logger]
+        logger = config[:logger]
+      else
+        logger = Logger.new(STDOUT)
+        logger.level = Logger.const_get(config[:logging_level].to_s)
+      end
 
       Faraday.register_middleware :response,
           :handle_balanced_errors => lambda {Faraday::Response::RaiseBalancedError}
