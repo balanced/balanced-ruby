@@ -15,7 +15,7 @@ module Balanced
       :version => '1',
       :logging_level => 'WARN',
       :connection_timeout => 2,
-      :read_timeout => 5
+      :read_timeout => 5,
       :logger => nil
     }
 
