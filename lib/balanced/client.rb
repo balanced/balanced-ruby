@@ -67,14 +67,22 @@ module Balanced
     end
 
     private
+    
+    def respond_to?(method, include_private = false)
+      case method.to_sym
+      when :get, :post, :put, :delete
+        true
+      else
+        super method, include_private
+      end
+    end
 
     def method_missing(method, *args, &block)
-      case method
-      when :get, :post, :put, :delete
+      if respond_to? method
         conn.basic_auth(api_key, '') unless api_key.nil?
         conn.send method, *args
       else
-        super
+        super method, *args, &block
       end
     end
 
