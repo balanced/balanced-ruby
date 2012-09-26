@@ -57,7 +57,7 @@ spec/cassettes.  To clear them and regenerate:
 
 ### Building Documentation
 
-Documentation is build using YARD - http://rubydoc.info/docs/yard
+Documentation is built using YARD - http://rubydoc.info/docs/yard
  
     export AMAZON_ACCESS_KEY_ID='xxx'
     export AMAZON_SECRET_ACCESS_KEY='yyy' 
