@@ -17,9 +17,9 @@ module Balanced
 
     # Attempts to find an existing buyer account by email
     #
-    # @param [String] email An email of a buyer account
-    # @return [Account] if buyer is found
-    # @return [nil] if buyer is not found
+    # @param [String] email An email of an account
+    # @return [Account] if account is found
+    # @return [nil] if account is not found
     def self.find_by_email email
       self.find(:first, :email_address => email)
     end
