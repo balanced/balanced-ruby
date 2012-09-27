@@ -55,6 +55,12 @@ spec/cassettes.  To clear them and regenerate:
     $ rm -rf spec/cassettes
 
 
+### Issues
+
+All issues should be documented at 
+[balanced-ruby/issues](https://github.com/balanced/balanced-ruby/issues)
+
+
 ### Building Documentation
 
 Documentation is built using YARD - http://rubydoc.info/docs/yard
