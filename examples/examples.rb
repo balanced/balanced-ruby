@@ -65,9 +65,6 @@ puts "our buyer account: #{buyer.uri}"
 puts "hold some amount of funds on the buyer, lets say 15$"
 the_hold = buyer.hold(:amount => 1500)
 
-puts "the hold has a fee of 30c, here's the fee #{the_hold.fee}"
-raise "The hold's fee is incorrect" if the_hold.fee != 30
-
 puts "ok, no more holds! lets just capture it (for the full amount)"
 debit = the_hold.capture
 
@@ -78,9 +75,6 @@ puts "i have #{marketplace.in_escrow} in escrow!"
 
 puts "cool. now let me refund the full amount"
 refund = debit.refund()  # the full amount!
-
-puts "notice how Balanced refunds you your fees? refund fees: #{refund.fee}"
-raise "Woah, fees are incorrect" if (refund.fee + debit.fee) != 0
 
 puts "ok, we have a merchant that's signing up, let's create an account for them " \
      "first, lets create their bank account."
