@@ -8,6 +8,7 @@ module Balanced
   #
   class Credit
     include Balanced::Resource
+
     def initialize *args
       options = args.last.is_a?(Hash) ? args.pop : {}
       uri = options.fetch(:uri) { self.class.uri }
