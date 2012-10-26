@@ -34,12 +34,7 @@ module Balanced
     #
     # @return [Credit]
     def credit *args
-      options = args.last.is_a?(Hash) ? args.pop : {}
-      amount = args[0] || options.fetch(:amount) { nil }
-      description = args[1] || options.fetch(:description) { nil }
-      meta = args[2] || options.fetch(:meta) { nil }
-
-      self.account.credit(amount, description, meta, self.uri)
+      self.account.credit args, uri: self.credits_uri
     end
 
     def invalidate

@@ -8,7 +8,13 @@ module Balanced
   #
   class Credit
     include Balanced::Resource
-    def initialize attributes = {}
+    def initialize *args 
+      attributes = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || attributes.fetch(:amount) { }
+      description = args[1] || attributes.fetch(:description) { nil }
+      meta = args[2] || attributes.fetch(:meta) { nil }
+      destination_uri = args[3] || attributes.fetch(:destination_uri) { nil }
+
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
         attributes['uri'] = self.class.uri

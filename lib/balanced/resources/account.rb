@@ -81,20 +81,7 @@ module Balanced
     # @return [Credit] A Credit representing the transfer of funds from
     #    your Marketplace to this Account.
     def credit *args
-      options = args.last.is_a?(Hash) ? args.pop : {}
-      amount = args[0] || options.fetch(:amount) { }
-      description = args[1] || options.fetch(:description) { nil }
-      meta = args[2] || options.fetch(:meta) { nil }
-      destination_uri = args[3] || options.fetch(:destination_uri) { nil }
-
-      credit = Credit.new(
-        :uri => self.credits_uri,
-        :amount => amount,
-        :meta => meta,
-        :description => description,
-        :destination_uri => destination_uri,
-      )
-      credit.save
+      Credit.new(args, uri: self.credits_uri).save
     end
 
     # Associates the Card represented by +card_uri+ with this Account.
