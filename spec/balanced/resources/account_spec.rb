@@ -101,6 +101,18 @@ describe Balanced::Account do
       end
 
       context "args passed by name via options hash" do
+        subject {
+          @merchant.credit(
+            amount: 1250, 
+            description: "description", 
+            meta: {},
+            destination_uri: @bank_account.uri
+          )
+        }
+
+        its(:amount) { should == 1250 }
+        its(:meta) { should == {} }
+        its(:description) { should == "description" }
       end
     end
 
