@@ -53,69 +53,72 @@ describe Balanced::Account do
         :dob => "1842-01",
         :phone_number => "+16505551234",
       }
+
+      @card = Balanced::Card.new(
+        :card_number => "4111111111111111",
+        :expiration_month => "12",
+        :expiration_year => "2015",
+      ).save
+
+      @buyer = Balanced::Account.new(
+        :uri => @marketplace.accounts_uri,
+        :email_address => "buyer7@example.org",
+        :card_uri => @card.uri,
+        :name => "Jack Q Buyer"
+      ).save
+
+      @bank_account = Balanced::BankAccount.new(
+        :account_number => "1234567890",
+        :bank_code => "321174851",
+        :name => "Jack Q Merchant"
+      ).save
+
+      @merchant = Balanced::Account.new(
+        :uri => @marketplace.accounts_uri,
+        :email_address => "merchant@example.org",
+        :merchant => @merchant_attributes,
+        :bank_account_uri => @bank_account.uri,
+        :name => "Jack Q Merchant"
+      ).save
+
+
     end
 
-    describe "new" do
+    describe "#credit" do
       use_vcr_cassette
       before do
-        @bank_account = Balanced::BankAccount.new(
-          :account_number => "1234567890",
-          :bank_code => "321174851",
-          :name => "Jack Q Merchant"
-        ).save
+        @buyer.debit 1250
       end
-      it do
-        -> do
-          @merchant = Balanced::Account.new(
-            :uri => @marketplace.accounts_uri,
-            :email_address => "merchant@example.org",
-            :merchant => @merchant_attributes,
-            :bank_account_uri => @bank_account.uri,
-            :name => "Jack Q Merchant"
+
+      context "all args passed directly" do
+        subject { 
+          @merchant.credit 1250, "description", {}, @bank_account.uri
+        }
+
+        its(:amount) { should == 1250 }
+        its(:meta) { should == {} }
+        its(:description) { should == "description" }
+      end
+
+      context "args passed by name via options hash" do
+        subject {
+          @merchant.credit(
+            amount: 1250, 
+            description: "description", 
+            meta: {},
+            destination_uri: @bank_account.uri
           )
-        end.should_not raise_error
+        }
+
+        its(:amount) { should == 1250 }
+        its(:meta) { should == {} }
+        its(:description) { should == "description" }
       end
     end
 
     describe "#save" do
-
-      describe "when creating" do
-        use_vcr_cassette
-        before do
-          bank_account = Balanced::BankAccount.new(
-            :account_number => "1234567890",
-            :bank_code => "321174851",
-            :name => "Jack Q Merchant"
-          ).save
-          @merchant = Balanced::Account.new(
-            :uri => @marketplace.accounts_uri,
-            :email_address => "merchant@example.org",
-            :merchant => @merchant_attributes,
-            :bank_account_uri => bank_account.uri,
-            :name => "Jack Q Merchant"
-          )
-        end
-        it { -> { @merchant.save }.should_not raise_error }
-      end
-
       describe "after #save" do
         describe "attributes" do
-          use_vcr_cassette
-          before do
-            bank_account = Balanced::BankAccount.new(
-              :account_number => "1234567890",
-              :bank_code => "321174851",
-              :name => "Jack Q Merchant"
-            ).save
-            @merchant = Balanced::Account.new(
-              :uri => @marketplace.accounts_uri,
-              :email_address => "merchant2@example.org",
-              :merchant => @merchant_attributes,
-              :bank_account_uri => bank_account.uri,
-              :name => "Jack Q Merchant"
-            ).save
-          end
-
           describe "#id" do
             subject { @merchant.id }
             it { should_not be_nil }
@@ -127,7 +130,7 @@ describe Balanced::Account do
           end
           describe "#email_address" do
             subject { @merchant.email_address }
-            it { should eql "merchant2@example.org" }
+            it { should eql "merchant@example.org" }
           end
           describe "#name" do
             subject { @merchant.name }
@@ -175,55 +178,22 @@ describe Balanced::Account do
     end
 
     describe "#add_bank_account" do
+      use_vcr_cassette
+      before do
+        @new_bank_account = Balanced::BankAccount.new(
+          :account_number => "1234567890",
+          :bank_code => "321174851",
+          :name => "Jack Q Merchant"
+        ).save
+      end
+
       describe "when executing" do
-        use_vcr_cassette
-
-        before do
-          @bank_account = Balanced::BankAccount.new(
-            :account_number => "1234567890",
-            :bank_code => "321174851",
-            :name => "Jack Q Merchant"
-          ).save
-
-          @merchant = Balanced::Account.new(
-            :uri => @marketplace.accounts_uri,
-            :email_address => "merchant1@example.org",
-            :merchant => @merchant_attributes,
-            :bank_account_uri => @bank_account.uri,
-            :name => "Jack Q Merchant"
-          ).save
-
-          @new_bank_account = Balanced::BankAccount.new(
-            :account_number => "53434533",
-            :bank_code => "12345678",
-            :name => "Jack Q Merchant"
-          ).save
-        end
         it { -> { @merchant.add_bank_account(@new_bank_account.uri) }.should_not raise_error }
       end
 
       describe "after executing" do
         use_vcr_cassette
         before do
-          @bank_account = Balanced::BankAccount.new(
-            :account_number => "12345678901",
-            :bank_code => "321174851",
-            :name => "Jack Q Merchant"
-          ).save
-
-          @merchant = Balanced::Account.new(
-            :uri => @marketplace.accounts_uri,
-            :email_address => "merchant4@example.org",
-            :merchant => @merchant_attributes,
-            :bank_account_uri => @bank_account.uri,
-            :name => "Jack Q Merchant"
-          ).save
-
-          @new_bank_account = Balanced::BankAccount.new(
-            :account_number => "53434533",
-            :bank_code => "12345678",
-            :name => "Jack Q Merchant"
-          ).save
           @merchant.add_bank_account(@new_bank_account.uri)
           @bank_accounts = Balanced::BankAccount.find(@merchant.bank_accounts_uri).items
         end
@@ -231,8 +201,6 @@ describe Balanced::Account do
         subject { @bank_accounts.size }
         it { should eql 2 }
       end
-
-
     end
   end
 
