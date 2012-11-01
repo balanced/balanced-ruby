@@ -95,3 +95,36 @@ describe Balanced::Marketplace do
   end
 end
 
+describe Balanced::Marketplace, '.marketplace_uri' do
+  context 'when invoking .my_marketplace' do
+    use_vcr_cassette
+
+    it 'sets the marketplace_id after the first call' do
+      api_key = Balanced::ApiKey.new.save
+      Balanced.configure api_key.secret
+      marketplace = Balanced::Marketplace.new.save
+
+      # creating the marketplace sets `Balanced::Marketplace.marketplace_uri`,
+      # so we need to clear it out here to get the test in the right state
+      Balanced::Marketplace.marketplace_uri = nil
+
+      expect {
+        Balanced::Marketplace.my_marketplace
+      }.to change { Balanced::Marketplace.marketplace_uri }.from(nil).to(marketplace.uri)
+    end
+  end
+
+  context 'when creating a Balanced::Marketplace resource' do
+    use_vcr_cassette
+
+    it 'sets the marketplace_uri' do
+      api_key = Balanced::ApiKey.new.save
+      Balanced.configure api_key.secret
+
+      Balanced::Marketplace.marketplace_uri = nil
+      res = Balanced::Marketplace.new.save
+      Balanced::Marketplace.marketplace_uri.should == res.uri
+      Balanced::Marketplace.marketplace_uri.nil?.should be_false
+    end
+  end
+end

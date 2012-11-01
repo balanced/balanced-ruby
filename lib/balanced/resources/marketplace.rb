@@ -9,7 +9,25 @@ module Balanced
     #
     # @return [Marketplace]
     def self.my_marketplace
-      Balanced::Merchant.me.marketplace
+      marketplace = Balanced::Merchant.me.marketplace
+      self.marketplace_uri = marketplace.uri if marketplace
+      marketplace
+    end
+
+    # @return [String, nil] the marketplace's URI
+    def self.marketplace_uri
+      @marketplace_uri
+    end
+
+    def self.marketplace_uri=(uri)
+      @marketplace_uri = uri
+    end
+
+    # @return [Markeplace]
+    def save
+      marketplace = super
+      self.class.marketplace_uri = marketplace.uri
+      marketplace
     end
 
     # Returns an instance representing the marketplace associated with
