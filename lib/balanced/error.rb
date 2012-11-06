@@ -1,7 +1,7 @@
 module Balanced
 
-  # Custom error class for rescuing from all Balanced errors
-  class Error < StandardError
+  # Custom error class for rescuing from all API response-related Balanced errors
+  class Error < ::StandardError
     attr_reader :response
 
     # @param [Hash] response the decoded json response body
@@ -34,6 +34,18 @@ module Balanced
           define_method("#{name}?") { !!body[name] }               # Present.
         }
       end
+    end
+  end
+
+  # General error class for non API response exceptions
+  class StandardError < Error
+    def initialize(message)
+      @message = message
+      super message
+    end
+
+    def error_message
+      @message
     end
   end
 

@@ -93,7 +93,7 @@ module Balanced
         collection_path
       else
         if Balanced::Marketplace.my_marketplace.nil?
-          raise Balanced::Error, "#{self.name} is nested under a marketplace, which is not created or configured."
+          raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
         else
           Balanced::Marketplace.my_marketplace.send(collection_name + '_uri')
         end

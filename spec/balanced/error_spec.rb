@@ -33,3 +33,10 @@ describe Balanced::Error, '#body' do
     end
   end
 end
+
+describe Balanced::StandardError do
+  subject { Balanced::StandardError.new('ohnoe!') }
+
+  its(:message) { should == 'ohnoe!' }
+  its(:error_message) { should == 'ohnoe!' }
+end
