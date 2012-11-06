@@ -96,7 +96,7 @@ module Balanced
       #
       #    if there's an api key, then the merchant is available
       #    if there's no api key, the only resources exposed are purely top level
-      if self == Balanced::Merchant or self == Balanced::Marketplace or self == Balanced::ApiKey
+      if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
         collection_path
       else
         if !Balanced::Marketplace.marketplace_exists?
