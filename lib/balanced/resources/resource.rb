@@ -134,7 +134,7 @@ module Balanced
         instance.class.instance_eval {
           define_method(name) { @attributes[name] }                       # Get.
           define_method("#{name}=") { |value| @attributes[name] = value } # Set.
-          define_method("#{name}?") { !!@attributes[name].nil? }               # Present.
+          define_method("#{name}?") { !!@attributes[name] }               # Present.
         }
         instance.send("#{name}=".to_s, value)
       end
