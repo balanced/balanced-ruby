@@ -1,5 +1,26 @@
 require 'spec_helper'
 
+describe Balanced::Resource, '.uri' do
+  use_vcr_cassette
+
+  describe "before the marketplace is configured" do
+    it 'raises an exception' do
+      Balanced::Marketplace.marketplace_uri = nil
+      expect {
+        Balanced::Account.uri
+      }.to raise_error(Balanced::StandardError, "Balanced::Account is nested under a marketplace, which is not created or configured.")
+    end
+  end
+
+  describe 'when the marketplace is configured' do
+    it 'returns the resource uri corresponding to the resource name passed in' do
+      marketplace_uri = '/v1/marketplaces/TEST-MPynogsPWE3xLMnLbEbuM0g'
+      Balanced::Marketplace.marketplace_uri = '/v1/marketplaces/TEST-MPynogsPWE3xLMnLbEbuM0g'
+      Balanced::Account.uri.should == '/v1/marketplaces/TEST-MPynogsPWE3xLMnLbEbuM0g/accounts'
+    end
+  end
+end
+
 describe Balanced::Resource, 'loading a resource and generating methods from the response body' do
   use_vcr_cassette
 
