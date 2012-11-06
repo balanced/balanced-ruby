@@ -128,3 +128,15 @@ describe Balanced::Marketplace, '.marketplace_uri' do
     end
   end
 end
+
+describe Balanced::Marketplace, '.marketplace_exists?' do
+  it 'returns false when nil' do
+    Balanced::Marketplace.marketplace_uri = nil
+    Balanced::Marketplace.marketplace_exists?.should == false
+  end
+
+  it 'returns true when not nil' do
+    Balanced::Marketplace.marketplace_uri = 'some uri'
+    Balanced::Marketplace.marketplace_exists?.should == true
+  end
+end

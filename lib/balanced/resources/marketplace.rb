@@ -23,6 +23,10 @@ module Balanced
       @marketplace_uri = uri
     end
 
+    def self.marketplace_exists?
+      !!marketplace_uri
+    end
+
     # @return [Markeplace]
     def save
       marketplace = super
