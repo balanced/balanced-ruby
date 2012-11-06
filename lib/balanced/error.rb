@@ -39,13 +39,11 @@ module Balanced
 
   # General error class for non API response exceptions
   class StandardError < Error
+    attr_reader :message
+    alias :error_message :message
+
     def initialize(message)
       @message = message
-      super message
-    end
-
-    def error_message
-      @message
     end
   end
 
