@@ -4,13 +4,18 @@ module Balanced
   class Error < StandardError
     attr_reader :response
 
+    # @param [Hash] response the decoded json response body
     def initialize(response)
       @response = response
       super error_message
     end
 
+    # @return [Hash]
     def body
-      Utils.hash_with_indifferent_read_access response[:body]
+      @body ||= begin
+        return {} unless response[:body]
+        Utils.hash_with_indifferent_read_access(response[:body])
+      end
     end
 
     def error_message
