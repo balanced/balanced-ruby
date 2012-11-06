@@ -27,7 +27,7 @@ module Balanced
       !!marketplace_uri
     end
 
-    # @return [Markeplace]
+    # @return [Marketplace]
     def save
       marketplace = super
       self.class.marketplace_uri = marketplace.uri
