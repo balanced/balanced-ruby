@@ -31,7 +31,7 @@ module Balanced
       body.keys.each do |name|
         self.class.instance_eval {
           define_method(name) { body[name] }                       # Get.
-          define_method("#{name}?") { !!body[name].nil? }          # Present.
+          define_method("#{name}?") { !!body[name] }               # Present.
         }
       end
     end
