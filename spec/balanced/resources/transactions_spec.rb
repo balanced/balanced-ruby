@@ -8,6 +8,7 @@ describe Balanced::Transaction do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
+
     @merchant_attributes = {
         :type => "person",
         :name => "Billy Jones",
