@@ -106,7 +106,7 @@ describe Balanced::Marketplace, '.marketplace_uri' do
 
       # creating the marketplace sets `Balanced::Marketplace.marketplace_uri`,
       # so we need to clear it out here to get the test in the right state
-      Balanced::Marketplace.marketplace_uri = nil
+      Balanced::Marketplace.class_variable_set(:@@marketplace_uri, nil)
 
       expect {
         Balanced::Marketplace.my_marketplace
@@ -121,7 +121,6 @@ describe Balanced::Marketplace, '.marketplace_uri' do
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
 
-      Balanced::Marketplace.marketplace_uri = nil
       res = Balanced::Marketplace.new.save
       Balanced::Marketplace.marketplace_uri.should == res.uri
       Balanced::Marketplace.marketplace_uri.nil?.should be_false
@@ -131,12 +130,12 @@ end
 
 describe Balanced::Marketplace, '.marketplace_exists?' do
   it 'returns false when nil' do
-    Balanced::Marketplace.marketplace_uri = nil
+    Balanced::Marketplace.stub(:marketplace_uri) { nil }
     Balanced::Marketplace.marketplace_exists?.should == false
   end
 
   it 'returns true when not nil' do
-    Balanced::Marketplace.marketplace_uri = 'some uri'
+    Balanced::Marketplace.stub(:marketplace_uri) { 'some uri' }
     Balanced::Marketplace.marketplace_exists?.should == true
   end
 end
