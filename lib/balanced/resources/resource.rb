@@ -83,20 +83,27 @@ module Balanced
       Utils.underscore resource_name
     end
 
+    # Returns the resource URI for a given class.
+    #
+    # @example A Balanced::Account resource
+    #   Balanced::Account.uri # => "/v1/marketplaces/TEST-MP72zVdg2j9IiqRffW9lczRZ/accounts"
+    #
+    # @return [String] the uri of the instance or the class
     def uri
       # the uri of a particular resource depends if there's a marketplace created or not
       # if there's a marketplace, then all resources have their own uri from there and the top level ones
       # if there's not a marketplace
+      #
       #    if there's an api key, then the merchant is available
       #    if there's no api key, the only resources exposed are purely top level
-      if self == Balanced::Merchant or self == Balanced::Marketplace or self == Balanced::ApiKey
+      if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
         collection_path
       else
-        if Balanced::Marketplace.my_marketplace.nil?
-          raise Balanced::Error, "#{self.name} is nested under a marketplace, which is not created or configured."
-        else
-          Balanced::Marketplace.my_marketplace.send(collection_name + '_uri')
+        if !Balanced::Marketplace.marketplace_exists?
+          raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
         end
+
+        Balanced::Marketplace.marketplace_uri + "/#{collection_name}"
       end
     end
 
@@ -134,7 +141,7 @@ module Balanced
         instance.class.instance_eval {
           define_method(name) { @attributes[name] }                       # Get.
           define_method("#{name}=") { |value| @attributes[name] = value } # Set.
-          define_method("#{name}?") { !!@attributes[name].nil? }               # Present.
+          define_method("#{name}?") { !!@attributes[name] }               # Present.
         }
         instance.send("#{name}=".to_s, value)
       end

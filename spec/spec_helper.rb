@@ -17,6 +17,13 @@ end
 
 RSpec.configure do |c|
   c.extend VCR::RSpec::Macros
+
+  # @return [Balanced::Marketplace]
+  def make_marketplace
+    api_key = Balanced::ApiKey.new.save
+    Balanced.configure api_key.secret
+    Balanced::Marketplace.new.save
+  end
 end
 
 

@@ -1,16 +1,21 @@
 module Balanced
 
-  # Custom error class for rescuing from all Balanced errors
-  class Error < StandardError
+  # Custom error class for rescuing from all API response-related Balanced errors
+  class Error < ::StandardError
     attr_reader :response
 
+    # @param [Hash] response the decoded json response body
     def initialize(response)
       @response = response
       super error_message
     end
 
+    # @return [Hash]
     def body
-      Utils.hash_with_indifferent_read_access response[:body]
+      @body ||= begin
+        return {} unless response[:body]
+        Utils.hash_with_indifferent_read_access(response[:body])
+      end
     end
 
     def error_message
@@ -26,9 +31,19 @@ module Balanced
       body.keys.each do |name|
         self.class.instance_eval {
           define_method(name) { body[name] }                       # Get.
-          define_method("#{name}?") { !!body[name].nil? }          # Present.
+          define_method("#{name}?") { !!body[name] }               # Present.
         }
       end
+    end
+  end
+
+  # General error class for non API response exceptions
+  class StandardError < Error
+    attr_reader :message
+    alias :error_message :message
+
+    def initialize(message)
+      @message = message
     end
   end
 

@@ -4,12 +4,32 @@ module Balanced
   class Marketplace
     include Balanced::Resource
 
+    @@marketplace_uri = nil
+
     # Returns an instance representing the marketplace associated with
     # the current API key.
     #
     # @return [Marketplace]
     def self.my_marketplace
-      Balanced::Merchant.me.marketplace
+      marketplace = Balanced::Merchant.me.marketplace
+      @@marketplace_uri = marketplace.uri if marketplace
+      marketplace
+    end
+
+    # @return [String, nil] the marketplace's URI
+    def self.marketplace_uri
+      @@marketplace_uri
+    end
+
+    def self.marketplace_exists?
+      !!marketplace_uri
+    end
+
+    # @return [Marketplace]
+    def save
+      marketplace = super
+      @@marketplace_uri = marketplace.uri
+      marketplace
     end
 
     # Returns an instance representing the marketplace associated with

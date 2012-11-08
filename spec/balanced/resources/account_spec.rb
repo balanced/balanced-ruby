@@ -14,6 +14,7 @@ describe Balanced::Account do
     context "when ApiKey is not configured" do
       use_vcr_cassette
       before do
+        Balanced::Marketplace.stub(:marketplace_uri) { nil }
         Balanced.configure nil
       end
 

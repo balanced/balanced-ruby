@@ -1,4 +1,5 @@
 module Balanced
+  # Resource representing the marketplace merchant object.
   class Merchant
     include Balanced::Resource
 
