@@ -38,12 +38,12 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       description = args[1] || options.fetch(:description) { nil }
-      if self.account == nil
+      if !self.respond_to?('account')
         Credit.new(
           :amount => amount,
           :description => description,
-          :uri => self.uri
-        )
+          :uri => self.credits_uri,
+        ).save
       else
         meta = args[2] || options.fetch(:meta) { nil }
         soft_descriptor = args[3] || options.fetch(:appears_on_statement_as) { nil }

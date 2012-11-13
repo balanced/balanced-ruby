@@ -15,13 +15,14 @@ module Balanced
       bank_account = options.fetch(:bank_account) {}
       amount = args[0] || options.fetch(:amount) { }
       description = args[1] || options.fetch(:description) { nil }
-      if bank_account != nil
+      if !bank_account.nil?
         # Accountless bank account
         attributes = {
           uri: uri,
           amount: amount,
           description: description,
-          bank_account: bank_account
+          bank_account: bank_account,
+          meta: nil
         }
       else
         meta = args[2] || options.fetch(:meta) { nil }
