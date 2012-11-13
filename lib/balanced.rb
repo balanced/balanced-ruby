@@ -25,7 +25,8 @@ module Balanced
     attr_accessor :config
 
     def configure(api_key=nil, options={})
-      @client = Balanced::Client.new(api_key, @config.merge(options))
+      @config = @config.merge(options)
+      @client = Balanced::Client.new(api_key, @config)
     end
 
     def is_configured_with_api_key?

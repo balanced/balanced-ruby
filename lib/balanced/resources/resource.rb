@@ -90,9 +90,9 @@ module Balanced
     #
     # @return [String] the uri of the instance or the class
     def uri
-      # the uri of a particular resource depends if there's a marketplace created or not
-      # if there's a marketplace, then all resources have their own uri from there and the top level ones
-      # if there's not a marketplace
+      # the uri of a particular resource depends if there's a marketplace
+      # created or not. if there's a marketplace, then all resources have their
+      # own uri from there and the top level ones. if there's not a marketplace
       #
       #    if there's an api key, then the merchant is available
       #    if there's no api key, the only resources exposed are purely top level
@@ -175,4 +175,3 @@ module Balanced
 
   end
 end
-

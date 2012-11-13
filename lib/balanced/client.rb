@@ -63,7 +63,9 @@ module Balanced
     #end
 
     def url
-      URI::HTTPS.build :host => config[:host], :port => config[:port]
+      URI::HTTP.build ({:host => config[:host],
+                        :port => config[:port],
+                        :scheme => config[:scheme]})
     end
 
     def method_missing(method, *args, &block)
@@ -76,11 +78,11 @@ module Balanced
     end
 
     private
-    
+
     def is_http_method? method
       [:get, :post, :put, :delete].include? method
     end
-    
+
     def respond_to?(method, include_private = false)
       if is_http_method? method
         true

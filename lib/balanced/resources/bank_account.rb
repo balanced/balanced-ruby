@@ -30,17 +30,26 @@ module Balanced
       self.account.debit(amount, soft_descriptor, meta, description, self.uri)
     end
 
-    # Creates a Credit of funds from your Marketplace's escrow account to this Account.
+    # Creates a Credit of funds from your Marketplace's escrow account to this
+    # Account.
     #
     # @return [Credit]
     def credit *args
-      if args.last.is_a? Hash
-        args.last.merge! destination_uri: self.uri
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { nil }
+      description = args[1] || options.fetch(:description) { nil }
+      if self.account == nil
+        Credit.new(
+          :amount => amount,
+          :description => description,
+          :uri => self.uri
+        )
       else
-        args << { destination_uri: self.uri }
+        meta = args[2] || options.fetch(:meta) { nil }
+        soft_descriptor = args[3] || options.fetch(:appears_on_statement_as) { nil }
+        destination_url = args[4] || options.fetch(:destination_uri) { self.uri }
+        self.account.credit(amount, meta, description, destination_uri, appears_on_statement_as)
       end
-
-      self.account.credit *args
     end
 
     def invalidate

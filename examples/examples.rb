@@ -1,4 +1,4 @@
-$:.unshift("/Users/mahmoud/code/poundpay/ruby/balanced-ruby/lib")
+$:.unshift("/Users/msherry/pp/dockers/balanced-ruby/lib")
 require 'balanced'
 
 begin
@@ -127,3 +127,32 @@ puts "invalidating a bank account"
 bank_account.invalidate
 
 raise "This card is INCORRECTLY VALID" if bank_account.is_valid
+
+puts "let's create a bank account not associated to an account"
+bank_account = Balanced::BankAccount.new(
+    :account_number => "9876543210",
+    :bank_code => "12",
+    :name => "Jake Skellington",
+    :type => "checking"
+).save
+
+puts "now let's credit it, the super-simple way"
+credit = bank_account.credit(
+    :amount => 500
+)
+
+raise "Incorrect value for credit" if credit.amount != 500
+
+puts "That was still too hard -- let's credit without creating a bank account first"
+credit = Balanced::Credit.new(
+    :amount => 700,
+    :description => "Amazing",
+    :bank_account => {
+        :account_number => "55555555",
+        :bank_code => "12",
+        :name => "Wanda Wandy",
+        :type => "checking"
+    }
+).save
+raise "OOPS -- that was hard after all" if (credit.amount != 700 or
+                                            credit.created_at == nil)
