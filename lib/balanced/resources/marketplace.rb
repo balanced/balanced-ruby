@@ -106,6 +106,25 @@ module Balanced
       account.save
     end
 
+    # Creates a BankAccount object tied to this marketplace, for use with
+    # accounts
+    def create_bank_account *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      name = args[0] || options.fetch(:name) { }
+      account_number = args[1] || options.fetch(:account_number) { nil }
+      bank_code = args[2] || options.fetch(:bank_code) { nil }
+      meta = args[3] || options.fetch(:meta) { nil }
+
+      bank_account = BankAccount.new(
+          :uri => self.bank_accounts_uri,
+          :name => name,
+          :account_number => account_number,
+          :bank_code => bank_code,
+          :meta => meta,
+      )
+
+    end
+
   end
 
 end

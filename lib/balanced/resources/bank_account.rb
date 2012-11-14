@@ -7,6 +7,19 @@ module Balanced
   class BankAccount
     include Balanced::Resource
 
+    def self.has_account?
+      self.respond_to?('account') && !self.account.nil?
+    end
+
+    def self.uri
+      # Override the default nesting -- bank accounts can be toplevel now
+      if !self.has_account?
+         self.collection_path
+      else
+         self.class.uri
+      end
+    end
+
     def initialize attributes = {}
       Balanced::Utils.stringify_keys! attributes
       unless attributes.has_key? 'uri'
@@ -38,7 +51,7 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       description = args[1] || options.fetch(:description) { nil }
-      if !self.respond_to?('account') || self.account.nil?
+      if !self.class.has_account?
         Credit.new(
           :amount => amount,
           :description => description,

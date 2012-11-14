@@ -79,7 +79,7 @@ refund = debit.refund()  # the full amount!
 puts "ok, we have a merchant that's signing up, let's create an account for them " \
      "first, lets create their bank account."
 
-bank_account = Balanced::BankAccount.new(
+bank_account = marketplace.create_bank_account(
     :account_number => "1234567890",
     :bank_code => "12",
     :name => "Jack Q Merchant",

@@ -18,7 +18,7 @@ describe Balanced::Transaction do
         :dob => "1842-01",
         :phone_number => "+16505551234",
     }
-    bank_account = Balanced::BankAccount.new(
+    bank_account = @marketplace.create_bank_account(
       :account_number => "1234567890",
       :bank_code => "321174851",
       :name => "Jack Q Merchant"

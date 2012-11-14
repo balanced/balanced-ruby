@@ -43,6 +43,9 @@ module Balanced
         :request => {
           :open_timeout => config[:connection_timeout],
           :timeout => config[:read_timeout]
+        },
+        :ssl => {
+          :verify => true       # Only set this to false for testing
         }
       }
       @conn = Faraday.new(url, options) do |cxn|
@@ -63,7 +66,9 @@ module Balanced
     #end
 
     def url
-      URI::HTTPS.build ({:host => config[:host],
+      builder = (config[:scheme] == 'http') ? URI::HTTP : URI::HTTPS
+
+      builder.build ({:host => config[:host],
                          :port => config[:port],
                          :scheme => config[:scheme]})
     end

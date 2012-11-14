@@ -68,7 +68,7 @@ describe Balanced::Account do
         :name => "Jack Q Buyer"
       ).save
 
-      @bank_account = Balanced::BankAccount.new(
+      @bank_account = @marketplace.create_bank_account(
         :account_number => "1234567890",
         :bank_code => "321174851",
         :name => "Jack Q Merchant"
@@ -92,7 +92,7 @@ describe Balanced::Account do
       end
 
       context "all args passed directly" do
-        subject { 
+        subject {
           @merchant.credit 1250, "description", {}, @bank_account.uri
         }
 
@@ -104,8 +104,8 @@ describe Balanced::Account do
       context "args passed by name via options hash" do
         subject {
           @merchant.credit(
-            amount: 1250, 
-            description: "description", 
+            amount: 1250,
+            description: "description",
             meta: {},
             destination_uri: @bank_account.uri
           )
@@ -181,7 +181,7 @@ describe Balanced::Account do
     describe "#add_bank_account" do
       use_vcr_cassette
       before do
-        @new_bank_account = Balanced::BankAccount.new(
+        @new_bank_account = @marketplace.create_bank_account(
           :account_number => "1234567890",
           :bank_code => "321174851",
           :name => "Jack Q Merchant"

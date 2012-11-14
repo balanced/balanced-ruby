@@ -7,7 +7,7 @@ describe Balanced::Marketplace do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
-    @bank_account = Balanced::BankAccount.new(
+    @bank_account = @marketplace.create_bank_account(
       :account_number => "1234567890",
       :bank_code => "321174851",
       :name => "Jack Q Merchant"
