@@ -63,9 +63,7 @@ module Balanced
     #end
 
     def url
-      builder = (config[:scheme] == 'http') ? URI::HTTP : URI::HTTPS
-
-      builder.build ({:host => config[:host],
+      URI::HTTPS.build ({:host => config[:host],
                          :port => config[:port],
                          :scheme => config[:scheme]})
     end
