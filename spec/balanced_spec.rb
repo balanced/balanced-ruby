@@ -32,7 +32,8 @@ describe Balanced do
 
       describe "#url" do
         subject { Balanced.client.url.to_s }
-        it { should eql "https://api.balancedpayments.com" }
+        it { should satisfy {|s|
+["https://api.balancedpayments.com", "http://localhost:5000"].include?(s) } }
       end
     end
 

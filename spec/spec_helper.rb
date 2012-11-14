@@ -15,6 +15,17 @@ VCR.configure do |c|
   c.hook_into :faraday
 end
 
+# TODO: better way to do this?
+host = ENV['BALANCED_HOST'] or nil
+options = {}
+if !host.nil? then
+  options[:scheme] = 'http'
+  options[:host] = host
+  options[:port] = 5000
+  options[:ssl_verify] = false
+  Balanced.configure(nil, options)
+end
+
 RSpec.configure do |c|
   c.extend VCR::RSpec::Macros
 

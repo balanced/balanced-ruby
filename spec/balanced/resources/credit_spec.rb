@@ -47,7 +47,7 @@ describe Balanced::Credit do
     describe 'bank_account' do
       use_vcr_cassette
       subject { @credit.bank_account }
-      its(:account_number) { should eql '4321' }
+      its(:account_number) { should end_with '4321' }
     end
 
   end

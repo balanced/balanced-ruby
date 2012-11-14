@@ -16,7 +16,8 @@ module Balanced
       :logging_level => 'WARN',
       :connection_timeout => 2,
       :read_timeout => 5,
-      :logger => nil
+      :logger => nil,
+      :ssl_verify => true
     }
 
     attr_reader :conn
@@ -45,7 +46,7 @@ module Balanced
           :timeout => config[:read_timeout]
         },
         :ssl => {
-          :verify => true       # Only set this to false for testing
+          :verify => @config[:ssl_verify] # Only set this to false for testing
         }
       }
       @conn = Faraday.new(url, options) do |cxn|

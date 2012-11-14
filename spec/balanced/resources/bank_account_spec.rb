@@ -55,7 +55,7 @@ describe Balanced::BankAccount do
     describe 'account_number' do
       use_vcr_cassette
       subject { @bank_account.account_number }
-      it { should eql '4321' }
+      it { should end_with '4321' }
     end
 
     describe 'fingerprint' do
@@ -78,7 +78,7 @@ describe Balanced::BankAccount do
         use_vcr_cassette
 
         subject { @credit.bank_account }
-        its(:account_number) {should eql '4321'}
+        its(:account_number) {should end_with '4321'}
         its(:routing_number) {should eql '321174851'}
       end
     end
