@@ -63,9 +63,11 @@ module Balanced
     #end
 
     def url
-      URI::HTTP.build ({:host => config[:host],
-                        :port => config[:port],
-                        :scheme => config[:scheme]})
+      builder = (config[:scheme] == 'http') ? URI::HTTP : URI::HTTPS
+
+      builder.build ({:host => config[:host],
+                         :port => config[:port],
+                         :scheme => config[:scheme]})
     end
 
     def method_missing(method, *args, &block)
