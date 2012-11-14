@@ -38,7 +38,7 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       description = args[1] || options.fetch(:description) { nil }
-      if !self.respond_to?('account')
+      if !self.respond_to?('account') || self.account.nil?
         Credit.new(
           :amount => amount,
           :description => description,

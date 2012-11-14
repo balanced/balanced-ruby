@@ -1,4 +1,4 @@
-$:.unshift("/Users/msherry/pp/dockers/balanced-ruby/lib")
+$:.unshift("/Users/msherry/pp/balanced-ruby/lib")
 require 'balanced'
 
 begin
@@ -100,9 +100,9 @@ merchant = marketplace.create_merchant(
     :name => "Jack Q Merchant",
 )
 
-puts "oh our buyer is interested in buying something for 130.00$"
+puts "oh our buyer is interested in buying something for 530.00$"
 another_debit = buyer.debit(
-    :amount => 13000,
+    :amount => 53000,
     :appears_on_statement_as => "MARKETPLACE.COM"
 )
 
@@ -155,4 +155,4 @@ credit = Balanced::Credit.new(
     }
 ).save
 raise "OOPS -- that was hard after all" if (credit.amount != 700 or
-                                            credit.created_at == nil)
+                                            credit.created_at.nil?)
