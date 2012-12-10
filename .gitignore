@@ -21,6 +21,7 @@ doc/
 # env
 .idea
 werk
+*.iml
 
 # lib
 Gemfile.lock

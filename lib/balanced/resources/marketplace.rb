@@ -93,7 +93,7 @@ module Balanced
           :email_address => email_address,
           :bank_account_uri => bank_account_uri,
           :name => name,
-          :meta => meta,
+          :meta => meta
       }
 
       if merchant.respond_to? :keys
@@ -108,6 +108,8 @@ module Balanced
 
     # Creates a BankAccount object tied to this marketplace, for use with
     # accounts
+    #
+    # @return [BankAccount]
     def create_bank_account *args
       options = args.last.is_a?(Hash) ? args.pop : {}
       name = args[0] || options.fetch(:name) { }
@@ -120,9 +122,9 @@ module Balanced
           :name => name,
           :account_number => account_number,
           :bank_code => bank_code,
-          :meta => meta,
+          :meta => meta
       )
-
+      bank_account.save
     end
 
   end
