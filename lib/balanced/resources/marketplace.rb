@@ -124,7 +124,6 @@ module Balanced
           :bank_code => bank_code,
           :meta => meta
       )
-      bank_account.save
     end
 
   end
