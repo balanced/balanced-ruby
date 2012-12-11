@@ -47,6 +47,27 @@ module Balanced
       self.class.my_marketplace
     end
 
+    # Create an Account associated with this Marketplace. This account
+    # will have no roles associated with it.
+    #
+    # @return [Account]
+    def create_account options={}
+      email_address = options.fetch(:email_address) { nil }
+      name = options.fetch(:name) { nil }
+      meta = options.fetch(:meta) { nil }
+
+      account_attributes = {
+          :uri => self.accounts_uri,
+          :email_address => email_address,
+          :name => name,
+          :meta => meta,
+      }
+
+      account = Account.new account_attributes
+      account.save
+    end
+
+
     # Create a buyer Account associated with this Marketplace.
     #
     # @return [Account]

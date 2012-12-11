@@ -28,7 +28,7 @@ module Balanced
     end
 
     def warn_on_positional args
-      msg = <<-eos
+      msg = <<-WARNING
       #############################################################
       #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!   #
       #############################################################
@@ -39,7 +39,7 @@ module Balanced
 
       If you need help, please hop on irc.freenode.net #balanced
       or contact support@balancedpayments.com
-      eos
+      WARNING
       # warn if [...] otherwise, it's ok if it's: [], [{}] or [{...}]
       unless (args.size == 1 and args.last.is_a? Hash) or (args.size == 0)
         warn msg

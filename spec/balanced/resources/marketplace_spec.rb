@@ -3,6 +3,7 @@ require "spec_helper"
 
 describe Balanced::Marketplace do
   use_vcr_cassette
+
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
@@ -39,6 +40,31 @@ describe Balanced::Marketplace do
       )
       bank_account.should be_instance_of Balanced::BankAccount
       Balanced.is_collection(bank_account.uri).should be_false
+    end
+
+  end
+
+  describe "create_account" do
+    use_vcr_cassette :new_episodes
+
+    before do
+      @account = @marketplace.create_account
+      @account_with_attributes = @marketplace.create_account(
+          :name => "Jon Q. Timmy",
+          :email_address => "bog@example.com"
+      )
+    end
+
+    it "creates an account without any roles" do
+      @account.should be_instance_of Balanced::Account
+      Balanced.is_collection(@account.uri).should be_false
+      @account.uri.should match ACCOUNTS_URI_REGEX
+      @account.roles.size.should eql 0
+    end
+
+    it "creates an account with some options" do
+      @account_with_attributes.name.should == "Jon Q. Timmy"
+      @account_with_attributes.email_address.should == "bog@example.com"
     end
 
   end
