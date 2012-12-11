@@ -8,11 +8,6 @@ module Balanced
   class ApiKey
     include Balanced::Resource
 
-    def save
-      Balanced.configure nil
-      super
-    end
-
   end
 
 end

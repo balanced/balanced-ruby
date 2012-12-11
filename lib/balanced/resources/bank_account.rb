@@ -34,6 +34,8 @@ module Balanced
     #    the +domain_name+ property from your Marketplace.
     # @return [Debit]
     def debit *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       soft_descriptor = args[1] || options.fetch(:appears_on_statement_as) { nil }
@@ -48,6 +50,8 @@ module Balanced
     #
     # @return [Credit]
     def credit *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       description = args[1] || options.fetch(:description) { nil }

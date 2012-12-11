@@ -51,6 +51,8 @@ module Balanced
     #
     # @return [Account]
     def create_buyer *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       email_address = args[0] || options.fetch(:email_address) { nil }
       card = args[1] || options.fetch(:card_uri) { options.fetch(:card) { nil} }
@@ -88,6 +90,8 @@ module Balanced
     #
     # @return [Account]
     def create_merchant *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       email_address = args[0] || options.fetch(:email_address) { nil }
       merchant = args[1] || options.fetch(:merchant) { nil }
@@ -118,6 +122,8 @@ module Balanced
     #
     # @return [BankAccount]
     def create_bank_account *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       name = args[0] || options.fetch(:name) { }
       account_number = args[1] || options.fetch(:account_number) { nil }
@@ -144,6 +150,8 @@ module Balanced
     #
     # @return [Card]
     def create_card *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       card_number = args[0] || options.fetch(:card_number) { nil }
       expiration_month = args[1] || options.fetch(:expiration_month) { nil }

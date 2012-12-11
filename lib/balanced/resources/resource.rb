@@ -27,6 +27,14 @@ module Balanced
       reload @response
     end
 
+    def warn_on_positional args
+      if args.is_a? Array
+        warn "Using positional arguments is DEPRECATED. Please use keyword " \
+             "options instead. Version 0.7.0 of the Ruby client will not " \
+             "support positional arguments."
+      end
+    end
+
     def response
       @response
     end

@@ -38,6 +38,8 @@ module Balanced
     #
     # @return [Debit]
     def capture *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
