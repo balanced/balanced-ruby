@@ -60,7 +60,7 @@ module Balanced
           :uri => self.accounts_uri,
           :email_address => email_address,
           :name => name,
-          :meta => meta,
+          :meta => meta
       }
 
       account = Account.new account_attributes
