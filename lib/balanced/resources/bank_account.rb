@@ -36,11 +36,11 @@ module Balanced
     def debit *args
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
-      soft_descriptor = args[1] || options.fetch(:appears_on_statement_as) { nil }
+      appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
       meta = args[2] || options.fetch(:meta) { nil }
       description = args[3] || options.fetch(:description) { nil }
 
-      self.account.debit(amount, soft_descriptor, meta, description, self.uri)
+      self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
     end
 
     # Creates a Credit of funds from your Marketplace's escrow account to this
@@ -59,7 +59,7 @@ module Balanced
         ).save
       else
         meta = args[2] || options.fetch(:meta) { nil }
-        soft_descriptor = args[3] || options.fetch(:appears_on_statement_as) { nil }
+        appears_on_statement_as = args[3] || options.fetch(:appears_on_statement_as) { nil }
         destination_url = args[4] || options.fetch(:destination_uri) { self.uri }
         self.account.credit(amount, meta, description, destination_uri, appears_on_statement_as)
       end
