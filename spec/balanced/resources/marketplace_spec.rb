@@ -13,8 +13,9 @@ describe Balanced::Marketplace do
       :name => "Jack Q Merchant"
     )
     @merchant = @marketplace.create_merchant(
-      "merchant@example.org",
-      {
+      :name =>"Jack Q Merchant",
+      :email_address => "merchant@example.org",
+      :merchant => {
         :type => "person",
         :name => "Billy Jones",
         :street_address => "801 High St.",
@@ -23,8 +24,7 @@ describe Balanced::Marketplace do
         :dob => "1842-01",
         :phone_number => "+16505551234",
       },
-      @bank_account.uri,
-      "Jack Q Merchant"
+      :bank_account_uri => @bank_account.uri,
     )
   end
 

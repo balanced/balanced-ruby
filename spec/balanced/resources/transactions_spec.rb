@@ -39,10 +39,12 @@ describe Balanced::Transaction do
       :card_uri => card.uri,
       :name => "Jack Q Buyer"
     ).save
+
     1.upto 5 do |n|
-      @buyer.debit(1000, :description => "Transaction ##{n}")
-      @merchant.credit(500, :description => "Credit from Debit ##{n}")
+      @buyer.debit(:amount => 1000, :description => "Transaction ##{n}")
+      @merchant.credit(:amount => 500, :description => "Credit from Debit ##{n}")
     end
+
   end
 
   describe "Transaction" do

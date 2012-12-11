@@ -40,8 +40,8 @@ module Balanced
       If you need help, please hop on irc.freenode.net #balanced
       or contact support@balancedpayments.com
       eos
-      # warn if [], [...] else [{}] or [{...}]
-      unless (args.size == 1 and args.last.is_a? Hash) #or (args.size == 0)
+      # warn if [...] otherwise, it's ok if it's: [], [{}] or [{...}]
+      unless (args.size == 1 and args.last.is_a? Hash) or (args.size == 0)
         warn msg
       end
     end

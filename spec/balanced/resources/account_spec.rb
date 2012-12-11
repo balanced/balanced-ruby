@@ -12,7 +12,9 @@ describe Balanced::Account do
     use_vcr_cassette
 
     context "when ApiKey is not configured" do
+
       use_vcr_cassette
+
       before do
         Balanced::Marketplace.stub(:marketplace_uri) { nil }
         Balanced.configure nil
@@ -88,9 +90,10 @@ describe Balanced::Account do
     describe "#credit" do
       use_vcr_cassette
       before do
-        @buyer.debit 1250
+        @buyer.debit :amount => 1250
       end
 
+      # WARNING: This test is deprecated
       context "all args passed directly" do
         subject {
           @merchant.credit 1250, "description", {}, @bank_account.uri
@@ -458,6 +461,7 @@ describe Balanced::Account do
         debit.amount.should eql 500
         debit.appears_on_statement_as.should eql "BOBS BURGERS"
       end
+      # this is deprecated
       it "takes positional parameters" do
         debit = @buyer.debit(500, "FOO FIGHTER")
         debit.should be_instance_of Balanced::Debit
@@ -481,8 +485,8 @@ describe Balanced::Account do
         :expiration_year => "2015",
       ).save
       Balanced::Marketplace.my_marketplace.create_buyer(
-        "john.doe@example.com",
-        card.uri
+        :email_address => "john.doe@example.com",
+        :card_uri => card.uri,
       )
     end
 
@@ -517,9 +521,9 @@ describe Balanced::Account do
         :expiration_month => "12",
         :expiration_year => "2015",
       ).save
-      buyer = Balanced::Marketplace.my_marketplace.create_buyer(
-        "john.doe@example.com",
-        card.uri
+      @buyer = Balanced::Marketplace.my_marketplace.create_buyer(
+        :email_address => "john.doe@example.com",
+        :card_uri => card.uri,
       )
     end
 

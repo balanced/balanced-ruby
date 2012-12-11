@@ -1,6 +1,9 @@
 require "spec_helper"
+
 describe Balanced::Credit do
+
   use_vcr_cassette
+
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
@@ -12,8 +15,11 @@ describe Balanced::Credit do
     ).save
 
     # An initial balance for the marketplace
-    @buyer = @marketplace.create_buyer("buyer@example.org", card.uri)
-    @buyer.debit(10000000)
+    @buyer = @marketplace.create_buyer(
+        :email_address => 'buyer@example.org',
+        :card_uri => card.uri
+    )
+    @buyer.debit :amount => 10000000
   end
 
   describe "#create" do
