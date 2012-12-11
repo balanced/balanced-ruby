@@ -1,4 +1,5 @@
-$:.unshift("/Users/msherry/pp/balanced-ruby/lib")
+cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
+$:.unshift(cwd + "/lib")
 require 'balanced'
 
 begin
@@ -7,9 +8,9 @@ rescue NameError
   raise "wtf"
 end
 
-host = ENV['BALANCED_HOST'] or nil
+host = ENV.fetch('BALANCED_HOST') { nil }
 options = {}
-if host then
+if host
   options[:scheme] = 'http'
   options[:host] = host
   options[:port] = 5000
