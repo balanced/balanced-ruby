@@ -24,11 +24,18 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
-      holds_uri = args[2] || options.fetch(:holds_uri) { nil }
+      hold_uri = args[2] || options.fetch(:hold_uri) { nil }
       meta = args[3] || options.fetch(:meta) { nil }
       description = args[3] || options.fetch(:description) { nil }
 
-      self.account.debit(amount, appears_on_statement_as, holds_uri, meta, description, self.uri)
+      self.account.debit(
+          :amount => amount,
+          :appears_on_statement_as => appears_on_statement_as,
+          :hold_uri => hold_uri,
+          :meta => meta,
+          :description => description,
+          :source_uri => self.uri
+      )
     end
 
     # Creates a Hold of funds from this Card to your Marketplace.
@@ -38,9 +45,13 @@ module Balanced
       warn_on_positional args
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
-      meta = args[3] || options.fetch(:meta) { nil }
+      meta = args[1] || options.fetch(:meta) { nil }
 
-      self.account.hold(amount, meta, self.uri)
+      self.account.hold(
+          :amount => amount,
+          :meta => meta,
+          :source_uri => self.uri
+      )
     end
 
     def invalidate

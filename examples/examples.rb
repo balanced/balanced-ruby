@@ -84,7 +84,7 @@ bank_account = marketplace.create_bank_account(
     :account_number => "1234567890",
     :bank_code => "12",
     :name => "Jack Q Merchant",
-).save
+)
 
 merchant = marketplace.create_merchant(
     :email_address => "merchant@example.org",
@@ -132,7 +132,7 @@ raise "This card is INCORRECTLY VALID" if bank_account.is_valid
 puts "let's create a bank account not associated to an account"
 bank_account = Balanced::BankAccount.new(
     :account_number => "9876543210",
-    :bank_code => "12",
+    :routing_number => "021000021",
     :name => "Jake Skellington",
     :type => "checking"
 ).save
@@ -150,7 +150,7 @@ credit = Balanced::Credit.new(
     :description => "Amazing",
     :bank_account => {
         :account_number => "55555555",
-        :bank_code => "12",
+        :bank_code => "021000021",
         :name => "Wanda Wandy",
         :type => "checking"
     }
