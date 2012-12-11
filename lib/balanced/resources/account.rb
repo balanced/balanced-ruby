@@ -33,7 +33,7 @@ module Balanced
 
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
-      soft_descriptor = args[1] || options.fetch(:appears_on_statement_as) { nil }
+      appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
       hold_uri = args[2] || options.fetch(:hold_uri) { nil }
       meta = args[3] || options.fetch(:meta) { nil }
       description = args[4] || options.fetch(:description) { nil }
@@ -42,7 +42,7 @@ module Balanced
       debit = Debit.new(
           :uri => self.debits_uri,
           :amount => amount,
-          :appears_on_statement_as => soft_descriptor,
+          :appears_on_statement_as => appears_on_statement_as,
           :hold_uri => hold_uri,
           :meta => meta,
           :description => description,
