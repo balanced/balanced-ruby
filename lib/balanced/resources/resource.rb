@@ -29,9 +29,20 @@ module Balanced
 
     def warn_on_positional args
       if args.is_a? Array
-        warn "Using positional arguments is DEPRECATED. Please use keyword " \
-             "options instead. Version 0.7.0 of the Ruby client will not " \
-             "support positional arguments."
+        msg = <<-eos
+        #############################################################
+        #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!   #
+        #############################################################
+
+        Using positional arguments is **DEPRECATED**. Please use the
+        keyword options pattern instead. Version __0.7.0__ of the
+        Ruby client will not support positional arguments.
+
+        If you need help, please hop on irc.freenode.net #balanced
+        or contact support@balancedpayments.com
+
+        eos
+        warn msg
       end
     end
 
