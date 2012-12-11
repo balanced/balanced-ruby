@@ -455,7 +455,7 @@ describe Balanced::Account do
       it "takes optional parameters"  do
         debit = @buyer.debit(
           :amount => 500,
-          :appears_on_statement_as => "BOBS BURGERS",
+          :appears_on_statement_as => "BOBS BURGERS"
         )
         debit.should be_instance_of Balanced::Debit
         debit.amount.should eql 500
