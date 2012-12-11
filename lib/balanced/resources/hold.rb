@@ -47,7 +47,13 @@ module Balanced
       description = args[3] || options.fetch(:description) { nil }
 
       amount ||= self.amount
-      self.account.debit(amount, appears_on_statement_as, self.uri, meta, description)
+      self.account.debit(
+          :amount => amount,
+          :appears_on_statement_as => appears_on_statement_as,
+          :hold_uri => self.uri,
+          :meta => meta,
+          :description => description
+      )
     end
 
   end
