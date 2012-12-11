@@ -20,12 +20,8 @@ module Balanced
     #
     # @return [Debit]
     def debit *args
+      warn_on_positional args
       options = args.last.is_a?(Hash) ? args.pop : {}
-      if args.is_a? Array
-        warn "Using positional arguments is DEPRECATED. Please use keyword "
-             "options instead. Version 0.7.0 of the Ruby client will not "
-             "support positional arguments."
-      end
       amount = args[0] || options.fetch(:amount) { nil }
       appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
       holds_uri = args[2] || options.fetch(:holds_uri) { nil }
@@ -39,12 +35,8 @@ module Balanced
     #
     # @return [Hold]
     def hold *args
+      warn_on_positional args
       options = args.last.is_a?(Hash) ? args.pop : {}
-      if args.is_a? Array
-        warn "Using positional arguments is DEPRECATED. Please use keyword "
-             "options instead. Version 0.7.0 of the Ruby client will not "
-             "support positional arguments."
-      end
       amount = args[0] || options.fetch(:amount) { nil }
       meta = args[3] || options.fetch(:meta) { nil }
 
