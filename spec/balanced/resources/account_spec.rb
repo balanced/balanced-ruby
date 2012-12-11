@@ -72,7 +72,7 @@ describe Balanced::Account do
         :account_number => "1234567890",
         :bank_code => "321174851",
         :name => "Jack Q Merchant"
-      ).save
+      )
 
       @merchant = Balanced::Account.new(
         :uri => @marketplace.accounts_uri,
@@ -185,7 +185,7 @@ describe Balanced::Account do
           :account_number => "1234567890",
           :bank_code => "321174851",
           :name => "Jack Q Merchant"
-        ).save
+        )
       end
 
       describe "when executing" do

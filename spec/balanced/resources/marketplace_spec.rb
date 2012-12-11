@@ -11,7 +11,7 @@ describe Balanced::Marketplace do
       :account_number => "1234567890",
       :bank_code => "321174851",
       :name => "Jack Q Merchant"
-    ).save
+    )
     @merchant = @marketplace.create_merchant(
       "merchant@example.org",
       {
@@ -38,7 +38,7 @@ describe Balanced::Marketplace do
           :bank_code => "123456789",
       )
       bank_account.should be_instance_of Balanced::BankAccount
-      #Balanced.is_collection(bank_account.uri).should be_false
+      Balanced.is_collection(bank_account.uri).should be_false
     end
 
   end
@@ -53,7 +53,7 @@ describe Balanced::Marketplace do
           :expiration_year => "2018",
       )
       card.should be_instance_of Balanced::Card
-      #Balanced.is_collection(card.uri).should be_false
+      Balanced.is_collection(card.uri).should be_false
     end
   end
 

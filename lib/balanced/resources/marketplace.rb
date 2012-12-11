@@ -136,6 +136,7 @@ module Balanced
           :meta => meta
       )
 
+      bank_account.save
     end
 
     # Creates a Card object tied to this marketplace, for use with
@@ -170,7 +171,7 @@ module Balanced
           :phone_number => phone_number,
           :meta => meta
       )
-      #card.save
+      card.save
     end
 
   end

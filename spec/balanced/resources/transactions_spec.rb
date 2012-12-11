@@ -22,7 +22,7 @@ describe Balanced::Transaction do
       :account_number => "1234567890",
       :bank_code => "321174851",
       :name => "Jack Q Merchant"
-    ).save
+    )
     card = Balanced::Card.new(
       :card_number => "4111111111111111",
       :expiration_month => "1",
