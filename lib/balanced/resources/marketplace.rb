@@ -18,6 +18,13 @@ module Balanced
 
     # @return [String, nil] the marketplace's URI
     def self.marketplace_uri
+      if !@@marketplace_uri and Balanced.is_configured_with_api_key?
+        begin
+          self.my_marketplace
+        rescue Balanced::Error
+          # do nothing..
+        end
+      end
       @@marketplace_uri
     end
 
@@ -114,7 +121,11 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       name = args[0] || options.fetch(:name) { }
       account_number = args[1] || options.fetch(:account_number) { nil }
-      bank_code = args[2] || options.fetch(:bank_code) { nil }
+      bank_code = args[2] || options.fetch(:bank_code) {
+        options.fetch(:routing_number) {
+          nil
+        }
+      }
       meta = args[3] || options.fetch(:meta) { nil }
 
       bank_account = BankAccount.new(
@@ -124,6 +135,42 @@ module Balanced
           :bank_code => bank_code,
           :meta => meta
       )
+
+    end
+
+    # Creates a Card object tied to this marketplace, for use with
+    # accounts
+    #
+    # @return [Card]
+    def create_card *args
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      card_number = args[0] || options.fetch(:card_number) { nil }
+      expiration_month = args[1] || options.fetch(:expiration_month) { nil }
+      expiration_year = args[2] || options.fetch(:expiration_year) { nil }
+      security_code = args[3] || options.fetch(:expiration_year) { nil }
+      postal_code = args[4] || options.fetch(:postal_code) { nil }
+      name = args[5] || options.fetch(:name) { nil }
+      phone_number = args[6] || options.fetch(:phone_number) { nil }
+      street_address = args[7] || options.fetch(:street_address) { nil }
+      city = args[8] || options.fetch(:city) { nil }
+      country_code = args[9] || options.fetch(:country_code) { nil }
+      meta = args[10] || options.fetch(:meta) { nil }
+
+      card = Card.new(
+          :uri => self.cards_uri,
+          :card_number => card_number,
+          :expiration_month => expiration_month,
+          :expiration_year => expiration_year,
+          :name => name,
+          :security_code => security_code,
+          :street_address => street_address,
+          :city => city,
+          :postal_code => postal_code,
+          :country_code => country_code,
+          :phone_number => phone_number,
+          :meta => meta
+      )
+      #card.save
     end
 
   end
