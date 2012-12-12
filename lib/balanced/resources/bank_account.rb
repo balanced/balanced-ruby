@@ -64,7 +64,7 @@ module Balanced
             :description => description,
             :destination_uri => destination_uri,
             :appears_on_statement_as => appears_on_statement_as
-      )
+        )
       else
         credit = Credit.new(
             :uri => self.credits_uri,

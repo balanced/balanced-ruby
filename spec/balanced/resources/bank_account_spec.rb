@@ -51,33 +51,34 @@ describe Balanced::BankAccount do
       )
     end
 
-    context 'account' do
+    context 'without an account' do
 
       subject { @bank_account.account }
       it { should be_nil }
 
-      describe 'has_account? without an account' do
+      describe 'has_account?' do
 
         subject { @bank_account.has_account? }
         it { should be_false }
 
       end
+    end
 
-      describe 'has_account? with an account' do
-        use_vcr_cassette
+    context 'with an account' do
+      use_vcr_cassette
+      before do
+        @account = @marketplace.create_account
+        bank_account = @marketplace.create_bank_account(
+            :account_number => "0987654321",
+            :bank_code => "321174851",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+        )
+        @account.add_bank_account(bank_account.uri)
+        @bank_account_two = bank_account.reload
+      end
 
-        before do
-          @account = @marketplace.create_account
-          bank_account = @marketplace.create_bank_account(
-                  :account_number => "0987654321",
-                  :bank_code => "321174851",
-                  :name => "Timmy T. McTimmerson",
-                  :type => "checking"
-                )
-          @account.add_bank_account(bank_account.uri)
-          @bank_account_two = bank_account.reload
-        end
-
+      describe 'has_account?' do
         subject { @bank_account_two.has_account? }
         it { should be_true }
       end
@@ -107,12 +108,42 @@ describe Balanced::BankAccount do
       end
 
       describe 'bank_account' do
-        use_vcr_cassette
-
         subject { @credit.bank_account }
         its(:account_number) {should end_with '4321'}
         its(:routing_number) {should eql '321174851'}
+
       end
+
+      describe 'without an account' do
+         subject { @credit }
+         it { should respond_to :account }
+         its(:account) { should be_nil }
+      end
+
+      describe 'with an account' do
+        use_vcr_cassette
+
+        before do
+          @account = @marketplace.create_account
+          bank_account = @marketplace.create_bank_account(
+            :account_number => "1234567890111",
+            :bank_code => "021000021",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+          )
+          @account.add_bank_account(bank_account.uri)
+          bank_account = bank_account.reload
+          @credit_with_account = bank_account.credit(
+            :amount => 500,
+            :description => 'Blahblahblah'
+          )
+        end
+
+         subject { @credit_with_account }
+         it { should respond_to :account }
+         it { should be_instance_of Balanced::Credit }
+      end
+
     end
   end
 end
