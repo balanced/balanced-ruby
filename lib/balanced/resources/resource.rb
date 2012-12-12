@@ -29,6 +29,7 @@ module Balanced
 
     def warn_on_positional args
       msg = <<-WARNING
+      Called from: #{caller[1]}
       #############################################################
       #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!   #
       #############################################################
