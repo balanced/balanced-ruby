@@ -30,23 +30,23 @@ puts "create our marketplace"
 begin
   marketplace = Balanced::Marketplace.new.save
 rescue Balanced::Conflict => ex
-  marketplace = Balanced::Marketplace.my_marketplace
+  marketplace = Balanced::Marketplace.mine
 end
 
 raise "Merchant.me should not be nil" if Balanced::Merchant.me.nil?
 puts "what's my merchant?, easy: Merchant.me: ", Balanced::Merchant.me
 
 # what's my marketplace?
-raise "Marketplace.my_marketplace should not be nil" if Balanced::Marketplace.my_marketplace.nil?
-puts "what's my marketplace?, easy: Marketplace.my_marketplace: ", Balanced::Marketplace.my_marketplace
+raise "Marketplace.mine should not be nil" if Balanced::Marketplace.mine.nil?
+puts "what's my marketplace?, easy: Marketplace.mine: ", Balanced::Marketplace.mine
 
 puts "My marketplace's name is: #{marketplace.name}"
 random_name = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
 puts "Changing it to #{random_name}"
 marketplace.name = random_name
 marketplace.save
-puts "My marketplace name is now: #{Balanced::Marketplace.my_marketplace.name}"
-raise "Marketplace name is NOT #{random_name}!" if Balanced::Marketplace.my_marketplace.name != random_name
+puts "My marketplace name is now: #{Balanced::Marketplace.mine.name}"
+raise "Marketplace name is NOT #{random_name}!" if Balanced::Marketplace.mine.name != random_name
 
 puts "cool! let's create a new card."
 card = Balanced::Card.new(

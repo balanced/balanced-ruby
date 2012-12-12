@@ -6,30 +6,35 @@ module Balanced
 
     @@marketplace_uri = nil
 
-    # Returns an instance representing the marketplace associated with
-    # the current API key.
-    #
-    # @return [Marketplace]
-    def self.my_marketplace
-      marketplace = Balanced::Merchant.me.marketplace
-      @@marketplace_uri = marketplace.uri if marketplace
-      marketplace
-    end
+    class << self
 
-    # @return [String, nil] the marketplace's URI
-    def self.marketplace_uri
-      if !@@marketplace_uri and Balanced.is_configured_with_api_key?
-        begin
-          self.my_marketplace
-        rescue Balanced::Error
-          # do nothing..
-        end
+      # Returns an instance representing the marketplace associated with
+      # the current API key.
+      #
+      # @return [Marketplace]
+      def my_marketplace
+        marketplace = Balanced::Merchant.me.marketplace
+        @@marketplace_uri = marketplace.uri if marketplace
+        marketplace
       end
-      @@marketplace_uri
-    end
+      alias mine my_marketplace
 
-    def self.marketplace_exists?
-      !!marketplace_uri
+      # @return [String, nil] the marketplace's URI
+      def marketplace_uri
+        if !@@marketplace_uri and Balanced.is_configured_with_api_key?
+          begin
+            mine
+          rescue Balanced::Error
+            # do nothing..
+          end
+        end
+        @@marketplace_uri
+      end
+
+      def marketplace_exists?
+        !!marketplace_uri
+      end
+
     end
 
     # @return [Marketplace]
@@ -46,6 +51,7 @@ module Balanced
     def my_marketplace
       self.class.my_marketplace
     end
+    alias mine my_marketplace
 
     # Create an Account associated with this Marketplace. This account
     # will have no roles associated with it.
