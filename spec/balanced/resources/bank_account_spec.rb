@@ -6,13 +6,13 @@ describe Balanced::BankAccount do
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
+
     @marketplace = Balanced::Marketplace.new.save
-    card = Balanced::Card.new(
+    card = @marketplace.create_card(
       :card_number      => "5105105105105100",
       :expiration_month => "12",
       :expiration_year  => "2015"
-    ).save
-
+    )
     # An initial balance for the marketplace
     @buyer = @marketplace.create_buyer(
         :email_address => 'buyer@example.org',
@@ -43,12 +43,12 @@ describe Balanced::BankAccount do
     use_vcr_cassette
 
     before do
-      @bank_account = Balanced::BankAccount.new(
-                 :account_number => "0987654321",
-                 :bank_code => "321174851",
-                 :name => "Timmy T. McTimmerson",
-                 :type => "checking"
-      ).save
+      @bank_account = @marketplace.create_bank_account(
+        :account_number => "0987654321",
+        :bank_code => "321174851",
+        :name => "Timmy T. McTimmerson",
+        :type => "checking"
+      )
     end
 
     describe 'account' do
