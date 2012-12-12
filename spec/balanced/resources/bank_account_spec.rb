@@ -49,12 +49,34 @@ describe Balanced::BankAccount do
         :name => "Timmy T. McTimmerson",
         :type => "checking"
       )
+      @account = @marketplace.create_account
+
     end
 
-    describe 'account' do
-      use_vcr_cassette
+    context 'account' do
+
       subject { @bank_account.account }
       it { should be_nil }
+
+      describe 'has_account? without an account' do
+
+        subject { @bank_account.has_account? }
+        it { should be_false }
+
+      end
+
+      describe 'has_account? with an account' do
+        use_vcr_cassette
+
+        before do
+          @account.add_bank_account(@bank_account.uri)
+          @bank_account = @bank_account.reload
+        end
+
+        subject { @bank_account.has_account? }
+        it { should be_true }
+      end
+
     end
 
     describe 'account_number' do

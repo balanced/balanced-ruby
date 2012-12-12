@@ -23,7 +23,7 @@ module Balanced
     end
 
     def has_account?
-      self.attributes.has_key? :account_uri
+      self.respond_to? 'account' and !self.account.nil?
     end
 
     # Creates a Debit of funds from this BankAccount to your Marketplace's escrow account.
