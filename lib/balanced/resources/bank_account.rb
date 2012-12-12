@@ -7,17 +7,11 @@ module Balanced
   class BankAccount
     include Balanced::Resource
 
-    def self.has_account?
-      self.respond_to?('account') && !self.account.nil?
-    end
-
     def self.uri
-      # Override the default nesting -- bank accounts can be toplevel now
-      if !self.has_account?
-         self.collection_path
-      else
-         self.class.uri
-      end
+      # Override the default nesting -- bank accounts can be top-level now
+      # but they can also be nested under marketplaces, which is what we
+      # want to default to unless explicitly set
+       self.collection_path
     end
 
     def initialize attributes = {}
@@ -26,6 +20,10 @@ module Balanced
         attributes['uri'] = self.class.uri
       end
       super attributes
+    end
+
+    def has_account?
+      self.attributes.has_key? :account_uri
     end
 
     # Creates a Debit of funds from this BankAccount to your Marketplace's escrow account.
@@ -55,18 +53,28 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       description = args[1] || options.fetch(:description) { nil }
-      if !self.class.has_account?
-        Credit.new(
-          :amount => amount,
-          :description => description,
-          :uri => self.credits_uri,
-        ).save
-      else
+
+      if self.has_account?
         meta = args[2] || options.fetch(:meta) { nil }
         appears_on_statement_as = args[3] || options.fetch(:appears_on_statement_as) { nil }
-        destination_url = args[4] || options.fetch(:destination_uri) { self.uri }
-        self.account.credit(amount, meta, description, destination_uri, appears_on_statement_as)
+        destination_uri = args[4] || options.fetch(:destination_uri) { self.uri }
+        credit = self.account.credit(
+            :amount => amount,
+            :meta => meta,
+            :description => description,
+            :destination_uri => destination_uri,
+            :appears_on_statement_as => appears_on_statement_as
+      )
+      else
+        credit = Credit.new(
+            :uri => self.credits_uri,
+            :amount => amount,
+            :description => description
+        )
+        credit.save
       end
+
+      credit
     end
 
     def invalidate

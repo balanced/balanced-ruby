@@ -118,7 +118,7 @@ module Balanced
       if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
         collection_path
       else
-        if !Balanced::Marketplace.marketplace_exists?
+        unless Balanced::Marketplace.marketplace_exists?
           raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
         end
 
