@@ -49,8 +49,6 @@ describe Balanced::BankAccount do
         :name => "Timmy T. McTimmerson",
         :type => "checking"
       )
-      @account = @marketplace.create_account
-
     end
 
     context 'account' do
@@ -69,11 +67,18 @@ describe Balanced::BankAccount do
         use_vcr_cassette
 
         before do
-          @account.add_bank_account(@bank_account.uri)
-          @bank_account = @bank_account.reload
+          @account = @marketplace.create_account
+          bank_account = @marketplace.create_bank_account(
+                  :account_number => "0987654321",
+                  :bank_code => "321174851",
+                  :name => "Timmy T. McTimmerson",
+                  :type => "checking"
+                )
+          @account.add_bank_account(bank_account.uri)
+          @bank_account_two = bank_account.reload
         end
 
-        subject { @bank_account.has_account? }
+        subject { @bank_account_two.has_account? }
         it { should be_true }
       end
 
