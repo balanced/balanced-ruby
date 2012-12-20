@@ -18,6 +18,14 @@ module Balanced
     # If +appears_on_statement_as+ is nil, then Balanced will use the
     # +domain_name+ property from your Marketplace.
     #
+    # @param [Array] args
+    # @option args [Integer] :amount the amount of the purchase in cents
+    # @option args [String] :appears_on_statement_as
+    # @option args [String] :hold_uri
+    # @option args [Hash] :meta a hash of data to save with the Debit
+    # @option args [String] :description
+    # @option args [String] :source_uri
+    #
     # @return [Debit]
     def debit *args
       warn_on_positional args
