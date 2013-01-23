@@ -16,7 +16,8 @@ module Balanced
       :logging_level => 'WARN',
       :connection_timeout => 2,
       :read_timeout => 5,
-      :logger => nil
+      :logger => nil,
+      :ssl_verify => true
     }
 
     attr_reader :conn
@@ -43,6 +44,9 @@ module Balanced
         :request => {
           :open_timeout => config[:connection_timeout],
           :timeout => config[:read_timeout]
+        },
+        :ssl => {
+          :verify => @config[:ssl_verify] # Only set this to false for testing
         }
       }
       @conn = Faraday.new(url, options) do |cxn|
@@ -63,7 +67,11 @@ module Balanced
     #end
 
     def url
-      URI::HTTPS.build :host => config[:host], :port => config[:port]
+      builder = (config[:scheme] == 'http') ? URI::HTTP : URI::HTTPS
+
+      builder.build ({:host => config[:host],
+                         :port => config[:port],
+                         :scheme => config[:scheme]})
     end
 
     def method_missing(method, *args, &block)
@@ -76,11 +84,11 @@ module Balanced
     end
 
     private
-    
+
     def is_http_method? method
       [:get, :post, :put, :delete].include? method
     end
-    
+
     def respond_to?(method, include_private = false)
       if is_http_method? method
         true

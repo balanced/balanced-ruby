@@ -27,6 +27,25 @@ module Balanced
       reload @response
     end
 
+    def warn_on_positional args
+      msg = <<-WARNING
+      #############################################################
+      #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!   #
+      #############################################################
+
+      Using positional arguments is **DEPRECATED**. Please use the
+      keyword options pattern instead. Version __0.7.0__ of the
+      Ruby client will not support positional arguments.
+
+      If you need help, please hop on irc.freenode.net #balanced
+      or contact support@balancedpayments.com
+      WARNING
+      # warn if [...] otherwise, it's ok if it's: [], [{}] or [{...}]
+      unless (args.size == 1 and args.last.is_a? Hash) or (args.size == 0)
+        warn msg
+      end
+    end
+
     def response
       @response
     end
@@ -90,16 +109,16 @@ module Balanced
     #
     # @return [String] the uri of the instance or the class
     def uri
-      # the uri of a particular resource depends if there's a marketplace created or not
-      # if there's a marketplace, then all resources have their own uri from there and the top level ones
-      # if there's not a marketplace
+      # the uri of a particular resource depends if there's a marketplace
+      # created or not. if there's a marketplace, then all resources have their
+      # own uri from there and the top level ones. if there's not a marketplace
       #
       #    if there's an api key, then the merchant is available
       #    if there's no api key, the only resources exposed are purely top level
       if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
         collection_path
       else
-        if !Balanced::Marketplace.marketplace_exists?
+        unless Balanced::Marketplace.marketplace_exists?
           raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
         end
 
@@ -175,4 +194,3 @@ module Balanced
 
   end
 end
-

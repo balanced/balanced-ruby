@@ -18,11 +18,11 @@ describe Balanced::Transaction do
         :dob => "1842-01",
         :phone_number => "+16505551234",
     }
-    bank_account = Balanced::BankAccount.new(
+    bank_account = @marketplace.create_bank_account(
       :account_number => "1234567890",
       :bank_code => "321174851",
       :name => "Jack Q Merchant"
-    ).save
+    )
     card = Balanced::Card.new(
       :card_number => "4111111111111111",
       :expiration_month => "1",
@@ -39,10 +39,12 @@ describe Balanced::Transaction do
       :card_uri => card.uri,
       :name => "Jack Q Buyer"
     ).save
+
     1.upto 5 do |n|
-      @buyer.debit(1000, :description => "Transaction ##{n}")
-      @merchant.credit(500, :description => "Credit from Debit ##{n}")
+      @buyer.debit(:amount => 1000, :description => "Transaction ##{n}")
+      @merchant.credit(:amount => 500, :description => "Credit from Debit ##{n}")
     end
+
   end
 
   describe "Transaction" do

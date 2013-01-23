@@ -19,4 +19,3 @@ module Balanced
 
   end
 end
-

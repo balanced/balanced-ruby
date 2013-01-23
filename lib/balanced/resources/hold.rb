@@ -38,6 +38,8 @@ module Balanced
     #
     # @return [Debit]
     def capture *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
@@ -45,7 +47,13 @@ module Balanced
       description = args[3] || options.fetch(:description) { nil }
 
       amount ||= self.amount
-      self.account.debit(amount, appears_on_statement_as, self.uri, meta, description)
+      self.account.debit(
+          :amount => amount,
+          :appears_on_statement_as => appears_on_statement_as,
+          :hold_uri => self.uri,
+          :meta => meta,
+          :description => description
+      )
     end
 
   end

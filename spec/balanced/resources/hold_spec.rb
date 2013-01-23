@@ -11,14 +11,17 @@ describe Balanced::Hold do
       :expiration_month => "12",
       :expiration_year  => "2015"
     ).save
-    @buyer = @marketplace.create_buyer("buyer@example.org", card.uri)
+    @buyer = @marketplace.create_buyer(
+        :email_address => 'buyer@example.org',
+        :card_uri => card.uri,
+    )
   end
 
   describe "#void" do
     use_vcr_cassette
 
     before do
-      @hold = @buyer.hold 100
+      @hold = @buyer.hold :amount => 100
     end
 
     describe 'before' do
@@ -38,7 +41,7 @@ describe Balanced::Hold do
     describe 'when exception is thrown' do
       use_vcr_cassette
       before do
-        @hold = @buyer.hold 150
+        @hold = @buyer.hold :amount => 150
         @debit = @hold.capture
       end
 
@@ -46,8 +49,6 @@ describe Balanced::Hold do
         lambda { @hold.void }.should raise_error(Balanced::Conflict)
         @hold.is_void.should be_false
       end
-      # void here.
-
 
     end
 

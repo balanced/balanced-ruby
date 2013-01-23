@@ -29,9 +29,11 @@ module Balanced
     #
     # @return [Debit]
     def debit *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
-      soft_descriptor = args[1] || options.fetch(:appears_on_statement_as) { nil }
+      appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
       hold_uri = args[2] || options.fetch(:hold_uri) { nil }
       meta = args[3] || options.fetch(:meta) { nil }
       description = args[4] || options.fetch(:description) { nil }
@@ -40,7 +42,7 @@ module Balanced
       debit = Debit.new(
           :uri => self.debits_uri,
           :amount => amount,
-          :appears_on_statement_as => soft_descriptor,
+          :appears_on_statement_as => appears_on_statement_as,
           :hold_uri => hold_uri,
           :meta => meta,
           :description => description,
@@ -59,6 +61,8 @@ module Balanced
     # @return [Hold] A Hold representing the reservation of funds from
     #    this Account to your Marketplace.
     def hold *args
+      warn_on_positional args
+
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { }
       meta = args[1] || options.fetch(:meta) { nil }
@@ -81,6 +85,8 @@ module Balanced
     # @return [Credit] A Credit representing the transfer of funds from
     #    your Marketplace to this Account.
     def credit *args
+      warn_on_positional args
+
       if args.last.is_a? Hash
         args.last.merge! uri: self.credits_uri
       else

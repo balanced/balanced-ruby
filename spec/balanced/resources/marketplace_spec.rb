@@ -3,18 +3,20 @@ require "spec_helper"
 
 describe Balanced::Marketplace do
   use_vcr_cassette
+
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
-    @bank_account = Balanced::BankAccount.new(
+    @bank_account = @marketplace.create_bank_account(
       :account_number => "1234567890",
       :bank_code => "321174851",
       :name => "Jack Q Merchant"
-    ).save
+    )
     @merchant = @marketplace.create_merchant(
-      "merchant@example.org",
-      {
+      :name =>"Jack Q Merchant",
+      :email_address => "merchant@example.org",
+      :merchant => {
         :type => "person",
         :name => "Billy Jones",
         :street_address => "801 High St.",
@@ -23,9 +25,62 @@ describe Balanced::Marketplace do
         :dob => "1842-01",
         :phone_number => "+16505551234",
       },
-      @bank_account.uri,
-      "Jack Q Merchant",
+      :bank_account_uri => @bank_account.uri,
     )
+  end
+
+  describe "create_bank_account" do
+    use_vcr_cassette
+
+    it "can create a bank account using the option hash" do
+      bank_account = @marketplace.create_bank_account(
+          :name => "Jon Q.",
+          :account_number => "11111111111",
+          :bank_code => "123456789",
+      )
+      bank_account.should be_instance_of Balanced::BankAccount
+      Balanced.is_collection(bank_account.uri).should be_false
+    end
+
+  end
+
+  describe "create_account" do
+    use_vcr_cassette :new_episodes
+
+    before do
+      @account = @marketplace.create_account
+      @account_with_attributes = @marketplace.create_account(
+          :name => "Jon Q. Timmy",
+          :email_address => "bog@example.com"
+      )
+    end
+
+    it "creates an account without any roles" do
+      @account.should be_instance_of Balanced::Account
+      Balanced.is_collection(@account.uri).should be_false
+      @account.uri.should match ACCOUNTS_URI_REGEX
+      @account.roles.size.should eql 0
+    end
+
+    it "creates an account with some options" do
+      @account_with_attributes.name.should == "Jon Q. Timmy"
+      @account_with_attributes.email_address.should == "bog@example.com"
+    end
+
+  end
+
+  describe "create_card" do
+    use_vcr_cassette
+
+    it "can create a card" do
+      card = @marketplace.create_card(
+          :card_number => "4111111111111111",
+          :expiration_month => "12",
+          :expiration_year => "2018",
+      )
+      card.should be_instance_of Balanced::Card
+      Balanced.is_collection(card.uri).should be_false
+    end
   end
 
   describe "create_merchant" do
@@ -99,18 +154,28 @@ describe Balanced::Marketplace, '.marketplace_uri' do
   context 'when invoking .my_marketplace' do
     use_vcr_cassette
 
-    it 'sets the marketplace_id after the first call' do
+    it 'sets the marketplace_id after the first call implicitly' do
+
+      Balanced.configure nil
+      Balanced.is_configured_with_api_key?.should be_false
+      Balanced::Marketplace.class_variable_set(:@@marketplace_uri, nil)
+      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should be_nil
+
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
       marketplace = Balanced::Marketplace.new.save
-
       # creating the marketplace sets `Balanced::Marketplace.marketplace_uri`,
-      # so we need to clear it out here to get the test in the right state
-      Balanced::Marketplace.class_variable_set(:@@marketplace_uri, nil)
+      # it will never be unset.
+      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should equal marketplace.uri
+      old_marketplace_uri = marketplace.uri
 
-      expect {
-        Balanced::Marketplace.my_marketplace
-      }.to change { Balanced::Marketplace.marketplace_uri }.from(nil).to(marketplace.uri)
+      api_key = Balanced::ApiKey.new.save
+      Balanced.configure api_key.secret
+      marketplace = Balanced::Marketplace.new.save
+      # creating the marketplace sets `Balanced::Marketplace.marketplace_uri`,
+      # it will never be unset.
+      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should_not equal old_marketplace_uri
+      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should equal marketplace.uri
     end
   end
 

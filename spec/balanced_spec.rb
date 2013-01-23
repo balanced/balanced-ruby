@@ -32,7 +32,8 @@ describe Balanced do
 
       describe "#url" do
         subject { Balanced.client.url.to_s }
-        it { should eql "https://api.balancedpayments.com" }
+        it { should satisfy {|s|
+["https://api.balancedpayments.com", "http://localhost:5000"].include?(s) } }
       end
     end
 
@@ -73,5 +74,23 @@ describe Balanced do
         end
       end
     end
+  end
+end
+
+describe Balanced, '.from_uri' do
+  it 'returns BankAccount for a bank_accounts collection nested under a marketplace' do
+    Balanced.from_uri("/v1/marketplaces/123/bank_accounts").should == Balanced::BankAccount
+  end
+
+  it 'returns BankAccount for an individual bank account nested under a marketplace' do
+    Balanced.from_uri('/v1/marketplaces/123/bank_accounts/456').should == Balanced::BankAccount
+  end
+
+  it 'returns BankAccount for a root-level bank account collection resource' do
+    Balanced.from_uri('/v1/bank_accounts').should == Balanced::BankAccount
+  end
+
+  it 'returns BankAccount for a root-level bank account individual resource' do
+    Balanced.from_uri('/v1/bank_accounts/123').should == Balanced::BankAccount
   end
 end

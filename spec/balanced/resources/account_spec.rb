@@ -12,7 +12,9 @@ describe Balanced::Account do
     use_vcr_cassette
 
     context "when ApiKey is not configured" do
+
       use_vcr_cassette
+
       before do
         Balanced::Marketplace.stub(:marketplace_uri) { nil }
         Balanced.configure nil
@@ -68,11 +70,11 @@ describe Balanced::Account do
         :name => "Jack Q Buyer"
       ).save
 
-      @bank_account = Balanced::BankAccount.new(
+      @bank_account = @marketplace.create_bank_account(
         :account_number => "1234567890",
         :bank_code => "321174851",
         :name => "Jack Q Merchant"
-      ).save
+      )
 
       @merchant = Balanced::Account.new(
         :uri => @marketplace.accounts_uri,
@@ -88,11 +90,12 @@ describe Balanced::Account do
     describe "#credit" do
       use_vcr_cassette
       before do
-        @buyer.debit 1250
+        @buyer.debit :amount => 1250
       end
 
+      # WARNING: This test is deprecated
       context "all args passed directly" do
-        subject { 
+        subject {
           @merchant.credit 1250, "description", {}, @bank_account.uri
         }
 
@@ -104,8 +107,8 @@ describe Balanced::Account do
       context "args passed by name via options hash" do
         subject {
           @merchant.credit(
-            amount: 1250, 
-            description: "description", 
+            amount: 1250,
+            description: "description",
             meta: {},
             destination_uri: @bank_account.uri
           )
@@ -181,11 +184,11 @@ describe Balanced::Account do
     describe "#add_bank_account" do
       use_vcr_cassette
       before do
-        @new_bank_account = Balanced::BankAccount.new(
+        @new_bank_account = @marketplace.create_bank_account(
           :account_number => "1234567890",
           :bank_code => "321174851",
           :name => "Jack Q Merchant"
-        ).save
+        )
       end
 
       describe "when executing" do
@@ -452,12 +455,13 @@ describe Balanced::Account do
       it "takes optional parameters"  do
         debit = @buyer.debit(
           :amount => 500,
-          :appears_on_statement_as => "BOBS BURGERS",
+          :appears_on_statement_as => "BOBS BURGERS"
         )
         debit.should be_instance_of Balanced::Debit
         debit.amount.should eql 500
         debit.appears_on_statement_as.should eql "BOBS BURGERS"
       end
+      # this is deprecated
       it "takes positional parameters" do
         debit = @buyer.debit(500, "FOO FIGHTER")
         debit.should be_instance_of Balanced::Debit
@@ -481,8 +485,8 @@ describe Balanced::Account do
         :expiration_year => "2015",
       ).save
       Balanced::Marketplace.my_marketplace.create_buyer(
-        "john.doe@example.com",
-        card.uri
+        :email_address => "john.doe@example.com",
+        :card_uri => card.uri,
       )
     end
 
@@ -517,9 +521,9 @@ describe Balanced::Account do
         :expiration_month => "12",
         :expiration_year => "2015",
       ).save
-      buyer = Balanced::Marketplace.my_marketplace.create_buyer(
-        "john.doe@example.com",
-        card.uri
+      @buyer = Balanced::Marketplace.my_marketplace.create_buyer(
+        :email_address => "john.doe@example.com",
+        :card_uri => card.uri,
       )
     end
 
