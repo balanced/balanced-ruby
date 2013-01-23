@@ -140,8 +140,12 @@ module Balanced
     #       }
     #    }
     #
-    def promote_to_merchant merchant_data
-      self.merchant = merchant_data
+    def promote_to_merchant merchant
+      if merchant.is_a?(String)
+        self.merchant_uri = merchant
+      else
+        self.merchant = merchant
+      end
       save
     end
 
