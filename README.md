@@ -3,6 +3,7 @@
 Online Marketplace Payments
 
 [![Build Status](https://secure.travis-ci.org/balanced/balanced-ruby.png)](http://travis-ci.org/balanced/balanced-ruby)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/balanced/balanced-ruby)
 
 ## Installation
 

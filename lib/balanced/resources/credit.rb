@@ -9,6 +9,14 @@ module Balanced
   class Credit
     include Balanced::Resource
 
+    # @param [Array] args
+    # @option [String] :uri the uri of the credit, in the case of an update
+    # @option [Hash] :bank_account
+    # @option [Integer] :amount amount in cents
+    # @option [String] :description a text description of the credit
+    # @option [String] :appears_on_statement_as
+    # @option [Hash] :meta
+    # @option [String] :destination_uri the uri of the bank account to credit
     def initialize *args
       options = args.last.is_a?(Hash) ? args.pop : {}
       uri = options.fetch(:uri) { self.class.uri }
