@@ -41,7 +41,7 @@ module Balanced
       on_behalf_of = args[6] || options.fetch(:on_behalf_of) { nil }
 
       if on_behalf_of
-        if on_behalf_of.uri
+        if on_behalf_of.respond_to? :uri
           on_behalf_of = on_behalf_of.uri
         end
         if !on_behalf_of.is_a?(String)
