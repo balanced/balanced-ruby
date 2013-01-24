@@ -38,6 +38,19 @@ module Balanced
       meta = args[3] || options.fetch(:meta) { nil }
       description = args[4] || options.fetch(:description) { nil }
       source_uri = args[5] || options.fetch(:source_uri) { nil }
+      on_behalf_of = args[6] || options.fetch(:on_behalf_of) { nil }
+
+      if on_behalf_of
+        if on_behalf_of.respond_to? :uri
+          on_behalf_of = on_behalf_of.uri
+        end
+        if !on_behalf_of.is_a?(String)
+          raise ArgumentError, 'The on_behalf_of parameter needs to be an account URI'
+        end
+        if on_behalf_of == self.uri
+          raise ArgumentError, 'The on_behalf_of parameter MAY NOT be the same account as the account you are debiting!'
+        end
+      end
 
       debit = Debit.new(
           :uri => self.debits_uri,
@@ -47,6 +60,7 @@ module Balanced
           :meta => meta,
           :description => description,
           :source_uri => source_uri,
+          :on_behalf_of_uri => on_behalf_of,
       )
       debit.save
     end
@@ -146,8 +160,12 @@ module Balanced
     #       }
     #    }
     #
-    def promote_to_merchant merchant_data
-      self.merchant = merchant_data
+    def promote_to_merchant merchant
+      if merchant.is_a?(String)
+        self.merchant_uri = merchant
+      else
+        self.merchant = merchant
+      end
       save
     end
 

@@ -461,6 +461,36 @@ describe Balanced::Account do
         debit.amount.should eql 500
         debit.appears_on_statement_as.should eql "BOBS BURGERS"
       end
+      it "accepts on_behalf_of parameter" do
+        merchant = Balanced::Account.new.save
+        debit = @buyer.debit(
+          :amount => 500,
+          :on_behalf_of => merchant
+        )
+        debit.should be_instance_of Balanced::Debit
+        debit.amount.should eql 500
+        # TODO: once the API returns on_behalf_of in the response, make sure it shows up. For now we just make sure the debit didn't fail.
+      end
+      it "accepts URI for on_behalf_of" do
+        merchant = Balanced::Account.new.save
+        debit = @buyer.debit(
+          :amount => 500,
+          :on_behalf_of => merchant.uri
+        )
+        debit.should be_instance_of Balanced::Debit
+        debit.amount.should eql 500
+        # TODO: once the API returns on_behalf_of in the response, make sure it shows up. For now we just make sure the debit didn't fail.
+      end
+
+      it "fails with bad on_behalf_of parameter" do
+        expect {
+          @buyer.debit(
+            :amount => 500,
+            :on_behalf_of => @buyer
+          )
+        }.to raise_error ArgumentError
+      end
+
       # this is deprecated
       it "takes positional parameters" do
         debit = @buyer.debit(500, "FOO FIGHTER")
