@@ -7,15 +7,15 @@ require "balanced_exception_middleware"
 
 module Balanced
   class Client
-
+  
     DEFAULTS = {
       :scheme => 'http',
       :host => 'localhost',
       :port => 5000,
       :version => '1',
       :logging_level => 'WARN',
-      :connection_timeout => 2,
-      :read_timeout => 5,
+      :connection_timeout => 30,
+      :read_timeout => 30,
       :logger => nil,
       :ssl_verify => true
     }
