@@ -214,11 +214,12 @@ module Balanced
 
       options = args.last.is_a?(Hash) ? args.pop : {}
       url = args[0] || options.fetch(:url) { nil }
+
       callback = Callback.new(
-          :uri => self.callbacks_uri,
-          :url => url
+          'uri' => self.callbacks_uri,
+          'url' => url
       )
-      callback save
+      callback.save
     end
 
   end

@@ -8,28 +8,7 @@ describe Balanced::Callback do
     Balanced.configure api_key.secret
 
     @marketplace = Balanced::Marketplace.new.save
-    card = @marketplace.create_card(
-        :card_number      => "5105105105105100",
-        :expiration_month => "12",
-        :expiration_year  => "2015"
-    )
-    # An initial balance for the marketplace
-    @buyer = @marketplace.create_buyer(
-        :email_address => 'buyer@example.org',
-        :card_uri => card.uri
-    )
-    @buyer.debit :amount => 10000000
 
-  end
-
-  describe 'fail creating an callback' do
-    use_vcr_cassette
-
-    it 'should not create without a url field' do
-      lambda { @marketplace.create_callback(
-
-      ) }.should raise_error(Balanced::BadRequest)
-    end
   end
 
   describe "create" do
@@ -60,9 +39,11 @@ describe Balanced::Callback do
     end
 
     context 'delete' do
+      it "should delete without an error" do
 
-      subject { @callback.delete }
-      it { should be_nil }
+        @callback.destroy
+
+      end
 
     end
 
