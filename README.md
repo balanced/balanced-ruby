@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-See https://www.balancedpayments.com/docs/ruby for tutorials and documentation.
+See https://www.balancedpayments.com/docs/overview?language=ruby for tutorials and documentation.
 
 
 ## Contributing
