@@ -8,6 +8,12 @@ module Balanced
     include Enumerable
 
     # A pager for paginating through resource records.
+    #
+    # @param [String] uri the uri of the resource
+    # @param [Hash] options
+    # @option options [Integer] limit
+    # @option options [Integer] offset
+    # @option options [Integer] per an alias for the :limit option
     def initialize uri, options = {}
       @uri = uri
       @options = options
