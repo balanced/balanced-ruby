@@ -17,4 +17,11 @@ module Balanced
 
   end
 
+  # Represents a single log of an event sent to a callback.
+  #
+  class Log
+    include Balanced::Resource
+
+  end
+
 end
