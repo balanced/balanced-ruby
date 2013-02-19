@@ -114,12 +114,6 @@ describe Balanced::BankAccount do
 
       end
 
-      describe 'without an account' do
-         subject { @credit }
-         it { should respond_to :account }
-         its(:account) { should be_nil }
-      end
-
       describe 'with an account' do
         use_vcr_cassette
 
@@ -144,6 +138,45 @@ describe Balanced::BankAccount do
          it { should be_instance_of Balanced::Credit }
       end
 
+    end
+
+  end
+
+  describe 'verification' do
+    use_vcr_cassette
+
+    before do
+      puts "marketplace"
+      puts @marketplace
+      puts @marketplace
+      @bank_account = @marketplace.create_bank_account(
+          :account_number => "0987654321",
+          :bank_code => "321174851",
+          :name => "Timmy T. McTimmerson",
+          :type => "checking"
+      )
+      puts @marketplace
+      #@account = @marketplace.create_account
+      #@account.add_bank_account(@bank_account.uri)
+    end
+
+    it 'debits when verified' do
+      authentication = @bank_account.authenticate
+      authentication.verify(1, 1)
+
+      @bank_account.debit(:amount =>100)
+    end
+
+    it 'cannot debit when unverified' do
+      lambda {
+        @bank_account.debit(:amount =>100)
+      }.should raise_error(Balanced::BadRequest)
+    end
+
+    it 'errors when incorrectly verified' do
+      lambda {
+        @bank_account.debit(:amount =>100)
+      }.should raise_error(Balanced::BankAccountAuthenticationFailure)
     end
   end
 end
