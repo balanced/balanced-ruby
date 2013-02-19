@@ -88,18 +88,18 @@ module Balanced
       save
     end
 
-    def authenticate
-      Authentication.new(
-          'uri' => self.authentications_uri
+    def verify
+      Verification.new(
+          'uri' => self.verifications_uri
       ).save
     end
 
   end
 
-  class Authentication
+  class Verification
     include Balanced::Resource
 
-    def verify(amount_1, amount_2)
+    def confirm(amount_1, amount_2)
       self.amount_1 = amount_1
       self.amount_2 = amount_2
       save

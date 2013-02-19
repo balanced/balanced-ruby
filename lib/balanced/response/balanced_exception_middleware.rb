@@ -24,11 +24,11 @@ module Faraday
     }
     CATEGORY_CODE_MAP = {
         'bank-account-authentication-not-pending' =>
-        Balanced::BankAccountAuthenticationFailure,
+        Balanced::BankAccountVerificationFailure,
         'bank-account-authentication-failed' =>
-        Balanced::BankAccountAuthenticationFailure,
+        Balanced::BankAccountVerificationFailure,
         'bank-account-authentication-already-exists' =>
-        Balanced::BankAccountAuthenticationFailure,
+        Balanced::BankAccountVerificationFailure,
     }
     def on_complete(response)
       status_code = response[:status].to_i

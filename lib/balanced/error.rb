@@ -100,10 +100,10 @@ module Balanced
 
 
   # custom mapped exceptions
-  class FundingInstrumentAuthenticationError < Error; end
+  class FundingInstrumentVerificationError < Error; end
 
   # Raised when Balanced has an issue with you verifying a bank account
-  class BankAccountAuthenticationFailure < FundingInstrumentAuthenticationError
+  class BankAccountVerificationFailure < FundingInstrumentVerificationError
 
   end
 

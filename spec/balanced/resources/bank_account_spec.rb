@@ -159,7 +159,6 @@ describe Balanced::BankAccount do
       end
 
       it do
-
         lambda {
           @account.debit(:amount => 100)
         }.should raise_error(Balanced::Conflict)
@@ -182,8 +181,8 @@ describe Balanced::BankAccount do
 
       it do
 
-        authentication = @bank_account.authenticate
-        authentication.verify(1, 1)
+        authentication = @bank_account.verify
+        authentication.confirm(1, 1)
 
         @account.debit(:amount => 100)
       end
@@ -205,11 +204,11 @@ describe Balanced::BankAccount do
 
       it do
 
-        authentication = @bank_account.authenticate
+        authentication = @bank_account.verify
 
         lambda {
-          authentication.verify(1, 2)
-        }.should raise_error(Balanced::BankAccountAuthenticationFailure)
+          authentication.confirm(1, 2)
+        }.should raise_error(Balanced::BankAccountVerificationFailure)
       end
     end
   end

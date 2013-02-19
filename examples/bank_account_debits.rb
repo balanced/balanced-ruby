@@ -37,17 +37,17 @@ rescue Balanced::Error => ex
 end
 
 # authenticate
-authentication = bank_account.authenticate
+verification = bank_account.verify
 
 begin
-  authentication.verify(1,2)
-rescue Balanced::BankAccountAuthenticationFailure => ex
+  verification.confirm(1,2)
+rescue Balanced::BankAccountVerificationFailure => ex
   puts 'Authentication error , %s' % ex.message
   puts "PROTIP: for TEST bank accounts the valid amount is always 1 and 1"
 end
-authentication = bank_account.authentications.find(:first).first
+verification = bank_account.verifications.find(:first).first
 
-raise "unpossible" if authentication.verify(1, 1).state != 'verified'
+raise "unpossible" if verification.confirm(1, 1).state != 'verified'
 debit = account.debit(:amount => 100)
 puts "debited the bank account %s for %d cents" % [
   debit.source.uri,
