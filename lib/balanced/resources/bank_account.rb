@@ -40,18 +40,13 @@ module Balanced
       meta = args[2] || options.fetch(:meta) { nil }
       description = args[3] || options.fetch(:description) { nil }
 
-      if self.has_account?
-        self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
-      else
-        debit = Debit.new(
-            :uri => self.debits_uri,
-            :amount => amount,
-            :description => description,
-            :appears_on_statement_as => appears_on_statement_as,
-            :meta => meta
-        )
-        debit.save
-      end
+      self.account.debit(
+          :amount => amount,
+          :appears_on_statement_as => appears_on_statement_as,
+          :meta => meta,
+          :description => description,
+          :source_uri => self.uri
+      )
     end
 
     # Creates a Credit of funds from your Marketplace's escrow account to this
