@@ -46,7 +46,7 @@ module Balanced
           :timeout => config[:read_timeout]
         },
         :ssl => {
-          :confirm => @config[:ssl_verify] # Only set this to false for testing
+          :verify => @config[:ssl_verify] # Only set this to false for testing
         }
       }
       @conn = Faraday.new(url, options) do |cxn|
