@@ -97,4 +97,14 @@ module Balanced
 
   # Raised when Balanced returns a 504 HTTP status code
   class GatewayTimeout < Error; end
+
+
+  # custom mapped exceptions
+  class FundingInstrumentVerificationError < Error; end
+
+  # Raised when Balanced has an issue with you verifying a bank account
+  class BankAccountVerificationFailure < FundingInstrumentVerificationError
+
+  end
+
 end

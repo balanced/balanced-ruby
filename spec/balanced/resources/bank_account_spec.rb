@@ -9,9 +9,9 @@ describe Balanced::BankAccount do
 
     @marketplace = Balanced::Marketplace.new.save
     card = @marketplace.create_card(
-      :card_number      => "5105105105105100",
-      :expiration_month => "12",
-      :expiration_year  => "2015"
+        :card_number => "5105105105105100",
+        :expiration_month => "12",
+        :expiration_year => "2015"
     )
     # An initial balance for the marketplace
     @buyer = @marketplace.create_buyer(
@@ -21,9 +21,9 @@ describe Balanced::BankAccount do
     @buyer.debit :amount => 10000000
 
     @incomplete_bank_account_hash = {
-      :account_number => "0987654321",
-      :bank_code => "321174851",
-      :name => "Timmy T. McTimmerson"
+        :account_number => "0987654321",
+        :bank_code => "321174851",
+        :name => "Timmy T. McTimmerson"
     }
   end
 
@@ -32,9 +32,9 @@ describe Balanced::BankAccount do
 
     it 'should not create without a type field' do
       lambda { Balanced::BankAccount.new(
-                 :account_number => "0987654321",
-                 :bank_code => "321174851",
-                 :name => "Timmy T. McTimmerson"
+          :account_number => "0987654321",
+          :bank_code => "321174851",
+          :name => "Timmy T. McTimmerson"
       ).save }.should raise_error(Balanced::BadRequest)
     end
   end
@@ -44,10 +44,10 @@ describe Balanced::BankAccount do
 
     before do
       @bank_account = @marketplace.create_bank_account(
-        :account_number => "0987654321",
-        :bank_code => "321174851",
-        :name => "Timmy T. McTimmerson",
-        :type => "checking"
+          :account_number => "0987654321",
+          :bank_code => "321174851",
+          :name => "Timmy T. McTimmerson",
+          :type => "checking"
       )
     end
 
@@ -102,22 +102,16 @@ describe Balanced::BankAccount do
 
       before do
         @credit = @bank_account.credit(
-          :amount => 50,
-          :description => 'Blah'
+            :amount => 50,
+            :description => 'Blah'
         )
       end
 
       describe 'bank_account' do
         subject { @credit.bank_account }
-        its(:account_number) {should end_with '4321'}
-        its(:routing_number) {should eql '321174851'}
+        its(:account_number) { should end_with '4321' }
+        its(:routing_number) { should eql '321174851' }
 
-      end
-
-      describe 'without an account' do
-         subject { @credit }
-         it { should respond_to :account }
-         its(:account) { should be_nil }
       end
 
       describe 'with an account' do
@@ -126,24 +120,96 @@ describe Balanced::BankAccount do
         before do
           @account = @marketplace.create_account
           bank_account = @marketplace.create_bank_account(
-            :account_number => "1234567890111",
-            :bank_code => "021000021",
-            :name => "Timmy T. McTimmerson",
-            :type => "checking"
+              :account_number => "1234567890111",
+              :bank_code => "021000021",
+              :name => "Timmy T. McTimmerson",
+              :type => "checking"
           )
           @account.add_bank_account(bank_account.uri)
           bank_account = bank_account.reload
           @credit_with_account = bank_account.credit(
-            :amount => 500,
-            :description => 'Blahblahblah'
+              :amount => 500,
+              :description => 'Blahblahblah'
           )
         end
 
-         subject { @credit_with_account }
-         it { should respond_to :account }
-         it { should be_instance_of Balanced::Credit }
+        subject { @credit_with_account }
+        it { should respond_to :account }
+        it { should be_instance_of Balanced::Credit }
       end
 
+    end
+
+  end
+
+  describe 'verification' do
+
+    describe 'cannot debit when unverified' do
+      use_vcr_cassette
+
+      before do
+        @bank_account = @marketplace.create_bank_account(
+            :account_number => "0987654321",
+            :bank_code => "321174851",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+        )
+        @account = @marketplace.create_account
+        @account.add_bank_account(@bank_account.uri)
+      end
+
+      it do
+        lambda {
+          @account.debit(:amount => 100)
+        }.should raise_error(Balanced::Conflict)
+      end
+    end
+
+    describe 'debits when verified' do
+      use_vcr_cassette
+
+      before do
+        @bank_account = @marketplace.create_bank_account(
+            :account_number => "0987654321",
+            :bank_code => "321174851",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+        )
+        @account = @marketplace.create_account
+        @account.add_bank_account(@bank_account.uri)
+      end
+
+      it do
+
+        authentication = @bank_account.verify
+        authentication.confirm(1, 1)
+
+        @account.debit(:amount => 100)
+      end
+    end
+
+    describe 'errors when incorrectly verified' do
+      use_vcr_cassette
+
+      before do
+        @bank_account = @marketplace.create_bank_account(
+            :account_number => "0987654321",
+            :bank_code => "321174851",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+        )
+        @account = @marketplace.create_account
+        @account.add_bank_account(@bank_account.uri)
+      end
+
+      it do
+
+        authentication = @bank_account.verify
+
+        lambda {
+          authentication.confirm(1, 2)
+        }.should raise_error(Balanced::BankAccountVerificationFailure)
+      end
     end
   end
 end

@@ -22,9 +22,22 @@ module Faraday
         503 => Balanced::ServiceUnavailable,
         504 => Balanced::GatewayTimeout,
     }
+    CATEGORY_CODE_MAP = {
+        'bank-account-authentication-not-pending' =>
+        Balanced::BankAccountVerificationFailure,
+        'bank-account-authentication-failed' =>
+        Balanced::BankAccountVerificationFailure,
+        'bank-account-authentication-already-exists' =>
+        Balanced::BankAccountVerificationFailure,
+    }
     def on_complete(response)
       status_code = response[:status].to_i
-      error_class = HTTP_STATUS_CODES[status_code]
+      if response.key? :body and response[:body] != nil
+        category_code = response[:body]['category_code']
+      else
+        category_code = nil
+      end
+      error_class = CATEGORY_CODE_MAP[category_code] || HTTP_STATUS_CODES[status_code]
       raise error_class.new(response) if error_class
     end
 

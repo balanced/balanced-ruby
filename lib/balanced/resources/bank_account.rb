@@ -40,7 +40,13 @@ module Balanced
       meta = args[2] || options.fetch(:meta) { nil }
       description = args[3] || options.fetch(:description) { nil }
 
-      self.account.debit(amount, appears_on_statement_as, meta, description, self.uri)
+      self.account.debit(
+          :amount => amount,
+          :appears_on_statement_as => appears_on_statement_as,
+          :meta => meta,
+          :description => description,
+          :source_uri => self.uri
+      )
     end
 
     # Creates a Credit of funds from your Marketplace's escrow account to this
@@ -82,5 +88,22 @@ module Balanced
       save
     end
 
+    def verify
+      Verification.new(
+          'uri' => self.verifications_uri
+      ).save
+    end
+
   end
+
+  class Verification
+    include Balanced::Resource
+
+    def confirm(amount_1, amount_2)
+      self.amount_1 = amount_1
+      self.amount_2 = amount_2
+      save
+    end
+  end
+
 end
