@@ -32,7 +32,7 @@ module Faraday
     }
     def on_complete(response)
       status_code = response[:status].to_i
-      if response.key? :body && response[:body] != nil
+      if response.key? :body and response[:body] != nil
         category_code = response[:body]['category_code']
       else
         category_code = nil
