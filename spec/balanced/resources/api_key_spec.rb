@@ -1,8 +1,7 @@
 require "spec_helper"
 
 describe Balanced::ApiKey do
-  describe "attributes" do
-    use_vcr_cassette
+  describe "attributes", :vcr do
     before do
       @key = Balanced::ApiKey.new.save
     end
@@ -19,32 +18,26 @@ describe Balanced::ApiKey do
     end
   end
 
-  describe "new key" do
-    use_vcr_cassette
-
-    describe "before configure" do
-      use_vcr_cassette
+  describe "new key", :vcr do
+    describe "before configure", :vcr do
       before do
         @new_key = Balanced::ApiKey.new.save
       end
-      describe "#merchant" do
-        use_vcr_cassette
+      describe "#merchant", :vcr do
         subject { @new_key.merchant }
         it { should_not be_nil }
         it { should be_instance_of Balanced::Merchant }
       end
     end
 
-    describe "after configure" do
-      use_vcr_cassette
+    describe "after configure", :vcr do
       before do
         @new_key = Balanced::ApiKey.new.save
         Balanced.configure @new_key.secret
         @new_key = Balanced::ApiKey.new.save
       end
 
-      describe "#merchant" do
-        use_vcr_cassette
+      describe "#merchant", :vcr do
         subject { @new_key.merchant }
         it { should_not be_nil }
         it { should be_instance_of Balanced::Merchant }

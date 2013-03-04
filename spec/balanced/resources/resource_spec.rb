@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe Balanced::Resource, '.uri' do
-  use_vcr_cassette
-
+describe Balanced::Resource, '.uri', :vcr do
   describe "before the marketplace is configured" do
     it 'raises an exception' do
       Balanced::Marketplace.stub(:marketplace_uri) { nil }
@@ -20,9 +18,7 @@ describe Balanced::Resource, '.uri' do
   end
 end
 
-describe Balanced::Resource, 'loading a resource and generating methods from the response body' do
-  use_vcr_cassette
-
+describe Balanced::Resource, 'loading a resource and generating methods from the response body', :vcr do
   before do
     make_marketplace
     @account = Balanced::Account.new(email: 'user@example.com', name: 'John Doe').save

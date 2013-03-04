@@ -1,9 +1,7 @@
 require "spec_helper"
 
 
-describe Balanced::Marketplace do
-  use_vcr_cassette
-
+describe Balanced::Marketplace, :vcr do
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
@@ -29,9 +27,7 @@ describe Balanced::Marketplace do
     )
   end
 
-  describe "create_bank_account" do
-    use_vcr_cassette
-
+  describe "create_bank_account", :vcr do
     it "can create a bank account using the option hash" do
       bank_account = @marketplace.create_bank_account(
           :name => "Jon Q.",
@@ -44,9 +40,7 @@ describe Balanced::Marketplace do
 
   end
 
-  describe "create_account" do
-    use_vcr_cassette :new_episodes
-
+  describe "create_account", :vcr => { :cassette_name => :new_episodes } do
     before do
       @account = @marketplace.create_account
       @account_with_attributes = @marketplace.create_account(
@@ -69,9 +63,7 @@ describe Balanced::Marketplace do
 
   end
 
-  describe "create_card" do
-    use_vcr_cassette
-
+  describe "create_card", :vcr do
     it "can create a card" do
       card = @marketplace.create_card(
           :card_number => "4111111111111111",
@@ -83,9 +75,7 @@ describe Balanced::Marketplace do
     end
   end
 
-  describe "create_merchant" do
-    use_vcr_cassette
-
+  describe "create_merchant", :vcr do
     describe "class" do
       subject { @merchant }
       it { should be_instance_of Balanced::Account }
@@ -151,9 +141,7 @@ describe Balanced::Marketplace do
 end
 
 describe Balanced::Marketplace, '.marketplace_uri' do
-  context 'when invoking .my_marketplace' do
-    use_vcr_cassette
-
+  context 'when invoking .my_marketplace', :vcr do
     it 'sets the marketplace_id after the first call implicitly' do
 
       Balanced.configure nil
@@ -179,9 +167,7 @@ describe Balanced::Marketplace, '.marketplace_uri' do
     end
   end
 
-  context 'when creating a Balanced::Marketplace resource' do
-    use_vcr_cassette
-
+  context 'when creating a Balanced::Marketplace resource', :vcr do
     it 'sets the marketplace_uri' do
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret

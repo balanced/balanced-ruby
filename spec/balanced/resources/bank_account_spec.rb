@@ -1,8 +1,6 @@
 require "spec_helper"
 
-describe Balanced::BankAccount do
-  use_vcr_cassette
-
+describe Balanced::BankAccount, :vcr do
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
@@ -27,9 +25,7 @@ describe Balanced::BankAccount do
     }
   end
 
-  describe 'when exception is thrown' do
-    use_vcr_cassette
-
+  describe 'when exception is thrown', :vcr do
     it 'should not create without a type field' do
       lambda { Balanced::BankAccount.new(
           :account_number => "0987654321",
@@ -39,9 +35,7 @@ describe Balanced::BankAccount do
     end
   end
 
-  describe 'create' do
-    use_vcr_cassette
-
+  describe 'create', :vcr do
     before do
       @bank_account = @marketplace.create_bank_account(
           :account_number => "0987654321",
@@ -64,8 +58,7 @@ describe Balanced::BankAccount do
       end
     end
 
-    context 'with an account' do
-      use_vcr_cassette
+    context 'with an account', :vcr do
       before do
         @account = @marketplace.create_account
         bank_account = @marketplace.create_bank_account(
@@ -85,21 +78,17 @@ describe Balanced::BankAccount do
 
     end
 
-    describe 'account_number' do
-      use_vcr_cassette
+    describe 'account_number', :vcr do
       subject { @bank_account.account_number }
       it { should end_with '4321' }
     end
 
-    describe 'fingerprint' do
-      use_vcr_cassette
+    describe 'fingerprint', :vcr do
       subject { @bank_account.fingerprint }
       it { should have_at_least(20).characters }
     end
 
-    describe 'credit' do
-      use_vcr_cassette
-
+    describe 'credit', :vcr do
       before do
         @credit = @bank_account.credit(
             :amount => 50,
@@ -111,12 +100,9 @@ describe Balanced::BankAccount do
         subject { @credit.bank_account }
         its(:account_number) { should end_with '4321' }
         its(:routing_number) { should eql '321174851' }
-
       end
 
-      describe 'with an account' do
-        use_vcr_cassette
-
+      describe 'with an account', :vcr do
         before do
           @account = @marketplace.create_account
           bank_account = @marketplace.create_bank_account(
@@ -137,16 +123,12 @@ describe Balanced::BankAccount do
         it { should respond_to :account }
         it { should be_instance_of Balanced::Credit }
       end
-
     end
-
   end
 
   describe 'verification' do
 
-    describe 'cannot debit when unverified' do
-      use_vcr_cassette
-
+    describe 'cannot debit when unverified', :vcr do
       before do
         @bank_account = @marketplace.create_bank_account(
             :account_number => "0987654321",
@@ -165,9 +147,7 @@ describe Balanced::BankAccount do
       end
     end
 
-    describe 'debits when verified' do
-      use_vcr_cassette
-
+    describe 'debits when verified', :vcr do
       before do
         @bank_account = @marketplace.create_bank_account(
             :account_number => "0987654321",
@@ -188,9 +168,7 @@ describe Balanced::BankAccount do
       end
     end
 
-    describe 'errors when incorrectly verified' do
-      use_vcr_cassette
-
+    describe 'errors when incorrectly verified', :vcr do
       before do
         @bank_account = @marketplace.create_bank_account(
             :account_number => "0987654321",

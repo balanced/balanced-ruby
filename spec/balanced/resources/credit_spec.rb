@@ -1,9 +1,6 @@
 require "spec_helper"
 
-describe Balanced::Credit do
-
-  use_vcr_cassette
-
+describe Balanced::Credit, :vcr do
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
@@ -22,9 +19,7 @@ describe Balanced::Credit do
     @buyer.debit :amount => 10000000
   end
 
-  describe "#create" do
-    use_vcr_cassette
-
+  describe "#create", :vcr do
     before do
       @credit = Balanced::Credit.new(
         :amount => 5000,
@@ -38,23 +33,19 @@ describe Balanced::Credit do
       ).save
     end
 
-    describe 'amount' do
-      use_vcr_cassette
+    describe 'amount', :vcr do
       subject { @credit.amount }
       it { should == 5000 }
     end
 
-    describe 'account' do
-      use_vcr_cassette
+    describe 'account', :vcr do
       subject { @credit.account }
       it { should be_nil }
     end
 
-    describe 'bank_account' do
-      use_vcr_cassette
+    describe 'bank_account', :vcr do
       subject { @credit.bank_account }
       its(:account_number) { should end_with '4321' }
     end
-
   end
 end

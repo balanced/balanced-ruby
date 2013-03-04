@@ -8,12 +8,12 @@ gem "faraday_middleware"
 group :development do
   gem "yard"
   gem "ruby-debug19"
-  gem "guard", '~> 1.1.1'
-  gem "guard-rspec", '~> 1.0.0'
+  gem "guard", '~> 1.6.2'
+  gem "guard-rspec", '~> 2.4.1'
 end
 
 group :test do
-  gem "rspec", '~> 2.10'
-  gem "rake", '~> 0.9.2'
-  gem "vcr", '~> 2.2.0'
+  gem "rspec", '~> 2.13.0'
+  gem "rake", '~> 10.0.3'
+  gem "vcr", '~> 2.4.0'
 end

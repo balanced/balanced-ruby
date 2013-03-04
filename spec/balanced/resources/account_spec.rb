@@ -1,20 +1,14 @@
 require "spec_helper"
 
-describe Balanced::Account do
-  use_vcr_cassette
+describe Balanced::Account, :vcr do
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
   end
 
-  describe "Account.uri" do
-    use_vcr_cassette
-
-    context "when ApiKey is not configured" do
-
-      use_vcr_cassette
-
+  describe "Account.uri", :vcr do
+    context "when ApiKey is not configured", :vcr do
       before do
         Balanced::Marketplace.stub(:marketplace_uri) { nil }
         Balanced.configure nil
@@ -27,8 +21,7 @@ describe Balanced::Account do
       end
     end
 
-    context "when ApiKey is configured" do
-      use_vcr_cassette
+    context "when ApiKey is configured", :vcr do
       before do
         api_key = Balanced::ApiKey.new.save
         Balanced.configure api_key.secret
@@ -43,9 +36,7 @@ describe Balanced::Account do
     end
   end
 
-  describe "merchant" do
-    use_vcr_cassette
-
+  describe "merchant", :vcr do
     before do
       @merchant_attributes = {
         :type => "person",
@@ -87,8 +78,7 @@ describe Balanced::Account do
 
     end
 
-    describe "#credit" do
-      use_vcr_cassette
+    describe "#credit", :vcr do
       before do
         @buyer.debit :amount => 1250
       end
@@ -181,8 +171,7 @@ describe Balanced::Account do
       end
     end
 
-    describe "#add_bank_account" do
-      use_vcr_cassette
+    describe "#add_bank_account", :vcr do
       before do
         @new_bank_account = @marketplace.create_bank_account(
           :account_number => "1234567890",
@@ -195,8 +184,7 @@ describe Balanced::Account do
         it { -> { @merchant.add_bank_account(@new_bank_account.uri) }.should_not raise_error }
       end
 
-      describe "after executing" do
-        use_vcr_cassette
+      describe "after executing", :vcr do
         before do
           @merchant.add_bank_account(@new_bank_account.uri)
           @bank_accounts = Balanced::BankAccount.find(@merchant.bank_accounts_uri).items
@@ -210,8 +198,7 @@ describe Balanced::Account do
 
   describe "buyer" do
     describe "#save" do
-      describe "when creating" do
-        use_vcr_cassette :record => :new_episodes
+      describe "when creating", :vcr => { :record => :new_episodes } do
         before do
           card = Balanced::Card.new(
             :card_number => "5105105105105100",
@@ -229,8 +216,7 @@ describe Balanced::Account do
       end
 
       describe "after #save" do
-        describe "attributes" do
-          use_vcr_cassette :record => :new_episodes
+        describe "attributes", :vcr => { :record => :new_episodes } do
           before do
             card = Balanced::Card.new(
               :card_number => "4111111111111111",
@@ -316,9 +302,7 @@ describe Balanced::Account do
     end
 
     describe "#add_card" do
-
-      describe "when executing" do
-        use_vcr_cassette
+      describe "when executing", :vcr do
         before do
           card = Balanced::Card.new(
             :card_number => "4111111111111111",
@@ -341,9 +325,7 @@ describe Balanced::Account do
           -> { @buyer.add_card(@new_card.uri) }.should_not raise_error
         end
       end
-      describe "after executing" do
-        use_vcr_cassette
-
+      describe "after executing", :vcr do
         before do
           card = Balanced::Card.new(
             :card_number => "4111111111111111",
@@ -370,11 +352,8 @@ describe Balanced::Account do
     end
 
     describe "#promote_to_merchant" do
-
-      describe "when executing" do
-        use_vcr_cassette
+      describe "when executing", :vcr do
         before do
-
           @merchant_attributes = {
             :type => "person",
             :name => "Billy Jones",
@@ -401,9 +380,7 @@ describe Balanced::Account do
           -> { @buyer.promote_to_merchant @merchant_attributes}.should_not raise_error
         end
       end
-      describe "after executing" do
-        use_vcr_cassette
-
+      describe "after executing", :vcr do
         before do
           @merchant_attributes = {
             :type => "person",
@@ -433,8 +410,7 @@ describe Balanced::Account do
 
     end
 
-    describe "#debit" do
-      use_vcr_cassette :match_requests_on => [:body], :record => :new_episodes
+    describe "#debit", :vcr => { :match_requests_on => [:body], :record => :new_episodes } do
       before do
         card = Balanced::Card.new(
           :card_number => "4111111111111111",
@@ -502,9 +478,7 @@ describe Balanced::Account do
     end
   end
 
-  describe ".find" do
-    use_vcr_cassette
-
+  describe ".find", :vcr do
     before do
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
@@ -520,8 +494,7 @@ describe Balanced::Account do
       )
     end
 
-    context "(:all, :some_field => 'op')" do
-      use_vcr_cassette
+    context "(:all, :some_field => 'op')", :vcr do
       it "should find the account by returning a page with items of one" do
         response = Balanced::Account.find(:all, :email_address => "john.doe@example.com")
         response.should be_instance_of Array
@@ -529,19 +502,15 @@ describe Balanced::Account do
       end
     end
 
-    context "(:first, :some_field => 'op')" do
-      use_vcr_cassette
+    context "(:first, :some_field => 'op')", :vcr do
       it "should find the account by returning the first item" do
         response = Balanced::Account.find(:first, :email_address => "john.doe@example.com")
         response.should be_instance_of Balanced::Account
       end
     end
-
-
   end
 
-  describe ".find_by_email" do
-    use_vcr_cassette  :record => :new_episodes
+  describe ".find_by_email", :vcr => { :record => :new_episodes } do
     before do
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
@@ -557,15 +526,13 @@ describe Balanced::Account do
       )
     end
 
-    context "email address is in system" do
-      use_vcr_cassette  :record => :new_episodes
+    context "email address is in system", :vcr => { :record => :new_episodes } do
       it "should return account object" do
         Balanced::Account.find_by_email("john.doe@example.com").should be_instance_of Balanced::Account
       end
     end
 
-    context "email address does not exist" do
-      use_vcr_cassette  :record => :new_episodes
+    context "email address does not exist", :vcr => { :record => :new_episodes } do
       it "should return nil" do
         Balanced::Account.find_by_email("foo@bar.com").should be_nil
       end
