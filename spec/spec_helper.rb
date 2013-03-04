@@ -13,6 +13,7 @@ end
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :faraday
+  c.configure_rspec_metadata!
 end
 
 # TODO: better way to do this?
@@ -27,8 +28,8 @@ if !host.nil? then
 end
 
 RSpec.configure do |c|
-  c.extend VCR::RSpec::Macros
-
+  c.treat_symbols_as_metadata_keys_with_true_values = true
+  
   # @return [Balanced::Marketplace]
   def make_marketplace
     api_key = Balanced::ApiKey.new.save

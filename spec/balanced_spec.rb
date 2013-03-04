@@ -1,8 +1,7 @@
 require "spec_helper"
 
 describe Balanced do
-  describe "configure" do
-    use_vcr_cassette
+  describe "configure", :vcr do
     before do
       @api_key = Balanced::ApiKey.new.save
 
@@ -37,16 +36,14 @@ describe Balanced do
       end
     end
 
-    describe "reconfigure with new api key" do
-      use_vcr_cassette
+    describe "reconfigure with new api key", :vcr do
       before do
         @new_api_key = Balanced::ApiKey.new.save
         Balanced.configure @new_api_key.secret
       end
 
       describe "api key" do
-        describe "merchant" do
-          use_vcr_cassette
+        describe "merchant", :vcr do
           subject { @api_key.merchant }
           it { should_not be_nil }
         end
@@ -66,9 +63,7 @@ describe Balanced do
           it { should_not be_nil }
 
         end
-        describe "merchant" do
-          use_vcr_cassette
-
+        describe "merchant", :vcr do
           subject { @new_api_key.merchant }
           it { should_not be_nil }
         end

@@ -1,9 +1,6 @@
 require "spec_helper"
 
-describe Balanced::Transaction do
-
-  use_vcr_cassette
-
+describe Balanced::Transaction, :vcr do
   before do
     api_key = Balanced::ApiKey.new.save
     Balanced.configure api_key.secret
@@ -47,16 +44,12 @@ describe Balanced::Transaction do
 
   end
 
-  describe "Transaction" do
-    use_vcr_cassette
-
+  describe "Transaction", :vcr do
     it "#all" do
       Balanced::Transaction.all.length.should eql(15)
     end
 
-    describe "#paginate" do
-      use_vcr_cassette
-
+    describe "#paginate", :vcr do
       it "#total" do
         Balanced::Transaction.paginate.total.should eql(15)
       end
@@ -68,8 +61,6 @@ describe Balanced::Transaction do
         end
         counter.should eql(15)
       end
-
     end
-
   end
 end
