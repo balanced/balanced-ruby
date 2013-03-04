@@ -28,3 +28,6 @@ Gemfile.lock
 
 # vcr cassettes
 spec/cassettes
+
+# OS X
+.DS_Store
