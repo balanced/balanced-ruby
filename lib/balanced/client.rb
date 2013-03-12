@@ -17,7 +17,8 @@ module Balanced
       :connection_timeout => 30,
       :read_timeout => 30,
       :logger => nil,
-      :ssl_verify => true
+      :ssl_verify => true,
+      :adapter => Faraday.default_adapter
     }
 
     attr_reader :conn
@@ -56,7 +57,7 @@ module Balanced
         cxn.response :handle_balanced_errors
         cxn.response :json
         # cxn.response :raise_error  # raise exceptions on 40x, 50x responses
-        cxn.adapter  Faraday.default_adapter
+        cxn.adapter  config[:adapter]
       end
       conn.path_prefix = '/'
       conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
