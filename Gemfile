@@ -13,6 +13,7 @@ group :development do
 end
 
 group :test do
+  gem 'net-http-persistent'
   gem "rspec", '~> 2.13.0'
   gem "rake", '~> 10.0.3'
   gem "vcr", '~> 2.4.0'
