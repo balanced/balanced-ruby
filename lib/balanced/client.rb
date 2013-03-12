@@ -7,7 +7,7 @@ require "balanced_exception_middleware"
 
 module Balanced
   class Client
-  
+
     DEFAULTS = {
       :scheme => 'http',
       :host => 'localhost',
@@ -18,7 +18,7 @@ module Balanced
       :read_timeout => 30,
       :logger => nil,
       :ssl_verify => true,
-      :adapter => Faraday.default_adapter
+      :faraday_adapter => Faraday.default_adapter
     }
 
     attr_reader :conn
@@ -57,7 +57,7 @@ module Balanced
         cxn.response :handle_balanced_errors
         cxn.response :json
         # cxn.response :raise_error  # raise exceptions on 40x, 50x responses
-        cxn.adapter  config[:adapter]
+        cxn.adapter  config[:faraday_adapter]
       end
       conn.path_prefix = '/'
       conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"

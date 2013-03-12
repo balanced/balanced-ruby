@@ -8,7 +8,7 @@ describe Balanced do
     end
 
     it 'allows the user to set it' do
-      client = Balanced.configure 'secret', :adapter => :net_http_persistent
+      client = Balanced.configure 'secret', :farday_adapter => :net_http_persistent
       client.conn.builder.handlers.should include Faraday::Adapter::NetHttpPersistent
       client.conn.builder.handlers.should_not include Faraday::Adapter::NetHttp
     end
