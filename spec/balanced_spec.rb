@@ -1,6 +1,19 @@
 require "spec_helper"
 
 describe Balanced do
+  describe 'configuring the faraday http adapter' do
+    it 'sets it to net http when nothing is passed in' do
+      client = Balanced.configure 'secret'
+      client.conn.builder.handlers.should include Faraday::Adapter::NetHttp
+    end
+
+    it 'allows the user to set it' do
+      client = Balanced.configure 'secret', :faraday_adapter => :net_http_persistent
+      client.conn.builder.handlers.should include Faraday::Adapter::NetHttpPersistent
+      client.conn.builder.handlers.should_not include Faraday::Adapter::NetHttp
+    end
+  end
+
   describe "configure", :vcr do
     before do
       @api_key = Balanced::ApiKey.new.save
