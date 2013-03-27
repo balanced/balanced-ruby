@@ -88,6 +88,24 @@ describe Balanced::BankAccount, :vcr do
       it { should have_at_least(20).characters }
     end
 
+    describe 'does not invalidate on save', :vcr do
+      before do
+        @bank_account = @marketplace.create_bank_account(
+            :account_number => "0987654321",
+            :bank_code => "321174851",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+        )
+        @account = @marketplace.create_account
+        @account.add_bank_account(@bank_account.uri)
+        @bank_account = @account.bank_accounts[0]
+        @bank_account.save
+      end
+
+      subject { @bank_account.is_valid }
+      it { should be_true }
+    end
+
     describe 'credit', :vcr do
       before do
         @credit = @bank_account.credit(

@@ -23,8 +23,19 @@ module Balanced
       elsif !Balanced.is_collection(uri)
         method = :put
       end
-      @response = Balanced.send(method, uri, self.attributes)
+      attributes_to_submit = self.sanitize
+      @response = Balanced.send(method, uri, attributes_to_submit)
       reload @response
+    end
+
+    def sanitize
+      to_submit = {}
+      @attributes.each do |key, value|
+        if not value.is_a? Balanced::Resource
+          to_submit[key] = value
+        end
+      end
+      to_submit
     end
 
     def warn_on_positional args
