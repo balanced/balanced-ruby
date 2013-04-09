@@ -19,10 +19,12 @@ Or install it yourself as:
 
     $ gem install balanced
 
-## Usage
+## Documentation & Usage
 
-See https://www.balancedpayments.com/docs/overview?language=ruby for tutorials and documentation.
-
+* [Balanced Overview](https://www.balancedpayments.com/docs/overview?language=ruby)
+* [RDoc](http://rubydoc.info/gems/balanced)
+* [Balanced API with Ruby examples](https://www.balancedpayments.com/docs/api?language=ruby)
+* [Example scripts](https://github.com/balanced/balanced-ruby/tree/master/examples)
 
 ## Contributing
 
