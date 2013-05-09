@@ -38,6 +38,16 @@ module Balanced
       to_submit
     end
 
+    def add_item(object, type)
+      if object.is_a? String
+        self.send("#{type}=", object)
+      elsif object.respond_to? :uri
+        self.send("#{type}=", object.uri)
+      else
+        self.object = object
+      end
+    end
+
     def warn_on_positional args
       msg = <<-WARNING
       Called from: #{caller[1]}

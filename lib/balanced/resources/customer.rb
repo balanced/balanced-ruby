@@ -62,13 +62,7 @@ module Balanced
     #
     # @return [Card]
     def add_card(card)
-      if card.is_a? String
-        self.card_uri = card
-      elsif card.respond_to? :uri
-        self.card_uri = card.uri
-      else
-        self.card = card
-      end
+      add_item(card, "card_uri")
       save
     end
 
@@ -77,13 +71,7 @@ module Balanced
     #
     # @return [BankAccount]
     def add_bank_account(bank_account)
-      if bank_account.is_a? String
-        self.bank_account_uri = bank_account
-      elsif bank_account.respond_to? :uri
-        self.bank_account_uri = bank_account.uri
-      else
-        self.bank_account = bank_account
-      end
+      add_item(bank_account, "bank_account_uri")
       save
     end
 
