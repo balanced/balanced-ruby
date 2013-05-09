@@ -49,7 +49,7 @@ describe Balanced::Customer, :vcr do
       end
     end
 
-    describe "#add_card", :vcr do
+    describe "#add_card using object", :vcr do
       before do
         @customer = Balanced::Customer.new.save
         @card = Balanced::Card.new(
@@ -58,6 +58,26 @@ describe Balanced::Customer, :vcr do
           :expiration_year   => "2015",
         ).save
         @customer.add_card(@card)
+        @customer_card_hash = @customer.cards.first.hash
+        @card_hash = @card.hash
+      end
+      it "should add a card to a customer" do
+        @customer.cards.size.should eq(1)
+      end
+      it "card added should be the same card" do
+        @customer_card_hash.should eq(@card_hash)
+      end
+    end
+
+    describe "#add_card using uri", :vcr do
+      before do
+        @customer = Balanced::Customer.new.save
+        @card = Balanced::Card.new(
+          :card_number       => "4111111111111111",
+          :expiration_month  => "12",
+          :expiration_year   => "2015",
+        ).save
+        @customer.add_card(@card.uri)
         @customer_card_hash = @customer.cards.first.hash
         @card_hash = @card.hash
       end
@@ -124,24 +144,12 @@ describe Balanced::Customer, :vcr do
         @customer.debit :amount => 1250
       end
 
-      # WARNING: This test is deprecated
-      context "all args passed directly" do
-        subject {
-          @customer.credit 1250, "description", {}, @bank_account.uri
-        }
-
-        its(:amount) { should == 1250 }
-        its(:meta) { should == {} }
-        its(:description) { should == "description" }
-      end
-
       context "args passed by name via options hash" do
         subject {
           @customer.credit(
             amount: 1250,
             description: "description",
-            meta: {},
-            destination_uri: @bank_account.uri
+            meta: {}
           )
         }
 

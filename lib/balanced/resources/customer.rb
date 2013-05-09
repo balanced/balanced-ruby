@@ -19,17 +19,14 @@ module Balanced
       super attributes
     end
 
-    def debit(*args)
-      warn_on_positional args
-
-      options = args.last.is_a?(Hash) ? args.pop : {}
-      amount = args[0] || options.fetch(:amount) { nil }
-      appears_on_statement_as = args[1] || options.fetch(:appears_on_statement_as) { nil }
-      hold_uri = args[2] || options.fetch(:hold_uri) { nil }
-      meta = args[3] || options.fetch(:meta) { nil }
-      description = args[4] || options.fetch(:description) { nil }
-      source_uri = args[5] || options.fetch(:source_uri) { nil }
-      on_behalf_of = args[6] || options.fetch(:on_behalf_of) { nil }
+    def debit(options = {})
+      amount = options[:amount]
+      appears_on_statement_as = options[:appears_on_statement_as]
+      hold_uri = options[:hold_uri]
+      meta = options[:meta]
+      description = options[:description]
+      source_uri = options[:source_uri]
+      on_behalf_of = options[:on_behalf_of]
 
       if on_behalf_of
         if on_behalf_of.respond_to? :uri
@@ -56,15 +53,9 @@ module Balanced
       debit.save
     end
 
-    def credit(*args)
-      warn_on_positional args
-
-      if args.last.is_a? Hash
-        args.last.merge! uri: self.credits_uri
-      else
-        args << { uri: self.credits_uri }
-      end
-      Credit.new(*args).save
+    def credit(options = {})
+      options.merge!(:uri => self.credits_uri)
+      Credit.new(options).save
     end
 
     # Associates the Card represented by 'card' with this Customer.
