@@ -1,0 +1,185 @@
+require 'spec_helper'
+
+describe Balanced::Customer, :vcr do
+  before do
+    api_key = Balanced::ApiKey.new.save
+    Balanced.configure api_key.secret
+    @marketplace = Balanced::Marketplace.new.save
+  end
+
+  describe "Customer.uri", :vcr do
+
+    context "when Api Key is configured properly", :vcr do
+      before do
+        api_key = Balanced::ApiKey.new.save
+        Balanced.configure api_key.secret
+        Balanced::Customer.new
+      end
+
+      it "matches the resource's uri structure" do
+        uri = Balanced::Customer.uri
+        uri.should_not be_nil
+        uri.should match CUSTOMERS_URI_REGEX
+      end
+    end
+  end
+
+  describe "customer", :vcr do
+    describe "#create", :vcr do
+      before do
+        @customer = Balanced::Customer.new(
+          :name           => "Bill",
+          :email          => "bill@bill.com",
+          :business_name  => "Bill Inc.",
+          :ssn_last4      => "1234",
+          :address => {
+            :line1 => "1234 1st Street",
+            :city  => "San Francisco",
+            :state => "CA"
+        }
+        ).save
+      end
+      it "should create a new customer" do
+        @customer.should_not be_nil
+      end
+      it "should contain the correct attributes" do
+        @customer.name.should eq("Bill")
+        @customer.email.should eq("bill@bill.com")
+        @customer.business_name.should eq("Bill Inc.")
+      end
+    end
+
+    describe "#add_card", :vcr do
+      before do
+        @customer = Balanced::Customer.new.save
+        @card = Balanced::Card.new(
+          :card_number       => "4111111111111111",
+          :expiration_month  => "12",
+          :expiration_year   => "2015",
+        ).save
+        @customer.add_card(@card)
+        @customer_card_hash = @customer.cards.first.hash
+        @card_hash = @card.hash
+      end
+      it "should add a card to a customer" do
+        @customer.cards.size.should eq(1)
+      end
+      it "card added should be the same card" do
+        @customer_card_hash.should eq(@card_hash)
+      end
+    end
+
+    describe "#add_bank_account", :vcr do
+      before do
+        @customer = Balanced::Customer.new.save
+        @bank_account = @marketplace.create_bank_account(
+          :account_number => "1234567980",
+          :bank_code => "321174811",
+          :name => "Jack Q Merchant"
+        )
+        @customer.add_bank_account(@bank_account)
+        @customer_bank_account_id = @customer.bank_accounts.first.id
+        @bank_account_id = @bank_account.id
+      end
+      it "should add a bank account to a customer" do
+        @customer.bank_accounts.size.should eq(1)
+      end
+      it "bank account added should be the same bank account" do
+        @customer_bank_account_id = @bank_account_id
+      end
+    end
+
+    describe "#debit" do
+      before do
+        @customer = Balanced::Customer.new.save
+        @card = Balanced::Card.new(
+          :card_number       => "4111111111111111",
+          :expiration_month  => "12",
+          :expiration_year   => "2015",
+        ).save
+        @customer.add_card(@card)
+        @customer.debit :amount => 1000
+      end
+      context "customer debit should be added" do
+        subject {@customer.debits.first}
+        its(:amount) { should eq 1000}
+      end
+    end
+
+    describe "compound credit and debit", :vcr do
+      before do
+        @customer = Balanced::Customer.new.save
+        @bank_account = @marketplace.create_bank_account(
+          :account_number => "1234567980",
+          :bank_code => "321174811",
+          :name => "Jack Q Merchant"
+        )
+        @card = Balanced::Card.new(
+          :card_number       => "4111111111111111",
+          :expiration_month  => "12",
+          :expiration_year   => "2015",
+        ).save
+        @customer.add_card(@card)
+        @customer.add_bank_account(@bank_account)
+        @customer.debit :amount => 1250
+      end
+
+      # WARNING: This test is deprecated
+      context "all args passed directly" do
+        subject {
+          @customer.credit 1250, "description", {}, @bank_account.uri
+        }
+
+        its(:amount) { should == 1250 }
+        its(:meta) { should == {} }
+        its(:description) { should == "description" }
+      end
+
+      context "args passed by name via options hash" do
+        subject {
+          @customer.credit(
+            amount: 1250,
+            description: "description",
+            meta: {},
+            destination_uri: @bank_account.uri
+          )
+        }
+
+        its(:amount) { should == 1250 }
+        its(:meta) { should == {} }
+        its(:description) { should == "description" }
+      end
+    end
+
+    describe "#active_card", :vcr do
+      before do
+        @customer = Balanced::Customer.new.save
+        @card = Balanced::Card.new(
+          :card_number       => "4111111111111111",
+          :expiration_month  => "12",
+          :expiration_year   => "2015",
+        ).save
+        @customer.add_card(@card)
+      end
+      it "should display the most recently added valid card" do
+        @customer.active_card.should_not be_nil
+      end
+    end
+
+    describe "#active_bank_account", :vcr do
+      before do
+        @customer = Balanced::Customer.new.save
+        @bank_account = @marketplace.create_bank_account(
+          :account_number => "1234567980",
+          :bank_code => "321174811",
+          :name => "Jack Q Merchant"
+        )
+        @customer.add_bank_account(@bank_account)
+      end
+      it "should display the most recently added valid card" do
+        @customer.active_bank_account.should_not be_nil
+      end
+    end
+  end
+
+end

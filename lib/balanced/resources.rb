@@ -13,3 +13,5 @@ require "refund"
 require "transaction"
 require "callback"
 require "event"
+require "customer"
+

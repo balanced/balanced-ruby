@@ -42,6 +42,8 @@ describe Balanced::Transaction, :vcr do
       @merchant.credit(:amount => 500, :description => "Credit from Debit ##{n}")
     end
 
+    sleep 2
+
   end
 
   describe "Transaction", :vcr do

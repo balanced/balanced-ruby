@@ -22,7 +22,8 @@ args = [
   'lib/balanced/resources/hold.rb',
   'lib/balanced/resources/marketplace.rb',
   'lib/balanced/resources/merchant.rb',
-  'lib/balanced/resources/transaction.rb'
+  'lib/balanced/resources/transaction.rb',
+  'lib/balanced/resources/customer.rb'
 ]
 
 YARD::CLI::CommandParser.run(*args)
