@@ -27,7 +27,7 @@ describe Balanced::Customer, :vcr do
   describe "customer", :vcr do
     describe "#create", :vcr do
       before do
-        @customer = Balanced::Customer.new(
+        @customer = @marketplace.create_customer(
           :name           => "Bill",
           :email          => "bill@bill.com",
           :business_name  => "Bill Inc.",
@@ -51,47 +51,47 @@ describe Balanced::Customer, :vcr do
 
     describe "#add_card using object", :vcr do
       before do
-        @customer = Balanced::Customer.new.save
-        @card = Balanced::Card.new(
+        @customer = @marketplace.create_customer.save
+        @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
           :expiration_year   => "2015",
         ).save
         @customer.add_card(@card)
-        @customer_card_hash = @customer.cards.first.hash
-        @card_hash = @card.hash
+        @customer_card_id = @customer.cards.first.id
+        @card_id = @card.id
       end
       it "should add a card to a customer" do
         @customer.cards.size.should eq(1)
       end
       it "card added should be the same card" do
-        @customer_card_hash.should eq(@card_hash)
+        @customer_card_id.should eq(@card_id)
       end
     end
 
     describe "#add_card using uri", :vcr do
       before do
-        @customer = Balanced::Customer.new.save
-        @card = Balanced::Card.new(
+        @customer = @marketplace.create_customer.save
+        @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
           :expiration_year   => "2015",
         ).save
         @customer.add_card(@card.uri)
-        @customer_card_hash = @customer.cards.first.hash
-        @card_hash = @card.hash
+        @customer_card_id = @customer.cards.first.id
+        @card_id = @card.id
       end
       it "should add a card to a customer" do
         @customer.cards.size.should eq(1)
       end
       it "card added should be the same card" do
-        @customer_card_hash.should eq(@card_hash)
+        @customer_card_id.should eq(@card_id)
       end
     end
 
     describe "#add_bank_account", :vcr do
       before do
-        @customer = Balanced::Customer.new.save
+        @customer = @marketplace.create_customer.save
         @bank_account = @marketplace.create_bank_account(
           :account_number => "1234567980",
           :bank_code => "321174811",
@@ -111,8 +111,8 @@ describe Balanced::Customer, :vcr do
 
     describe "#debit" do
       before do
-        @customer = Balanced::Customer.new.save
-        @card = Balanced::Card.new(
+        @customer = @marketplace.create_customer.save
+        @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
           :expiration_year   => "2015",
@@ -128,7 +128,7 @@ describe Balanced::Customer, :vcr do
 
     describe "compound credit and debit", :vcr do
       before do
-        @customer = Balanced::Customer.new.save
+        @customer = @marketplace.create_customer.save
         @bank_account = @marketplace.create_bank_account(
           :account_number => "1234567980",
           :bank_code => "321174811",
@@ -161,8 +161,8 @@ describe Balanced::Customer, :vcr do
 
     describe "#active_card", :vcr do
       before do
-        @customer = Balanced::Customer.new.save
-        @card = Balanced::Card.new(
+        @customer = @marketplace.create_customer.save
+        @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
           :expiration_year   => "2015",
@@ -176,7 +176,7 @@ describe Balanced::Customer, :vcr do
 
     describe "#active_bank_account", :vcr do
       before do
-        @customer = Balanced::Customer.new.save
+        @customer = @marketplace.create_customer.save
         @bank_account = @marketplace.create_bank_account(
           :account_number => "1234567980",
           :bank_code => "321174811",

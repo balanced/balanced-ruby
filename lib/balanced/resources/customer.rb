@@ -27,16 +27,17 @@ module Balanced
       description = options[:description]
       source_uri = options[:source_uri]
       on_behalf_of = options[:on_behalf_of]
+      on_behalf_of_uri = options[:on_behalf_of_uri]
 
       if on_behalf_of
         if on_behalf_of.respond_to? :uri
           on_behalf_of = on_behalf_of.uri
         end
         if !on_behalf_of.is_a?(String)
-          raise ArgumentError, 'The on_behalf_of parameter needs to be an account URI'
+          raise ArgumentError, 'The on_behalf_of parameter needs to be a customer URI'
         end
         if on_behalf_of == self.uri
-          raise ArgumentError, 'The on_behalf_of parameter MAY NOT be the same account as the account you are debiting!'
+          raise ArgumentError, 'The on_behalf_of parameter MAY NOT be the same account as the customer you are debiting!'
         end
       end
 
@@ -62,7 +63,7 @@ module Balanced
     #
     # @return [Card]
     def add_card(card)
-      add_item(card, "card_uri")
+      self.card_uri = Balanced::Utils.extract_uri_from_object(card)
       save
     end
 
@@ -71,22 +72,18 @@ module Balanced
     #
     # @return [BankAccount]
     def add_bank_account(bank_account)
-      add_item(bank_account, "bank_account_uri")
+      self.bank_account_uri = Balanced::Utils.extract_uri_from_object(bank_account)
       save
     end
 
     def active_card
-      cards = self.cards.select do |card|
-        card.is_valid
-      end 
-      cards ? cards.sort_by { |card| card.created_at }.last : nil
+      pager = Pager.new(self.cards_uri, :is_active => true, :sort => 'created_at,desc', :limit => 1)
+      pager.first
     end
 
     def active_bank_account
-      bank_accounts = self.bank_accounts.select do |bank_account|
-        bank_account.is_valid
-      end 
-      bank_accounts ? bank_accounts.sort_by { |b| b.created_at }.last : nil
+      pager = Pager.new(self.bank_accounts_uri, :is_active => true, :sort => 'created_at,desc', :limit => 1)
+      pager.first
     end
 
   end

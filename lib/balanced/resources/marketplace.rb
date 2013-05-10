@@ -209,6 +209,11 @@ module Balanced
       card.save
     end
 
+    def create_customer(options = {})
+      customer = Customer.new(options)
+      customer.save
+    end
+
     def create_callback *args
       warn_on_positional args
 
