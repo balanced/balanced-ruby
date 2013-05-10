@@ -49,9 +49,24 @@ describe Balanced::Customer, :vcr do
       end
     end
 
-    describe "#add_card using object", :vcr do
+    describe "#add_card using untokenized object", :vcr do
       before do
-        @customer = @marketplace.create_customer.save
+      @customer = @marketplace.create_customer
+      @card = Balanced::Card.new(
+        :card_number       => "4111111111111111",
+        :expiration_month  => "12",
+        :expiration_year   => "2015",
+        )
+        @customer.add_card(@card)
+      end
+      it "should add a card to a customer" do
+        @customer.cards.size.should eq(1)
+      end
+    end
+
+    describe "#add_card using tokenized object", :vcr do
+      before do
+        @customer = @marketplace.create_customer
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
@@ -71,7 +86,7 @@ describe Balanced::Customer, :vcr do
 
     describe "#add_card using uri", :vcr do
       before do
-        @customer = @marketplace.create_customer.save
+        @customer = @marketplace.create_customer
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
@@ -89,9 +104,9 @@ describe Balanced::Customer, :vcr do
       end
     end
 
-    describe "#add_bank_account", :vcr do
+    describe "#add_bank_account using tokenized object", :vcr do
       before do
-        @customer = @marketplace.create_customer.save
+        @customer = @marketplace.create_customer
         @bank_account = @marketplace.create_bank_account(
           :account_number => "1234567980",
           :bank_code => "321174811",
@@ -109,9 +124,29 @@ describe Balanced::Customer, :vcr do
       end
     end
 
+    describe "#add_bank_account using uri", :vcr do
+      before do
+        @customer = @marketplace.create_customer
+        @bank_account = @marketplace.create_bank_account(
+          :account_number => "1234567980",
+          :bank_code => "321174811",
+          :name => "Jack Q Merchant"
+        )
+        @customer.add_bank_account(@bank_account.uri)
+        @customer_bank_account_id = @customer.bank_accounts.first.id
+        @bank_account_id = @bank_account.id
+      end
+      it "should add a bank account to a customer" do
+        @customer.bank_accounts.size.should eq(1)
+      end
+      it "bank account added should be the same bank account" do
+        @customer_bank_account_id = @bank_account_id
+      end
+    end
+
     describe "#debit" do
       before do
-        @customer = @marketplace.create_customer.save
+        @customer = @marketplace.create_customer
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
@@ -128,7 +163,7 @@ describe Balanced::Customer, :vcr do
 
     describe "compound credit and debit", :vcr do
       before do
-        @customer = @marketplace.create_customer.save
+        @customer = @marketplace.create_customer
         @bank_account = @marketplace.create_bank_account(
           :account_number => "1234567980",
           :bank_code => "321174811",
@@ -161,7 +196,7 @@ describe Balanced::Customer, :vcr do
 
     describe "#active_card", :vcr do
       before do
-        @customer = @marketplace.create_customer.save
+        @customer = @marketplace.create_customer
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
@@ -176,7 +211,7 @@ describe Balanced::Customer, :vcr do
 
     describe "#active_bank_account", :vcr do
       before do
-        @customer = @marketplace.create_customer.save
+        @customer = @marketplace.create_customer
         @bank_account = @marketplace.create_bank_account(
           :account_number => "1234567980",
           :bank_code => "321174811",

@@ -3,6 +3,7 @@ $:.unshift(cwd + "/lib")
 require 'balanced'
 require 'ruby-debug'
 
+
 begin
   Balanced::Card
 rescue NameError
@@ -35,7 +36,7 @@ rescue Balanced::Conflict => ex
 end
 
 puts "create a customer"
-# 
+#
 customer = marketplace.create_customer(
           :name           => "Bill",
           :email          => "bill@bill.com",
@@ -57,6 +58,7 @@ bank_account = marketplace.create_bank_account(
           :bank_code => "321174811",
           :name => "Jack Q Merchant"
         )
+
 card = marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
@@ -67,13 +69,14 @@ puts "our bank account uri is #{bank_account.uri}"
 puts "our card uri is #{card.uri}"
 
 puts "associate the newly created bank account and card to our customer"
+debugger
 customer.add_card(card)
 customer.add_bank_account(bank_account)
 
 puts "check and make sure our customer now has a card and bank account listed"
 
-raise "customer's cards should not be empty" unless customer.cards.any? 
-raise "customer's bank accounts should not be empty" unless customer.bank_accounts.any? 
+raise "customer's cards should not be empty" unless customer.cards.any?
+raise "customer's bank accounts should not be empty" unless customer.bank_accounts.any?
 
 puts "create a debit on our customer"
 

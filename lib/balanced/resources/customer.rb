@@ -62,7 +62,9 @@ module Balanced
     # Associates the Card represented by 'card' with this Customer.
     #
     # @return [Card]
+
     def add_card(card)
+      card.save if card.kind_of?(Balanced::Card) && card.hash.nil?
       self.card_uri = Balanced::Utils.extract_uri_from_object(card)
       save
     end
@@ -72,17 +74,28 @@ module Balanced
     #
     # @return [BankAccount]
     def add_bank_account(bank_account)
+      if bank_account.kind_of?(Balanced::BankAccount) && bank_account.hash.nil?
+        bank_account.save
+      end
       self.bank_account_uri = Balanced::Utils.extract_uri_from_object(bank_account)
       save
     end
 
     def active_card
-      pager = Pager.new(self.cards_uri, :is_active => true, :sort => 'created_at,desc', :limit => 1)
+      pager = Pager.new(
+        self.cards_uri,
+        :is_active => true,
+        :sort => 'created_at,desc',
+        :limit => 1)
       pager.first
     end
 
     def active_bank_account
-      pager = Pager.new(self.bank_accounts_uri, :is_active => true, :sort => 'created_at,desc', :limit => 1)
+      pager = Pager.new(
+        self.bank_accounts_uri,
+        :is_active => true,
+        :sort => 'created_at,desc',
+        :limit => 1)
       pager.first
     end
 
