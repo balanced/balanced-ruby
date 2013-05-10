@@ -45,12 +45,14 @@ describe Balanced::Transaction, :vcr do
 
   describe "Transaction", :vcr do
     it "#all" do
-      Balanced::Transaction.all.length.should eql(15)
+      all_transactions = Balanced::Transaction.all.length
+      all_transactions.should eql(15)
     end
 
     describe "#paginate", :vcr do
       it "#total" do
-        Balanced::Transaction.paginate.total.should eql(15)
+        total_transactions = Balanced::Transaction.paginate.total
+        total_transactions.should eql(15)
       end
 
       it "#each" do
