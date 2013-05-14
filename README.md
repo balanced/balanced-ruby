@@ -60,17 +60,32 @@ spec/cassettes.  To clear them and regenerate:
 
 ### Issues
 
-All issues should be documented at 
+All issues should be documented at
 [balanced-ruby/issues](https://github.com/balanced/balanced-ruby/issues)
 
 
 ### Building Documentation
 
 Documentation is built using YARD - http://rubydoc.info/docs/yard
- 
+
     export AMAZON_ACCESS_KEY_ID='xxx'
-    export AMAZON_SECRET_ACCESS_KEY='yyy' 
+    export AMAZON_SECRET_ACCESS_KEY='yyy'
     ./upload_docs.rb
+
+### Scenarios
+
+####Render
+
+To render executable files from scenario templates run `rake render_executables`
+Check /scenarios and make sure each scenario has an executable.rb file
+
+####Delete
+
+To delete previously generated executable files run `rake delete_executables`
+
+####Test
+
+After generating executable files, make sure they are valid Ruby files by running `rspec scenarios/execute.rb`
 
 ### Troubleshooting
 

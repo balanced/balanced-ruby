@@ -1,0 +1,1 @@
+<%= boiler_plate %>
