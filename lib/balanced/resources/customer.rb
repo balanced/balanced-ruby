@@ -26,8 +26,7 @@ module Balanced
       meta = options[:meta]
       description = options[:description]
       source_uri = options[:source_uri]
-      on_behalf_of = options[:on_behalf_of]
-      on_behalf_of_uri = options[:on_behalf_of_uri]
+      on_behalf_of = options[:on_behalf_of] || options[:on_behalf_of_uri]
 
       if on_behalf_of
         if on_behalf_of.respond_to? :uri
