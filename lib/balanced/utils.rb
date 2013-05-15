@@ -30,6 +30,10 @@ module Balanced
       word
     end
 
+    def extract_uri_from_object(object)
+      object.respond_to?(:uri) ? object.uri : object
+    end
+
     def hash_with_indifferent_read_access base = {}
       indifferent = Hash.new do |hash, key|
         hash[key.to_s] if key.is_a? Symbol
