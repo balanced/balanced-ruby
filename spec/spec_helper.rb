@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler/setup'
 require 'balanced'
 require 'vcr'
+require 'json'
+require 'net/http'
 
 begin
   require 'ruby-debug'
@@ -29,7 +31,7 @@ end
 
 RSpec.configure do |c|
   c.treat_symbols_as_metadata_keys_with_true_values = true
-  
+
   # @return [Balanced::Marketplace]
   def make_marketplace
     api_key = Balanced::ApiKey.new.save
