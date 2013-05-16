@@ -1,15 +1,7 @@
 require 'json'
-require 'net/http'
 require 'rspec'
 
-# pull scenario.cache file from Balanced Docs
-uri = URI.parse('https://raw.github.com/rloomba/balance-ruby-client/master/scenario.cache')
-http = Net::HTTP.new(uri.host, uri.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-data_file =  http.get(uri.request_uri).body
-
-parsed_data = JSON.parse(data_file)
+parsed_data = JSON.parse(File.read('./scenario.cache'))
 
 # list all directories in scenarios directory
 

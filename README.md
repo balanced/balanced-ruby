@@ -85,7 +85,8 @@ To delete previously generated executable files run `rake delete_executables`
 
 ####Test
 
-After generating executable files, make sure they are valid Ruby files by running `rspec scenarios/execute.rb`
+After generating executable files, make sure they are valid Ruby files by running
+ `rspec scenarios/execute.rb` from the root directory
 
 ### Troubleshooting
 

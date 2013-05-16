@@ -3,7 +3,6 @@ require 'bundler/setup'
 require 'balanced'
 require 'vcr'
 require 'json'
-require 'net/http'
 
 begin
   require 'ruby-debug'

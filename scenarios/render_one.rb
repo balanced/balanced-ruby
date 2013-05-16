@@ -3,13 +3,7 @@ require 'json'
 require 'net/https'
 
 # pull scenario.cache from Balanced Docs
-uri = URI.parse('https://raw.github.com/rloomba/balance-ruby-client/master/scenario.cache')
-http = Net::HTTP.new(uri.host, uri.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-data_file =  http.get(uri.request_uri).body
-
-parsed_data = JSON.parse(data_file)
+parsed_data = JSON.parse(File.read('./scenario.cache'))
 
 api_key = parsed_data["api_key"]
 # boiler plate configuration code used in all scenarios

@@ -1,26 +1,20 @@
 require 'spec_helper'
 
-# pull scenario.cache file from Balanced Docs
-uri = URI.parse('https://raw.github.com/rloomba/balance-ruby-client/master/scenario.cache')
-http = Net::HTTP.new(uri.host, uri.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-data_file =  http.get(uri.request_uri).body
+SCENARIOS_TO_SKIP = ['account_add_card', 'account_create_buyer', 'account_create_merchant',
+'bank_account_delete', 'bank_account_verification_create', 'card_update',
+ 'credit_create_existing_bank_account', 'debit_refund','hold_capture','refund_create',
+ 'event_list']
 
-parsed_data = JSON.parse(data_file)
+parsed_data = JSON.parse(File.read('./scenario.cache'))
 
 # list all directories in scenarios directory
 
 subdir_list = Dir["./scenarios/*"].reject { |o| not File.directory?(o) }
-puts subdir_list
-
-# VCR.configure { |c| c.allow_http_connections_when_no_cassette = true }
+subdir_list.reject! { |item| SCENARIOS_TO_SKIP.include?(item.split("/").last) }
 
 describe "Scenarios", :vcr do
   subdir_list.each do |scenario|
     next unless File.exist?("#{scenario}/executable.rb")
-    next if scenario == "event_list" # bug with event_list, hangs
-    # and then times out
     response = nil
     describe "#{scenario.split("/").last}", :vcr do
       before do
