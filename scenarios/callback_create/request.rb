@@ -1,4 +1,4 @@
 <%= boiler_plate %>
 callback = Balanced::Callback.new(
-  <%= "".tap { |s| payload.each {|k, v| s << ":#{k} => '#{v}'," } } %>
+  <%= params_to_hash.call(payload) %>
     ).save

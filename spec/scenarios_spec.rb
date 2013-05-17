@@ -1,4 +1,9 @@
 require 'spec_helper'
+require 'rake'
+
+# load rakefile and run task to create executable files
+load File.open('Rakefile')
+Rake::Task['render_executables'].invoke
 
 SCENARIOS_TO_SKIP = ['account_add_card', 'account_create_buyer', 'account_create_merchant',
 'bank_account_delete', 'bank_account_verification_create', 'card_update',

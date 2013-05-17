@@ -2,7 +2,7 @@
 marketplace = Balanced::Marketplace.my_marketplace
 
 merchant_data = {
-<%="".tap { |s| payload['merchant'].each {|k, v| s << ":#{k} => '#{v}'," } } %>
+<%= params_to_hash.call(payload['merchant']) %>
 }
 
 account = Balanced::Marketplace.my_marketplace.create_account

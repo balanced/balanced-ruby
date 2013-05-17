@@ -1,6 +1,6 @@
 <%= boiler_plate %>
 bank_account_info = {
-<%="".tap { |s| request['bank_account'].each {|k, v| s << ":#{k} => '#{v}'," } } %>
+<%= params_to_hash.call(request['bank_account']) %>
 }
 
 credit = Balanced::Credit.new(

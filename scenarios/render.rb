@@ -1,6 +1,6 @@
 require 'erb'
 require 'json'
-require 'net/https'
+require_relative 'helpers'
 
 parsed_data = JSON.parse(File.read('./scenario.cache'))
 
@@ -10,6 +10,9 @@ subdir_list = Dir["*"].reject { |o| not File.directory?(o) }
 api_key = parsed_data["api_key"]
 # boiler plate configuration code used in all scenarios
 boiler_plate = "require 'balanced'\nBalanced.configure('#{api_key}')\n"
+
+params_to_hash = @helpers[:params_to_hash]
+params_to_hash_for_args = @helpers[:params_to_hash_for_args]
 
 subdir_list.each do |scenario|
   begin

@@ -2,5 +2,5 @@
 debit = Balanced::Debit.find('<%= request['debit_uri'] %>')
 debit.refund(
     :description => '<%= payload['description'] %>',
-    :meta => <%= payload['meta'].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo} %>
+    :meta => <%= params_to_hash_for_args.call(payload['meta']) %>
 )

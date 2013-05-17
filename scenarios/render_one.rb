@@ -1,6 +1,7 @@
 require 'erb'
 require 'json'
 require 'net/https'
+require_relative 'helpers'
 
 # pull scenario.cache from Balanced Docs
 parsed_data = JSON.parse(File.read('./scenario.cache'))
@@ -8,6 +9,9 @@ parsed_data = JSON.parse(File.read('./scenario.cache'))
 api_key = parsed_data["api_key"]
 # boiler plate configuration code used in all scenarios
 boiler_plate = "require 'balanced'\nBalanced.configure('#{api_key}')\n"
+
+params_to_hash = @helpers[:params_to_hash]
+params_to_hash_for_args = @helpers[:params_to_hash_for_args]
 
 Dir.chdir("./scenarios")
 scenario = ARGV[0]

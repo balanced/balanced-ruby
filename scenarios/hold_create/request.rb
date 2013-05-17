@@ -1,5 +1,5 @@
 <%= boiler_plate %>
 buyer = Balanced::Account.find('<%= request['account_uri'] %>')
 buyer.hold(
-<%= payload.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo} %>
+<%= param_to_hash_for_args.call(payload) %>
 )
