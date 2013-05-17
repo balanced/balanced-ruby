@@ -69,7 +69,7 @@ puts "our bank account uri is #{bank_account.uri}"
 puts "our card uri is #{card.uri}"
 
 puts "associate the newly created bank account and card to our customer"
-debugger
+
 customer.add_card(card)
 customer.add_bank_account(bank_account)
 
