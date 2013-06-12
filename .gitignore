@@ -12,6 +12,7 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+executable.rb
 
 # YARD artifacts
 .yardoc
@@ -31,3 +32,4 @@ spec/cassettes
 
 # OS X
 .DS_Store
+
