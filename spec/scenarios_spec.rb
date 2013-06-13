@@ -8,7 +8,8 @@ Rake::Task['render_executables'].invoke
 SCENARIOS_TO_SKIP = ['account_add_card', 'account_create_buyer', 'account_create_merchant',
 'bank_account_delete', 'bank_account_verification_create', 'card_update',
  'credit_create_existing_bank_account', 'debit_refund','hold_capture','refund_create',
- 'event_list']
+ 'event_list', 'customer_create_hold', 'debit_create', 'bank_account_find_and_create', 'customer_add_card',
+'customer_create_debit', 'customer_add_bank_account', 'bank_account_find_and_delete', 'bank_account_find_and_credit']
 
 parsed_data = JSON.parse(File.read('./scenario.cache'))
 
