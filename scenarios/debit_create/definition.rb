@@ -1,1 +1,1 @@
-Balanced::Account.debit(...)
+Balanced::Customer.debit()
