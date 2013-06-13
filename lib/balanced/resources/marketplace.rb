@@ -125,13 +125,15 @@ module Balanced
       bank_account_uri = args[2] || options.fetch(:bank_account_uri) { nil }
       name = args[3] || options.fetch(:name) { nil }
       meta = args[4] || options.fetch(:meta) { nil }
+      bank_account = args[5] || options.fetch(:bank_account) { nil }
 
       account_attributes = {
           :uri => self.accounts_uri,
           :email_address => email_address,
           :bank_account_uri => bank_account_uri,
           :name => name,
-          :meta => meta
+          :meta => meta,
+          :bank_account => bank_account
       }
 
       if merchant.respond_to? :keys
