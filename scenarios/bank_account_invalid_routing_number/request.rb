@@ -1,7 +1,7 @@
 <%= boiler_plate %>
 bank_account = Balanced::BankAccount.new(
  :uri => '<%=request['uri']%>',
- <%= payload.each {|k,v| ":#{k} => '#{v}'," %> 
+ <%= payload.each {|k,v| ":#{k} => '#{v}',"} %>
 )
 
 begin

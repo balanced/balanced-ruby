@@ -1,5 +1,6 @@
 require 'erb'
 require 'json'
+require 'ruby-debug'
 require_relative 'helpers'
 
 parsed_data = JSON.parse(File.read('./scenario.cache'))
@@ -13,7 +14,6 @@ boiler_plate = "require 'balanced'\nBalanced.configure('#{api_key}')\n"
 
 params_to_hash = @helpers[:params_to_hash]
 params_to_hash_for_args = @helpers[:params_to_hash_for_args]
-
 subdir_list.each do |scenario|
   begin
     definition = File.read("./#{scenario}/definition.rb")
@@ -38,5 +38,6 @@ subdir_list.each do |scenario|
     end
   rescue Exception => e
     puts "Error rendering #{scenario}'s mako"
+    puts e
   end
 end

@@ -3,7 +3,7 @@ Balanced::Account.promote_to_merchant
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
 marketplace = Balanced::Marketplace.my_marketplace
 
