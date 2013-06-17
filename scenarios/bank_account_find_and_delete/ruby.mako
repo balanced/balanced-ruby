@@ -1,5 +1,4 @@
 % if mode == 'definition':
-% if request is not UNDEFINED:
 
 % else:
 require 'balanced'
