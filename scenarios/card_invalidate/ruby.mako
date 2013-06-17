@@ -3,8 +3,8 @@ Balanced::Card.invalidate()
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
-card = Balanced::Card.find('/v1/marketplaces/TEST-MP64bmAzypIUS0SUZ4qkoFqG/cards/CC6mSyhNe9lAcrUYtqAxHi1i')
+card = Balanced::Card.find('/v1/marketplaces/TEST-MP4erLnXCYoaeyr3tx95WSKc/cards/CC4wel9K6ASutW6zqCWZpjsj')
 card.invalidate
 % endif

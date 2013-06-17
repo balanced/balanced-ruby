@@ -3,9 +3,9 @@ Balanced::Customer.debit()
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
-customer = Balanced::Customer.find('/v1/customers/CU6W5pSk2CUXQxhENqyGRvQe')
+customer = Balanced::Customer.find('')
 customer.debit({:amount=>5000, :appears_on_statement_as=>"Statement text", :description=>"Some descriptive text for the debit in the dashboard"})
 
 % endif

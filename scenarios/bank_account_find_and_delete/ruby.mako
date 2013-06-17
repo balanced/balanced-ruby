@@ -3,9 +3,9 @@
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
-bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA7LMoiDtVIogA3dSCkb93xQ')
+bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA5ONs53HNn1Od9g99v0GNFJ')
 bank_account.destroy
 
 % endif

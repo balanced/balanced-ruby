@@ -3,8 +3,8 @@ Balanced::Verification.find()
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
-verification = Balanced::Verification.find('/v1/bank_accounts/BA6h13dSUEsvVjbhFd2MqdmT/verifications/BZ6hHnC9dKqiQJJtuxbp7SGP')
+verification = Balanced::Verification.find('/v1/bank_accounts/BA4rddoEDsMKlG1vSXAnkrT2/verifications/BZ4rN0mLXhpypdxLvRaKFt3F')
 
 % endif

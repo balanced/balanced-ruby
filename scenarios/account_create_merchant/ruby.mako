@@ -3,9 +3,9 @@ Balanced::Account.add_bank_account
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
-account = Balanced::Account.find('/v1/marketplaces/TEST-MP64bmAzypIUS0SUZ4qkoFqG/accounts/AC6x0RfYdlHM6EV2G2ZTq0K2')
-account.add_bank_account("/v1/bank_accounts/BA6AOckxt2HBpyXSGwiyCIKy")
+account = Balanced::Account.find('/v1/marketplaces/TEST-MP4erLnXCYoaeyr3tx95WSKc/accounts/AC4FqqEyFyTcd3eHhh2YXL4c')
+account.add_bank_account("/v1/bank_accounts/BA4JrubjRE0vqvWWDBB5Kv1w")
 
 % endif

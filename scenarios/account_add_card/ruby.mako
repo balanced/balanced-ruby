@@ -3,9 +3,9 @@ Balanced::Account.add_card
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
 
-account = Balanced::Account.find('/v1/marketplaces/TEST-MP64bmAzypIUS0SUZ4qkoFqG/accounts/AC6x0RfYdlHM6EV2G2ZTq0K2')
-response = account.add_card('/v1/marketplaces/TEST-MP64bmAzypIUS0SUZ4qkoFqG/cards/CC6yon5Mb6xKmV3dmLRuAXaT')
+account = Balanced::Account.find('/v1/marketplaces/TEST-MP4erLnXCYoaeyr3tx95WSKc/accounts/AC4FqqEyFyTcd3eHhh2YXL4c')
+response = account.add_card('/v1/marketplaces/TEST-MP4erLnXCYoaeyr3tx95WSKc/cards/CC4GL1SYTyLy6nW6nf4kWw0w')
 
 % endif
