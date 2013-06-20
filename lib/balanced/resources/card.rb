@@ -36,6 +36,8 @@ module Balanced
       meta = args[3] || options.fetch(:meta) { nil }
       description = args[3] || options.fetch(:description) { nil }
 
+      ensure_associated_to_account!
+
       self.account.debit(
           :amount => amount,
           :appears_on_statement_as => appears_on_statement_as,
@@ -55,6 +57,8 @@ module Balanced
       amount = args[0] || options.fetch(:amount) { nil }
       meta = args[1] || options.fetch(:meta) { nil }
 
+      ensure_associated_to_account!
+
       self.account.hold(
           :amount => amount,
           :meta => meta,
@@ -67,6 +71,10 @@ module Balanced
       save
     end
 
+    private
+    def ensure_associated_to_account!
+      raise(UnassociatedCardError.new(self)) if attributes['account'].nil?
+    end
   end
 
 end
