@@ -45,6 +45,7 @@ module Balanced
     # @param [String, nil] message a description of the exception
     def initialize(message = nil)
       @message = message
+      super(message)
     end
   end
 

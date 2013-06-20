@@ -39,4 +39,6 @@ describe Balanced::StandardError do
 
   its(:message) { should == 'ohnoe!' }
   its(:error_message) { should == 'ohnoe!' }
+  its(:to_s) { should == 'ohnoe!' }
+  its(:inspect) { should == '#<Balanced::StandardError: ohnoe!>' }
 end
