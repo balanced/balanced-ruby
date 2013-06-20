@@ -42,7 +42,8 @@ module Balanced
     attr_reader :message
     alias :error_message :message
 
-    def initialize(message)
+    # @param [String, nil] message a description of the exception
+    def initialize(message = nil)
       @message = message
     end
   end
