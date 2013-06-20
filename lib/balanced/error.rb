@@ -49,6 +49,18 @@ module Balanced
     end
   end
 
+  # Raised when attempted to create a debit or hold for a card not associated to an account
+  class UnassociatedCardError < StandardError
+    def initialize(card)
+      @card = card
+      super(error_message)
+    end
+
+    def error_message
+      "The Balanced::Card with uri=#{@card.attributes['uri']} is not associated to an account"
+    end
+  end
+
   class MoreInformationRequired < Error
     def redirect_uri
       response.headers['Location']
