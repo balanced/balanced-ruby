@@ -36,6 +36,16 @@ RSpec.configure do |c|
     Balanced.configure api_key.secret
     Balanced::Marketplace.new.save
   end
+
+  # @example Use this metadata to create a marketplace in a before block
+  #   describe "something under test", vcr: true, marketplace: true do
+  #     it "works" do
+  #       # ...
+  #     end
+  #   end
+  c.before(:each, marketplace: true) do
+    make_marketplace
+  end
 end
 
 
