@@ -51,6 +51,7 @@ module Balanced
 
   # Raised when attempted to create a debit or hold for a card not associated to an account
   class UnassociatedCardError < StandardError
+    # @param [Balanced::Card] card
     def initialize(card)
       @card = card
       super(error_message)
