@@ -1,1 +1,1 @@
-Balanced::BankAccount.destroy
+Balanced::BankAccount.unstore

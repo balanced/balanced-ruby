@@ -1,1 +1,1 @@
-Balanced::Card.destroy
+Balanced::Card.unstore

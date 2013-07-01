@@ -1,3 +1,3 @@
 <%= boiler_plate %>
 card = Balanced::Card.find('<%=request['uri']%>')
-card.destroy
+card.unstore
