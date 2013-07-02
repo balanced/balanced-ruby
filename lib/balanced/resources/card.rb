@@ -72,8 +72,12 @@ module Balanced
     end
 
     private
+    # Ensure that one of account, account_uri, customer or customer_uri are set.
+    # Otherwise raise an exception.
     def ensure_associated_to_account!
-      raise(UnassociatedCardError.new(self)) if attributes['account'].nil?
+      if attributes.values_at('account', 'account_uri', 'customer', 'customer_uri').compact.empty?
+        raise UnassociatedCardError.new(self)
+      end
     end
   end
 
