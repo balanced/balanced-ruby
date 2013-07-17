@@ -42,8 +42,23 @@ module Balanced
     attr_reader :message
     alias :error_message :message
 
-    def initialize(message)
+    # @param [String, nil] message a description of the exception
+    def initialize(message = nil)
       @message = message
+      super(message)
+    end
+  end
+
+  # Raised when attempted to create a debit or hold for a card not associated to an account
+  class UnassociatedCardError < StandardError
+    # @param [Balanced::Card] card
+    def initialize(card)
+      @card = card
+      super(error_message)
+    end
+
+    def error_message
+      "The Balanced::Card with uri=#{@card.attributes['uri']} is not associated to an account"
     end
   end
 

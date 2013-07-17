@@ -39,4 +39,18 @@ describe Balanced::StandardError do
 
   its(:message) { should == 'ohnoe!' }
   its(:error_message) { should == 'ohnoe!' }
+  its(:to_s) { should == 'ohnoe!' }
+  its(:inspect) { should == '#<Balanced::StandardError: ohnoe!>' }
+end
+
+describe Balanced::UnassociatedCardError do
+  let(:card) { Balanced::Card.new(uri: '/v1/marketplaces/123/cards/235') }
+
+  subject do
+    Balanced::UnassociatedCardError.new(card)
+  end
+
+  its(:message) do
+    should == "The Balanced::Card with uri=#{card.attributes['uri']} is not associated to an account"
+  end
 end

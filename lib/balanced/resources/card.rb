@@ -36,6 +36,8 @@ module Balanced
       meta = args[3] || options.fetch(:meta) { nil }
       description = args[3] || options.fetch(:description) { nil }
 
+      ensure_associated_to_account!
+
       self.account.debit(
           :amount => amount,
           :appears_on_statement_as => appears_on_statement_as,
@@ -55,6 +57,8 @@ module Balanced
       amount = args[0] || options.fetch(:amount) { nil }
       meta = args[1] || options.fetch(:meta) { nil }
 
+      ensure_associated_to_account!
+
       self.account.hold(
           :amount => amount,
           :meta => meta,
@@ -67,6 +71,14 @@ module Balanced
       save
     end
 
+    private
+    # Ensure that one of account, account_uri, customer or customer_uri are set.
+    # Otherwise raise an exception.
+    def ensure_associated_to_account!
+      if attributes.values_at('account', 'account_uri', 'customer', 'customer_uri').compact.empty?
+        raise UnassociatedCardError.new(self)
+      end
+    end
   end
 
 end

@@ -1,6 +1,6 @@
 module Balanced
   # Any transfer, or potential transfer of, funds from or to, your
-  # Marketplace. E.g. a Credit, Debit, Refund, or Hold.
+  # Marketplace. E.g. a Credit, Debit, Refund, Reversal, or Hold.
   #
   class Transaction
     include Balanced::Resource
@@ -15,4 +15,3 @@ module Balanced
 
   end
 end
-
