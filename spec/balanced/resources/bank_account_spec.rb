@@ -83,16 +83,6 @@ describe Balanced::BankAccount, :vcr do
       it { should end_with '4321' }
     end
 
-    describe 'bank_account_delete', :vcr do
-      @bank_account_2 = @marketplace.create_bank_account(
-          :account_number => "0987654321",
-          :bank_code => "321174851",
-          :name => "Timmy T. McTimmerson",
-          :type => "checking"
-      )
-      @bank_account_2.unstore
-    end
-
     describe 'fingerprint', :vcr do
       subject { @bank_account.fingerprint }
       it { should have_at_least(20).characters }

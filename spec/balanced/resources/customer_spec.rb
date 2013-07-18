@@ -104,13 +104,27 @@ describe Balanced::Customer, :vcr do
       end
     end
 
-    describe 'delete card', :vcr do
-      @card_2 = @marketplace.create_card(
-          :card_number       => "4111111111111111",
-          :expiration_month  => "12",
-          :expiration_year   => "2015",
-      ).save
-      @card_2.unstore
+    describe "#delete card", :vcr do
+      before do
+        @card_2 = @marketplace.create_card(
+            :card_number       => "4111111111111111",
+            :expiration_month  => "12",
+            :expiration_year   => "2015",
+        ).save
+        @card_2.unstore
+      end
+    end
+
+    describe "#delete bank account", :vcr do
+      before do
+        @bank_account_2 = @marketplace.create_bank_account(
+            :account_number => "0987654321",
+            :bank_code => "321174851",
+            :name => "Timmy T. McTimmerson",
+            :type => "checking"
+        )
+        @bank_account_2.unstore
+      end
     end
 
     describe "#add_bank_account using tokenized object", :vcr do
