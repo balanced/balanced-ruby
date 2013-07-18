@@ -113,6 +113,11 @@ describe Balanced::Customer, :vcr do
         ).save
         @card_2.unstore
       end
+      it "Should throw 404 on deleted card" do
+        expect{
+          Balanced::Card.find(@card_2.uri)
+        }.to raise_error
+      end
     end
 
     describe "#delete bank account", :vcr do
@@ -124,6 +129,11 @@ describe Balanced::Customer, :vcr do
             :type => "checking"
         )
         @bank_account_2.unstore
+      end
+      it "Should throw 404 on deleted card" do
+        expect {
+          Balanced::BankAccount.find(@bank_account_2.uri)
+        }.to raise_error
       end
     end
 
