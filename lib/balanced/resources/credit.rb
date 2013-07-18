@@ -51,5 +51,23 @@ module Balanced
 
       super attributes
     end
+
+    def reverse *args
+      warn_on_positional args
+
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      amount = args[0] || options.fetch(:amount) { nil }
+      description = args[1] || options.fetch(:description) { nil }
+
+      reversal = Reversal.new(
+          :uri => self.reversals_uri,
+          :credit_uri => self.uri,
+          :amount => amount,
+          :description => description,
+      )
+
+      reversal.save
+    end
+
   end
 end

@@ -48,4 +48,27 @@ describe Balanced::Credit, :vcr do
       its(:account_number) { should end_with '4321' }
     end
   end
+
+  describe "#reverse", :vcr do
+    before do
+      @credit = Balanced::Credit.new(
+        :amount => 5000,
+        :description => "A sweet ride",
+        :bank_account => {
+          :account_number => "0987654321",
+          :bank_code => "321174851",
+          :name => "Timmy T. McTimmerson",
+          :type => "savings"
+        }
+      ).save
+      @reverse = @credit.reverse
+
+    end
+
+    describe 'amount', :vcr do
+      subject { @reverse.amount }
+      it { should == 5000 }
+    end
+
+  end
 end
