@@ -144,6 +144,37 @@ describe Balanced::Customer, :vcr do
       end
     end
 
+    describe "#find_by_email", :vcr => { :record => :new_episodes } do
+      before do
+        api_key = Balanced::ApiKey.new.save
+        Balanced.configure api_key.secret
+        @marketplace = Balanced::Marketplace.new.save
+        customer = @marketplace.create_customer(
+          :name           => "Bill",
+          :email          => "bill@bill.com",
+          :business_name  => "Bill Inc.",
+          :ssn_last4      => "1234",
+          :address => {
+            :line1 => "1234 1st Street",
+            :city  => "San Francisco",
+            :state => "CA"
+          }
+        ).save
+      end
+
+      context "email address is in system", :vcr => { :record => :new_episodes } do
+        it "should return customer object" do
+          Balanced::Customer.find_by_email("bill@bill.com").should be_instance_of Balanced::Customer
+        end
+      end
+
+      context "email address does not exist", :vcr => { :record => :new_episodes } do
+        it "should return nil" do
+          Balanced::Customer.find_by_email("foo@bar.com").should be_nil
+        end
+      end
+    end
+    
     describe "#debit" do
       before do
         @customer = @marketplace.create_customer
