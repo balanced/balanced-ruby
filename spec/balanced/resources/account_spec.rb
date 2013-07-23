@@ -171,7 +171,7 @@ describe Balanced::Account, :vcr do
       end
     end
 
-    describe "#add_bank_account", :vcr do
+    describe "#add_bank_account using uri", :vcr do
       before do
         @new_bank_account = @marketplace.create_bank_account(
           :account_number => "1234567890",
@@ -187,6 +187,30 @@ describe Balanced::Account, :vcr do
       describe "after executing", :vcr do
         before do
           @merchant.add_bank_account(@new_bank_account.uri)
+          @bank_accounts = Balanced::BankAccount.find(@merchant.bank_accounts_uri).items
+        end
+
+        subject { @bank_accounts.size }
+        it { should eql 2 }
+      end
+    end
+    
+    describe "#add_bank_account using tokenized object", :vcr do
+      before do
+        @new_bank_account = @marketplace.create_bank_account(
+          :account_number => "1234567890",
+          :bank_code => "321174851",
+          :name => "Jack Q Merchant"
+        )
+      end
+
+      describe "when executing" do
+        it { -> { @merchant.add_bank_account(@new_bank_account) }.should_not raise_error }
+      end
+
+      describe "after executing", :vcr do
+        before do
+          @merchant.add_bank_account(@new_bank_account)
           @bank_accounts = Balanced::BankAccount.find(@merchant.bank_accounts_uri).items
         end
 
@@ -301,7 +325,7 @@ describe Balanced::Account, :vcr do
       end
     end
 
-    describe "#add_card" do
+    describe "#add_card with uri" do
       describe "when executing", :vcr do
         before do
           card = Balanced::Card.new(
@@ -344,6 +368,56 @@ describe Balanced::Account, :vcr do
             :name => "Jack Q Buyer"
           ).save
           @buyer.add_card(@new_card.uri)
+          @cards = Balanced::Card.find @buyer.cards_uri
+        end
+        subject { @cards.items.size }
+        it { should eql 2 }
+      end
+    end
+    
+    describe "#add_card with tokenized object" do
+      describe "when executing", :vcr do
+        before do
+          card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "12",
+            :expiration_year => "2015",
+          ).save
+          @new_card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "1",
+            :expiration_year => "2015",
+          ).save
+          @buyer = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "buyer3@example.org",
+            :card_uri => card.uri,
+            :name => "Jack Q Buyer"
+          ).save
+        end
+        it do
+          -> { @buyer.add_card(@new_card) }.should_not raise_error
+        end
+      end
+      describe "after executing", :vcr do
+        before do
+          card = Balanced::Card.new(
+            :card_number => "4111111111111111",
+            :expiration_month => "12",
+            :expiration_year => "2015",
+          ).save
+          @new_card = Balanced::Card.new(
+            :card_number => "5105105105105100",
+            :expiration_month => "1",
+            :expiration_year => "2017",
+          ).save
+          @buyer = Balanced::Account.new(
+            :uri => @marketplace.accounts_uri,
+            :email_address => "buyer4@example.org",
+            :card_uri => card.uri,
+            :name => "Jack Q Buyer"
+          ).save
+          @buyer.add_card(@new_card)
           @cards = Balanced::Card.find @buyer.cards_uri
         end
         subject { @cards.items.size }
