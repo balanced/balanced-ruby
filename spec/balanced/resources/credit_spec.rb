@@ -45,7 +45,7 @@ describe Balanced::Credit, :vcr do
 
     describe 'bank_account', :vcr do
       subject { @credit.bank_account }
-      its(:account_number) { should end_with '4321' }
+      its([:account_number]) { should end_with '4321' }
     end
   end
 
