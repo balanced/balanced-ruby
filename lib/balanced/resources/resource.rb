@@ -160,7 +160,7 @@ module Balanced
               # if uri is a collection -> this would definitely be if it ends in a symbol
               # then we should allow a lazy executor of the query pager
               if Balanced.is_collection(value)
-                pager = Pager.new value, {}
+                pager = Balanced::Pager.new value, {}
                 pager.to_a
               else
                 values_class.find(value)
@@ -192,7 +192,7 @@ module Balanced
     end
 
     def paginate options = {}
-      Pager.new uri, options
+      Balanced::Pager.new uri, options
     end
     alias scoped paginate
     alias where  paginate
