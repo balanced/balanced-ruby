@@ -67,6 +67,10 @@ module Balanced
       Balanced.delete @attributes[:uri]
     end
 
+    def unstore
+      destroy
+    end
+
     def reload the_response = nil
       if the_response
         return if the_response.body.to_s.length.zero?

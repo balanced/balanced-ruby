@@ -78,6 +78,7 @@ module Balanced
     def delete(*args, &block)
       self.client.delete *args
     end
+
   end
 
   # configure on import so we don't have to configure for creating
