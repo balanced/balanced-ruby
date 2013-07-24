@@ -21,6 +21,10 @@ module Balanced
 
     # Attempts to find an existing customer by email
     #
+    # *NOTE:* There is no unique constraint on email_address.
+    #         Multiple customers with the same email may exist.
+    #         Only one Customer is returned.
+    #
     # @param [String] email An email of a customer
     # @return [Customer] if customer is found
     # @return [nil] if customer is not found
