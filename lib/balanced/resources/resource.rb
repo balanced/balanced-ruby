@@ -94,9 +94,29 @@ module Balanced
           attr = method.to_s.chop
           @attributes[attr] = args[0]
         else
+          # This piece of code is a bit disgusting. We will clean it up soon,
+          # but basically, we were creating closures using this code snippet
+          # but those closures were transferred to the actual classes themselves
+          # so you would have something like BankAccount.new.account and this
+          # will give the last closure added for a BankAccount even if it has
+          # nothing to do with the actual class itself.
+          #
+          # This caused some weird errors, so the best thing to do was to just
+          # move this piece of code and "dynamically" enable it for all
+          # method requests that are essentially #{method}_uri.
+          #
+          # This solves the acute problem, for now.
           if @attributes.has_key? "#{method}_uri"
-            value = self.instance_variable_get("#{method}_uri")
-            values_class = Balanced.from_uri(value)
+
+            value = @attributes["#{method}_uri"]
+            # what if the server returns a _uri that we don't know how to
+            # construct? Welp, we catch that NameError and return to super.
+            begin
+              values_class = Balanced.from_uri(value)
+            rescue NameError
+              super
+            end
+
             # if uri is a collection -> this would definitely be if
             # it ends in a symbol then we should allow a lazy executor of
             # the query pager
@@ -106,6 +126,7 @@ module Balanced
             else
               return values_class.find(value)
             end
+
           else
             super
           end
