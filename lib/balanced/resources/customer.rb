@@ -29,7 +29,7 @@ module Balanced
     # @return [Customer] if customer is found
     # @return [nil] if customer is not found
     def self.find_by_email email
-      self.find(:first, :email_address => email)
+      self.find(:first, :email => email)
     end
     
     def debit(options = {})
