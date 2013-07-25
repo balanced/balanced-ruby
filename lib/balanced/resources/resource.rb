@@ -94,9 +94,45 @@ module Balanced
           attr = method.to_s.chop
           @attributes[attr] = args[0]
         else
-          super
+          # This piece of code is a bit disgusting. We will clean it up soon,
+          # but basically, we were creating closures using this code snippet
+          # but those closures were transferred to the actual classes themselves
+          # so you would have something like BankAccount.new.account and this
+          # will give the last closure added for a BankAccount even if it has
+          # nothing to do with the actual class itself.
+          #
+          # This caused some weird errors, so the best thing to do was to just
+          # move this piece of code and "dynamically" enable it for all
+          # method requests that are essentially #{method}_uri.
+          #
+          # This solves the acute problem, for now.
+          if @attributes.has_key? "#{method}_uri"
+
+            value = @attributes["#{method}_uri"]
+            # what if the server returns a _uri that we don't know how to
+            # construct? Welp, we catch that NameError and return to super.
+            begin
+              values_class = Balanced.from_uri(value)
+            rescue NameError
+              super
+            end
+
+            # if uri is a collection -> this would definitely be if
+            # it ends in a symbol then we should allow a lazy executor of
+            # the query pager
+            if Balanced.is_collection(value)
+              pager = Balanced::Pager.new value, {}
+              return pager.to_a
+            else
+              return values_class.find(value)
+            end
+
+          else
+            super
+          end
       end
     end
+
   def self.included(base)
     base.extend ClassMethods
   end
@@ -147,37 +183,25 @@ module Balanced
       return payload if payload[:uri].nil?
       klass = Balanced.from_uri(payload[:uri])
       instance = klass.new payload
+
+      # http://stackoverflow.com/a/2495650/133514
+      instance_eigen = class << instance; self; end
+
       payload.each do |name, value|
-        klass.class_eval {
-          attr_accessor name.to_s
-        }
+
+        # instance_eigen.class_eval { attr_accessor name.to_s }
+
         # here is where our interpretations will begin.
         # if the value is a sub-resource, lets instantiate the class
         # and set it correctly
         if value.instance_of? Hash and value.has_key? 'uri'
           value = construct_from_response value
-        elsif name =~ /_uri$/
-          modified_name = name.sub(/_uri$/, '')
-          klass.instance_eval {
-            define_method(modified_name) {
-              values_class = Balanced.from_uri(value)
-              # if uri is a collection -> this would definitely be if it ends in a symbol
-              # then we should allow a lazy executor of the query pager
-              if Balanced.is_collection(value)
-                pager = Balanced::Pager.new value, {}
-                pager.to_a
-              else
-                values_class.find(value)
-              end
-            }
-          }
         end
 
-        instance.class.instance_eval {
-          define_method(name) { @attributes[name] }                       # Get.
-          define_method("#{name}=") { |value| @attributes[name] = value } # Set.
-          define_method("#{name}?") { !!@attributes[name] }               # Present.
-        }
+        instance.class.send(:define_method, name, proc{@attributes[name]}) # Get.
+        instance.class.send(:define_method, "#{name}=",  proc{ |value| @attributes[name] = value }) # Set.
+        instance.class.send(:define_method, "#{name}?", proc{ !!@attributes[name] })              # Present.
+
         instance.send("#{name}=".to_s, value)
       end
       instance

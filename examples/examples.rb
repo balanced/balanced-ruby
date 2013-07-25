@@ -137,6 +137,8 @@ bank_account = Balanced::BankAccount.new(
     :type => "checking"
 ).save
 
+raise "Should not have an account" if bank_account.has_account?
+
 puts "now let's credit it, the super-simple way"
 credit = bank_account.credit(
     :amount => 500

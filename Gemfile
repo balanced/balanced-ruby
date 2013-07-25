@@ -7,7 +7,6 @@ gem "faraday_middleware"
 
 group :development do
   gem "yard"
-  gem "ruby-debug19"
   gem "guard", '~> 1.6.2'
   gem "guard-rspec", '~> 2.4.1'
 end
