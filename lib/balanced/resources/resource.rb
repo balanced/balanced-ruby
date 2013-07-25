@@ -189,8 +189,6 @@ module Balanced
 
       payload.each do |name, value|
 
-        # instance_eigen.class_eval { attr_accessor name.to_s }
-
         # here is where our interpretations will begin.
         # if the value is a sub-resource, lets instantiate the class
         # and set it correctly
@@ -198,9 +196,12 @@ module Balanced
           value = construct_from_response value
         end
 
-        instance.class.send(:define_method, name, proc{@attributes[name]}) # Get.
-        instance.class.send(:define_method, "#{name}=",  proc{ |value| @attributes[name] = value }) # Set.
-        instance.class.send(:define_method, "#{name}?", proc{ !!@attributes[name] })              # Present.
+         # Get attribute
+        instance.class.send(:define_method, name, proc{@attributes[name]})
+         # Set attribute
+        instance.class.send(:define_method, "#{name}=",  proc{ |value| @attributes[name] = value })
+         # Is attribute present?
+        instance.class.send(:define_method, "#{name}?", proc{ !!@attributes[name] })
 
         instance.send("#{name}=".to_s, value)
       end

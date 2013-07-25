@@ -207,7 +207,7 @@ describe Balanced::Customer, :vcr do
         end
       end
     end
-    
+
     describe "#debit" do
       before do
         @customer = @marketplace.create_customer
@@ -286,6 +286,27 @@ describe Balanced::Customer, :vcr do
       it "should display the most recently added valid card" do
         @customer.active_bank_account.should_not be_nil
       end
+    end
+
+    describe "find_by_email", :vcr do
+      before do
+        @customer = @marketplace.create_customer(
+            :email => "balanced-ruby-issue-110@example.com"
+        )
+      end
+
+      it "should return 401 unauthorized if not authenticated" do
+        @customer.uri.should_not be_nil
+        key = Balanced.client.api_key
+        Balanced.configure(nil)
+        expect {
+          Balanced::Customer.find(
+              :first,
+              email: "balanced-ruby-issue-110@example.com")
+        }.to raise_error Balanced::Unauthorized
+        Balanced.configure(key)
+      end
+
     end
   end
 
