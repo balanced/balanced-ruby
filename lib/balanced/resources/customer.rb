@@ -86,7 +86,7 @@ module Balanced
     #
     # @return [BankAccount]
     def add_bank_account(bank_account)
-      if bank_account.kind_of?(Balanced::BankAccount) && bank_account.hash.nil?
+      if bank_account.kind_of?(Balanced::BankAccount) && bank_account.fingerprint.nil?
         bank_account.save
       end
       self.bank_account_uri = Balanced::Utils.extract_uri_from_object(bank_account)
