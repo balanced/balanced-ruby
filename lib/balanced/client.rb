@@ -14,8 +14,8 @@ module Balanced
       :port => 5000,
       :version => '1',
       :logging_level => 'WARN',
-      :connection_timeout => 30,
-      :read_timeout => 30,
+      :connection_timeout => 60,
+      :read_timeout => 60,
       :logger => nil,
       :ssl_verify => true,
       :faraday_adapter => Faraday.default_adapter
