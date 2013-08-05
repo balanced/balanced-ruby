@@ -120,26 +120,67 @@ describe Balanced::BankAccount, :vcr do
         its(:routing_number) { should eql '321174851' }
       end
 
-      describe 'with an account', :vcr do
+      describe 'without an account', :vcr do
         before do
-          @account = @marketplace.create_account
-          bank_account = @marketplace.create_bank_account(
+          @bank_account = @marketplace.create_bank_account(
               :account_number => "1234567890111",
               :bank_code => "021000021",
               :name => "Timmy T. McTimmerson",
               :type => "checking"
           )
-          @account.add_bank_account(bank_account.uri)
-          bank_account = bank_account.reload
-          @credit_with_account = bank_account.credit(
-              :amount => 500,
-              :description => 'Blahblahblah'
-          )
         end
+        
+        describe 'with appears_on_statement_as', :vcr do
+          before do
+            @credit = @bank_account.credit(amount: 1000, description: "Testing", appears_on_statement_as: "Test Company")
+          end
+          
+          subject { @credit }
+          its(:appears_on_statement_as) { should eql 'Test Company' }
+        end
+      end
 
-        subject { @credit_with_account }
-        it { should respond_to :account }
-        it { should be_instance_of Balanced::Credit }
+      describe 'with an account', :vcr do
+        before do
+          @bank_account = @marketplace.create_bank_account(
+              :account_number => "1234567890111",
+              :bank_code => "021000021",
+              :name => "Timmy T. McTimmerson",
+              :type => "checking"
+          )
+          @account = @marketplace.create_account
+          @account.add_bank_account(@bank_account.uri)
+          @bank_account.reload
+        end
+      
+        describe 'with appears_on_statement_as', :vcr do
+          before do
+            @credit = @bank_account.credit(
+              :amount => 1000,
+              :description => "Blahblahblah",
+              :appears_on_statement_as => "Test Company"
+            )
+          end
+        
+          subject { @credit }
+          it { should respond_to :account }
+          it { should be_instance_of Balanced::Credit }
+          its(:appears_on_statement_as) { should eql 'Test Company' }
+        end
+        
+        describe 'without appears_on_statement_as', :vcr do
+          before do
+            @credit = @bank_account.credit(
+              :amount => 1000,
+              :description => "Testing",
+            )
+          end
+        
+          subject { @credit }
+          it { should respond_to :account }
+          it { should be_instance_of Balanced::Credit }
+          its(:appears_on_statement_as) { should eql 'example.com' }
+        end
       end
     end
   end
