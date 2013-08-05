@@ -59,10 +59,10 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       description = args[1] || options.fetch(:description) { nil }
-
+      appears_on_statement_as = args[3] || options.fetch(:appears_on_statement_as) { nil }
+      
       if self.has_account?
         meta = args[2] || options.fetch(:meta) { nil }
-        appears_on_statement_as = args[3] || options.fetch(:appears_on_statement_as) { nil }
         destination_uri = args[4] || options.fetch(:destination_uri) { self.uri }
         credit = self.account.credit(
             :amount => amount,
@@ -75,7 +75,8 @@ module Balanced
         credit = Credit.new(
             :uri => self.credits_uri,
             :amount => amount,
-            :description => description
+            :description => description,
+            :appears_on_statement_as => appears_on_statement_as
         )
         credit.save
       end
