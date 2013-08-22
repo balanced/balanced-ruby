@@ -185,7 +185,7 @@ module Balanced
       card_number = args[0] || options.fetch(:card_number) { nil }
       expiration_month = args[1] || options.fetch(:expiration_month) { nil }
       expiration_year = args[2] || options.fetch(:expiration_year) { nil }
-      security_code = args[3] || options.fetch(:expiration_year) { nil }
+      security_code = args[3] || options.fetch(:security_code) { nil }
       postal_code = args[4] || options.fetch(:postal_code) { nil }
       name = args[5] || options.fetch(:name) { nil }
       phone_number = args[6] || options.fetch(:phone_number) { nil }
