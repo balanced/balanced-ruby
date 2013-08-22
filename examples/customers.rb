@@ -1,7 +1,6 @@
 cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
 $:.unshift(cwd + "/lib")
 require 'balanced'
-require 'ruby-debug'
 
 
 begin
@@ -46,7 +45,7 @@ customer = marketplace.create_customer(
             :line1 => "1234 1st Street",
             :city  => "San Francisco",
             :state => "CA"
-        }
+          }
   ).save
 
 puts "our customer uri is #{customer.uri}"
@@ -109,7 +108,3 @@ raise "active card is incorrect" unless customer.active_card.id == card.id
 puts "check to see what is the active bank_account for a customer"
 
 raise "active bank account is incorrect" unless customer.active_bank_account.id == bank_account.id
-
-
-
-
