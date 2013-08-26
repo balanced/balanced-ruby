@@ -12,7 +12,7 @@ describe Balanced::Hold, :vcr do
     ).save
     @buyer = @marketplace.create_buyer(
         :email_address => 'buyer@example.org',
-        :card_uri => card.uri,
+        :card_uri => card.uri
     )
   end
 

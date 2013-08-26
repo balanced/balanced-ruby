@@ -44,7 +44,7 @@ RSpec.configure do |c|
   #       # ...
   #     end
   #   end
-  c.before(:each, marketplace: true) do
+  c.before(:each, :marketplace => true) do
     make_marketplace
   end
 end

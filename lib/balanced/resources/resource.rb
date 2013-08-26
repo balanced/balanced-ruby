@@ -1,5 +1,4 @@
-require_relative "../pager"
-
+require File.expand_path('../../pager', __FILE__)
 
 module Balanced
   module Resource
@@ -89,7 +88,7 @@ module Balanced
     end
 
     def method_missing(method, *args, &block)
-      case method
+      case method.to_s
         when /(.+)\=$/
           attr = method.to_s.chop
           @attributes[attr] = args[0]
@@ -107,16 +106,8 @@ module Balanced
           #
           # This solves the acute problem, for now.
           if @attributes.has_key? "#{method}_uri"
-
             value = @attributes["#{method}_uri"]
-            # what if the server returns a _uri that we don't know how to
-            # construct? Welp, we catch that NameError and return to super.
-            begin
-              values_class = Balanced.from_uri(value)
-            rescue NameError
-              super
-            end
-
+            values_class = Balanced.from_uri(value)
             # if uri is a collection -> this would definitely be if
             # it ends in a symbol then we should allow a lazy executor of
             # the query pager
@@ -126,112 +117,111 @@ module Balanced
             else
               return values_class.find(value)
             end
-
           else
             super
           end
       end
     end
-
-  def self.included(base)
-    base.extend ClassMethods
-  end
-
-  module ClassMethods
-    def resource_name
-      Utils.demodulize name
+    
+    def self.included(base)
+      base.extend ClassMethods
     end
 
-    def collection_name
-      Utils.pluralize Utils.underscore(resource_name)
-    end
+    module ClassMethods
+      def resource_name
+        Utils.demodulize name
+      end
 
-    def collection_path
-      ["/v#{Balanced.config[:version]}", collection_name].compact.join '/'
-    end
+      def collection_name
+        Utils.pluralize Utils.underscore(resource_name)
+      end
 
-    def member_name
-      Utils.underscore resource_name
-    end
+      def collection_path
+        ["/v#{Balanced.config[:version]}", collection_name].compact.join '/'
+      end
 
-    # Returns the resource URI for a given class.
-    #
-    # @example A Balanced::Account resource
-    #   Balanced::Account.uri # => "/v1/marketplaces/TEST-MP72zVdg2j9IiqRffW9lczRZ/accounts"
-    #
-    # @return [String] the uri of the instance or the class
-    def uri
-      # the uri of a particular resource depends if there's a marketplace
-      # created or not. if there's a marketplace, then all resources have their
-      # own uri from there and the top level ones. if there's not a marketplace
+      def member_name
+        Utils.underscore resource_name
+      end
+
+      # Returns the resource URI for a given class.
       #
-      #    if there's an api key, then the merchant is available
-      #    if there's no api key, the only resources exposed are purely top level
-      if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
-        collection_path
-      else
-        unless Balanced::Marketplace.marketplace_exists?
-          raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
-        end
-
-        Balanced::Marketplace.marketplace_uri + "/#{collection_name}"
-      end
-    end
-
-    def construct_from_response payload
-      payload = Balanced::Utils.hash_with_indifferent_read_access payload
-      return payload if payload[:uri].nil?
-      klass = Balanced.from_uri(payload[:uri])
-      instance = klass.new payload
-
-      # http://stackoverflow.com/a/2495650/133514
-      instance_eigen = class << instance; self; end
-
-      payload.each do |name, value|
-
-        # here is where our interpretations will begin.
-        # if the value is a sub-resource, lets instantiate the class
-        # and set it correctly
-        if value.instance_of? Hash and value.has_key? 'uri'
-          value = construct_from_response value
-        end
-
-         # Get attribute
-        instance.class.send(:define_method, name, proc{@attributes[name]})
-         # Set attribute
-        instance.class.send(:define_method, "#{name}=",  proc{ |value| @attributes[name] = value })
-         # Is attribute present?
-        instance.class.send(:define_method, "#{name}?", proc{ !!@attributes[name] })
-
-        instance.send("#{name}=".to_s, value)
-      end
-      instance
-    end
-
-    def find *arguments
-      scope   = arguments.slice!(0)
-      options = arguments.slice!(0) || {}
-      case scope
-        when :all   then all(options)
-        when :first then paginate(options).first
+      # @example A Balanced::Account resource
+      #   Balanced::Account.uri # => "/v1/marketplaces/TEST-MP72zVdg2j9IiqRffW9lczRZ/accounts"
+      #
+      # @return [String] the uri of the instance or the class
+      def uri
+        # the uri of a particular resource depends if there's a marketplace
+        # created or not. if there's a marketplace, then all resources have their
+        # own uri from there and the top level ones. if there's not a marketplace
+        #
+        #    if there's an api key, then the merchant is available
+        #    if there's no api key, the only resources exposed are purely top level
+        if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
+          collection_path
         else
-          response = Balanced.get scope, options
-          construct_from_response response.body
+          unless Balanced::Marketplace.marketplace_exists?
+            raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
+          end
+
+          Balanced::Marketplace.marketplace_uri + "/#{collection_name}"
+        end
       end
-    end
 
-    def paginate options = {}
-      Balanced::Pager.new uri, options
-    end
-    alias scoped paginate
-    alias where  paginate
+      def construct_from_response payload
+        payload = Balanced::Utils.hash_with_indifferent_read_access payload
+        return payload if payload[:uri].nil?
+        klass = Balanced.from_uri(payload[:uri])
+        instance = klass.new payload
 
-    def all options = {}
-      pager = paginate(options)
-      pager.to_a
-    end
+        # http://stackoverflow.com/a/2495650/133514
+        instance_eigen = class << instance; self; end
 
-  end
+        payload.each do |name, value|
+
+          # here is where our interpretations will begin.
+          # if the value is a sub-resource, lets instantiate the class
+          # and set it correctly
+          if value.instance_of? Hash and value.has_key? 'uri'
+            value = construct_from_response value
+          end
+
+           # Get attribute
+          instance.class.send(:define_method, name, proc{@attributes[name]})
+           # Set attribute
+          instance.class.send(:define_method, "#{name}=",  proc{ |value| @attributes[name] = value })
+           # Is attribute present?
+          instance.class.send(:define_method, "#{name}?", proc{ !!@attributes[name] })
+
+          instance.send("#{name}=".to_s, value)
+        end
+        instance
+      end
+
+      def find *arguments
+        scope   = arguments.slice!(0)
+        options = arguments.slice!(0) || {}
+        case scope
+          when :all   then all(options)
+          when :first then paginate(options).first
+          else
+            response = Balanced.get scope, options
+            construct_from_response response.body
+        end
+      end
+
+      def paginate options = {}
+        Balanced::Pager.new uri, options
+      end
+      alias scoped paginate
+      alias where  paginate
+
+      def all options = {}
+        pager = paginate(options)
+        pager.to_a
+      end
+
+    end
 
   end
 end

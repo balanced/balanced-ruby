@@ -1,7 +1,7 @@
 <%= boiler_plate %>
 
 merchant_data = {
-  <%="".tap { |s| payload['merchant'].each {|k, v| s << ":#{k} => '#{v}'," unless k == 'person'} }%>
+  <%= params_to_hash.call(payload['merchant']) %>,
   :person => {
       <%= params_to_hash.call(payload['merchant']['person']) %>
   }

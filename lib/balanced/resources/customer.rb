@@ -61,7 +61,7 @@ module Balanced
           :meta => meta,
           :description => description,
           :source_uri => source_uri,
-          :on_behalf_of_uri => on_behalf_of,
+          :on_behalf_of_uri => on_behalf_of
       )
       debit.save
     end

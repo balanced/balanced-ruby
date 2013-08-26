@@ -55,7 +55,7 @@ describe Balanced::Customer, :vcr do
       @card = Balanced::Card.new(
         :card_number       => "4111111111111111",
         :expiration_month  => "12",
-        :expiration_year   => "2015",
+        :expiration_year   => "2015"
         )
         @customer.add_card(@card)
       end
@@ -70,7 +70,7 @@ describe Balanced::Customer, :vcr do
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
-          :expiration_year   => "2015",
+          :expiration_year   => "2015"
         ).save
         @customer.add_card(@card)
         @customer_card_id = @customer.cards.first.id
@@ -90,7 +90,7 @@ describe Balanced::Customer, :vcr do
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
-          :expiration_year   => "2015",
+          :expiration_year   => "2015"
         ).save
         @customer.add_card(@card.uri)
         @customer_card_id = @customer.cards.first.id
@@ -109,7 +109,7 @@ describe Balanced::Customer, :vcr do
         @card_2 = @marketplace.create_card(
             :card_number       => "4111111111111111",
             :expiration_month  => "12",
-            :expiration_year   => "2015",
+            :expiration_year   => "2015"
         ).save
         @card_2.unstore
       end
@@ -214,7 +214,7 @@ describe Balanced::Customer, :vcr do
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
-          :expiration_year   => "2015",
+          :expiration_year   => "2015"
         ).save
         @customer.add_card(@card)
         @customer.debit :amount => 1000
@@ -236,7 +236,7 @@ describe Balanced::Customer, :vcr do
         @card = Balanced::Card.new(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
-          :expiration_year   => "2015",
+          :expiration_year   => "2015"
         ).save
         @customer.add_card(@card)
         @customer.add_bank_account(@bank_account)
@@ -246,9 +246,9 @@ describe Balanced::Customer, :vcr do
       context "args passed by name via options hash" do
         subject {
           @customer.credit(
-            amount: 1250,
-            description: "description",
-            meta: {}
+            :amount => 1250,
+            :description => "description",
+            :meta => {}
           )
         }
 
@@ -264,7 +264,7 @@ describe Balanced::Customer, :vcr do
         @card = @marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
-          :expiration_year   => "2015",
+          :expiration_year   => "2015"
         ).save
         @customer.add_card(@card)
       end
@@ -302,7 +302,7 @@ describe Balanced::Customer, :vcr do
         expect {
           Balanced::Customer.find(
               :first,
-              email: "balanced-ruby-issue-110@example.com")
+              :email => "balanced-ruby-issue-110@example.com")
         }.to raise_error Balanced::Unauthorized
         Balanced.configure(key)
       end

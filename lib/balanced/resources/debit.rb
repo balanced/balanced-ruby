@@ -38,7 +38,7 @@ module Balanced
           :uri => self.refunds_uri,
           :debit_uri => self.uri,
           :amount => amount,
-          :description => description,
+          :description => description
       )
       refund.save
     end

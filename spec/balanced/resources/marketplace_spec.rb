@@ -21,9 +21,9 @@ describe Balanced::Marketplace, :vcr do
         :postal_code => "94301",
         :country => "USA",
         :dob => "1842-01",
-        :phone_number => "+16505551234",
+        :phone_number => "+16505551234"
       },
-      :bank_account_uri => @bank_account.uri,
+      :bank_account_uri => @bank_account.uri
     )
   end
 
@@ -32,7 +32,7 @@ describe Balanced::Marketplace, :vcr do
       bank_account = @marketplace.create_bank_account(
           :name => "Jon Q.",
           :account_number => "11111111111",
-          :bank_code => "123456789",
+          :bank_code => "123456789"
       )
       bank_account.should be_instance_of Balanced::BankAccount
       Balanced.is_collection(bank_account.uri).should be_false
@@ -68,7 +68,7 @@ describe Balanced::Marketplace, :vcr do
       card = @marketplace.create_card(
           :card_number => "4111111111111111",
           :expiration_month => "12",
-          :expiration_year => "2018",
+          :expiration_year => "2018"
       )
       card.should be_instance_of Balanced::Card
       Balanced.is_collection(card.uri).should be_false
@@ -143,18 +143,19 @@ end
 describe Balanced::Marketplace, '.marketplace_uri' do
   context 'when invoking .my_marketplace', :vcr do
     it 'sets the marketplace_id after the first call implicitly' do
-
       Balanced.configure nil
       Balanced.is_configured_with_api_key?.should be_false
-      Balanced::Marketplace.class_variable_set(:@@marketplace_uri, nil)
-      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should be_nil
+      
+      Balanced::Marketplace.send(:class_variable_set, :@@marketplace_uri, nil)
+      Balanced::Marketplace.send(:class_variable_get, :@@marketplace_uri).should be_nil
 
       api_key = Balanced::ApiKey.new.save
       Balanced.configure api_key.secret
       marketplace = Balanced::Marketplace.new.save
       # creating the marketplace sets `Balanced::Marketplace.marketplace_uri`,
       # it will never be unset.
-      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should equal marketplace.uri
+      
+      Balanced::Marketplace.send(:class_variable_get, :@@marketplace_uri).should equal marketplace.uri
       old_marketplace_uri = marketplace.uri
 
       api_key = Balanced::ApiKey.new.save
@@ -162,8 +163,9 @@ describe Balanced::Marketplace, '.marketplace_uri' do
       marketplace = Balanced::Marketplace.new.save
       # creating the marketplace sets `Balanced::Marketplace.marketplace_uri`,
       # it will never be unset.
-      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should_not equal old_marketplace_uri
-      Balanced::Marketplace.class_variable_get(:@@marketplace_uri).should equal marketplace.uri
+      
+      Balanced::Marketplace.send(:class_variable_get, :@@marketplace_uri).should_not equal old_marketplace_uri
+      Balanced::Marketplace.send(:class_variable_get, :@@marketplace_uri).should equal marketplace.uri
     end
   end
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rake'
 
 # load rakefile and run task to create executable files
-load File.open('Rakefile')
+load 'Rakefile'
 Rake::Task['render_executables'].invoke
 
 SCENARIOS_TO_SKIP = []

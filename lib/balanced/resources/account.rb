@@ -60,7 +60,7 @@ module Balanced
           :meta => meta,
           :description => description,
           :source_uri => source_uri,
-          :on_behalf_of_uri => on_behalf_of,
+          :on_behalf_of_uri => on_behalf_of
       )
       debit.save
     end
@@ -86,7 +86,7 @@ module Balanced
           :uri => self.holds_uri,
           :amount => amount,
           :meta => meta,
-          :source_uri => source_uri,
+          :source_uri => source_uri
       )
       hold.save
     end
@@ -102,9 +102,9 @@ module Balanced
       warn_on_positional args
 
       if args.last.is_a? Hash
-        args.last.merge! uri: self.credits_uri
+        args.last.merge! :uri => self.credits_uri
       else
-        args << { uri: self.credits_uri }
+        args << { :uri => self.credits_uri }
       end
       Credit.new(*args).save
     end

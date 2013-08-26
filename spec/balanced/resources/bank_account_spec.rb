@@ -132,7 +132,7 @@ describe Balanced::BankAccount, :vcr do
         
         describe 'with appears_on_statement_as', :vcr do
           before do
-            @credit = @bank_account.credit(amount: 1000, description: "Testing", appears_on_statement_as: "Test Company")
+            @credit = @bank_account.credit(:amount => 1000, :description => "Testing", :appears_on_statement_as => "Test Company")
           end
           
           subject { @credit }
@@ -172,7 +172,7 @@ describe Balanced::BankAccount, :vcr do
           before do
             @credit = @bank_account.credit(
               :amount => 1000,
-              :description => "Testing",
+              :description => "Testing"
             )
           end
         

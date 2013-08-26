@@ -21,7 +21,7 @@ end
 describe Balanced::Resource, 'loading a resource and generating methods from the response body', :vcr do
   before do
     make_marketplace
-    @account = Balanced::Account.new(email: 'user@example.com', name: 'John Doe').save
+    @account = Balanced::Account.new(:email => 'user@example.com', :name => 'John Doe').save
   end
 
   it 'generates a predicate method' do

@@ -1,6 +1,6 @@
 require 'erb'
 require 'json'
-require_relative 'helpers'
+require File.expand_path('../helpers', __FILE__)
 
 parsed_data = JSON.parse(File.read('./scenario.cache'))
 

@@ -27,23 +27,23 @@ module Balanced
       unless bank_account.nil?
         # Accountless bank account
         attributes = {
-            uri: uri,
-            amount: amount,
-            description: description,
-            bank_account: bank_account,
-            meta: nil
+            :uri => uri,
+            :amount => amount,
+            :description => description,
+            :bank_account => bank_account,
+            :meta => nil
         }
       else
         meta = args[2] || options.fetch(:meta) { nil }
         destination_uri = args[3] || options.fetch(:destination_uri) { nil }
         appears_on_statement_as = args[4] || options.fetch(:appears_on_statement_as) { nil }
         attributes = {
-            uri: uri,
-            amount: amount,
-            meta: meta,
-            description: description,
-            destination_uri: destination_uri,
-            appears_on_statement_as: appears_on_statement_as
+            :uri => uri,
+            :amount => amount,
+            :meta => meta,
+            :description => description,
+            :destination_uri => destination_uri,
+            :appears_on_statement_as => appears_on_statement_as
         }
       end
 
@@ -63,9 +63,8 @@ module Balanced
           :uri => self.reversals_uri,
           :credit_uri => self.uri,
           :amount => amount,
-          :description => description,
+          :description => description
       )
-
       reversal.save
     end
 
