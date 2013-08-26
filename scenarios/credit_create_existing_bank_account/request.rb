@@ -2,4 +2,4 @@
 marketplace = Balanced::Marketplace.my_marketplace
 
 bank_account = Balanced::BankAccount.find('<%= request['uri'] %>')
-bank_account.credit(<%= payload['amount'] %>)
+bank_account.credit(<%= params_to_hash.call(payload) %>)
