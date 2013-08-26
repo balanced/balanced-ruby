@@ -1,5 +1,8 @@
 <%= boiler_plate %>
-bank_account = Balanced::BankAccount.new( :uri => '<%=request['uri']%>', <%= payload.map {|k,v| ":#{k} => '#{v}'"}.join(",") %>)
+bank_account = Balanced::BankAccount.new(
+  :uri => '<%=request['uri']%>',
+<%= params_to_hash.call(payload).indent(2) %>
+)
 
 begin
   bank_account.save
