@@ -1,11 +1,9 @@
 <%= boiler_plate %>
 
 merchant_data = {
-  <%= params_to_hash.call(payload['merchant']) %>,
-  :person => {
-      <%= params_to_hash.call(payload['merchant']['person']) %>
-  }
+<%= params_to_hash.call(payload['merchant']).indent(2) %>,
 }
+
 account = Balanced::Marketplace.my_marketplace.create_account
 
 begin
