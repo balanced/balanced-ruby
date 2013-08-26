@@ -1,1 +1,1 @@
-Balanced::Account.hold(...)
+Balanced::Customer.hold(...)
