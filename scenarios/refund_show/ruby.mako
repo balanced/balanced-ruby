@@ -3,8 +3,8 @@ Balanced::Refund.find()
 
 % else:
 require 'balanced'
-Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
+Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
 
-refund = Balanced::Refund.find('/v1/marketplaces/TEST-MP4erLnXCYoaeyr3tx95WSKc/refunds/RF5vCZH6cVJzfoyqPDLVjBvU')
+refund = Balanced::Refund.find('/v1/customers/ACO702cHD2tPiOCRSKYzVf1/refunds/RF1cWzNKWwQnCCbeonFdLVkC')
 
 % endif

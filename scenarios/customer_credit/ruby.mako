@@ -2,7 +2,7 @@
 Balanced::Customer.credit
 
 % else:
-customer = Balanced::Customer.find('/v1/customers/CU6PXyMacKRYKNJPJFKtONK0')
+customer = Balanced::Customer.find('/v1/customers/AC6xddA9naLGxrOBkAig9b4a')
 customer.credit(:amount => '100')
 
 % endif

@@ -38,6 +38,5 @@ subdir_list.each do |scenario|
     end
   rescue Exception => e
     puts "Error rendering #{scenario}'s mako"
-    puts e
   end
 end

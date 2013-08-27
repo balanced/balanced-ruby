@@ -2,7 +2,7 @@
 marketplace = Balanced::Marketplace.my_marketplace
 
 merchant_data = {
-<%= params_to_hash.call(payload['merchant']) %>
+<%= params_to_hash.call(payload['merchant']).indent(2) %>
 }
 
 account = Balanced::Marketplace.my_marketplace.create_account

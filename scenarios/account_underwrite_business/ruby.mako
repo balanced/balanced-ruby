@@ -3,15 +3,25 @@ Balanced::Account.promote_to_merchant
 
 % else:
 require 'balanced'
-Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
+Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
 
 
 merchant_data = {
-  :name => 'Skripts4Kids',:phone_number => '+140899188155',:postal_code => '91111',:street_address => '555 VoidMain Road',:tax_id => '211111111',:type => 'business',
+  :name => 'Skripts4Kids',
   :person => {
-      :dob => '1989-12',:name => 'Timmy Q. CopyPasta',:phone_number => '+14089999999',:postal_code => '94110',:street_address => '121 Skriptkid Row',
-  }
+    :dob => '1989-12',
+    :name => 'Timmy Q. CopyPasta',
+    :phone_number => '+14089999999',
+    :postal_code => '94110',
+    :street_address => '121 Skriptkid Row'
+  },
+  :phone_number => '+140899188155',
+  :postal_code => '91111',
+  :street_address => '555 VoidMain Road',
+  :tax_id => '211111111',
+  :type => 'business',
 }
+
 account = Balanced::Marketplace.my_marketplace.create_account
 
 begin
