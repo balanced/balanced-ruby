@@ -3,8 +3,8 @@ Balanced::Debit.refund()
 
 % else:
 require 'balanced'
-Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
+Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
 
-debit = Balanced::Debit.find('/v1/marketplaces/TEST-MP4erLnXCYoaeyr3tx95WSKc/debits/WD5aKzkNv487e4XjjbbfV5TU')
+debit = Balanced::Debit.find('/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/debits/WD7HfOnPU0KhbO9WUEGw0qJq')
 debit.refund
 % endif
