@@ -1,5 +1,6 @@
-cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
+cwd = File.dirname(File.dirname(File.expand_path(__FILE__)))
 $:.unshift(cwd + "/lib")
+require 'rubygems'
 require 'balanced'
 
 begin

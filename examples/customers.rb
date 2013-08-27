@@ -1,8 +1,7 @@
-cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
+cwd = File.dirname(File.dirname(File.expand_path(__FILE__)))
 $:.unshift(cwd + "/lib")
+require 'rubygems'
 require 'balanced'
-require 'ruby-debug'
-
 
 begin
   Balanced::Card
@@ -62,7 +61,7 @@ bank_account = marketplace.create_bank_account(
 card = marketplace.create_card(
           :card_number       => "4111111111111111",
           :expiration_month  => "12",
-          :expiration_year   => "2015",
+          :expiration_year   => "2015"
         ).save
 
 puts "our bank account uri is #{bank_account.uri}"

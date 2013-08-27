@@ -1,5 +1,6 @@
-cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
+cwd = File.dirname(File.dirname(File.expand_path(__FILE__)))
 $:.unshift(cwd + "/lib")
+require 'rubygems'
 require 'balanced'
 
 begin
@@ -52,7 +53,7 @@ puts "cool! let's create a new card."
 card = Balanced::Card.new(
   :card_number => "5105105105105100",
   :expiration_month => "12",
-  :expiration_year => "2015",
+  :expiration_year => "2015"
 ).save
 puts "Our card uri: #{card.uri}"
 
@@ -83,7 +84,7 @@ puts "ok, we have a merchant that's signing up, let's create an account for them
 bank_account = marketplace.create_bank_account(
     :account_number => "1234567890",
     :routing_number => "322271627",
-    :name => "Jack Q Merchant",
+    :name => "Jack Q Merchant"
 )
 
 merchant = marketplace.create_merchant(
@@ -95,10 +96,10 @@ merchant = marketplace.create_merchant(
       :postal_code => "94301",
       :country => "USA",
       :dob => "1842-01",
-      :phone_number => "+16505551234",
+      :phone_number => "+16505551234"
     },
     :bank_account_uri => bank_account.uri,
-    :name => "Jack Q Merchant",
+    :name => "Jack Q Merchant"
 )
 
 puts "oh our buyer is interested in buying something for 530.00$"

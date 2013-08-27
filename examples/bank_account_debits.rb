@@ -1,8 +1,9 @@
 """
 Learn how to authenticate a bank account so you can debit with it.
 """
-cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
+cwd = File.dirname(File.dirname(File.expand_path(__FILE__)))
 $:.unshift(cwd + "/lib")
+require 'rubygems'
 require 'balanced'
 
 host = ENV.fetch('BALANCED_HOST') { nil }

@@ -3,8 +3,9 @@ Welcome weary traveller. Sick of polling for state changes? Well today have I
 got good news for you. Run this example below to see how to get yourself some
 callback goodness and to understand how events work.
 """
-cwd = File.dirname(File.dirname(File.absolute_path(__FILE__)))
+cwd = File.dirname(File.dirname(File.expand_path(__FILE__)))
 $:.unshift(cwd + "/lib")
+require 'rubygems'
 require 'balanced'
 require 'net/http'
 require 'uri'
