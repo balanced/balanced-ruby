@@ -1,2 +1,2 @@
-customer = Balanced::Customer.find('<%=request['customer_uri']%>')
+customer = Balanced::Customer.find('<%=request['uri']%>')
 customer.unstore

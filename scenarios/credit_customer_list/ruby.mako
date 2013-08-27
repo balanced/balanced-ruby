@@ -3,10 +3,10 @@ Balanced::Customer.credits
 
 % else:
 require 'balanced'
-Balanced.configure('c72cb360d3ae11e29593026ba7d31e6f')
+Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
 
 
-customer = Balanced::Customer.find('/v1/customers/CU6PXyMacKRYKNJPJFKtONK0')
+customer = Balanced::Customer.find('')
 credits = customer.credits
 
 % endif
