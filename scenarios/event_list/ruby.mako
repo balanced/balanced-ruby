@@ -3,7 +3,7 @@
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
 marketplace = Balanced::Marketplace.my_marketplace
 events = Balanced::Event.all(:limit => 2)

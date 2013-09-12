@@ -3,12 +3,12 @@ Balanced::Customer.hold(...)
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-customer = Balanced::Customer.find('/v1/customers/ACO702cHD2tPiOCRSKYzVf1')
-customer.hold(
+hold = Balanced::Hold.new(
   :amount => '5000',
-  :description => 'Some descriptive text for the debit in the dashboard'
+  :description => 'Some descriptive text for the debit in the dashboard',
+  :source_uri => '/v1/marketplaces/TEST-MP5xnSCw6SffAgT7r9dYSGeP/cards/CC7tkR6NetljW3FrVHQ0368'
 )
-
+hold.save
 % endif

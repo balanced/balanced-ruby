@@ -3,9 +3,9 @@ Balanced::Refund.save()
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-refund = Balanced::Refund.find('/v1/customers/ACO702cHD2tPiOCRSKYzVf1/refunds/RF1cWzNKWwQnCCbeonFdLVkC')
+refund = Balanced::Refund.find('/v1/customers/AC7uApw73nVe459gEQ4ynVJu/refunds/RF7DgCMEweMG2iUl2MYw56cn')
 refund.description = 'update this description'
 refund.meta = {
     'refund.reason' => 'user not happy with product',

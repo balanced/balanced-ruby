@@ -3,9 +3,9 @@ Balanced::Customer.holds
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-customer = Balanced::Customer.find('/v1/customers/AC8REMQqvuj8Kz8Yc3tpOPg')
+customer = Balanced::Customer.find('/v1/customers/AC7dx1IBJGzHjr579XEZAvLc')
 holds = customer.holds
 
 % endif

@@ -3,9 +3,9 @@ Balanced::Customer.add_bank_account
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-customer = Balanced::Customer.find('/v1/customers/AC6TepGAIZ5HUdhfTZKOoUhh')
-customer.add_bank_account("/v1/bank_accounts/BA6V90Tau7B5YTGPFjC0PlzA")
+customer = Balanced::Customer.find('/v1/customers/AC6FO1fS8ypyifj7q31FSvTx')
+customer.add_bank_account("/v1/bank_accounts/BA6GQMuP5LafMddzFBrDEi02")
 
 % endif

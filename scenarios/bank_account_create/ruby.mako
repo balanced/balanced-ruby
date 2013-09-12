@@ -3,7 +3,7 @@ Balanced::BankAccount.save
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
 bank_account = Balanced::BankAccount.new(
   :account_number => '9900000001',

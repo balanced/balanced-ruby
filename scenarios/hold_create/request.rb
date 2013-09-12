@@ -1,5 +1,5 @@
 <%= boiler_plate %>
-customer = Balanced::Customer.find('<%= request['customer_uri'] %>')
-customer.hold(
+hold = Balanced::Hold.new(
 <%= params_to_hash.call(payload).indent(2) %>
 )
+hold.save
