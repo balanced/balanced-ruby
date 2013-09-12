@@ -3,9 +3,9 @@ Balanced::Verification.save
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-verification = Balanced::Verification.find('/v1/bank_accounts/BA5LOM1tiKeY4HOVU9XqOpHi/verifications/BZ5OeVKxqc8c1ne4qZzi9LJl')
+verification = Balanced::Verification.find('/v1/bank_accounts/BA5YXVcU9ExcM8jXQhQt7ZY6/verifications/BZ610Qohtgs6VzPXQ2OFve6y')
 
 verification.amount_1 = 1
 

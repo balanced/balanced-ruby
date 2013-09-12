@@ -3,10 +3,10 @@ Balanced::Customer.debits
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
 
-customer = Balanced::Customer.find('/v1/customers/AC73sGhakFEQQFbLDX6WSq9y')
+customer = Balanced::Customer.find('/v1/customers/AC6M5tIyndBqrv4fEdubPUhg')
 debits = customer.debits
 
 % endif

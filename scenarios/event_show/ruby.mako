@@ -3,8 +3,8 @@
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-event = Balanced::Event.find('/v1/events/EV8c8e419e0e9e11e39281026ba7d31e6f')
+event = Balanced::Event.find('/v1/events/EVb5fccf0a1b2d11e38c7a026ba7d31e6f')
 
 % endif

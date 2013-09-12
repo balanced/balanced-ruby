@@ -3,9 +3,9 @@ Balanced::Debit.refund()
 
 % else:
 require 'balanced'
-Balanced.configure('8c3aeeb80e9e11e38901026ba7f8ec28')
+Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
 
-debit = Balanced::Debit.find('/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/debits/WD1aYGtAuoJxpGSUYr8jVlyy')
+debit = Balanced::Debit.find('/v1/marketplaces/TEST-MP5xnSCw6SffAgT7r9dYSGeP/debits/WD7C8yoy9dncfU1m9MW4Q5iv')
 debit.refund(
   :description => 'Refund for Order #1111',
   :meta => {
