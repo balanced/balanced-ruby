@@ -3,9 +3,9 @@ Balanced::Debit.save()
 
 % else:
 require 'balanced'
-Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
+Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
 
-debit = Balanced::Debit.find('/v1/marketplaces/TEST-MP5xnSCw6SffAgT7r9dYSGeP/debits/WD6SNqybglelPXcBZVcH40gG')
+debit = Balanced::Debit.find('/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/debits/WD7FdeaD0Zh9x6hZMpd5fstW')
 debit.description = 'New description for debit'
 debit.meta = {
     'anykey' => 'valuegoeshere',

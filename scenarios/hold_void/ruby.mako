@@ -3,8 +3,8 @@ Balanced::Hold.void()
 
 % else:
 require 'balanced'
-Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
+Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
 
-hold = Balanced::Hold.find('/v1/marketplaces/TEST-MP5xnSCw6SffAgT7r9dYSGeP/holds/HL7yIVmRKUFKGcERaqNgUJOS')
+hold = Balanced::Hold.find('/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/holds/HLz4ihqQhojMB0z17ZPxDXI')
 hold.void
 % endif

@@ -37,6 +37,7 @@ subdir_list.each do |scenario|
       f.write("\n")
     end
   rescue Exception => e
+    puts e
     puts "Error rendering #{scenario}'s mako"
   end
 end

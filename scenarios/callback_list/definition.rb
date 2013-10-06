@@ -1,1 +1,1 @@
-    Balanced::Callback.all
+Balanced::Callback.all

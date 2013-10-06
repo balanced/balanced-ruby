@@ -3,11 +3,11 @@ Balanced::Marketplace.create_buyer
 
 % else:
 require 'balanced'
-Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
+Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
 
 
 buyer = Balanced::Marketplace.my_marketplace.create_buyer(
-  :card_uri => '/v1/marketplaces/TEST-MP5xnSCw6SffAgT7r9dYSGeP/cards/CC5GilLPTp4N4vYHwzwGEsR9'
+  :card_uri => '/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC5T4qufAzoJFaHS2wcGlTeo'
 )
 
 % endif
