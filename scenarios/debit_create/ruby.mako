@@ -3,9 +3,9 @@ Balanced::Customer.debit()
 
 % else:
 require 'balanced'
-Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
+Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
 
-customer = Balanced::Customer.find('/v1/customers/AC7uApw73nVe459gEQ4ynVJu')
+customer = Balanced::Customer.find('/v1/customers/CUuDKfPHvZhTmaNbEsg1BOO')
 customer.debit(
   :amount => '5000',
   :appears_on_statement_as => 'Statement text',

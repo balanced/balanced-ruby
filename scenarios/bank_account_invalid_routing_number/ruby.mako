@@ -3,10 +3,10 @@ Balanced::BadRequest
 
 % else:
 require 'balanced'
-Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
+Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
 
 bank_account = Balanced::BankAccount.new(
-  :uri => '/v1/marketplaces/TEST-MP5xnSCw6SffAgT7r9dYSGeP/bank_accounts',
+  :uri => '/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/bank_accounts',
   :account_number => '9900000001',
   :name => 'Johann Bernoulli',
   :routing_number => '100000007',

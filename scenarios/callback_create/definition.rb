@@ -1,1 +1,1 @@
-    Balanced::Callback.save
+Balanced::Callback.new

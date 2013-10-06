@@ -1,1 +1,1 @@
-    Balanced::Callback.destroy
+Balanced::Callback.unstore

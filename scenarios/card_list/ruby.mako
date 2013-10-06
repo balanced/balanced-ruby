@@ -3,7 +3,7 @@ Balanced::Marketplace.cards
 
 % else:
 require 'balanced'
-Balanced.configure('b5de51921b2d11e389c4026ba7cac9da')
+Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
 
 cards = Balanced::Marketplace.my_marketplace.cards
 % endif
