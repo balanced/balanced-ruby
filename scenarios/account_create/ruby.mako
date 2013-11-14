@@ -3,7 +3,7 @@ Balanced::Account.new
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
+Balanced.configure('ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD')
 
 account = Balanced::Marketplace.my_marketplace.create_account
 

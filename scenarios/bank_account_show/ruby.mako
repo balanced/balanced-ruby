@@ -3,8 +3,8 @@ Balanced::BankAccount.find()
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
+Balanced.configure('ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD')
 
-bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA6wDj2MwJTwkPA4s4rEMq2y')
+bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA5A8YcoSCEPQyCaPCTvmFnW')
 
 % endif

@@ -3,9 +3,9 @@ Balanced::Credit.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
+Balanced.configure('ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD')
 
 marketplace = Balanced::Marketplace.my_marketplace
 
-credit = Balanced::Credit.find('/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/credits/CR6Y384863fzeb73YbW5NHVe')
+credit = Balanced::Credit.find('/v1/marketplaces/TEST-MP4K6K0PWGyPtXL4LZ42sQSb/credits/CR5YK26rTyl5vlFK928nhxUI')
 % endif

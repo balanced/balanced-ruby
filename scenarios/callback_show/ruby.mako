@@ -3,7 +3,7 @@ Balanced::Callback.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq')
+Balanced.configure('ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD')
 
-callback = Balanced::Callback.find('/v1/callbacks/CB6DYHGJOCaSxYwDz34j5TGa')
+callback = Balanced::Callback.find('/v1/callbacks/CB5GFgGfugkhbKueLUJL6hAa')
 % endif
