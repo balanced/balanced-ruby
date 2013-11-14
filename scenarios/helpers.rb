@@ -7,7 +7,11 @@ params_to_hash = lambda { |params|
         s << "#{params_to_hash.call(v)}".indent(2)
         s << "\n}"
       else
-        s << ":#{k} => '#{v}'"
+        if v.is_a? String
+          s << ":#{k} => '#{v}'"
+        else
+          s << ":#{k} => #{v}"
+        end
       end
       if i != params.length - 1
         s << ",\n"
