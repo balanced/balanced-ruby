@@ -21,9 +21,9 @@ Or install it yourself as:
 
 ## Documentation & Usage
 
-* [Balanced Overview](https://www.balancedpayments.com/docs/overview?language=ruby)
+* [Balanced Overview](https://docs.balancedpayments.com/?language=ruby)
 * [RDoc](http://rubydoc.info/gems/balanced)
-* [Balanced API with Ruby examples](https://www.balancedpayments.com/docs/api?language=ruby)
+* [Balanced API with Ruby examples](https://docs.balancedpayments.com/api?language=ruby)
 * [Example scripts](https://github.com/balanced/balanced-ruby/tree/master/examples)
 
 ## Contributing
@@ -63,14 +63,6 @@ spec/cassettes.  To clear them and regenerate:
 All issues should be documented at
 [balanced-ruby/issues](https://github.com/balanced/balanced-ruby/issues)
 
-
-### Building Documentation
-
-Documentation is built using YARD - http://rubydoc.info/docs/yard
-
-    export AMAZON_ACCESS_KEY_ID='xxx'
-    export AMAZON_SECRET_ACCESS_KEY='yyy'
-    ./upload_docs.rb
 
 ### Scenarios
 
