@@ -1,96 +1,162 @@
-require_relative "../pager"
+require File.expand_path('../../pager', __FILE__)
+require File.expand_path('../../utils', __FILE__)
+require 'addressable/template'
+require 'pp'
 
 
 module Balanced
-  module Resource
-    attr_accessor :attributes
 
-    def initialize attributes = {}
-      @attributes = attributes
+
+  module Resource
+
+    attr_accessor :attributes
+    attr_accessor :hyperlinks
+
+    attr_accessor :id
+    attr_accessor :href
+    attr_accessor :links
+
+    def initialize(attributes = {})
+      @attributes = Utils.indifferent_read_access attributes
+      @hyperlinks = {}
+    end
+
+    def id
+      (attributes[:id] ||= nil)
+    end
+
+    def id=(value)
+      attributes[:id] = value
+    end
+
+    def href
+      (attributes[:href] ||= self.class.collection_name)
+    end
+
+    def links
+      (attributes[:links] ||= {})
+    end
+
+    def links=(value)
+      attributes[:links] = value
+    end
+
+    def hydrate(links, meta)
+      # links here is 'marketplaces.events'
+      links.each do |key, uri|
+        # key is 'marketplaces.events'
+        property = key.sub(/.*?\./, '')
+        # property here is events
+        # if marketplace.links is a hash
+        # for each property and uri, we want to set them on the instance
+        # as pagers.
+        #
+        # right?
+        if self.links.include? property
+          link_value = self.links[property]
+          # expands /customers/{marketplaces.owner_customer} to /customers/ACxxxxx
+          template = Addressable::Template.new(uri)
+          uri = template.expand("#{key}" => link_value).to_s
+          @hyperlinks[property] = Balanced::Utils.callable(
+              link_value.nil? ? link_value : lambda { self.class.find(uri) }
+          )
+        else
+          unless uri.nil? || uri.is_a?(Hash)
+            # matches something like '/blah/{class.attribute}/bliakdf'
+            begin
+              match_data = /\{(#{self.class.collection_name}\.(\w+))\}/.match(uri)
+            rescue TypeError => ex
+              puts 'what the fuck'
+              raise ex
+            end
+            unless match_data.nil?
+              attribute_path = match_data[1]
+              attribute_name = match_data[2]
+              template = Addressable::Template.new(uri)
+              uri = template.expand("#{attribute_path}" => @attributes[attribute_name]).to_s
+            end
+          end
+          @hyperlinks[property] = Balanced::Utils.callable(Balanced::Pager.new(uri, {}))
+        end
+      end
     end
 
     # delegate the query to the pager module
 
-    def find *arguments
+    def find(*arguments)
       self.class.find *arguments
     end
 
     def save
-      uri = @attributes.delete('uri')
+      href = @attributes.delete('href')
       method = :post
-      if uri.nil?
-        uri = self.class.collection_path
-      elsif !Balanced.is_collection(uri)
+      if href.nil?
+        href = self.class.collection_path
+      elsif !Balanced.is_collection(href)
         method = :put
       end
+
       attributes_to_submit = self.sanitize
-      @response = Balanced.send(method, uri, attributes_to_submit)
+      begin
+        @response = Balanced.send(method, href, attributes_to_submit)
+      rescue Balanced::Error
+        # restore the href on the instance if there was an exception
+        # this will allow us to try to fix any attributes and save again
+        @attributes['href'] = href
+        raise
+      end
+
       reload @response
     end
 
     def sanitize
       to_submit = {}
       @attributes.each do |key, value|
-        if not value.is_a? Balanced::Resource
+        unless value.is_a? Balanced::Resource
           to_submit[key] = value
         end
       end
       to_submit
     end
 
-    def warn_on_positional args
-      msg = <<-WARNING
-      Called from: #{caller[1]}
-      #############################################################
-      #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!   #
-      #############################################################
-
-      Using positional arguments is **DEPRECATED**. Please use the
-      keyword options pattern instead. Version __0.7.0__ of the
-      Ruby client will not support positional arguments.
-
-      If you need help, please hop on irc.freenode.net #balanced
-      or contact support@balancedpayments.com
-      WARNING
-      # warn if [...] otherwise, it's ok if it's: [], [{}] or [{...}]
-      unless (args.size == 1 and args.last.is_a? Hash) or (args.size == 0)
-        warn msg
-      end
-    end
-
     def response
       @response
     end
+
     private :response
 
     def destroy
-      Balanced.delete @attributes[:uri]
+      Balanced.delete @attributes[:href]
     end
 
     def unstore
       destroy
     end
 
-    def reload the_response = nil
+    def reload(the_response = nil)
       if the_response
         return if the_response.body.to_s.length.zero?
         fresh = self.class.construct_from_response the_response.body
       else
-        fresh = self.find(@attributes[:uri])
+        fresh = self.find(@attributes[:href])
       end
       fresh and copy_from fresh
       self
     end
 
-    def copy_from other
+    def copy_from(other)
       other.instance_variables.each do |ivar|
         instance_variable_set ivar, other.instance_variable_get(ivar)
       end
     end
 
     def method_missing(method, *args, &block)
-      case method
-        when /(.+)\=$/
+      if @attributes.has_key?(method.to_s)
+        return @attributes[method.to_s]
+      end
+
+      case method.to_s
+        when /(.+)=$/
           attr = method.to_s.chop
           @attributes[attr] = args[0]
         else
@@ -106,132 +172,119 @@ module Balanced
           # method requests that are essentially #{method}_uri.
           #
           # This solves the acute problem, for now.
-          if @attributes.has_key? "#{method}_uri"
-
-            value = @attributes["#{method}_uri"]
-            # what if the server returns a _uri that we don't know how to
-            # construct? Welp, we catch that NameError and return to super.
-            begin
-              values_class = Balanced.from_uri(value)
-            rescue NameError
-              super
-            end
-
-            # if uri is a collection -> this would definitely be if
-            # it ends in a symbol then we should allow a lazy executor of
-            # the query pager
-            if Balanced.is_collection(value)
-              pager = Balanced::Pager.new value, {}
-              return pager.to_a
-            else
-              return values_class.find(value)
-            end
-
+          if @hyperlinks.has_key? "#{method}"
+            value = @hyperlinks["#{method}"]
+            result = value.call
+            return result
           else
             super
           end
       end
     end
 
-  def self.included(base)
-    base.extend ClassMethods
-  end
-
-  module ClassMethods
-    def resource_name
-      Utils.demodulize name
-    end
-
-    def collection_name
-      Utils.pluralize Utils.underscore(resource_name)
-    end
-
-    def collection_path
-      ["/v#{Balanced.config[:version]}", collection_name].compact.join '/'
-    end
-
-    def member_name
-      Utils.underscore resource_name
-    end
-
-    # Returns the resource URI for a given class.
-    #
-    # @example A Balanced::Account resource
-    #   Balanced::Account.uri # => "/v1/marketplaces/TEST-MP72zVdg2j9IiqRffW9lczRZ/accounts"
-    #
-    # @return [String] the uri of the instance or the class
-    def uri
-      # the uri of a particular resource depends if there's a marketplace
-      # created or not. if there's a marketplace, then all resources have their
-      # own uri from there and the top level ones. if there's not a marketplace
-      #
-      #    if there's an api key, then the merchant is available
-      #    if there's no api key, the only resources exposed are purely top level
-      if self == Balanced::Merchant || self == Balanced::Marketplace || self == Balanced::ApiKey
-        collection_path
-      else
-        unless Balanced::Marketplace.marketplace_exists?
-          raise Balanced::StandardError, "#{self.name} is nested under a marketplace, which is not created or configured."
-        end
-
-        Balanced::Marketplace.marketplace_uri + "/#{collection_name}"
+    if RUBY_VERSION < '1.9'
+      def respond_to?(method_name, include_private=false)
+        does_resource_respond_to?(method_name) || super
+      end
+    else
+      def respond_to_missing?(method_name, include_private=false)
+        does_resource_respond_to?(method_name) || super
       end
     end
 
-    def construct_from_response payload
-      payload = Balanced::Utils.hash_with_indifferent_read_access payload
-      return payload if payload[:uri].nil?
-      klass = Balanced.from_uri(payload[:uri])
-      instance = klass.new payload
-
-      # http://stackoverflow.com/a/2495650/133514
-      instance_eigen = class << instance; self; end
-
-      payload.each do |name, value|
-
-        # here is where our interpretations will begin.
-        # if the value is a sub-resource, lets instantiate the class
-        # and set it correctly
-        if value.instance_of? Hash and value.has_key? 'uri'
-          value = construct_from_response value
-        end
-
-         # Get attribute
-        instance.class.send(:define_method, name, proc{@attributes[name]})
-         # Set attribute
-        instance.class.send(:define_method, "#{name}=",  proc{ |value| @attributes[name] = value })
-         # Is attribute present?
-        instance.class.send(:define_method, "#{name}?", proc{ !!@attributes[name] })
-
-        instance.send("#{name}=".to_s, value)
-      end
-      instance
+    def does_resource_respond_to?(method_name)
+      @attributes.has_key?(method_name.to_s) or @hyperlinks.has_key?(method_name.to_s)
     end
 
-    def find *arguments
-      scope   = arguments.slice!(0)
-      options = arguments.slice!(0) || {}
-      case scope
-        when :all   then all(options)
-        when :first then paginate(options).first
+    def self.included(base)
+      base.extend ClassMethods
+    end
+
+    module ClassMethods
+
+      def resource_name
+        Utils.demodulize name
+      end
+
+      def collection_name
+        Utils.pluralize Utils.underscore(resource_name)
+      end
+
+      def collection_path
+        # this is to just support version1  stuff, but in reality, if we get here
+        # we should throw an exception since we do not want to use v1 ever.
+        if Balanced.config[:version] == '1'
+          # XXX: we should raise an exception if we get here.
+          ["/v#{Balanced.config[:version]}", collection_name].compact.join '/'
         else
-          response = Balanced.get scope, options
-          construct_from_response response.body
+          collection_name
+        end
       end
-    end
 
-    def paginate options = {}
-      Balanced::Pager.new uri, options
-    end
-    alias scoped paginate
-    alias where  paginate
+      def href
+        collection_path
+      end
 
-    def all options = {}
-      pager = paginate(options)
-      pager.to_a
-    end
+      def member_name
+        Utils.underscore resource_name
+      end
 
-  end
+      def construct_from_response(payload)
+        payload = Balanced::Utils.indifferent_read_access payload
+
+        links = payload.delete('links') || {}
+        meta = payload.delete('meta') || {}
+
+        if payload.length > 1
+          raise 'NOT SUPPORTED YET'
+        end
+
+        instance = nil
+        # the remaining keys here are just hypermedia resources
+        payload.each do |key, value|
+          # > If the length of an array at a resource key is greater than one,
+          #   the value represents a list of documents.
+          if value.length > 1
+            # key is a collection, this should never happen
+            raise 'This should basically never happen'
+          end
+          # > Singular resources are represented as JSON objects. However,
+          #   they are still wrapped inside an array:
+          resource_body = value.first
+          cls = Balanced.from_hypermedia_registry(key)
+          instance = cls.new resource_body
+          instance.hydrate(links, meta)
+        end
+        instance
+      end
+
+      def find(*arguments)
+        scope = arguments.slice!(0)
+        options = arguments.slice!(0) || {}
+        case scope
+          when :all then
+            all(options)
+          when :first then
+            paginate(options).first
+          else
+            response = Balanced.get scope, options
+            construct_from_response response.body
+        end
+      end
+
+      def paginate(options = {})
+        Balanced::Pager.new href, options
+      end
+
+      alias scoped paginate
+      alias where paginate
+
+      def all(options = {})
+        pager = paginate(options)
+        pager.to_a
+      end
+
+    end
 
   end
 end

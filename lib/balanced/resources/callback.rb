@@ -5,6 +5,8 @@ module Balanced
   #
   class Callback
     include Balanced::Resource
+    include Balanced::HypermediaRegistry
+    define_hypermedia_types [:callbacks]
 
   end
 

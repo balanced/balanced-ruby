@@ -4,20 +4,11 @@ module Balanced
   # associated to them.
   #
   class Customer
+
     include Balanced::Resource
+    include Balanced::HypermediaRegistry
 
-    def self.uri
-      # Override the default nesting
-       self.collection_path
-    end
-
-    def initialize attributes = {}
-      Balanced::Utils.stringify_keys! attributes
-      unless attributes.has_key? 'uri'
-        attributes['uri'] = self.class.uri
-      end
-      super attributes
-    end
+    define_hypermedia_types [:customers]
 
     # Attempts to find an existing customer by email
     #
@@ -31,53 +22,41 @@ module Balanced
     def self.find_by_email email
       self.find(:first, :email => email)
     end
-    
+
+    def self.owner
+      owner_customer = Balanced::Marketplace.mine.owner_customer
+      owner_customer
+    end
+
     def debit(options = {})
-      amount = options[:amount]
-      appears_on_statement_as = options[:appears_on_statement_as]
-      hold_uri = options[:hold_uri]
-      meta = options[:meta]
-      description = options[:description]
-      source_uri = options[:source_uri]
-      on_behalf_of = options[:on_behalf_of] || options[:on_behalf_of_uri]
-
-      if on_behalf_of
-        if on_behalf_of.respond_to? :uri
-          on_behalf_of = on_behalf_of.uri
-        end
-        if !on_behalf_of.is_a?(String)
-          raise ArgumentError, 'The on_behalf_of parameter needs to be a customer URI'
-        end
-        if on_behalf_of == self.uri
-          raise ArgumentError, 'The on_behalf_of parameter MAY NOT be the same account as the customer you are debiting!'
-        end
+      if self.source.nil?
+        raise "No source available for #{self}"
       end
-
-      debit = Debit.new(
-          :uri => self.debits_uri,
-          :amount => amount,
-          :appears_on_statement_as => appears_on_statement_as,
-          :hold_uri => hold_uri,
-          :meta => meta,
-          :description => description,
-          :source_uri => source_uri,
-          :on_behalf_of_uri => on_behalf_of,
-      )
-      debit.save
+      self.source.debit(options)
     end
 
     def credit(options = {})
-      options.merge!(:uri => self.credits_uri)
-      Credit.new(options).save
+      if self.destination.nil?
+        raise "No destination available for #{self}"
+      end
+      self.destination.credit(options)
+    end
+
+    def create_order(options = {})
+      options[:href] = self.orders.href
+      order = Balanced::Order.new(options)
+      order.save
     end
 
     # Associates the Card represented by 'card' with this Customer.
     #
     # @return [Customer]
-
-    def add_card(card)
-      card.save if card.kind_of?(Balanced::Card) && card.hash.nil?
-      self.card_uri = Balanced::Utils.extract_uri_from_object(card)
+    def add_source(source)
+      if source.is_a?(Balanced::Resource)
+        self.links['source'] = source.id
+      else
+        self.links['source'] = source
+      end
       save
     end
 
@@ -85,30 +64,13 @@ module Balanced
     # Customer.
     #
     # @return [Customer]
-    def add_bank_account(bank_account)
-      if bank_account.kind_of?(Balanced::BankAccount) && bank_account.fingerprint.nil?
-        bank_account.save
+    def add_destination(destination)
+      if destination.is_a?(Balanced::Resource)
+        self.links['destination'] = destination.id
+      else
+        self.links['destination'] = destination
       end
-      self.bank_account_uri = Balanced::Utils.extract_uri_from_object(bank_account)
       save
-    end
-
-    def active_card
-      pager = Pager.new(
-        self.cards_uri,
-        :is_active => true,
-        :sort => 'created_at,desc',
-        :limit => 1)
-      pager.first
-    end
-
-    def active_bank_account
-      pager = Pager.new(
-        self.bank_accounts_uri,
-        :is_active => true,
-        :sort => 'created_at,desc',
-        :limit => 1)
-      pager.first
     end
 
   end

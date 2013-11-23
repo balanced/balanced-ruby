@@ -14,25 +14,33 @@ module Balanced
     def body
       @body ||= begin
         return {} unless response[:body]
-        Utils.hash_with_indifferent_read_access(response[:body])
+        Utils.indifferent_read_access(response[:body])
       end
     end
 
     def error_message
       set_attrs
-      extra = body[:additional] ? " -- #{body[:additional]}" : ""
-      "#{self.class.name}(#{response[:status]})::#{body[:status]}:: "\
-      "#{response[:method].to_s.upcase} #{response[:url].to_s}: "\
-      "#{body[:category_code]}: #{body[:description]} #{extra}"
+      errors = body.fetch('errors', nil)
+      unless errors.nil?
+        error = body[:errors][0]
+        extra = error[:additional] ? " -- #{error[:additional]}" : ""
+        "#{self.class.name}(#{response[:status]})::#{error[:status]}:: "\
+        "#{response[:method].to_s.upcase} #{response[:url].to_s}: "\
+        "#{error[:category_code]}: #{error[:description]} #{extra}"
+      end
     end
 
     private
     def set_attrs
-      body.keys.each do |name|
-        self.class.instance_eval {
-          define_method(name) { body[name] }                       # Get.
-          define_method("#{name}?") { !!body[name] }               # Present.
-        }
+      errors = body.fetch('errors', nil)
+      unless errors.nil?
+        error = errors[0]
+        error.keys.each do |name|
+          self.class.instance_eval {
+            define_method(name) { error[name] }                       # Get.
+            define_method("#{name}?") { !!error[name] }               # Present.
+          }
+        end
       end
     end
   end
@@ -49,7 +57,8 @@ module Balanced
     end
   end
 
-  # Raised when attempted to create a debit or hold for a card not associated to an account
+  # Raised when attempted to create a debit or hold for a card not associated
+  # to a customer.
   class UnassociatedCardError < StandardError
     # @param [Balanced::Card] card
     def initialize(card)
@@ -58,7 +67,7 @@ module Balanced
     end
 
     def error_message
-      "The Balanced::Card with uri=#{@card.attributes['uri']} is not associated to an account"
+      "The Balanced::Card with uri=#{@card.attributes['uri']} is not associated to a customer"
     end
   end
 

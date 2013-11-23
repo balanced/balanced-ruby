@@ -13,32 +13,24 @@ module Balanced
   #
   class Debit
     include Balanced::Resource
+    include Balanced::HypermediaRegistry
 
-    def initialize attributes = {}
-      Balanced::Utils.stringify_keys! attributes
-      unless attributes.has_key? 'uri'
-        attributes['uri'] = self.class.uri
-      end
-      super attributes
-    end
+    define_hypermedia_types [:debits]
 
     # Refunds this Debit. If no amount is specified it will refund the entire
     # amount of the Debit, you may create many Refunds up to the sum total
     # of the original Debit's amount.
     #
     # @return [Refund]
-    def refund *args
-      warn_on_positional args
+    def refund(options={})
 
-      options = args.last.is_a?(Hash) ? args.pop : {}
-      amount = args[0] || options.fetch(:amount) { nil }
-      description = args[1] || options.fetch(:description) { nil }
+      amount = options[:amount]
+      description = options[:description]
 
       refund = Refund.new(
-          :uri => self.refunds_uri,
-          :debit_uri => self.uri,
+          :href => self.refunds.href,
           :amount => amount,
-          :description => description,
+          :description => description
       )
       refund.save
     end

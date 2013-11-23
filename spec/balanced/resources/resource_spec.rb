@@ -1,39 +1,32 @@
 require 'spec_helper'
 
-describe Balanced::Resource, '.uri', :vcr do
-  describe "before the marketplace is configured" do
-    it 'raises an exception' do
-      Balanced::Marketplace.stub(:marketplace_uri) { nil }
-      expect {
-        Balanced::Account.uri
-      }.to raise_error(Balanced::StandardError, "Balanced::Account is nested under a marketplace, which is not created or configured.")
+describe Balanced::Resource do
+  class ApiKey
+    include Balanced::Resource::ClassMethods
+  end
+
+  before(:all) do
+    @ak = ApiKey.new
+  end
+
+  describe 'construct_from_response' do
+    it 'should return an instance of an ApiKey' do
+      @payload = JSON.parse('{
+                "links": {},
+                "api_keys": [
+                  {
+                    "links": {},
+                    "created_at": "2013-08-28T00:00:23.337278Z",
+                    "secret": "d611bb800f7411e39f5d026ba7d79bff",
+                    "href": "/api_keys/AK6vWygDNdcoQLHKdaHPtJ1B",
+                    "meta": {},
+                    "id": "AK6vWygDNdcoQLHKdaHPtJ1B"
+                  }
+                ]
+              }')
+      new_ak = @ak.construct_from_response @payload
+      new_ak.should_not be_nil
+      new_ak.should be_instance_of(Balanced::ApiKey)
     end
-  end
-
-  describe 'when the marketplace is configured' do
-    it 'returns the resource uri corresponding to the resource name passed in' do
-      Balanced::Marketplace.stub(:marketplace_uri) { '/v1/marketplaces/TEST-MPynogsPWE3xLMnLbEbuM0g' }
-      Balanced::Account.uri.should == '/v1/marketplaces/TEST-MPynogsPWE3xLMnLbEbuM0g/accounts'
-    end
-  end
-end
-
-describe Balanced::Resource, 'loading a resource and generating methods from the response body', :vcr do
-  before do
-    make_marketplace
-    @account = Balanced::Account.new(email: 'user@example.com', name: 'John Doe').save
-  end
-
-  it 'generates a predicate method' do
-    @account.name?.should be_true
-  end
-
-  it 'generates a getter method' do
-    @account.name.should == 'John Doe'
-  end
-
-  it 'generates a setter' do
-    @account.name = 'Bob Bobberson'
-    @account.name.should == 'Bob Bobberson'
   end
 end

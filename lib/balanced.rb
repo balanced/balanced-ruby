@@ -5,7 +5,6 @@ require 'uri'
 require 'balanced/version' unless defined? Balanced::VERSION
 require 'balanced/client'
 require 'balanced/utils'
-require 'balanced/resources'
 require 'balanced/error'
 
 module Balanced
@@ -13,16 +12,18 @@ module Balanced
   @client = nil
   @config = {
       :scheme => 'https',
-
       :host => 'api.balancedpayments.com',
       :port => 443,
-      :version => '1',
+      :version => '1.1',
   }
+
+  @hypermedia_registry = {}
 
   class << self
 
     attr_accessor :client
     attr_accessor :config
+    attr_accessor :hypermedia_registry
 
     def configure(api_key=nil, options={})
       @config = @config.merge(options)
@@ -33,34 +34,29 @@ module Balanced
       !@client.api_key.nil?
     end
 
-    def split_the_uri uri
-      URI.parse(uri).path.sub(/\/$/, '').split('/')
+    def split_the_href(href)
+      URI.parse(href).path.sub(/\/$/, '').split('/')
     end
 
-    def from_uri uri
-      split_uri = split_the_uri(uri)
-      # this is such an ugly hack, basically, we're trying to
-      # see if we have the symbol that matches the capitalized
-      #
-      class_name = Balanced::Utils.classify(split_uri[-1])
-      begin
-        klass = Balanced.const_get class_name
-      rescue NameError
-        class_name = Utils.classify(split_uri[-2])
-        klass = Balanced.const_get(class_name)
+    def from_hypermedia_registry(resource_name)
+      cls = Balanced.hypermedia_registry[resource_name]
+      if cls.nil?
+        raise 'OH SHIT'
       end
-      klass
+      cls
     end
 
-    def is_collection uri
-      split_uri = split_the_uri(uri)
-      class_name = Balanced::Utils.classify(split_uri[-1])
-      begin
-        Balanced.const_get class_name
-      rescue NameError
-        return false
+    def from_href(href)
+      split_uri = split_the_href(href)
+      split_uri.reverse!.each do |resource|
+        cls = Balanced.hypermedia_registry[resource]
+        return cls unless cls.nil?
       end
-      true
+    end
+
+    def is_collection(href)
+      split_uri = split_the_href(href)
+      Balanced.hypermedia_registry.has_key?(split_uri.last)
     end
 
     def get(*args, &block)
@@ -85,3 +81,7 @@ module Balanced
   # an api key
   configure
 end
+
+# require all the balanced resources! this is needed at the end because
+# the Balanced module needs to be defined first, as it contains the registry
+require 'balanced/resources'

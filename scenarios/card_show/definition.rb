@@ -1,1 +1,0 @@
-Balanced::Card.find()
