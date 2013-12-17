@@ -3,13 +3,13 @@ Balanced::BankAccount.debit
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-bank_account = Balanced::BankAccount.find('/bank_accounts/BA65KGwEVvpb8MiJCGxzqzXW/debits')
+bank_account = Balanced::BankAccount.find('/bank_accounts/BA1IXtpQv1dUC587cpMTCRZe/debits')
 bank_account.debit(
   :appears_on_statement_as => 'Statement text',
-  :description => 'Some descriptive text for the debit in the dashboard',
-  :amount => 5000
+  :amount => 5000,
+  :description => 'Some descriptive text for the debit in the dashboard'
 )
 
 % endif

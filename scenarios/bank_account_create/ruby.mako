@@ -1,15 +1,15 @@
 % if mode == 'definition':
-Balanced::BankAccount.save
+Balanced::BankAccount.new
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
 bank_account = Balanced::BankAccount.new(
-  :name => 'Johann Bernoulli',
-  :routing_number => '121000358',
   :account_number => '9900000001',
-  :type => 'checking'
+  :type => 'checking',
+  :routing_number => '121000358',
+  :name => 'Johann Bernoulli'
 ).save
 
 % endif

@@ -2,7 +2,7 @@
 Balanced::ApiKey.find
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-card = Balanced::ApiKey.find('/api_keys/AK611rgMxlKcCyuiIrHNqbM3')
+card = Balanced::ApiKey.find('/api_keys/AK1ElcQIYRYfDUlffhRGIClq')
 % endif

@@ -3,8 +3,8 @@ Balanced::Callback.unstore
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-callback = Balanced::Callback.find('/callbacks/CB6jiD0h2YZOvtyVIuKXLcNy')
+callback = Balanced::Callback.find('/callbacks/CB1YqOYiy0ajzlvVqGEWr5mw')
 callback.unstore
 % endif

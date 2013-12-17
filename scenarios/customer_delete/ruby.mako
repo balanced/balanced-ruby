@@ -2,7 +2,7 @@
 Balanced::Customer.unstore
 
 % else:
-customer = Balanced::Customer.find('/customers/CU6Lrs5pCJsgrPu3hkWXHfDF')
+customer = Balanced::Customer.find('/customers/CU2E2UpSO9vNFNNdmbK4hhzM')
 customer.unstore
 
 % endif

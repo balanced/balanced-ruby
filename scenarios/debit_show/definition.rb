@@ -1,1 +1,1 @@
-Balanced::Debit.find()
+Balanced::Debit.find

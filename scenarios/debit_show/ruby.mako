@@ -1,10 +1,10 @@
 % if mode == 'definition':
-Balanced::Debit.find()
+Balanced::Debit.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-debit = Balanced::Debit.find('/debits/WD6RU8XhLnVeid8euSqE9icE')
+debit = Balanced::Debit.find('/debits/WD2K2v2DkR1NU3KD4z9WKrvs')
 
 % endif

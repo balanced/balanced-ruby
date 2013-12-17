@@ -1,10 +1,10 @@
 % if mode == 'definition':
-Balanced::Verification.find()
+Balanced::Verification.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-verification = Balanced::Verification.find('/bank_accounts/BA65KGwEVvpb8MiJCGxzqzXW')
+verification = Balanced::Verification.find('/bank_accounts/BA1IXtpQv1dUC587cpMTCRZe')
 
 % endif

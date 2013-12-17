@@ -1,1 +1,1 @@
-Balanced::BankAccount.save
+Balanced::BankAccount.new

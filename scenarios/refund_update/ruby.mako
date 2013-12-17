@@ -1,16 +1,16 @@
 % if mode == 'definition':
-Balanced::Refund.save()
+Balanced::Refund.save
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-refund = Balanced::Refund.find('/refunds/RF7vf8HUaHD76v6et8ScmI8S')
+refund = Balanced::Refund.find('/refunds/RF3aLUMyaZgAUl5gfU4Jk94z')
 refund.description = 'update this description'
 refund.meta = {
+    'user.notes' => 'very polite on the phone',
     'user.refund.count' => '3',
-    'refund.reason' => 'user not happy with product',
-    'user.notes' => 'very polite on the phone'
+    'refund.reason' => 'user not happy with product'
 }
 refund.save
 

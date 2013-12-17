@@ -1,15 +1,15 @@
 % if mode == 'definition':
-Balanced::Card.save()
+Balanced::Card.save
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-card = Balanced::Card.find('/cards/CC6ox6OvhtUBEnDYE7UniVja')
+card = Balanced::Card.find('/cards/CC2h52tnQKGgHS7tV7gYIBuK')
 card.meta = {
-  'my-own-customer-id' => '12345',
+  'facebook.user_id' => '0192837465',
   'twitter.id' => '1234987650',
-  'facebook.user_id' => '0192837465'
+  'my-own-customer-id' => '12345'
 }
 card.save
 

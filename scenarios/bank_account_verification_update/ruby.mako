@@ -3,9 +3,9 @@ Balanced::Verification.save
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-verification = Balanced::Verification.find('/verifications/BZ66KFcxpstfoU5nUFcWWcNY')
+verification = Balanced::Verification.find('/verifications/BZ1MLiNJClTk3gzKktkzyLbF')
 
 verification.amount_2 = 1
 

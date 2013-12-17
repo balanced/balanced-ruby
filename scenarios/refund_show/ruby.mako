@@ -1,10 +1,10 @@
 % if mode == 'definition':
-Balanced::Refund.find()
+Balanced::Refund.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-refund = Balanced::Refund.find('/refunds/RF7vf8HUaHD76v6et8ScmI8S')
+refund = Balanced::Refund.find('/refunds/RF3aLUMyaZgAUl5gfU4Jk94z')
 
 % endif

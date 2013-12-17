@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-Balanced::Credit.all
+credits = Balanced::Credit.all

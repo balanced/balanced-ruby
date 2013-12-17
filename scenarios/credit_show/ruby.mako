@@ -3,7 +3,7 @@ Balanced::Credit.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-1AT46SzXKoUe4HUM3C1MYQGbO2itdqsZw')
+Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
 
-credit = Balanced::Credit.find('/credits/CR6x7BgJcM3crRTYfyW9krYI')
+credit = Balanced::Credit.find('/credits/CR2pUwe19efJ5Czp1W3BDJSC')
 % endif
