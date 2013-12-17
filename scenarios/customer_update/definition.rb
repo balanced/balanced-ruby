@@ -1,0 +1,1 @@
+Balanced::Customer.save
