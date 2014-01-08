@@ -2,7 +2,7 @@
 Balanced::ApiKey.all
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
 card = Balanced::ApiKey.all
 

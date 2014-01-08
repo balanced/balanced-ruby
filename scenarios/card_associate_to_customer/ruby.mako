@@ -1,10 +1,11 @@
 % if mode == 'definition':
-Balanced::ApiKey.unstore
+Balanced::Customer.add_card
+
 % else:
 require 'balanced'
 Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
-key = Balanced::ApiKey.find('/api_keys/AK4ed1gCFnppGxCqCJ69bKPg')
-key.unstore
+customer = Balanced::Customer.find('/cards/CC4TsBYO9E4IRQqg0jvrEg9i')
+customer.add_card('')
 
 % endif

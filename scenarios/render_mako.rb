@@ -4,7 +4,7 @@ require 'json'
 #require 'ruby-debug'
 require './scenarios/helpers'
 
-parsed_data = JSON.parse(File.read('../../../scenario.cache'))
+parsed_data = JSON.parse(File.read('scenario.cache'))
 
 Dir.chdir("./scenarios")
 subdir_list = Dir["*"].reject { |o| not File.directory?(o) }

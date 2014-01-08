@@ -3,13 +3,13 @@ Balanced::BankAccount.new
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
 bank_account = Balanced::BankAccount.new(
   :account_number => '9900000001',
-  :type => 'checking',
+  :name => 'Johann Bernoulli',
   :routing_number => '121000358',
-  :name => 'Johann Bernoulli'
+  :type => 'checking'
 ).save
 
 % endif

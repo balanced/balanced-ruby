@@ -2,15 +2,15 @@
 Balanced::Credit.reverse
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
-reversal = Balanced::Credit.find('/credits/CR3hmEx4zd5bOxenRMmHRfSg')
+reversal = Balanced::Credit.find('/credits/CR5QteIJS3LM0UdgRqV5pUDm')
 credit.reverse(
   :description => 'Reversal for Order #1111',
   :meta => {
     'fulfillment.item.condition' => 'OK',
-    'user.refund_reason' => 'not happy with product',
-    'merchant.feedback' => 'positive'
+    'merchant.feedback' => 'positive',
+    'user.refund_reason' => 'not happy with product'
   }
 )
 

@@ -3,8 +3,8 @@ Balanced::Event.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
-event = Balanced::Event.find('/events/EV3cf60616675f11e3b687026ba7cd33d0')
+event = Balanced::Event.find('/events/EV905083d0788611e39b52026ba7cac9da')
 
 % endif

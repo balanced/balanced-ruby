@@ -3,8 +3,8 @@ Balanced::Reversal.find
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
-reversal = Balanced::Reversal.find('/reversals/RV3iokTf3sL6UwIp3ZWmQFsK')
+reversal = Balanced::Reversal.find('/reversals/RV5RIa8l6ELnOMizSuGlneMG')
 
 % endif

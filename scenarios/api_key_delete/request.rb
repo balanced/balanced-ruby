@@ -1,2 +1,3 @@
 <%= boiler_plate %>
-card = Balanced::ApiKey.unstore
+key = Balanced::ApiKey.find('<%= request['uri'] %>')
+key.unstore

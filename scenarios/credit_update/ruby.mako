@@ -3,9 +3,9 @@ Balanced::Credit.save
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
-credit = Balanced::Credit.find('/credits/CR2pUwe19efJ5Czp1W3BDJSC')
+credit = Balanced::Credit.find('/credits/CR56eBUnwbYLwR2KltuqmOLe')
 credit.description = 'New description for credit'
 credit.meta = {
     'anykey' => 'valuegoeshere',

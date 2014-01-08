@@ -3,13 +3,13 @@ Balanced::Card.new
 
 % else:
 require 'balanced'
-Balanced.configure('ak-test-2IfBSMHWXU55xtQ13j9lvtK8IRjsb804g')
+Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
 
 card = Balanced::Card.new(
-  :security_code => '123',
   :expiration_month => '12',
+  :expiration_year => '2020',
   :number => '5105105105105100',
-  :expiration_year => '2020'
+  :security_code => '123'
 ).save
 
 % endif
