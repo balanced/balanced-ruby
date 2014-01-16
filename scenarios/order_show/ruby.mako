@@ -3,35 +3,35 @@ Balanced::Order.find
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2uzz5nxHt8C5EEEmBN2Ae1j59c9Kl23t7')
+Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
 
-order = Balanced::Order.find('/orders/OR5mL3l5NLwUDQvQppYeQk8q')
+order = Balanced::Order.find('/orders/OR3BfmcL5GdGiFeYurVs302c')
 
 % elif mode == 'response':
-#<Balanced::Order:0x10853bea8
+#<Balanced::Order:0x107207148
  @attributes=
-  {"created_at"=>"2014-01-16T19:23:33.253871Z",
+  {"currency"=>"USD",
+   "created_at"=>"2014-01-16T19:57:43.367993Z",
    "amount_escrowed"=>0,
    "meta"=>{},
-   "updated_at"=>"2014-01-16T19:23:33.253874Z",
-   "id"=>"OR5mL3l5NLwUDQvQppYeQk8q",
+   "links"=>{"merchant"=>"CU3icqpTA5n8LTkqcmRpwqPZ"},
+   "href"=>"/orders/OR3BfmcL5GdGiFeYurVs302c",
    "description"=>"Order #12341234",
-   "links"=>{"merchant"=>"CU546zhmBDn3NEMyP7qXHqe4"},
-   "currency"=>"USD",
-   "href"=>"/orders/OR5mL3l5NLwUDQvQppYeQk8q",
-   "amount"=>0},
+   "id"=>"OR3BfmcL5GdGiFeYurVs302c",
+   "amount"=>0,
+   "updated_at"=>"2014-01-16T19:57:43.367996Z"},
  @hyperlinks=
   {"merchant"=>
-    #<Proc:0x00000001087ea000@./lib/balanced/resources/resource.rb:61>,
-   "refunds"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "credits"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "buyers"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "debits"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>,
    "reversals"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "debits"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "credits"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "buyers"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "refunds"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
 
 % endif

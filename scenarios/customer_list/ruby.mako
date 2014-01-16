@@ -3,103 +3,103 @@ Balanced::Customer.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2uzz5nxHt8C5EEEmBN2Ae1j59c9Kl23t7')
+Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
 
 customers = Balanced::Customer.all
 % elif mode == 'response':
-[#<Balanced::Customer:0x10855b0a0
+[#<Balanced::Customer:0x10723ff98
   @attributes=
-   {"dob_month"=>7,
+   {"dob_year"=>1963,
     "phone"=>nil,
-    "dob_year"=>1963,
-    "created_at"=>"2014-01-16T19:23:10.945044Z",
     "name"=>"Henry Ford",
-    "meta"=>{},
-    "updated_at"=>"2014-01-16T19:23:11.342249Z",
-    "id"=>"CU4XFosbkKY0Lkd3Jt4jENAK",
-    "merchant_status"=>"underwritten",
-    "links"=>{"destination"=>nil, "source"=>nil},
-    "ein"=>nil,
+    "dob_month"=>7,
     "address"=>
-     {"city"=>nil,
-      "country_code"=>nil,
-      "postal_code"=>"48120",
+     {"postal_code"=>"48120",
       "line2"=>nil,
       "line1"=>nil,
-      "state"=>nil},
-    "href"=>"/customers/CU4XFosbkKY0Lkd3Jt4jENAK",
-    "email"=>nil,
-    "business_name"=>nil,
-    "ssn_last4"=>nil},
-  @hyperlinks=
-   {"cards"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "bank_accounts"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "orders"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "card_holds"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "refunds"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "destination"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "credits"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "reversals"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "debits"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "source"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "transactions"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>,
- #<Balanced::Customer:0x1087badf0
-  @attributes=
-   {"dob_month"=>7,
-    "phone"=>nil,
-    "dob_year"=>1963,
-    "created_at"=>"2014-01-16T19:22:58.414941Z",
-    "name"=>"Henry Ford",
-    "meta"=>{},
-    "updated_at"=>"2014-01-16T19:22:59.066491Z",
-    "id"=>"CU4JzSODRNDJ6Fa3tUIIQ4Ug",
-    "merchant_status"=>"underwritten",
-    "links"=>{"destination"=>nil, "source"=>nil},
-    "ein"=>nil,
-    "address"=>
-     {"city"=>nil,
       "country_code"=>nil,
-      "postal_code"=>"48120",
+      "city"=>nil,
+      "state"=>nil},
+    "created_at"=>"2014-01-16T19:57:20.913610Z",
+    "merchant_status"=>"underwritten",
+    "meta"=>{},
+    "links"=>{"destination"=>nil, "source"=>nil},
+    "href"=>"/customers/CU3bZmNvHKhRAUud1ua07Zji",
+    "ein"=>nil,
+    "id"=>"CU3bZmNvHKhRAUud1ua07Zji",
+    "updated_at"=>"2014-01-16T19:57:21.386271Z",
+    "ssn_last4"=>nil,
+    "email"=>nil,
+    "business_name"=>nil},
+  @hyperlinks=
+   {"destination"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "reversals"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "card_holds"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "bank_accounts"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "debits"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "source"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "cards"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "credits"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "orders"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "refunds"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "transactions"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>,
+ #<Balanced::Customer:0x1074aeb80
+  @attributes=
+   {"dob_year"=>1963,
+    "phone"=>nil,
+    "name"=>"Henry Ford",
+    "dob_month"=>7,
+    "address"=>
+     {"postal_code"=>"48120",
       "line2"=>nil,
       "line1"=>nil,
+      "country_code"=>nil,
+      "city"=>nil,
       "state"=>nil},
-    "href"=>"/customers/CU4JzSODRNDJ6Fa3tUIIQ4Ug",
+    "created_at"=>"2014-01-16T19:57:08.705107Z",
+    "merchant_status"=>"underwritten",
+    "meta"=>{},
+    "links"=>{"destination"=>nil, "source"=>nil},
+    "href"=>"/customers/CU2Yg3vl9HHlLwM3sJkyHjsa",
+    "ein"=>nil,
+    "id"=>"CU2Yg3vl9HHlLwM3sJkyHjsa",
+    "updated_at"=>"2014-01-16T19:57:09.850556Z",
+    "ssn_last4"=>nil,
     "email"=>nil,
-    "business_name"=>nil,
-    "ssn_last4"=>nil},
+    "business_name"=>nil},
   @hyperlinks=
-   {"cards"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "bank_accounts"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "orders"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "card_holds"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "refunds"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "destination"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "credits"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   {"destination"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
     "reversals"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "card_holds"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "bank_accounts"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
     "debits"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
     "source"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "cards"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "credits"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "orders"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "refunds"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
     "transactions"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>]
 
 % endif

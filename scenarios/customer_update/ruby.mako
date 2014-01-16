@@ -3,9 +3,9 @@ Balanced::Customer.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2uzz5nxHt8C5EEEmBN2Ae1j59c9Kl23t7')
+Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
 
-customer = Balanced::Customer.find('/customers/CU4XFosbkKY0Lkd3Jt4jENAK')
+customer = Balanced::Customer.find('/customers/CU3bZmNvHKhRAUud1ua07Zji')
 customer.email = 'email@newdomain.com'
 customer.meta = {
     'shipping-preference' => 'ground'
@@ -13,52 +13,52 @@ customer.meta = {
 customer.save
 
 % elif mode == 'response':
-#<Balanced::Customer:0x108770958
+#<Balanced::Customer:0x1074502d8
  @attributes=
-  {"dob_month"=>7,
+  {"dob_year"=>1963,
    "phone"=>nil,
-   "dob_year"=>1963,
-   "created_at"=>"2014-01-16T19:23:10.945044Z",
    "name"=>"Henry Ford",
-   "meta"=>{"shipping-preference"=>"ground"},
-   "updated_at"=>"2014-01-16T19:23:15.079969Z",
-   "id"=>"CU4XFosbkKY0Lkd3Jt4jENAK",
-   "merchant_status"=>"underwritten",
-   "links"=>{"destination"=>nil, "source"=>nil},
-   "ein"=>nil,
+   "dob_month"=>7,
    "address"=>
-    {"city"=>nil,
-     "country_code"=>nil,
-     "postal_code"=>"48120",
+    {"postal_code"=>"48120",
      "line2"=>nil,
      "line1"=>nil,
+     "country_code"=>nil,
+     "city"=>nil,
      "state"=>nil},
-   "href"=>"/customers/CU4XFosbkKY0Lkd3Jt4jENAK",
+   "created_at"=>"2014-01-16T19:57:20.913610Z",
+   "merchant_status"=>"underwritten",
+   "meta"=>{"shipping-preference"=>"ground"},
+   "links"=>{"destination"=>nil, "source"=>nil},
+   "href"=>"/customers/CU3bZmNvHKhRAUud1ua07Zji",
+   "ein"=>nil,
+   "id"=>"CU3bZmNvHKhRAUud1ua07Zji",
+   "updated_at"=>"2014-01-16T19:57:24.922182Z",
+   "ssn_last4"=>nil,
    "email"=>"email@newdomain.com",
-   "business_name"=>nil,
-   "ssn_last4"=>nil},
+   "business_name"=>nil},
  @hyperlinks=
-  {"cards"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "bank_accounts"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "orders"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "card_holds"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "refunds"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "destination"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "credits"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"destination"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "reversals"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "card_holds"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "bank_accounts"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "debits"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "source"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "cards"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "credits"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "orders"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "refunds"=>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "transactions"=>
-    #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
+    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
 
 % endif

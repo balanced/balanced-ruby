@@ -3,32 +3,32 @@ Balanced::Refund.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2uzz5nxHt8C5EEEmBN2Ae1j59c9Kl23t7')
+Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
 
 refunds = Balanced::Refund.all
 % elif mode == 'response':
-[#<Balanced::Refund:0x108816b00
+[#<Balanced::Refund:0x1074f0da0
   @attributes=
-   {"transaction_number"=>"RF565-601-6925",
-    "created_at"=>"2014-01-16T19:23:44.462142Z",
-    "status"=>"succeeded",
+   {"transaction_number"=>"RF954-018-1101",
+    "currency"=>"USD",
+    "created_at"=>"2014-01-16T19:57:50.254779Z",
     "meta"=>
      {"merchant.feedback"=>"positive",
       "fulfillment.item.condition"=>"OK",
       "user.refund_reason"=>"not happy with product"},
-    "updated_at"=>"2014-01-16T19:23:45.133531Z",
-    "id"=>"RF5zmaIdaDlwBNhvdRJOuo4E",
+    "links"=>{"order"=>nil, "debit"=>"WD3GNPmi4QkBHzTZNvMt11MA"},
+    "href"=>"/refunds/RF3J0oK238X6TMkHPzz0XatV",
     "description"=>"Refund for Order #1111",
-    "links"=>{"debit"=>"WD5v3l1cMnFLrXAvZC2hZTW0", "order"=>nil},
-    "currency"=>"USD",
-    "href"=>"/refunds/RF5zmaIdaDlwBNhvdRJOuo4E",
-    "amount"=>3000},
+    "id"=>"RF3J0oK238X6TMkHPzz0XatV",
+    "amount"=>3000,
+    "updated_at"=>"2014-01-16T19:57:51.016805Z",
+    "status"=>"succeeded"},
   @hyperlinks=
-   {"debit"=>
-     #<Proc:0x00000001087ea000@./lib/balanced/resources/resource.rb:61>,
+   {"events"=>
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
     "order"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "events"=>
-     #<Proc:0x00000001087d2478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "debit"=>
+     #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>}>]
 
 % endif
