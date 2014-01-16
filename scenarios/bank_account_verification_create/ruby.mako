@@ -9,20 +9,20 @@ bank_account = Balanced::BankAccount.find('/bank_accounts/BA6FDSSC6O5Ip8el1dDjfM
 verification = bank_account.verify
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x101fe2840
+#<Balanced::BankAccountVerification:0x10eb46dd8
  @attributes=
   {"meta"=>{},
    "links"=>{"bank_account"=>"BA6FDSSC6O5Ip8el1dDjfMz8"},
-   "created_at"=>"2014-01-16T20:00:34.173888Z",
-   "id"=>"BZ6Hm2DoTpcgoDzbIr6dWHpw",
    "attempts"=>0,
    "updated_at"=>"2014-01-16T20:00:34.726463Z",
+   "id"=>"BZ6Hm2DoTpcgoDzbIr6dWHpw",
+   "deposit_status"=>"succeeded",
    "attempts_remaining"=>3,
-   "verification_status"=>"pending",
    "href"=>"/verifications/BZ6Hm2DoTpcgoDzbIr6dWHpw",
-   "deposit_status"=>"succeeded"},
+   "created_at"=>"2014-01-16T20:00:34.173888Z",
+   "verification_status"=>"pending"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>}>
 
 % endif

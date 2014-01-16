@@ -8,37 +8,37 @@ Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 reversal = Balanced::Reversal.find('/reversals/RVNN4yEYvtbFh9ZTBkfS7t4')
 reversal.description = 'update this description'
 reversal.meta = {
-    'user.notes' => 'very polite on the phone',
     'user.satisfaction' => '6',
+    'user.notes' => 'very polite on the phone',
     'refund.reason' => 'user not happy with product'
 }
 reversal.save
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x101d5d020
+#<Balanced::Reversal:0x10e83fab8
  @attributes=
   {"meta"=>
-    {"user.notes"=>"very polite on the phone",
-     "user.satisfaction"=>"6",
+    {"user.satisfaction"=>"6",
+     "user.notes"=>"very polite on the phone",
      "refund.reason"=>"user not happy with product"},
-   "currency"=>"USD",
-   "links"=>{"order"=>nil, "credit"=>"CRKWhB8EqgH0vnlu2zoFiWA"},
+   "links"=>{"credit"=>"CRKWhB8EqgH0vnlu2zoFiWA", "order"=>nil},
+   "amount"=>3000,
    "status"=>"succeeded",
+   "updated_at"=>"2014-01-16T20:02:25.080560Z",
    "failure_reason_code"=>nil,
+   "id"=>"RVNN4yEYvtbFh9ZTBkfS7t4",
+   "currency"=>"USD",
+   "transaction_number"=>"RV929-157-6227",
+   "href"=>"/reversals/RVNN4yEYvtbFh9ZTBkfS7t4",
    "description"=>"update this description",
    "created_at"=>"2014-01-16T20:02:18.661532Z",
-   "id"=>"RVNN4yEYvtbFh9ZTBkfS7t4",
-   "amount"=>3000,
-   "failure_reason"=>nil,
-   "transaction_number"=>"RV929-157-6227",
-   "updated_at"=>"2014-01-16T20:02:25.080560Z",
-   "href"=>"/reversals/RVNN4yEYvtbFh9ZTBkfS7t4"},
+   "failure_reason"=>nil},
  @hyperlinks=
-  {"order"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"credit"=>
+    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
+   "order"=>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
    "events"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "credit"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>
 
 % endif

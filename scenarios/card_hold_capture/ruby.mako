@@ -12,35 +12,35 @@ debit = card_hold.capture(
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x102018148
+#<Balanced::Debit:0x10ec2a010
  @attributes=
   {"meta"=>{"holding.for"=>"user1", "meaningful.key"=>"some.value"},
-   "currency"=>"USD",
    "links"=>
-    {"source"=>"CC728b2nP8zS2QDI8lIIXcFk",
-     "order"=>nil,
+    {"order"=>nil,
+     "source"=>"CC728b2nP8zS2QDI8lIIXcFk",
      "customer"=>"CU6r91gPWrpyaehX1H82kBII"},
-   "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
+   "amount"=>5000,
    "status"=>"succeeded",
+   "updated_at"=>"2014-01-16T20:01:03.406555Z",
    "failure_reason_code"=>nil,
+   "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
+   "id"=>"WD7b4HIsTSDZQ5xGaddvNYRc",
+   "currency"=>"USD",
+   "transaction_number"=>"W524-946-4331",
+   "href"=>"/debits/WD7b4HIsTSDZQ5xGaddvNYRc",
    "description"=>"Some descriptive text for the debit in the dashboard",
    "created_at"=>"2014-01-16T20:01:00.601394Z",
-   "id"=>"WD7b4HIsTSDZQ5xGaddvNYRc",
-   "amount"=>5000,
-   "failure_reason"=>nil,
-   "transaction_number"=>"W524-946-4331",
-   "updated_at"=>"2014-01-16T20:01:03.406555Z",
-   "href"=>"/debits/WD7b4HIsTSDZQ5xGaddvNYRc"},
+   "failure_reason"=>nil},
  @hyperlinks=
-  {"source"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>,
-   "order"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"order"=>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
    "events"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "refunds"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
    "customer"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
+   "refunds"=>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+   "source"=>
+    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>}>
 
 % endif

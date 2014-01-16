@@ -14,20 +14,20 @@ verification.amount_1 = 1
 verification.save
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x101f8f2f8
+#<Balanced::BankAccountVerification:0x10eaf0618
  @attributes=
   {"meta"=>{},
    "links"=>{"bank_account"=>"BA6FDSSC6O5Ip8el1dDjfMz8"},
-   "created_at"=>"2014-01-16T20:00:34.173888Z",
-   "id"=>"BZ6Hm2DoTpcgoDzbIr6dWHpw",
    "attempts"=>1,
    "updated_at"=>"2014-01-16T20:00:37.657681Z",
+   "id"=>"BZ6Hm2DoTpcgoDzbIr6dWHpw",
+   "deposit_status"=>"succeeded",
    "attempts_remaining"=>2,
-   "verification_status"=>"succeeded",
    "href"=>"/verifications/BZ6Hm2DoTpcgoDzbIr6dWHpw",
-   "deposit_status"=>"succeeded"},
+   "created_at"=>"2014-01-16T20:00:34.173888Z",
+   "verification_status"=>"succeeded"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>}>
 
 % endif

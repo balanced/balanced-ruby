@@ -15,28 +15,27 @@ refund.meta = {
 refund.save
 
 % elif mode == 'response':
-#<Balanced::Refund:0x101f9b850
+#<Balanced::Refund:0x10eadba60
  @attributes=
   {"meta"=>
     {"user.refund.count"=>"3",
      "user.notes"=>"very polite on the phone",
      "refund.reason"=>"user not happy with product"},
-   "currency"=>"USD",
-   "links"=>{"order"=>nil, "debit"=>"WDyN9045Drn2VaNeJT3MokD"},
-   "status"=>"succeeded",
-   "description"=>"update this description",
-   "created_at"=>"2014-01-16T20:02:08.557881Z",
-   "id"=>"RFCsiN9NYuDAbA72wRdpiUL",
+   "links"=>{"debit"=>"WDyN9045Drn2VaNeJT3MokD", "order"=>nil},
    "amount"=>3000,
-   "transaction_number"=>"RF566-748-1243",
+   "status"=>"succeeded",
    "updated_at"=>"2014-01-16T20:02:14.585534Z",
-   "href"=>"/refunds/RFCsiN9NYuDAbA72wRdpiUL"},
+   "id"=>"RFCsiN9NYuDAbA72wRdpiUL",
+   "currency"=>"USD",
+   "transaction_number"=>"RF566-748-1243",
+   "href"=>"/refunds/RFCsiN9NYuDAbA72wRdpiUL",
+   "description"=>"update this description",
+   "created_at"=>"2014-01-16T20:02:08.557881Z"},
  @hyperlinks=
-  {"order"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"debit"=>#<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
+   "order"=>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
    "events"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "debit"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>
 
 % endif

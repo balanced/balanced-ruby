@@ -40,6 +40,12 @@ def construct_from_response(payload)
   end
 end
 
+def tidy_response(response)
+  #@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6
+  return if ! response
+  return response.gsub(/@\S(.*?)\Sbalanced-ruby/, '')
+end
+
 parsed_data = JSON.parse(File.read('scenario.cache'))
 
 Dir.chdir("./scenarios")
@@ -77,7 +83,7 @@ subdir_list.each do |scenario|
       f.write("\n")
       f.write("% elif mode == 'response':")
       f.write("\n")
-      f.write(response)
+      f.write(tidy_response(response))
       f.write("\n")
       f.write("% endif")
       f.write("\n")

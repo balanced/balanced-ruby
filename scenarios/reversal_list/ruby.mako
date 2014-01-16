@@ -7,30 +7,30 @@ Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
 reversals = Balanced::Reversal.all
 % elif mode == 'response':
-[#<Balanced::Reversal:0x101eab2d8
+[#<Balanced::Reversal:0x10e9d91f8
   @attributes=
    {"meta"=>
-     {"merchant.feedback"=>"positive",
+     {"user.refund_reason"=>"not happy with product",
       "fulfillment.item.condition"=>"OK",
-      "user.refund_reason"=>"not happy with product"},
-    "currency"=>"USD",
-    "links"=>{"order"=>nil, "credit"=>"CRKWhB8EqgH0vnlu2zoFiWA"},
+      "merchant.feedback"=>"positive"},
+    "links"=>{"credit"=>"CRKWhB8EqgH0vnlu2zoFiWA", "order"=>nil},
+    "amount"=>3000,
     "status"=>"succeeded",
+    "updated_at"=>"2014-01-16T20:02:20.839540Z",
     "failure_reason_code"=>nil,
+    "id"=>"RVNN4yEYvtbFh9ZTBkfS7t4",
+    "currency"=>"USD",
+    "transaction_number"=>"RV929-157-6227",
+    "href"=>"/reversals/RVNN4yEYvtbFh9ZTBkfS7t4",
     "description"=>"Reversal for Order #1111",
     "created_at"=>"2014-01-16T20:02:18.661532Z",
-    "id"=>"RVNN4yEYvtbFh9ZTBkfS7t4",
-    "amount"=>3000,
-    "failure_reason"=>nil,
-    "transaction_number"=>"RV929-157-6227",
-    "updated_at"=>"2014-01-16T20:02:20.839540Z",
-    "href"=>"/reversals/RVNN4yEYvtbFh9ZTBkfS7t4"},
+    "failure_reason"=>nil},
   @hyperlinks=
-   {"order"=>
-     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   {"credit"=>
+     #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
+    "order"=>
+     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
     "events"=>
-     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "credit"=>
-     #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>]
+     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>]
 
 % endif

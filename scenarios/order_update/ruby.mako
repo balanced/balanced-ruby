@@ -8,36 +8,36 @@ Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 order = Balanced::Order.find('/orders/ORrsQyULWCJxYfrUwZryIBQ')
 order.description = 'New description for order'
 order.meta = {
-    'product.id' => '1234567890',
-    'anykey' => 'valuegoeshere'
+    'anykey' => 'valuegoeshere',
+    'product.id' => '1234567890'
 }
 order.save
 
 % elif mode == 'response':
-#<Balanced::Order:0x1020b63e8
+#<Balanced::Order:0x10ec2e048
  @attributes=
-  {"meta"=>{"product.id"=>"1234567890", "anykey"=>"valuegoeshere"},
-   "currency"=>"USD",
+  {"meta"=>{"anykey"=>"valuegoeshere", "product.id"=>"1234567890"},
    "links"=>{"merchant"=>"CU5yzA5nhWv5Ljlr1ZEaYia"},
-   "description"=>"New description for order",
-   "created_at"=>"2014-01-16T20:01:58.794373Z",
-   "id"=>"ORrsQyULWCJxYfrUwZryIBQ",
    "amount_escrowed"=>0,
    "amount"=>0,
    "updated_at"=>"2014-01-16T20:02:03.405994Z",
-   "href"=>"/orders/ORrsQyULWCJxYfrUwZryIBQ"},
+   "id"=>"ORrsQyULWCJxYfrUwZryIBQ",
+   "currency"=>"USD",
+   "href"=>"/orders/ORrsQyULWCJxYfrUwZryIBQ",
+   "description"=>"New description for order",
+   "created_at"=>"2014-01-16T20:01:58.794373Z"},
  @hyperlinks=
   {"credits"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
    "debits"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "reversals"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "refunds"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "merchant"=>
-    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>,
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
    "buyers"=>
-    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+   "merchant"=>
+    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
+   "refunds"=>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+   "reversals"=>
+    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>
 
 % endif
