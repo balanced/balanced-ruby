@@ -3,63 +3,63 @@ Balanced::Event.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
+Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
 events = Balanced::Event.all
 % elif mode == 'response':
-[#<Balanced::Event:0x1074cc3b0
+[#<Balanced::Event:0x101ff3528
   @attributes=
-   {"callback_statuses"=>
+   {"links"=>{},
+    "callback_statuses"=>
      {"retrying"=>0, "failed"=>0, "succeeded"=>0, "pending"=>0},
+    "id"=>"EVde76fcf27ee811e3a16e026ba7c1aba6",
+    "type"=>"bank_account_verification.verified",
+    "occurred_at"=>"2014-01-16T20:00:37.657000Z",
     "entity"=>
      {"links"=>
        {"bank_account_verifications.bank_account"=>
          "/bank_accounts/{bank_account_verifications.bank_account}"},
       "bank_account_verifications"=>
-       [{"attempts_remaining"=>2,
+       [{"meta"=>{},
+         "links"=>{"bank_account"=>"BA6FDSSC6O5Ip8el1dDjfMz8"},
+         "created_at"=>"2014-01-16T20:00:34.173888Z",
+         "id"=>"BZ6Hm2DoTpcgoDzbIr6dWHpw",
          "attempts"=>1,
-         "deposit_status"=>"succeeded",
+         "updated_at"=>"2014-01-16T20:00:37.657681Z",
+         "attempts_remaining"=>2,
          "verification_status"=>"succeeded",
-         "created_at"=>"2014-01-16T19:56:28.916613Z",
-         "meta"=>{},
-         "links"=>{"bank_account"=>"BA2dV6K5x3YJms1ovXGuATRQ"},
-         "href"=>"/verifications/BZ2fvxTVMYZpggvJbM6iRNZo",
-         "id"=>"BZ2fvxTVMYZpggvJbM6iRNZo",
-         "updated_at"=>"2014-01-16T19:56:32.384350Z"}]},
-    "occurred_at"=>"2014-01-16T19:56:32.384000Z",
-    "links"=>{},
-    "href"=>"/events/EV4c3e0aba7ee811e3b2d4026ba7c1aba6",
-    "id"=>"EV4c3e0aba7ee811e3b2d4026ba7c1aba6",
-    "type"=>"bank_account_verification.verified"},
+         "href"=>"/verifications/BZ6Hm2DoTpcgoDzbIr6dWHpw",
+         "deposit_status"=>"succeeded"}]},
+    "href"=>"/events/EVde76fcf27ee811e3a16e026ba7c1aba6"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>,
- #<Balanced::Event:0x1074c53a8
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>,
+ #<Balanced::Event:0x101fec408
   @attributes=
-   {"callback_statuses"=>
+   {"links"=>{},
+    "callback_statuses"=>
      {"retrying"=>0, "failed"=>0, "succeeded"=>0, "pending"=>0},
+    "id"=>"EVde2c8adc7ee811e394d2026ba7cd33d0",
+    "type"=>"bank_account_verification.updated",
+    "occurred_at"=>"2014-01-16T20:00:37.657000Z",
     "entity"=>
      {"links"=>
        {"bank_account_verifications.bank_account"=>
          "/bank_accounts/{bank_account_verifications.bank_account}"},
       "bank_account_verifications"=>
-       [{"attempts_remaining"=>2,
+       [{"meta"=>{},
+         "links"=>{"bank_account"=>"BA6FDSSC6O5Ip8el1dDjfMz8"},
+         "created_at"=>"2014-01-16T20:00:34.173888Z",
+         "id"=>"BZ6Hm2DoTpcgoDzbIr6dWHpw",
          "attempts"=>1,
-         "deposit_status"=>"succeeded",
+         "updated_at"=>"2014-01-16T20:00:37.657681Z",
+         "attempts_remaining"=>2,
          "verification_status"=>"succeeded",
-         "created_at"=>"2014-01-16T19:56:28.916613Z",
-         "meta"=>{},
-         "links"=>{"bank_account"=>"BA2dV6K5x3YJms1ovXGuATRQ"},
-         "href"=>"/verifications/BZ2fvxTVMYZpggvJbM6iRNZo",
-         "id"=>"BZ2fvxTVMYZpggvJbM6iRNZo",
-         "updated_at"=>"2014-01-16T19:56:32.384350Z"}]},
-    "occurred_at"=>"2014-01-16T19:56:32.384000Z",
-    "links"=>{},
-    "href"=>"/events/EV4bfdf5b07ee811e3b24e026ba7f8ec28",
-    "id"=>"EV4bfdf5b07ee811e3b24e026ba7f8ec28",
-    "type"=>"bank_account_verification.updated"},
+         "href"=>"/verifications/BZ6Hm2DoTpcgoDzbIr6dWHpw",
+         "deposit_status"=>"succeeded"}]},
+    "href"=>"/events/EVde2c8adc7ee811e394d2026ba7cd33d0"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>]
 
 % endif

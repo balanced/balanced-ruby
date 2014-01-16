@@ -2,10 +2,11 @@
 Balanced::Debit.refund
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
+Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
-debit = Balanced::Debit.find('/debits/WD3GNPmi4QkBHzTZNvMt11MA')
+debit = Balanced::Debit.find('/debits/WDyN9045Drn2VaNeJT3MokD')
 debit.refund(
+  :amount => 3000,
   :description => 'Refund for Order #1111',
   :meta => {
     'merchant.feedback' => 'positive',
@@ -15,28 +16,28 @@ debit.refund(
 )
 
 % elif mode == 'response':
-#<Balanced::Refund:0x10754adf0
+#<Balanced::Refund:0x10207abb8
  @attributes=
-  {"transaction_number"=>"RF954-018-1101",
-   "currency"=>"USD",
-   "created_at"=>"2014-01-16T19:57:50.254779Z",
-   "meta"=>
+  {"meta"=>
     {"merchant.feedback"=>"positive",
      "fulfillment.item.condition"=>"OK",
      "user.refund_reason"=>"not happy with product"},
-   "links"=>{"order"=>nil, "debit"=>"WD3GNPmi4QkBHzTZNvMt11MA"},
-   "href"=>"/refunds/RF3J0oK238X6TMkHPzz0XatV",
+   "currency"=>"USD",
+   "links"=>{"order"=>nil, "debit"=>"WDyN9045Drn2VaNeJT3MokD"},
+   "status"=>"succeeded",
    "description"=>"Refund for Order #1111",
-   "id"=>"RF3J0oK238X6TMkHPzz0XatV",
+   "created_at"=>"2014-01-16T20:02:08.557881Z",
+   "id"=>"RFCsiN9NYuDAbA72wRdpiUL",
    "amount"=>3000,
-   "updated_at"=>"2014-01-16T19:57:51.016805Z",
-   "status"=>"succeeded"},
+   "transaction_number"=>"RF566-748-1243",
+   "updated_at"=>"2014-01-16T20:02:10.555336Z",
+   "href"=>"/refunds/RFCsiN9NYuDAbA72wRdpiUL"},
  @hyperlinks=
-  {"events"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "order"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"order"=>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "events"=>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "debit"=>
-    #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
 
 % endif

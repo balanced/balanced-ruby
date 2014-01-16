@@ -3,67 +3,67 @@ Balanced::Debit.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
+Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
 debits = Balanced::Debit.all
 % elif mode == 'response':
-[#<Balanced::Debit:0x10732e558
+[#<Balanced::Debit:0x101e54410
   @attributes=
-   {"transaction_number"=>"W268-408-3709",
-    "failure_reason_code"=>nil,
+   {"meta"=>{},
+    "currency"=>"USD",
+    "links"=>
+     {"source"=>"CC7nvFZYLkB5xPZDrgwcdIO2", "order"=>nil, "customer"=>nil},
     "appears_on_statement_as"=>"BAL*Statement text",
-    "currency"=>"USD",
-    "created_at"=>"2014-01-16T19:57:05.762586Z",
-    "meta"=>{},
-    "links"=>
-     {"customer"=>nil, "order"=>nil, "source"=>"CC2O5c4KrZSiyV7eFPGySXtd"},
-    "href"=>"/debits/WD2UWAyQO5m1zFzbiiZV2V6o",
-    "failure_reason"=>nil,
-    "description"=>"Some descriptive text for the debit in the dashboard",
-    "id"=>"WD2UWAyQO5m1zFzbiiZV2V6o",
-    "amount"=>5000,
-    "updated_at"=>"2014-01-16T19:57:06.906750Z",
-    "status"=>"succeeded"},
-  @hyperlinks=
-   {"events"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "customer"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "order"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "source"=>
-     #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>,
-    "refunds"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>,
- #<Balanced::Debit:0x1072fab18
-  @attributes=
-   {"transaction_number"=>"W096-739-8629",
+    "status"=>"succeeded",
     "failure_reason_code"=>nil,
-    "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
-    "currency"=>"USD",
-    "created_at"=>"2014-01-16T19:56:53.502811Z",
-    "meta"=>{"meaningful.key"=>"some.value", "holding.for"=>"user1"},
-    "links"=>
-     {"customer"=>"CU22SmWz4KC95LEGPRZWXqtp",
-      "order"=>nil,
-      "source"=>"CC2zLkKYc57B1SMT5i13W63m"},
-    "href"=>"/debits/WD2H9NxmLiyCiAgTye0BsBui",
-    "failure_reason"=>nil,
     "description"=>"Some descriptive text for the debit in the dashboard",
-    "id"=>"WD2H9NxmLiyCiAgTye0BsBui",
+    "created_at"=>"2014-01-16T20:01:18.123328Z",
+    "id"=>"WD7uMejCQlx7A4PN6447H0LK",
     "amount"=>5000,
-    "updated_at"=>"2014-01-16T19:56:54.469861Z",
-    "status"=>"succeeded"},
+    "failure_reason"=>nil,
+    "transaction_number"=>"W197-518-2707",
+    "updated_at"=>"2014-01-16T20:01:20.351754Z",
+    "href"=>"/debits/WD7uMejCQlx7A4PN6447H0LK"},
   @hyperlinks=
-   {"events"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "customer"=>
-     #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>,
+   {"source"=>
+     #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>,
     "order"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-    "source"=>
-     #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>,
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "events"=>
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
     "refunds"=>
-     #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "customer"=>
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>,
+ #<Balanced::Debit:0x101e3c888
+  @attributes=
+   {"meta"=>{"holding.for"=>"user1", "meaningful.key"=>"some.value"},
+    "currency"=>"USD",
+    "links"=>
+     {"source"=>"CC728b2nP8zS2QDI8lIIXcFk",
+      "order"=>nil,
+      "customer"=>"CU6r91gPWrpyaehX1H82kBII"},
+    "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
+    "status"=>"succeeded",
+    "failure_reason_code"=>nil,
+    "description"=>"Some descriptive text for the debit in the dashboard",
+    "created_at"=>"2014-01-16T20:01:00.601394Z",
+    "id"=>"WD7b4HIsTSDZQ5xGaddvNYRc",
+    "amount"=>5000,
+    "failure_reason"=>nil,
+    "transaction_number"=>"W524-946-4331",
+    "updated_at"=>"2014-01-16T20:01:03.406555Z",
+    "href"=>"/debits/WD7b4HIsTSDZQ5xGaddvNYRc"},
+  @hyperlinks=
+   {"source"=>
+     #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>,
+    "order"=>
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "events"=>
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "refunds"=>
+     #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    "customer"=>
+     #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>]
 
 % endif

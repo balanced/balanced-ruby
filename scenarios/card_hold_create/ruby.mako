@@ -2,36 +2,36 @@
 Balanced::Card.hold
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
+Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
-card = Balanced::Card.find('/cards/CC2zLkKYc57B1SMT5i13W63m')
+card = Balanced::Card.find('/cards/CC728b2nP8zS2QDI8lIIXcFk')
 card.hold(
   :description => 'Some descriptive text for the debit in the dashboard',
   :amount => 5000
 )
 % elif mode == 'response':
-#<Balanced::CardHold:0x107577508
+#<Balanced::CardHold:0x102097a10
  @attributes=
-  {"transaction_number"=>"HL258-611-3571",
-   "failure_reason_code"=>nil,
+  {"meta"=>{},
    "currency"=>"USD",
-   "created_at"=>"2014-01-16T19:56:55.956972Z",
-   "meta"=>{},
-   "links"=>{"card"=>"CC2zLkKYc57B1SMT5i13W63m", "debit"=>nil},
-   "href"=>"/card_holds/HL2JVeS8OyiDHpyaxhJWGYH6",
-   "failure_reason"=>nil,
+   "links"=>{"debit"=>nil, "card"=>"CC728b2nP8zS2QDI8lIIXcFk"},
+   "failure_reason_code"=>nil,
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "id"=>"HL2JVeS8OyiDHpyaxhJWGYH6",
+   "created_at"=>"2014-01-16T20:01:05.101477Z",
+   "id"=>"HL7gajSz8PjD83RO6ajA0VtB",
+   "expires_at"=>"2014-01-23T20:01:05.603212Z",
    "amount"=>5000,
-   "updated_at"=>"2014-01-16T19:56:56.358698Z",
-   "expires_at"=>"2014-01-23T19:56:56.207969Z"},
+   "failure_reason"=>nil,
+   "transaction_number"=>"HL299-404-9077",
+   "updated_at"=>"2014-01-16T20:01:05.827832Z",
+   "href"=>"/card_holds/HL7gajSz8PjD83RO6ajA0VtB"},
  @hyperlinks=
   {"events"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "card"=>#<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>,
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "debits"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "debit"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "card"=>#<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
 
 % endif

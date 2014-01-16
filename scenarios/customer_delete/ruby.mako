@@ -2,7 +2,7 @@
 Balanced::Customer.unstore
 
 % elif mode == 'request':
-customer = Balanced::Customer.find('/customers/CU3icqpTA5n8LTkqcmRpwqPZ')
+customer = Balanced::Customer.find('/customers/CU5yzA5nhWv5Ljlr1ZEaYia')
 customer.unstore
 
 % elif mode == 'response':

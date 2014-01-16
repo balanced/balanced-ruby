@@ -3,40 +3,40 @@ Balanced::Refund.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
+Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
-refund = Balanced::Refund.find('/refunds/RF3J0oK238X6TMkHPzz0XatV')
+refund = Balanced::Refund.find('/refunds/RFCsiN9NYuDAbA72wRdpiUL')
 refund.description = 'update this description'
 refund.meta = {
+    'user.refund.count' => '3',
     'user.notes' => 'very polite on the phone',
-    'refund.reason' => 'user not happy with product',
-    'user.refund.count' => '3'
+    'refund.reason' => 'user not happy with product'
 }
 refund.save
 
 % elif mode == 'response':
-#<Balanced::Refund:0x10746cc80
+#<Balanced::Refund:0x101f9b850
  @attributes=
-  {"transaction_number"=>"RF954-018-1101",
+  {"meta"=>
+    {"user.refund.count"=>"3",
+     "user.notes"=>"very polite on the phone",
+     "refund.reason"=>"user not happy with product"},
    "currency"=>"USD",
-   "created_at"=>"2014-01-16T19:57:50.254779Z",
-   "meta"=>
-    {"user.notes"=>"very polite on the phone",
-     "refund.reason"=>"user not happy with product",
-     "user.refund.count"=>"3"},
-   "links"=>{"order"=>nil, "debit"=>"WD3GNPmi4QkBHzTZNvMt11MA"},
-   "href"=>"/refunds/RF3J0oK238X6TMkHPzz0XatV",
+   "links"=>{"order"=>nil, "debit"=>"WDyN9045Drn2VaNeJT3MokD"},
+   "status"=>"succeeded",
    "description"=>"update this description",
-   "id"=>"RF3J0oK238X6TMkHPzz0XatV",
+   "created_at"=>"2014-01-16T20:02:08.557881Z",
+   "id"=>"RFCsiN9NYuDAbA72wRdpiUL",
    "amount"=>3000,
-   "updated_at"=>"2014-01-16T19:57:54.885627Z",
-   "status"=>"succeeded"},
+   "transaction_number"=>"RF566-748-1243",
+   "updated_at"=>"2014-01-16T20:02:14.585534Z",
+   "href"=>"/refunds/RFCsiN9NYuDAbA72wRdpiUL"},
  @hyperlinks=
-  {"events"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "order"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"order"=>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "events"=>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "debit"=>
-    #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>}>
+    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>}>
 
 % endif

@@ -3,38 +3,38 @@ Balanced::Debit.find
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1AtZm0gArtjcddoDJNaybbDekAIve9Ti6')
+Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
-debit = Balanced::Debit.find('/debits/WD2UWAyQO5m1zFzbiiZV2V6o')
+debit = Balanced::Debit.find('/debits/WD7uMejCQlx7A4PN6447H0LK')
 
 % elif mode == 'response':
-#<Balanced::Debit:0x1074bb858
+#<Balanced::Debit:0x101ea7b60
  @attributes=
-  {"transaction_number"=>"W268-408-3709",
-   "failure_reason_code"=>nil,
-   "appears_on_statement_as"=>"BAL*Statement text",
+  {"meta"=>{},
    "currency"=>"USD",
-   "created_at"=>"2014-01-16T19:57:05.762586Z",
-   "meta"=>{},
    "links"=>
-    {"customer"=>nil, "order"=>nil, "source"=>"CC2O5c4KrZSiyV7eFPGySXtd"},
-   "href"=>"/debits/WD2UWAyQO5m1zFzbiiZV2V6o",
-   "failure_reason"=>nil,
+    {"source"=>"CC7nvFZYLkB5xPZDrgwcdIO2", "order"=>nil, "customer"=>nil},
+   "appears_on_statement_as"=>"BAL*Statement text",
+   "status"=>"succeeded",
+   "failure_reason_code"=>nil,
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "id"=>"WD2UWAyQO5m1zFzbiiZV2V6o",
+   "created_at"=>"2014-01-16T20:01:18.123328Z",
+   "id"=>"WD7uMejCQlx7A4PN6447H0LK",
    "amount"=>5000,
-   "updated_at"=>"2014-01-16T19:57:06.906750Z",
-   "status"=>"succeeded"},
+   "failure_reason"=>nil,
+   "transaction_number"=>"W197-518-2707",
+   "updated_at"=>"2014-01-16T20:01:20.351754Z",
+   "href"=>"/debits/WD7uMejCQlx7A4PN6447H0LK"},
  @hyperlinks=
-  {"events"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "customer"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+  {"source"=>
+    #<Proc:0x0000000101fdf000@./lib/balanced/resources/resource.rb:61>,
    "order"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
-   "source"=>
-    #<Proc:0x00000001074cd0d0@./lib/balanced/resources/resource.rb:61>,
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "events"=>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
    "refunds"=>
-    #<Proc:0x00000001074b5548@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>,
+   "customer"=>
+    #<Proc:0x0000000101fc7478@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6>}>
 
 % endif
