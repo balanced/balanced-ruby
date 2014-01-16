@@ -1,11 +1,13 @@
 % if mode == 'definition':
 Balanced::Card.unstore
 
-% else:
+% elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ficCWmYvpRBBSzC7Me62ZTX0Y2DPGjgt')
+Balanced.configure('ak-test-2uzz5nxHt8C5EEEmBN2Ae1j59c9Kl23t7')
 
-card = Balanced::Card.find('/cards/CC4TsBYO9E4IRQqg0jvrEg9i')
+card = Balanced::Card.find('/cards/CC4ysIN2SnTC7fx5thqY4Gi4')
 card.unstore
+
+% elif mode == 'response':
 
 % endif

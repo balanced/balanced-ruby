@@ -3,6 +3,42 @@ require 'erb'
 require 'json'
 #require 'ruby-debug'
 require './scenarios/helpers'
+require 'lib/balanced'
+require 'pp'
+require 'json'
+
+class BalancedResourceObject
+  include Balanced::Resource
+  include Balanced::Resource::ClassMethods
+end
+
+def construct_resource(key, payload, links, meta)
+  cls = Balanced.from_hypermedia_registry(key)
+  instance = cls.new payload
+  instance.hydrate(links, meta)
+  instance
+end
+
+def construct_from_response(payload)
+  payload = Balanced::Utils.indifferent_read_access payload
+  
+  links = payload.delete('links') || {}
+  meta = payload.delete('meta') || {}
+
+  payload.each do |key, value|
+    if key != 'errors'
+      if meta['first'] != nil #value.length > 1
+        instances = Array.new
+        value.first(2).each do |v|
+          instances << construct_resource(key, v, links, meta)
+        end
+        return instances
+      else
+        return construct_resource(key, value.first, links, meta)
+      end
+    end
+  end
+end
 
 parsed_data = JSON.parse(File.read('scenario.cache'))
 
@@ -22,6 +58,11 @@ subdir_list.each do |scenario|
     # generate new erb template file from each request.rb file
     erb = ERB.new(template)
     request = parsed_data[scenario]['request']
+    response = nil
+    if parsed_data[scenario]['response'] != nil
+      parsed_response = JSON.parse(parsed_data[scenario]['response'])
+      response = PP.pp(construct_from_response(parsed_response), "")
+    end
     payload = request['payload']
     # render erb file passing in all local variables
     executable = erb.result(binding)
@@ -30,9 +71,13 @@ subdir_list.each do |scenario|
       f.write("\n")
       f.write(definition)
       f.write("\n")
-      f.write("% else:")
+      f.write("% elif mode == 'request':")
       f.write("\n")
       f.write(executable)
+      f.write("\n")
+      f.write("% elif mode == 'response':")
+      f.write("\n")
+      f.write(response)
       f.write("\n")
       f.write("% endif")
       f.write("\n")

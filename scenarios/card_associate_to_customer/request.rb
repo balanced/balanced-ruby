@@ -1,3 +1,3 @@
 <%= boiler_plate %>
-customer = Balanced::Customer.find('<%= request['uri'] %>')
-customer.add_card('<%= payload['card_uri'] %>')
+card = Balanced::Card.find('<%= request['uri'] %>')
+card.associate_to_customer('<%= payload['customer'] %>')
