@@ -101,10 +101,10 @@ module Balanced
     end
 
     # @return [nil]
-    # @see Resource.find_each
+    # @see Resource.fetch_each
     # @yield [record]
-    def find_each
-      return enum_for :find_each unless block_given?
+    def fetch_each
+      return enum_for :fetch_each unless block_given?
       begin
         each { |record| yield record }
       end while self.next
@@ -157,13 +157,13 @@ module Balanced
       paginate(options).to_a
     end
 
-    def find(uri)
+    def fetch(uri)
       if resource_class.respond_to? :find
         raise NoMethodError,
             "#find must be called on #{resource_class} directly"
       end
 
-      resource_class.find uri
+      resource_class.fetch uri
     end
 
     def create(options={})

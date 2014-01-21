@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-card = Balanced::ApiKey.find('<%= request['uri'] %>')
+card = Balanced::ApiKey.fetch('<%= request['uri'] %>')

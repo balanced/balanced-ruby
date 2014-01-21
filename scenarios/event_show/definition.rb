@@ -1,1 +1,1 @@
-Balanced::Event.find
+Balanced::Event.fetch

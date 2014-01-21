@@ -1,1 +1,1 @@
-Balanced::Reversal.find
+Balanced::Reversal.fetch

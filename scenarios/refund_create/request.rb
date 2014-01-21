@@ -1,5 +1,5 @@
 <%= boiler_plate %>
-debit = Balanced::Debit.find('<%= request['debit_href'] %>')
+debit = Balanced::Debit.fetch('<%= request['debit_href'] %>')
 debit.refund(
   :amount => <%= payload['amount'] %>,
   :description => '<%= payload['description'] %>',

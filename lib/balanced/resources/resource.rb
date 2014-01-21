@@ -6,7 +6,6 @@ require 'pp'
 
 module Balanced
 
-
   module Resource
 
     attr_accessor :attributes
@@ -83,9 +82,11 @@ module Balanced
 
     # delegate the query to the pager module
 
-    def find(*arguments)
+    def fetch(*arguments)
       self.class.find *arguments
     end
+    
+    alias find fetch
 
     def save
       href = @attributes.delete('href')
@@ -258,7 +259,7 @@ module Balanced
         instance
       end
 
-      def find(*arguments)
+      def fetch(*arguments)
         scope = arguments.slice!(0)
         options = arguments.slice!(0) || {}
         case scope
@@ -272,6 +273,8 @@ module Balanced
         end
       end
 
+      alias find fetch
+      
       def paginate(options = {})
         Balanced::Pager.new href, options
       end

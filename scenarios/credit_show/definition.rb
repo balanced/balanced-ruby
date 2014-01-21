@@ -1,1 +1,1 @@
-Balanced::Credit.find
+Balanced::Credit.fetch

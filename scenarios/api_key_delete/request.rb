@@ -1,3 +1,3 @@
 <%= boiler_plate %>
-key = Balanced::ApiKey.find('<%= request['uri'] %>')
+key = Balanced::ApiKey.fetch('<%= request['uri'] %>')
 key.unstore

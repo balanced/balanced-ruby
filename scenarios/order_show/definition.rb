@@ -1,1 +1,1 @@
-Balanced::Order.find
+Balanced::Order.fetch

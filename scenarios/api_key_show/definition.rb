@@ -1,1 +1,1 @@
-Balanced::ApiKey.find
+Balanced::ApiKey.fetch

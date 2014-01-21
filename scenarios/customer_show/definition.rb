@@ -1,1 +1,1 @@
-Balanced::Customer.find
+Balanced::Customer.fetch

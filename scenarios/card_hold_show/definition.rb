@@ -1,1 +1,1 @@
-Balanced::CardHold.find
+Balanced::CardHold.fetch

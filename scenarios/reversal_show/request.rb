@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-reversal = Balanced::Reversal.find('<%= request['uri'] %>')
+reversal = Balanced::Reversal.fetch('<%= request['uri'] %>')

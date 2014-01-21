@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-order = Balanced::Order.find('<%= request['uri'] %>')
+order = Balanced::Order.fetch('<%= request['uri'] %>')

@@ -1,5 +1,5 @@
 <%= boiler_plate %>
-reversal = Balanced::Credit.find('<%= request['credit_href'] %>')
+reversal = Balanced::Credit.fetch('<%= request['credit_href'] %>')
 credit.reverse(
   :amount => <%= payload['amount'] %>,
   :description => '<%= payload['description'] %>',

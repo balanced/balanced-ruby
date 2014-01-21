@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-credit = Balanced::Credit.find('<%= request["uri"] %>')
+credit = Balanced::Credit.fetch('<%= request["uri"] %>')

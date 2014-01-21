@@ -1,1 +1,1 @@
-Balanced::Verification.find
+Balanced::Verification.fetch
