@@ -7,61 +7,61 @@ Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
 customer = Balanced::Customer.new(
   :name => 'Henry Ford',
-  :dob_year => 1963,
   :dob_month => 7,
   :address => {
     :postal_code => '48120'
-  }
+  },
+  :dob_year => 1963
 )
 customer.save
 
 % elif mode == 'response':
-#<Balanced::Customer:0x10ea1c390
+#<Balanced::Customer:0x108583a28
  @attributes=
-  {"meta"=>{},
-   "links"=>{"destination"=>nil, "source"=>nil},
-   "business_name"=>nil,
-   "ssn_last4"=>nil,
-   "email"=>nil,
-   "updated_at"=>"2014-01-16T20:01:40.130625Z",
-   "id"=>"CU5yzA5nhWv5Ljlr1ZEaYia",
-   "ein"=>nil,
-   "name"=>"Henry Ford",
-   "merchant_status"=>"underwritten",
-   "dob_year"=>1963,
-   "phone"=>nil,
-   "href"=>"/customers/CU5yzA5nhWv5Ljlr1ZEaYia",
-   "dob_month"=>7,
+  {"name"=>"Henry Ford",
    "created_at"=>"2014-01-16T20:01:39.317071Z",
+   "merchant_status"=>"underwritten",
+   "email"=>nil,
+   "ssn_last4"=>nil,
+   "meta"=>{},
+   "business_name"=>nil,
+   "dob_month"=>7,
    "address"=>
     {"city"=>nil,
-     "line2"=>nil,
-     "line1"=>nil,
      "state"=>nil,
      "country_code"=>nil,
-     "postal_code"=>"48120"}},
+     "postal_code"=>"48120",
+     "line2"=>nil,
+     "line1"=>nil},
+   "phone"=>nil,
+   "links"=>{"source"=>nil, "destination"=>nil},
+   "id"=>"CU5yzA5nhWv5Ljlr1ZEaYia",
+   "href"=>"/customers/CU5yzA5nhWv5Ljlr1ZEaYia",
+   "ein"=>nil,
+   "updated_at"=>"2014-01-16T20:01:40.130625Z",
+   "dob_year"=>1963},
  @hyperlinks=
-  {"credits"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "debits"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "card_holds"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "transactions"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "cards"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "bank_accounts"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "destination"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "refunds"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+  {"refunds"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
    "orders"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "credits"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "bank_accounts"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "cards"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
    "source"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "card_holds"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "transactions"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
    "reversals"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "destination"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "debits"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>
 
 % endif

@@ -7,14 +7,14 @@ Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
 callbacks = Balanced::Callback.all
 % elif mode == 'response':
-[#<Balanced::Callback:0x10ea9a2e0
+[#<Balanced::Callback:0x1086031d8
   @attributes=
    {"method"=>"post",
+    "url"=>"http://www.example.com/callback",
+    "revision"=>"1.1",
     "links"=>{},
     "id"=>"CB6WzqSkxoexLJ4hHmCDv7rh",
-    "url"=>"http://www.example.com/callback",
-    "href"=>"/callbacks/CB6WzqSkxoexLJ4hHmCDv7rh",
-    "revision"=>"1.1"},
+    "href"=>"/callbacks/CB6WzqSkxoexLJ4hHmCDv7rh"},
   @hyperlinks={}>]
 
 % endif

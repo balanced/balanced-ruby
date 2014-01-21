@@ -4,42 +4,42 @@ Balanced::Credit.reverse
 require 'balanced'
 Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
-reversal = Balanced::Credit.find('/credits/CRKWhB8EqgH0vnlu2zoFiWA')
+reversal = Balanced::Credit.fetch('/credits/CRKWhB8EqgH0vnlu2zoFiWA')
 credit.reverse(
   :amount => 3000,
   :description => 'Reversal for Order #1111',
   :meta => {
-    'user.refund_reason' => 'not happy with product',
+    'merchant.feedback' => 'positive',
     'fulfillment.item.condition' => 'OK',
-    'merchant.feedback' => 'positive'
+    'user.refund_reason' => 'not happy with product'
   }
 )
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x10ea89c88
+#<Balanced::Reversal:0x108602148
  @attributes=
-  {"meta"=>
-    {"user.refund_reason"=>"not happy with product",
+  {"created_at"=>"2014-01-16T20:02:18.661532Z",
+   "meta"=>
+    {"merchant.feedback"=>"positive",
      "fulfillment.item.condition"=>"OK",
-     "merchant.feedback"=>"positive"},
-   "links"=>{"credit"=>"CRKWhB8EqgH0vnlu2zoFiWA", "order"=>nil},
-   "amount"=>3000,
+     "user.refund_reason"=>"not happy with product"},
+   "failure_reason"=>nil,
+   "description"=>"Reversal for Order #1111",
+   "transaction_number"=>"RV929-157-6227",
    "status"=>"succeeded",
-   "updated_at"=>"2014-01-16T20:02:20.839540Z",
+   "links"=>{"order"=>nil, "credit"=>"CRKWhB8EqgH0vnlu2zoFiWA"},
    "failure_reason_code"=>nil,
    "id"=>"RVNN4yEYvtbFh9ZTBkfS7t4",
-   "currency"=>"USD",
-   "transaction_number"=>"RV929-157-6227",
    "href"=>"/reversals/RVNN4yEYvtbFh9ZTBkfS7t4",
-   "description"=>"Reversal for Order #1111",
-   "created_at"=>"2014-01-16T20:02:18.661532Z",
-   "failure_reason"=>nil},
+   "amount"=>3000,
+   "updated_at"=>"2014-01-16T20:02:20.839540Z",
+   "currency"=>"USD"},
  @hyperlinks=
-  {"credit"=>
-    #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
+  {"events"=>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   "credit"=>
+    #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
    "order"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-   "events"=>
-    #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>
+    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>
 
 % endif

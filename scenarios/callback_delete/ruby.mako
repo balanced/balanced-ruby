@@ -5,7 +5,7 @@ Balanced::Callback.unstore
 require 'balanced'
 Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
-callback = Balanced::Callback.find('/callbacks/CB6WzqSkxoexLJ4hHmCDv7rh')
+callback = Balanced::Callback.fetch('/callbacks/CB6WzqSkxoexLJ4hHmCDv7rh')
 callback.unstore
 % elif mode == 'response':
 

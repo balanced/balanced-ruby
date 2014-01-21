@@ -6,30 +6,30 @@ Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
 
 orders = Balanced::Order.all
 % elif mode == 'response':
-[#<Balanced::Order:0x10e978cb8
+[#<Balanced::Order:0x1084ef210
   @attributes=
-   {"meta"=>{},
-    "links"=>{"merchant"=>"CU5yzA5nhWv5Ljlr1ZEaYia"},
+   {"created_at"=>"2014-01-16T20:01:58.794373Z",
+    "meta"=>{},
+    "description"=>"Order #12341234",
     "amount_escrowed"=>0,
+    "links"=>{"merchant"=>"CU5yzA5nhWv5Ljlr1ZEaYia"},
+    "id"=>"ORrsQyULWCJxYfrUwZryIBQ",
+    "href"=>"/orders/ORrsQyULWCJxYfrUwZryIBQ",
     "amount"=>0,
     "updated_at"=>"2014-01-16T20:01:58.794376Z",
-    "id"=>"ORrsQyULWCJxYfrUwZryIBQ",
-    "currency"=>"USD",
-    "href"=>"/orders/ORrsQyULWCJxYfrUwZryIBQ",
-    "description"=>"Order #12341234",
-    "created_at"=>"2014-01-16T20:01:58.794373Z"},
+    "currency"=>"USD"},
   @hyperlinks=
-   {"credits"=>
-     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
-    "debits"=>
-     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+   {"refunds"=>
+     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
     "buyers"=>
-     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
     "merchant"=>
-     #<Proc:0x000000010eb45bb8@./lib/balanced/resources/resource.rb:61>,
-    "refunds"=>
-     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>,
+     #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
+    "credits"=>
+     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
     "reversals"=>
-     #<Proc:0x000000010eb2e030/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+    "debits"=>
+     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>]
 
 % endif
