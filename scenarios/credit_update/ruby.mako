@@ -3,46 +3,46 @@ Balanced::Credit.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
+Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
 
-credit = Balanced::Credit.fetch('/credits/CR7DsYbhMq51iZ1eOZK3aUia')
+credit = Balanced::Credit.fetch('/credits/CR3H2YtoAbpQCQ4Ey3RTLxxc')
 credit.description = 'New description for credit'
 credit.meta = {
-    'facebook.id' => '1234567890',
-    'anykey' => 'valuegoeshere'
+    'anykey' => 'valuegoeshere',
+    'facebook.id' => '1234567890'
 }
 credit.save
 
 % elif mode == 'response':
-#<Balanced::Credit:0x10863dfb8
+#<Balanced::Credit:0x108779170
  @attributes=
-  {"created_at"=>"2014-01-16T20:01:25.849511Z",
-   "meta"=>{"facebook.id"=>"1234567890", "anykey"=>"valuegoeshere"},
+  {"links"=>
+    {"customer"=>"CU3E3HmlvpesH6rPOltSbgUK",
+     "order"=>nil,
+     "destination"=>"BA3FmIjnXmXxUX793Ah7qeLS"},
+   "appears_on_statement_as"=>"example.com",
+   "meta"=>{"anykey"=>"valuegoeshere", "facebook.id"=>"1234567890"},
    "failure_reason"=>nil,
    "description"=>"New description for credit",
-   "transaction_number"=>"CR802-481-8273",
-   "status"=>"succeeded",
-   "links"=>
-    {"customer"=>"CU7zEe4gULEuyvdraVEnKa1Q",
-     "destination"=>"BA7BTgSWZd7CDPnsBHwle62s",
-     "order"=>nil},
+   "created_at"=>"2014-01-24T17:53:47.335281Z",
+   "href"=>"/credits/CR3H2YtoAbpQCQ4Ey3RTLxxc",
    "failure_reason_code"=>nil,
-   "id"=>"CR7DsYbhMq51iZ1eOZK3aUia",
-   "href"=>"/credits/CR7DsYbhMq51iZ1eOZK3aUia",
    "amount"=>5000,
-   "updated_at"=>"2014-01-16T20:01:31.878974Z",
+   "transaction_number"=>"CR131-769-8772",
    "currency"=>"USD",
-   "appears_on_statement_as"=>"example.com"},
+   "updated_at"=>"2014-01-24T17:53:51.651710Z",
+   "id"=>"CR3H2YtoAbpQCQ4Ey3RTLxxc",
+   "status"=>"succeeded"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
-   "events"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-   "destination"=>
-    #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
-   "reversals"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+    #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
    "order"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+   "reversals"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+   "destination"=>
+    #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
+   "events"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>
 
 % endif

@@ -1,6 +1,6 @@
 <%= boiler_plate %>
 verification = Balanced::Verification.fetch('<%=request['uri']%>')
-<% payload.each do |k,v| %>
-verification.<%=k%> = <%=v%>
-<% end %>
-verification.save
+verification.confirm(
+<%= params_to_key_word_arguments.call(payload).indent(2)%>
+)
+

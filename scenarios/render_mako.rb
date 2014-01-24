@@ -3,7 +3,7 @@ require 'erb'
 require 'json'
 #require 'ruby-debug'
 require './scenarios/helpers'
-require 'lib/balanced'
+require './lib/balanced'
 require 'pp'
 require 'json'
 
@@ -57,6 +57,7 @@ boiler_plate = "require 'balanced'\nBalanced.configure('#{api_key}')\n"
 
 params_to_hash = @helpers[:params_to_hash]
 params_to_hash_for_args = @helpers[:params_to_hash_for_args]
+params_to_key_word_arguments = @helpers[:params_to_key_word_arguments]
 subdir_list.each do |scenario|
   begin
     definition = File.read("./#{scenario}/definition.rb")

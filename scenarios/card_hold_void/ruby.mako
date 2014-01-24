@@ -3,33 +3,33 @@ Balanced::CardHold.void
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
+Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
 
-card_hold = Balanced::CardHold.fetch('/card_holds/HL7gajSz8PjD83RO6ajA0VtB')
+card_hold = Balanced::CardHold.fetch('/card_holds/HL3qaOBRFhWgKwSPz7bCetSn')
 card_hold.void
 % elif mode == 'response':
-#<Balanced::CardHold:0x1085556f0
+#<Balanced::CardHold:0x1086c2a10
  @attributes=
-  {"created_at"=>"2014-01-16T20:01:05.101477Z",
+  {"links"=>{"card"=>"CC3hYX4uMMrNuO0lbYMY0PP9", "debit"=>nil},
    "meta"=>{},
    "failure_reason"=>nil,
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "transaction_number"=>"HL299-404-9077",
-   "links"=>{"debit"=>nil, "card"=>"CC728b2nP8zS2QDI8lIIXcFk"},
+   "created_at"=>"2014-01-24T17:53:32.311011Z",
+   "href"=>"/card_holds/HL3qaOBRFhWgKwSPz7bCetSn",
    "failure_reason_code"=>nil,
-   "id"=>"HL7gajSz8PjD83RO6ajA0VtB",
-   "href"=>"/card_holds/HL7gajSz8PjD83RO6ajA0VtB",
    "amount"=>5000,
-   "updated_at"=>"2014-01-16T20:01:07.726872Z",
+   "transaction_number"=>"HL122-317-9482",
    "currency"=>"USD",
-   "expires_at"=>"2014-01-23T20:01:05.603212Z"},
+   "updated_at"=>"2014-01-24T17:53:33.396318Z",
+   "id"=>"HL3qaOBRFhWgKwSPz7bCetSn",
+   "expires_at"=>"2014-01-31T17:53:32.494443Z"},
  @hyperlinks=
-  {"events"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-   "debit"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-   "card"=>#<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
+  {"card"=>#<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
    "debits"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+   "debit"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+   "events"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>
 
 % endif
