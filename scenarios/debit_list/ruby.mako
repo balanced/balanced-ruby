@@ -3,67 +3,67 @@ Balanced::Debit.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
+Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
 
 debits = Balanced::Debit.all
 % elif mode == 'response':
-[#<Balanced::Debit:0x10850c2c0
+[#<Balanced::Debit:0x1086aa0f0
   @attributes=
-   {"created_at"=>"2014-01-16T20:01:18.123328Z",
+   {"links"=>
+     {"customer"=>nil, "source"=>"CC3txpMUnPuUSV6vGdaibuL4", "order"=>nil},
+    "appears_on_statement_as"=>"BAL*Statement text",
     "meta"=>{},
     "failure_reason"=>nil,
     "description"=>"Some descriptive text for the debit in the dashboard",
-    "transaction_number"=>"W197-518-2707",
-    "status"=>"succeeded",
-    "links"=>
-     {"customer"=>nil, "source"=>"CC7nvFZYLkB5xPZDrgwcdIO2", "order"=>nil},
+    "created_at"=>"2014-01-24T17:53:40.571557Z",
+    "href"=>"/debits/WD3zpxOf9kLoeFmf6dYPfrYW",
     "failure_reason_code"=>nil,
-    "id"=>"WD7uMejCQlx7A4PN6447H0LK",
-    "href"=>"/debits/WD7uMejCQlx7A4PN6447H0LK",
     "amount"=>5000,
-    "updated_at"=>"2014-01-16T20:01:20.351754Z",
+    "transaction_number"=>"W596-964-2706",
     "currency"=>"USD",
-    "appears_on_statement_as"=>"BAL*Statement text"},
+    "updated_at"=>"2014-01-24T17:53:42.294744Z",
+    "id"=>"WD3zpxOf9kLoeFmf6dYPfrYW",
+    "status"=>"succeeded"},
   @hyperlinks=
-   {"refunds"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-    "customer"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+   {"customer"=>
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+    "refunds"=>
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
     "source"=>
-     #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
-    "events"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+     #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
     "order"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>,
- #<Balanced::Debit:0x1084d4de8
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+    "events"=>
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>,
+ #<Balanced::Debit:0x10869de68
   @attributes=
-   {"created_at"=>"2014-01-16T20:01:00.601394Z",
+   {"links"=>
+     {"customer"=>"CU2J5ei9GWLvlSGbIcmC6qoO",
+      "source"=>"CC3hYX4uMMrNuO0lbYMY0PP9",
+      "order"=>nil},
+    "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
     "meta"=>{"meaningful.key"=>"some.value", "holding.for"=>"user1"},
     "failure_reason"=>nil,
     "description"=>"Some descriptive text for the debit in the dashboard",
-    "transaction_number"=>"W524-946-4331",
-    "status"=>"succeeded",
-    "links"=>
-     {"customer"=>"CU6r91gPWrpyaehX1H82kBII",
-      "source"=>"CC728b2nP8zS2QDI8lIIXcFk",
-      "order"=>nil},
+    "created_at"=>"2014-01-24T17:53:30.361991Z",
+    "href"=>"/debits/WD3nYFoEh5ipuJQyCSxgBX5l",
     "failure_reason_code"=>nil,
-    "id"=>"WD7b4HIsTSDZQ5xGaddvNYRc",
-    "href"=>"/debits/WD7b4HIsTSDZQ5xGaddvNYRc",
     "amount"=>5000,
-    "updated_at"=>"2014-01-16T20:01:03.406555Z",
+    "transaction_number"=>"W849-149-0225",
     "currency"=>"USD",
-    "appears_on_statement_as"=>"BAL*ShowsUpOnStmt"},
+    "updated_at"=>"2014-01-24T17:53:31.160769Z",
+    "id"=>"WD3nYFoEh5ipuJQyCSxgBX5l",
+    "status"=>"succeeded"},
   @hyperlinks=
-   {"refunds"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-    "customer"=>
-     #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
+   {"customer"=>
+     #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
+    "refunds"=>
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
     "source"=>
-     #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
-    "events"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+     #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
     "order"=>
-     #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+    "events"=>
+     #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>]
 
 % endif

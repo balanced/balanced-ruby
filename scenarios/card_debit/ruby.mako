@@ -2,45 +2,45 @@
 Balanced::Card.debit
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
+Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
 
-card = Balanced::Card.fetch('/cards/CC8VE3J2LlBelNryyr0Rmuk')
+card = Balanced::Card.fetch('/cards/CC3VAbj4Ol8xojVU6MjI0G1F')
 card.debit(
+  :appears_on_statement_as => 'Statement text',
   :description => 'Some descriptive text for the debit in the dashboard',
-  :amount => 5000,
-  :appears_on_statement_as => 'Statement text'
+  :amount => 5000
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x108426608
+#<Balanced::Debit:0x1085f5740
  @attributes=
-  {"created_at"=>"2014-01-16T20:02:05.297720Z",
+  {"links"=>
+    {"customer"=>"CU3Ttx347VFA9lYT8dBOkwcu",
+     "source"=>"CC3VAbj4Ol8xojVU6MjI0G1F",
+     "order"=>nil},
+   "appears_on_statement_as"=>"BAL*Statement text",
    "meta"=>{},
    "failure_reason"=>nil,
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "transaction_number"=>"W928-356-6292",
-   "status"=>"succeeded",
-   "links"=>
-    {"customer"=>"CU5yzA5nhWv5Ljlr1ZEaYia",
-     "source"=>"CC8VE3J2LlBelNryyr0Rmuk",
-     "order"=>nil},
+   "created_at"=>"2014-01-24T17:54:18.051707Z",
+   "href"=>"/debits/WD4fC2Wmv7z7LxWLQptwEv2n",
    "failure_reason_code"=>nil,
-   "id"=>"WDyN9045Drn2VaNeJT3MokD",
-   "href"=>"/debits/WDyN9045Drn2VaNeJT3MokD",
    "amount"=>5000,
-   "updated_at"=>"2014-01-16T20:02:07.787781Z",
+   "transaction_number"=>"W543-191-8122",
    "currency"=>"USD",
-   "appears_on_statement_as"=>"BAL*Statement text"},
+   "updated_at"=>"2014-01-24T17:54:20.644370Z",
+   "id"=>"WD4fC2Wmv7z7LxWLQptwEv2n",
+   "status"=>"succeeded"},
  @hyperlinks=
-  {"refunds"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-   "customer"=>
-    #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
+  {"customer"=>
+    #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
+   "refunds"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
    "source"=>
-    #<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
-   "events"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
+    #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
    "order"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+   "events"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>
 
 % endif

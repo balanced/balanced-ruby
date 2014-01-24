@@ -3,39 +3,39 @@ Balanced::Refund.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-3ndxkwi2d8Gb4E15emwEbwLkEE3K4naM')
+Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
 
-refund = Balanced::Refund.fetch('/refunds/RFCsiN9NYuDAbA72wRdpiUL')
+refund = Balanced::Refund.fetch('/refunds/RF4jM7mlJNnsZ3KWSQiQxFSw')
 refund.description = 'update this description'
 refund.meta = {
-    'refund.reason' => 'user not happy with product',
     'user.refund.count' => '3',
+    'refund.reason' => 'user not happy with product',
     'user.notes' => 'very polite on the phone'
 }
 refund.save
 
 % elif mode == 'response':
-#<Balanced::Refund:0x108650d20
+#<Balanced::Refund:0x10879a578
  @attributes=
-  {"created_at"=>"2014-01-16T20:02:08.557881Z",
+  {"links"=>{"order"=>nil, "debit"=>"WD4fC2Wmv7z7LxWLQptwEv2n"},
    "meta"=>
-    {"refund.reason"=>"user not happy with product",
-     "user.refund.count"=>"3",
+    {"user.refund.count"=>"3",
+     "refund.reason"=>"user not happy with product",
      "user.notes"=>"very polite on the phone"},
    "description"=>"update this description",
-   "transaction_number"=>"RF566-748-1243",
-   "status"=>"succeeded",
-   "links"=>{"debit"=>"WDyN9045Drn2VaNeJT3MokD", "order"=>nil},
-   "id"=>"RFCsiN9NYuDAbA72wRdpiUL",
-   "href"=>"/refunds/RFCsiN9NYuDAbA72wRdpiUL",
+   "created_at"=>"2014-01-24T17:54:21.764061Z",
+   "href"=>"/refunds/RF4jM7mlJNnsZ3KWSQiQxFSw",
    "amount"=>3000,
-   "updated_at"=>"2014-01-16T20:02:14.585534Z",
-   "currency"=>"USD"},
+   "transaction_number"=>"RF642-909-8143",
+   "currency"=>"USD",
+   "updated_at"=>"2014-01-24T17:54:26.305194Z",
+   "id"=>"RF4jM7mlJNnsZ3KWSQiQxFSw",
+   "status"=>"succeeded"},
  @hyperlinks=
-  {"events"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>,
-   "debit"=>#<Proc:0x00000001086afbe0@./lib/balanced/resources/resource.rb:60>,
-   "order"=>
-    #<Proc:0x0000000108697e28/lib/balanced/utils.rb:6>}>
+  {"order"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+   "debit"=>#<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
+   "events"=>
+    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>
 
 % endif
