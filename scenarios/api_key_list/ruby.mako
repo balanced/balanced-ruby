@@ -2,27 +2,27 @@
 Balanced::ApiKey.all
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
+Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
 
 card = Balanced::ApiKey.all
 
 % elif mode == 'response':
-[#<Balanced::ApiKey:0x108864620
+[#<Balanced::ApiKey:0x007fdc9d2bcbc8
   @attributes=
-   {"links"=>{},
-    "meta"=>{},
-    "created_at"=>"2014-01-24T17:53:03.663488Z",
-    "href"=>"/api_keys/AK2TWX3j6gK68Qk8w4ZEqfmM",
-    "id"=>"AK2TWX3j6gK68Qk8w4ZEqfmM"},
+   {"created_at"=>"2014-01-27T22:56:01.641736Z",
+    "href"=>"/api_keys/AK1vqjn1eEHXP0JYXrBrjH5c",
+    "id"=>"AK1vqjn1eEHXP0JYXrBrjH5c",
+    "links"=>{},
+    "meta"=>{}},
   @hyperlinks={}>,
- #<Balanced::ApiKey:0x108863c20
+ #<Balanced::ApiKey:0x007fdc9d2bc948
   @attributes=
-   {"links"=>{},
+   {"created_at"=>"2014-01-27T22:55:46.698536Z",
+    "href"=>"/api_keys/AK1eDKn7B8vK70hj70S1NMbu",
+    "id"=>"AK1eDKn7B8vK70hj70S1NMbu",
+    "links"=>{},
     "meta"=>{},
-    "secret"=>"ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I",
-    "created_at"=>"2014-01-24T17:52:53.304483Z",
-    "href"=>"/api_keys/AK2Ii1LeK3SbxF4y6A5f3hK6",
-    "id"=>"AK2Ii1LeK3SbxF4y6A5f3hK6"},
+    "secret"=>"ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc"},
   @hyperlinks={}>]
 
 % endif

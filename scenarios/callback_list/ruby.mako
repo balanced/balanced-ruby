@@ -3,18 +3,18 @@ Balanced::Callback.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
+Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
 
 callbacks = Balanced::Callback.all
 % elif mode == 'response':
-[#<Balanced::Callback:0x1087669d0
+[#<Balanced::Callback:0x007fdc9c1eb308
   @attributes=
-   {"links"=>{},
+   {"href"=>"/callbacks/CB224374R2NSyoYBpDV4r7C2",
+    "id"=>"CB224374R2NSyoYBpDV4r7C2",
+    "links"=>{},
     "method"=>"post",
-    "url"=>"http://www.example.com/callback",
-    "href"=>"/callbacks/CB3dRHClJeZ4UFqbLZsR6vUW",
     "revision"=>"1.1",
-    "id"=>"CB3dRHClJeZ4UFqbLZsR6vUW"},
+    "url"=>"http://www.example.com/callback"},
   @hyperlinks={}>]
 
 % endif

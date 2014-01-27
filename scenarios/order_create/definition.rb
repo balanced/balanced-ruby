@@ -1,1 +1,1 @@
-Balanced::Order.new
+Balanced::Customer.create_order

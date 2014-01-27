@@ -2,9 +2,9 @@
 Balanced::ApiKey.unstore
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
+Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
 
-key = Balanced::ApiKey.fetch('/api_keys/AK2TWX3j6gK68Qk8w4ZEqfmM')
+key = Balanced::ApiKey.fetch('/api_keys/AK1vqjn1eEHXP0JYXrBrjH5c')
 key.unstore
 
 % elif mode == 'response':

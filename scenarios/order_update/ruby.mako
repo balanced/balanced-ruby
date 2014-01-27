@@ -3,9 +3,9 @@ Balanced::Order.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-nngzAf2ARJV0AA4zzxdyVYJWRa0WLa5I')
+Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
 
-order = Balanced::Order.fetch('/orders/OR4bkzheH5eeQpl0J9Dmrx27')
+order = Balanced::Order.fetch('/orders/OR3FOihZa7lMHdAP5p8BJZVY')
 order.description = 'New description for order'
 order.meta = {
     'anykey' => 'valuegoeshere',
@@ -14,37 +14,37 @@ order.meta = {
 order.save
 
 % elif mode == 'response':
-#<Balanced::Order:0x1085a5998
+#<Balanced::Order:0x007fdc9c11c5a8
  @attributes=
-  {"links"=>{"merchant"=>"CU3Ttx347VFA9lYT8dBOkwcu"},
-   "meta"=>{"anykey"=>"valuegoeshere", "product.id"=>"1234567890"},
-   "description"=>"New description for order",
-   "delivery_address"=>
-    {"country_code"=>nil,
-     "state"=>nil,
-     "line2"=>nil,
-     "line1"=>nil,
-     "postal_code"=>nil,
-     "city"=>nil},
-   "created_at"=>"2014-01-24T17:54:14.238757Z",
-   "href"=>"/orders/OR4bkzheH5eeQpl0J9Dmrx27",
+  {"amount"=>0,
    "amount_escrowed"=>0,
-   "amount"=>0,
+   "created_at"=>"2014-01-27T22:58:01.115720Z",
    "currency"=>"USD",
-   "updated_at"=>"2014-01-24T17:54:16.944355Z",
-   "id"=>"OR4bkzheH5eeQpl0J9Dmrx27"},
+   "delivery_address"=>
+    {"city"=>nil,
+     "country_code"=>nil,
+     "line1"=>nil,
+     "line2"=>nil,
+     "postal_code"=>nil,
+     "state"=>nil},
+   "description"=>"New description for order",
+   "href"=>"/orders/OR3FOihZa7lMHdAP5p8BJZVY",
+   "id"=>"OR3FOihZa7lMHdAP5p8BJZVY",
+   "links"=>{"merchant"=>"CU3eeasZ9yQ86uzzIYZkrPGg"},
+   "meta"=>{"anykey"=>"valuegoeshere", "product.id"=>"1234567890"},
+   "updated_at"=>"2014-01-27T22:58:05.657463Z"},
  @hyperlinks=
-  {"merchant"=>
-    #<Proc:0x00000001087f5478@./lib/balanced/resources/resource.rb:60>,
-   "refunds"=>
-    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+  {"buyers"=>
+    #<Proc:0x007fdc9c114470/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
-   "reversals"=>
-    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
+    #<Proc:0x007fdc9c10e700/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>,
-   "buyers"=>
-    #<Proc:0x00000001087dd508/lib/balanced/utils.rb:6>}>
+    #<Proc:0x007fdc9c10c0b8/lib/balanced/utils.rb:6 (lambda)>,
+   "merchant"=>
+    #<Proc:0x007fdc9c106988/lib/balanced/resources/resource.rb:60 (lambda)>,
+   "refunds"=>
+    #<Proc:0x007fdc9c104200/lib/balanced/utils.rb:6 (lambda)>,
+   "reversals"=>
+    #<Proc:0x007fdc9c0f67b8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
