@@ -71,10 +71,10 @@ module Balanced
       self.client.put *args
     end
 
-    def delete(*args, &block)
-      self.client.delete *args
+    def unstore(*args, &block)
+      self.client.unstore *args
     end
-
+    alias_method :delete, :unstore
   end
 
   # configure on import so we don't have to configure for creating
