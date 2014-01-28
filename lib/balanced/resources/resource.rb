@@ -126,13 +126,10 @@ module Balanced
 
     private :response
 
-    def destroy
-      Balanced.delete @attributes[:href]
-    end
-
     def unstore
-      destroy
+      Balanced.unstore @attributes[:href]
     end
+    alias_method :destroy, :unstore
 
     def reload(the_response = nil)
       if the_response

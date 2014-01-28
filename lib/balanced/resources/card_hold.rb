@@ -28,9 +28,10 @@ module Balanced
       debit
     end
 
-    def delete
+    def unstore
       destroy
     end
+    alias_method :delete, :unstore
 
   end
 end
