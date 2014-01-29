@@ -62,7 +62,8 @@ module Balanced
       end
       conn.path_prefix = '/'
       conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
-      conn.headers['Accept'] = "#{@config[:accept_type]};version=#{@config[:version]}"
+      conn.headers['Content-Type'] = "application/json;revision=#{@config[:version]}"
+      conn.headers['Accept'] = "#{@config[:accept_type]};revision=#{@config[:version]}"
     end
 
     #def inspect  # :nodoc:
