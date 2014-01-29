@@ -1,10 +1,12 @@
 % if mode == 'definition':
 Balanced::Callback.unstore
 
-% else:
+% elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD')
+Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
 
-callback = Balanced::Callback.find('/v1/callbacks/CB5GFgGfugkhbKueLUJL6hAa')
+callback = Balanced::Callback.fetch('/callbacks/CB224374R2NSyoYBpDV4r7C2')
 callback.unstore
+% elif mode == 'response':
+
 % endif

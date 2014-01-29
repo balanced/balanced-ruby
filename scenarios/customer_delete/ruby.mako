@@ -1,8 +1,10 @@
 % if mode == 'definition':
 Balanced::Customer.unstore
 
-% else:
-customer = Balanced::Customer.find('/v1/customers/CU6sqf8CB3M3l6VeSsBqVHhC')
+% elif mode == 'request':
+customer = Balanced::Customer.fetch('/customers/CU3eeasZ9yQ86uzzIYZkrPGg')
 customer.unstore
+
+% elif mode == 'response':
 
 % endif

@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-cards = Balanced::Marketplace.my_marketplace.cards
+cards = Balanced::Card.all

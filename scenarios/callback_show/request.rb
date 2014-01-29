@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-callback = Balanced::Callback.find('<%= request['uri'] %>')
+callback = Balanced::Callback.fetch('<%= request['uri'] %>')

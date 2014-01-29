@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-debit = Balanced::Debit.find('<%= request['uri'] %>')
+debit = Balanced::Debit.fetch('<%= request['uri'] %>')

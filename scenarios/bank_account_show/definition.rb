@@ -1,1 +1,1 @@
-Balanced::BankAccount.find()
+Balanced::BankAccount.fetch

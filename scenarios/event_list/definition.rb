@@ -1,1 +1,1 @@
-    Balanced::Event.all
+Balanced::Event.all

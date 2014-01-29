@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-card = Balanced::Card.find('<%= request['uri'] %>')
+card = Balanced::Card.fetch('<%= request['uri'] %>')

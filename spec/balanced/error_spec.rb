@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe Balanced::Error, '#response' do
-  it "sets the response in the initializer" do
-    response = {status: 200}
+  it 'sets the response in the initializer' do
+    response = {:status => 200}
     Balanced::Error.new(response).response.should == response
   end
 end
 
 describe Balanced::Error, '#body' do
   it 'is constructed from the response[:body]' do
-    response = {body: {}}
+    response = {:body => {}}
     error = Balanced::Error.new(response)
     error.body.should == response[:body]
   end
 
-  it "defaults to an empty hash when no body is passed" do
+  it 'defaults to an empty hash when no body is passed' do
     Balanced::Error.new({}).body.should == {}
   end
 
-  describe "generating methods from response keys"  do
+  describe 'generating methods from response keys' do
     before do
-      response = {body: {foo: 'bar'}}
+      response = {:body => {:errors => [{:foo => 'bar'}]}}
       @error = Balanced::Error.new(response)
     end
 
@@ -44,13 +44,13 @@ describe Balanced::StandardError do
 end
 
 describe Balanced::UnassociatedCardError do
-  let(:card) { Balanced::Card.new(uri: '/v1/marketplaces/123/cards/235') }
+  let(:card) { Balanced::Card.new(:href => '/v1/marketplaces/123/cards/235') }
 
   subject do
     Balanced::UnassociatedCardError.new(card)
   end
 
   its(:message) do
-    should == "The Balanced::Card with uri=#{card.attributes['uri']} is not associated to an account"
+    should == "The Balanced::Card with uri=#{card.attributes['uri']} is not associated to a customer"
   end
 end

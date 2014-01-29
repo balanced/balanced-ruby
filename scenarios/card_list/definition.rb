@@ -1,1 +1,1 @@
-Balanced::Marketplace.cards
+Balanced::Card.all

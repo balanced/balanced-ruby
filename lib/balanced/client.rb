@@ -1,8 +1,8 @@
-require "logger"
-require "uri"
-require "faraday"
-require "faraday_middleware"
-require "balanced_exception_middleware"
+require 'logger'
+require 'uri'
+require 'faraday'
+require 'faraday_middleware'
+require 'balanced_exception_middleware'
 
 
 module Balanced
@@ -18,7 +18,8 @@ module Balanced
       :read_timeout => 60,
       :logger => nil,
       :ssl_verify => true,
-      :faraday_adapter => Faraday.default_adapter
+      :faraday_adapter => Faraday.default_adapter,
+      :accept_type => 'application/vnd.api+json'
     }
 
     attr_reader :conn
@@ -61,6 +62,8 @@ module Balanced
       end
       conn.path_prefix = '/'
       conn.headers['User-Agent'] = "balanced-ruby/#{Balanced::VERSION}"
+      conn.headers['Content-Type'] = "application/json;revision=#{@config[:version]}"
+      conn.headers['Accept'] = "#{@config[:accept_type]};revision=#{@config[:version]}"
     end
 
     #def inspect  # :nodoc:
@@ -70,9 +73,15 @@ module Balanced
     def url
       builder = (config[:scheme] == 'http') ? URI::HTTP : URI::HTTPS
 
-      builder.build ({:host => config[:host],
-                         :port => config[:port],
-                         :scheme => config[:scheme]})
+      builder.build({:host => config[:host],
+                     :port => config[:port],
+                     :scheme => config[:scheme]})
+    end
+
+    # alias_method doesn't work with method_missing, so we manually
+    # delegate
+    def unstore(*args, &block)
+      delete(*args, &block)
     end
 
     def method_missing(method, *args, &block)

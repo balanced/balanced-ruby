@@ -1,252 +1,157 @@
-require "spec_helper"
+require 'spec_helper'
 
-describe Balanced::BankAccount, :vcr do
-  before do
-    api_key = Balanced::ApiKey.new.save
-    Balanced.configure api_key.secret
+describe Balanced::BankAccount, :vcr => true, :marketplace => true do
 
-    @marketplace = Balanced::Marketplace.new.save
-    card = @marketplace.create_card(
-        :card_number => "5105105105105100",
-        :expiration_month => "12",
-        :expiration_year => "2015"
-    )
-    # An initial balance for the marketplace
-    @buyer = @marketplace.create_buyer(
-        :email_address => 'buyer@example.org',
-        :card_uri => card.uri
-    )
-    @buyer.debit :amount => 10000000
-
-    @incomplete_bank_account_hash = {
-        :account_number => "0987654321",
-        :bank_code => "321174851",
-        :name => "Timmy T. McTimmerson"
+  context 'after successful creation' do
+    subject(:bank_account) {
+      Balanced::BankAccount.new(
+          :name => 'William Henry Cavendish III',
+          :routing_number => '321174851',
+          :account_number => '0987654321',
+          :type => 'checking'
+      ).save
     }
+    its(:id) { subject.id.should_not be_nil }
+    its(:href) { subject.href.should eq("/bank_accounts/#{subject.id}") }
+    its(:account_type) { should eq('checking') }
+    its(:routing_number) { should eq('321174851') }
+    its(:account_number) { should end_with('4321') }
+    its(:name) { should eq('William Henry Cavendish III') }
+    its(:fingerprint) { should_not be_nil }
+    its(:customer) { should be_nil }
   end
 
-  describe 'when exception is thrown', :vcr do
+  context 'create invalid' do
+    it 'should not create without a routing_number field' do
+      lambda { Balanced::BankAccount.new(
+          :account_number => '0987654321',
+          :name => 'Timmy T. McTimmerson',
+          :type => 'checking'
+      ).save }.should raise_error(Balanced::BadRequest)
+    end
+
+    it 'should not create without a account_number field' do
+      lambda { Balanced::BankAccount.new(
+          :routing_number => '321174851',
+          :name => 'Timmy T. McTimmerson',
+          :type => 'checking'
+      ).save }.should raise_error(Balanced::BadRequest)
+    end
+
     it 'should not create without a type field' do
       lambda { Balanced::BankAccount.new(
-          :account_number => "0987654321",
-          :bank_code => "321174851",
-          :name => "Timmy T. McTimmerson"
+          :account_number => '0987654321',
+          :bank_code => '321174851',
+          :name => 'Timmy T. McTimmerson'
       ).save }.should raise_error(Balanced::BadRequest)
     end
   end
 
-  describe 'create', :vcr do
+  context 'successful verification' do
+    subject(:verification) do
+      @bank_account = Balanced::BankAccount.new(
+          :name => 'William Henry Cavendish III',
+          :routing_number => '321174851',
+          :account_number => '0987654321',
+          :type => 'checking'
+      ).save
+      @verification = @bank_account.verify
+    end
+
+    it 'verification#attributes' do
+      subject.bank_account.href.should eql(@bank_account.href)
+      subject.attempts_remaining.should eql(3)
+      subject.verification_status.should eql('pending')
+    end
+
+    it 'confirmation#attributes' do
+      confirmation = subject.confirm(1, 1)
+      confirmation.bank_account.href.should eql(subject.bank_account.href)
+      subject.attempts_remaining.should eql(2)
+      subject.verification_status.should eql('succeeded')
+    end
+
+    it 'successfully debits' do
+      subject.confirm(1, 1)
+      subject.verification_status.should eql('succeeded')
+      debit = subject.bank_account.debit(:amount => 1000)
+      debit.status.should eql('succeeded')
+    end
+
+  end
+
+  context 'fails' do
     before do
-      @bank_account = @marketplace.create_bank_account(
-          :account_number => "0987654321",
-          :bank_code => "321174851",
-          :name => "Timmy T. McTimmerson",
-          :type => "checking"
-      )
+      @bank_account = Balanced::BankAccount.new(
+          :name => 'Karl Malone',
+          :routing_number => '021000021',
+          :account_number => '9900000002',
+          :type => 'checking'
+      ).save
+      @verification = @bank_account.verify
     end
 
-    context 'without an account' do
-
-      subject { @bank_account.account }
-      it { should be_nil }
-
-      describe 'has_account?' do
-
-        subject { @bank_account.has_account? }
-        it { should be_false }
-
+    it 'throws error on invalid amounts' do
+      3.times do
+        expect {
+          @verification.confirm(2, 3)
+        }.to raise_error(Balanced::BankAccountVerificationFailure) { |exc|
+          expect(exc.description).to start_with 'Authentication amounts do not match'
+        }
       end
     end
 
-    context 'with an account', :vcr do
-      before do
-        @account = @marketplace.create_account
-        bank_account = @marketplace.create_bank_account(
-            :account_number => "0987654321",
-            :bank_code => "321174851",
-            :name => "Timmy T. McTimmerson",
-            :type => "checking"
-        )
-        @account.add_bank_account(bank_account.uri)
-        @bank_account_two = bank_account.reload
-      end
-
-      describe 'has_account?' do
-        subject { @bank_account_two.has_account? }
-        it { should be_true }
-      end
-
+    it 'fails to debit' do
+      expect {
+        @verification.confirm(2, 3)
+      }.to raise_error(Balanced::BankAccountVerificationFailure) { |exc|
+        expect(exc.description).to start_with 'Authentication amounts do not match'
+      }
+      expect {
+        @bank_account.debit(:amount => 1000)
+      }.to raise_exception(Balanced::Conflict) { |exc|
+        expect(exc.description).to start_with 'Funding instrument cannot be debited'
+      }
     end
 
-    describe 'account_number', :vcr do
-      subject { @bank_account.account_number }
-      it { should end_with '4321' }
+  end
+
+  describe '#debit' do
+    before do
+      @bank_account = Balanced::BankAccount.new(
+          :name => 'William Henry Cavendish III',
+          :routing_number => '321174851',
+          :account_number => '0987654321',
+          :type => 'checking'
+      ).save
+      @verification = @bank_account.verify
+      @verification.confirm(1, 1)
     end
 
-    describe 'fingerprint', :vcr do
-      subject { @bank_account.fingerprint }
-      it { should have_at_least(20).characters }
-    end
-
-    describe 'does not invalidate on save', :vcr do
-      before do
-        @bank_account = @marketplace.create_bank_account(
-            :account_number => "0987654321",
-            :bank_code => "321174851",
-            :name => "Timmy T. McTimmerson",
-            :type => "checking"
-        )
-        @account = @marketplace.create_account
-        @account.add_bank_account(@bank_account.uri)
-        @bank_account = @account.bank_accounts[0]
-        @bank_account.save
-      end
-
-      subject { @bank_account.is_valid }
-      it { should be_true }
-    end
-
-    describe 'credit', :vcr do
-      before do
-        @credit = @bank_account.credit(
-            :amount => 50,
-            :description => 'Blah'
-        )
-      end
-
-      describe 'bank_account' do
-        subject { @credit.bank_account }
-        its(:account_number) { should end_with '4321' }
-        its(:routing_number) { should eql '321174851' }
-      end
-
-      describe 'without an account', :vcr do
-        before do
-          @bank_account = @marketplace.create_bank_account(
-              :account_number => "1234567890111",
-              :bank_code => "021000021",
-              :name => "Timmy T. McTimmerson",
-              :type => "checking"
-          )
-        end
-        
-        describe 'with appears_on_statement_as', :vcr do
-          before do
-            @credit = @bank_account.credit(amount: 1000, description: "Testing", appears_on_statement_as: "Test Company")
-          end
-          
-          subject { @credit }
-          its(:appears_on_statement_as) { should eql 'Test Company' }
-        end
-      end
-
-      describe 'with an account', :vcr do
-        before do
-          @bank_account = @marketplace.create_bank_account(
-              :account_number => "1234567890111",
-              :bank_code => "021000021",
-              :name => "Timmy T. McTimmerson",
-              :type => "checking"
-          )
-          @account = @marketplace.create_account
-          @account.add_bank_account(@bank_account.uri)
-          @bank_account.reload
-        end
-      
-        describe 'with appears_on_statement_as', :vcr do
-          before do
-            @credit = @bank_account.credit(
-              :amount => 1000,
-              :description => "Blahblahblah",
-              :appears_on_statement_as => "Test Company"
-            )
-          end
-        
-          subject { @credit }
-          it { should respond_to :account }
-          it { should be_instance_of Balanced::Credit }
-          its(:appears_on_statement_as) { should eql 'Test Company' }
-        end
-        
-        describe 'without appears_on_statement_as', :vcr do
-          before do
-            @credit = @bank_account.credit(
-              :amount => 1000,
-              :description => "Testing",
-            )
-          end
-        
-          subject { @credit }
-          it { should respond_to :account }
-          it { should be_instance_of Balanced::Credit }
-          its(:appears_on_statement_as) { should eql 'example.com' }
-        end
-      end
+    it 'succeeds' do
+      debit = @bank_account.debit(:amount => 1000)
+      debit.status.should eql('succeeded')
     end
   end
 
-  describe 'verification' do
-
-    describe 'cannot debit when unverified', :vcr do
-      before do
-        @bank_account = @marketplace.create_bank_account(
-            :account_number => "0987654321",
-            :bank_code => "321174851",
-            :name => "Timmy T. McTimmerson",
-            :type => "checking"
-        )
-        @account = @marketplace.create_account
-        @account.add_bank_account(@bank_account.uri)
-      end
-
-      it do
-        lambda {
-          @account.debit(:amount => 100)
-        }.should raise_error(Balanced::Conflict)
-      end
+  describe '#credit' do
+    before do
+      @bank_account = Balanced::BankAccount.new(
+          :name => 'William Henry Cavendish III',
+          :routing_number => '321174851',
+          :account_number => '0987654321',
+          :type => 'checking'
+      ).save
     end
 
-    describe 'debits when verified', :vcr do
-      before do
-        @bank_account = @marketplace.create_bank_account(
-            :account_number => "0987654321",
-            :bank_code => "321174851",
-            :name => "Timmy T. McTimmerson",
-            :type => "checking"
-        )
-        @account = @marketplace.create_account
-        @account.add_bank_account(@bank_account.uri)
-      end
-
-      it do
-
-        authentication = @bank_account.verify
-        authentication.confirm(1, 1)
-
-        @account.debit(:amount => 100)
-      end
-    end
-
-    describe 'errors when incorrectly verified', :vcr do
-      before do
-        @bank_account = @marketplace.create_bank_account(
-            :account_number => "0987654321",
-            :bank_code => "321174851",
-            :name => "Timmy T. McTimmerson",
-            :type => "checking"
-        )
-        @account = @marketplace.create_account
-        @account.add_bank_account(@bank_account.uri)
-      end
-
-      it do
-
-        authentication = @bank_account.verify
-
-        lambda {
-          authentication.confirm(1, 2)
-        }.should raise_error(Balanced::BankAccountVerificationFailure)
-      end
+    it 'succeeds', :vcr => {:record => :new_episodes} do
+      before = Balanced::Marketplace.mine.in_escrow
+      @credit = @bank_account.credit(:amount => 1000)
+      @credit.should be_instance_of Balanced::Credit
+      @credit.status.should eql('succeeded')
+      @credit.destination.href.should eql(@bank_account.href)
+      after = Balanced::Marketplace.mine.in_escrow
+      after.should eql(before - @credit.amount)
     end
   end
 end

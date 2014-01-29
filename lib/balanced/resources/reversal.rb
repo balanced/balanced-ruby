@@ -6,15 +6,9 @@ module Balanced
   #
   class Reversal
     include Balanced::Resource
+    include Balanced::HypermediaRegistry
 
-    def initialize attributes = {}
-      Balanced::Utils.stringify_keys! attributes
-      unless attributes.has_key? 'uri'
-        attributes['uri'] = self.class.uri
-      end
-      super attributes
-    end
-
+    define_hypermedia_types [:reversals]
   end
 
 end

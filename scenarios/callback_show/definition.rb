@@ -1,1 +1,1 @@
-Balanced::Callback.find
+Balanced::Callback.fetch

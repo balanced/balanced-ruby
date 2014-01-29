@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Balanced::Credit, :vcr do
   before do
@@ -6,30 +6,26 @@ describe Balanced::Credit, :vcr do
     Balanced.configure api_key.secret
     @marketplace = Balanced::Marketplace.new.save
     card = Balanced::Card.new(
-      :card_number      => "5105105105105100",
-      :expiration_month => "12",
-      :expiration_year  => "2015"
+        :number => '5105105105105100',
+        :expiration_month => '12',
+        :expiration_year => '2015'
     ).save
 
     # An initial balance for the marketplace
-    @buyer = @marketplace.create_buyer(
-        :email_address => 'buyer@example.org',
-        :card_uri => card.uri
-    )
-    @buyer.debit :amount => 10000000
+    card.debit(:amount => 1000000)
   end
 
-  describe "#create", :vcr do
+  describe '#create', :vcr do
     before do
       @credit = Balanced::Credit.new(
-        :amount => 5000,
-        :description => "A sweet ride",
-        :bank_account => {
-          :account_number => "0987654321",
-          :bank_code => "321174851",
-          :name => "Timmy T. McTimmerson",
-          :type => "savings"
-        }
+          :amount => 5000,
+          :description => 'A sweet ride',
+          :destination => {
+              :routing_number => '321174851',
+              :account_number => '0987654321',
+              :name => 'Timmy T. McTimmerson',
+              :type => 'checking'
+          }
       ).save
     end
 
@@ -38,37 +34,75 @@ describe Balanced::Credit, :vcr do
       it { should == 5000 }
     end
 
-    describe 'account', :vcr do
-      subject { @credit.account }
+    describe 'customer', :vcr do
+      subject { @credit.customer }
       it { should be_nil }
     end
 
-    describe 'bank_account', :vcr do
-      subject { @credit.bank_account }
-      its([:account_number]) { should end_with '4321' }
-    end
   end
 
-  describe "#reverse", :vcr do
+  describe '#reverse', :vcr do
     before do
       @credit = Balanced::Credit.new(
-        :amount => 5000,
-        :description => "A sweet ride",
-        :bank_account => {
-          :account_number => "0987654321",
-          :bank_code => "321174851",
-          :name => "Timmy T. McTimmerson",
-          :type => "savings"
-        }
+          :amount => 5000,
+          :description => 'A sweet ride',
+          :destination => {
+              :routing_number => '321174851',
+              :account_number => '0987654321',
+              :name => 'Timmy T. McTimmerson',
+              :type => 'checking'
+          }
       ).save
-      @reverse = @credit.reverse
-
+      @reversal = @credit.reverse
     end
 
-    describe 'amount', :vcr do
-      subject { @reverse.amount }
+    describe '#amount', :vcr do
+      subject { @reversal.amount }
       it { should == 5000 }
     end
 
+    describe '#type', :vcr do
+      subject { @reversal }
+      it { should be_instance_of Balanced::Reversal }
+    end
+  end
+
+  describe 'credit with underwritten customer' do
+    before do
+      @customer = Balanced::Customer.new(
+          :name => 'Henry Ford',
+          :dob_month => 7,
+          :dob_year => 1963,
+          :address => {
+              :postal_code => '48120'
+          }
+      ).save
+      @bank_account = Balanced::BankAccount.new(
+          :routing_number => '321174851',
+          :account_number => '9900000003',
+          :name => 'Larry Bird',
+          :type => 'checking'
+      ).save
+      @bank_account.associate_to_customer(@customer)
+      @credit = @bank_account.credit(
+          :amount => 5000,
+          :description => 'A sweet ride'
+      )
+    end
+
+    describe 'merchant_status', :vcr do
+      subject { @customer.merchant_status }
+      it { should eq 'underwritten' }
+    end
+
+    describe 'amount', :vcr do
+      subject { @credit.amount }
+      it { should == 5000 }
+    end
+
+    describe 'status' do
+      subject { @credit.status }
+      it { should eq 'succeeded' }
+    end
   end
 end

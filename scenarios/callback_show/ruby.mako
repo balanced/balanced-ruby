@@ -1,9 +1,20 @@
 % if mode == 'definition':
-Balanced::Callback.find
+Balanced::Callback.fetch
 
-% else:
+% elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD')
+Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
 
-callback = Balanced::Callback.find('/v1/callbacks/CB5GFgGfugkhbKueLUJL6hAa')
+callback = Balanced::Callback.fetch('/callbacks/CB224374R2NSyoYBpDV4r7C2')
+% elif mode == 'response':
+#<Balanced::Callback:0x007fdc9d10a618
+ @attributes=
+  {"href"=>"/callbacks/CB224374R2NSyoYBpDV4r7C2",
+   "id"=>"CB224374R2NSyoYBpDV4r7C2",
+   "links"=>{},
+   "method"=>"post",
+   "revision"=>"1.1",
+   "url"=>"http://www.example.com/callback"},
+ @hyperlinks={}>
+
 % endif

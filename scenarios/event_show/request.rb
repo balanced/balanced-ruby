@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-event = Balanced::Event.find('<%= request['uri'] %>')
+event = Balanced::Event.fetch('<%= request['uri'] %>')

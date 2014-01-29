@@ -1,1 +1,1 @@
-Balanced::Debit.save()
+Balanced::Debit.save

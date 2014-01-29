@@ -1,1 +1,1 @@
-Balanced::Card.find()
+Balanced::Card.fetch
