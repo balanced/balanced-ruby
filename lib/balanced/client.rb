@@ -77,6 +77,12 @@ module Balanced
                      :scheme => config[:scheme]})
     end
 
+    # alias_method doesn't work with method_missing, so we manually
+    # delegate
+    def unstore(*args, &block)
+      delete(*args, &block)
+    end
+
     def method_missing(method, *args, &block)
       if is_http_method? method
         conn.basic_auth(api_key, '') unless api_key.nil?
