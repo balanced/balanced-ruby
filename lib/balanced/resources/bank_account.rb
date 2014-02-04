@@ -4,30 +4,11 @@ module Balanced
   #
   # *NOTE:* The BankAccount resource does not support creating a Hold.
   #
-  class BankAccount < Balanced::DebitableFundingInstrument
+  class BankAccount < Balanced::FundingInstrument
     include Balanced::Resource
     include Balanced::HypermediaRegistry
 
     define_hypermedia_types [:bank_accounts]
-
-    # Creates a Debit of funds from this BankAccount to your Marketplace's escrow account.
-    #
-    # @return [Debit]
-    def debit(options = {})
-      options[:href] = self.debits.href
-      debit = Balanced::Debit.new(options)
-      debit.save
-    end
-
-    # Creates a Credit of funds from your Marketplace's escrow account to this
-    # Account.
-    #
-    # @return [Credit]
-    def credit(options = {})
-      options[:href] = self.credits.href
-      credit = Balanced::Credit.new(options)
-      credit.save
-    end
 
     def verify
       options = {:href => self.bank_account_verifications.href}

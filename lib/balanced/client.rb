@@ -12,8 +12,8 @@ module Balanced
       :scheme => 'http',
       :host => 'localhost',
       :port => 5000,
-      :version => '1',
-      :logging_level => 'WARN',
+      :version => '1.1.dev',
+      :logging_level => 'DEBUG',
       :connection_timeout => 60,
       :read_timeout => 60,
       :logger => nil,
@@ -96,7 +96,7 @@ module Balanced
     private
 
     def is_http_method? method
-      [:get, :post, :put, :delete].include? method
+      [:get, :post, :put, :delete,  :patch].include? method
     end
 
     def respond_to?(method, include_private = false)

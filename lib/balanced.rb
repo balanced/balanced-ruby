@@ -14,7 +14,7 @@ module Balanced
       :scheme => 'https',
       :host => 'api.balancedpayments.com',
       :port => 443,
-      :version => '1.1',
+      :version => '1.1.dev',
   }
 
   @hypermedia_registry = {}

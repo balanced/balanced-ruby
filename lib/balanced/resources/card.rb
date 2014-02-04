@@ -2,23 +2,14 @@ module Balanced
   # A card represents a source of funds for an Account. You may Hold or Debit
   # funds from the account associated with the Card.
   #
-  class Card < Balanced::DebitableFundingInstrument
+  class Card < Balanced::FundingInstrument
+
     include Balanced::Resource
     include Balanced::HypermediaRegistry
 
     define_hypermedia_types [:cards]
 
-    # Creates a Debit of funds from this Card to the Marketplace's escrow account.
-    #
-    # @param [Hash] options
-    # @return [Debit]
-    def debit(options={})
-      options[:href] = self.debits.href
-      debit = Balanced::Debit.new(options)
-      debit.save
-    end
-
-    # Creates a Hold of funds from this Card to your Marketplace.
+    # Creates a Hold of funds from this Card.
     #
     # @return [Hold]
     def hold(options={})
