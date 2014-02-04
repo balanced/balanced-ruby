@@ -73,5 +73,19 @@ module Balanced
       save
     end
 
+    def deposit_account
+      @_deposit_account ||= self.accounts.where(
+          :account_type => Balanced::Account::DEPOSIT
+      ).first
+    end
+    alias deposit_acct deposit_account
+
+    def line_of_credit_account
+      @_line_of_credit_account ||= self.accounts.where(
+          :account_type => Balanced::Account::LINE_OF_CREDIT
+      ).first
+    end
+    alias line_of_credit_acct line_of_credit_account
+
   end
 end
