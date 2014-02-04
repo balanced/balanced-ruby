@@ -13,7 +13,7 @@ module Balanced
       :host => 'localhost',
       :port => 5000,
       :version => '1.1.dev',
-      :logging_level => 'DEBUG',
+      :logging_level => 'WARN',
       :connection_timeout => 60,
       :read_timeout => 60,
       :logger => nil,
