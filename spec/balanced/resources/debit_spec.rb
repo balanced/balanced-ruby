@@ -57,19 +57,6 @@ describe Balanced::Debit, :vcr do
         its('source.href') { should match "#{@card.href}" }
       end
 
-      context 'default source', :vcr do
-        subject do
-          @customer.debit(:amount => 1234)
-        end
-        it { should be_instance_of Balanced::Debit }
-        its(:href) { should_not be_nil }
-        its(:amount) { should eql 1234 }
-        its(:appears_on_statement_as) { should eql "BAL*#{@marketplace.domain_url}" }
-        its(:description) { should be_nil }
-        its(:status) { should eql 'succeeded' }
-        its(:source) { should be_instance_of Balanced::Card }
-        its('source.href') { should match "#{@card.href}" }
-      end
     end
   end
 
