@@ -34,7 +34,7 @@ module Balanced
       order.save
     end
 
-    # Associates the Card represented by 'card' with this Customer.
+    # Associates the FundingInstrument represented by 'source' with this Customer.
     #
     # @return [Customer]
     def add_source(source)
@@ -46,7 +46,7 @@ module Balanced
       save
     end
 
-    # Associates the BankAccount represented by bank_account with this
+    # Associates the FundingInstrument represented by destination with this
     # Customer.
     #
     # @return [Customer]
