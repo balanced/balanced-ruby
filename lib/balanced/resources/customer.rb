@@ -28,20 +28,6 @@ module Balanced
       owner_customer
     end
 
-    def debit(options = {})
-      if self.source.nil?
-        raise "No source available for #{self}"
-      end
-      self.source.debit(options)
-    end
-
-    def credit(options = {})
-      if self.destination.nil?
-        raise "No destination available for #{self}"
-      end
-      self.destination.credit(options)
-    end
-
     def create_order(options = {})
       options[:href] = self.orders.href
       order = Balanced::Order.new(options)
