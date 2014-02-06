@@ -145,13 +145,10 @@ describe Balanced::BankAccount, :vcr => true, :marketplace => true do
     end
 
     it 'succeeds', :vcr => {:record => :new_episodes} do
-      before = Balanced::Marketplace.mine.in_escrow
       @credit = @bank_account.credit(:amount => 1000)
       @credit.should be_instance_of Balanced::Credit
       @credit.status.should eql('succeeded')
       @credit.destination.href.should eql(@bank_account.href)
-      after = Balanced::Marketplace.mine.in_escrow
-      after.should eql(before - @credit.amount)
     end
   end
 end
