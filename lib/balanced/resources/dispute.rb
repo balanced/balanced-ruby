@@ -5,7 +5,7 @@ module Balanced
     include Balanced::Resource
     include Balanced::HypermediaRegistry
 
-    define_hypermedia_types [:Dispute]
+    define_hypermedia_types [:disputes]
 
   end
 end
