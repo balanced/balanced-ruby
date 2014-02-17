@@ -32,4 +32,5 @@ spec/cassettes
 
 # OS X
 .DS_Store
+
 .ruby-version
