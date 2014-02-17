@@ -41,7 +41,6 @@ def construct_from_response(payload)
 end
 
 def tidy_response(response)
-  #@/Users/ben/Development/ruby/balanced-ruby/lib/balanced/utils.rb:6
   return if ! response
   return response.gsub(/@\S(.*?)\Sbalanced-ruby/, '')
 end
