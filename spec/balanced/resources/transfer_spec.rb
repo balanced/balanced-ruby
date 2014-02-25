@@ -46,6 +46,9 @@ describe Balanced::Transfer, :vcr, :marketplace => true do
           :country_code => 'US'
       }
 
+      @order = @customer.create_order(
+        :description => 'Simple Order'
+      )
     end
 
     it 'can transfer to a bank account' do

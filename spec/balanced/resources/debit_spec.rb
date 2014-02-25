@@ -40,7 +40,6 @@ describe Balanced::Debit, :vcr do
             :expiration_year => '2020'
         ).save
         @card.associate_to_customer(@customer)
-        @customer.add_source(@card)
       end
 
       context 'tokenized card', :vcr do
