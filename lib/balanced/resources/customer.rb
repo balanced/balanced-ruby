@@ -34,31 +34,6 @@ module Balanced
       order.save
     end
 
-    # Associates the FundingInstrument represented by 'source' with this Customer.
-    #
-    # @return [Customer]
-    def add_source(source)
-      if source.is_a?(Balanced::Resource)
-        self.links['source'] = source.id
-      else
-        self.links['source'] = source
-      end
-      save
-    end
-
-    # Associates the FundingInstrument represented by destination with this
-    # Customer.
-    #
-    # @return [Customer]
-    def add_destination(destination)
-      if destination.is_a?(Balanced::Resource)
-        self.links['destination'] = destination.id
-      else
-        self.links['destination'] = destination
-      end
-      save
-    end
-
     def deposit_account
       @_deposit_account ||= self.accounts.where(
           :account_type => Balanced::Account::DEPOSIT

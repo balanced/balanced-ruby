@@ -27,50 +27,6 @@ describe Balanced::Customer, :vcr do
     its(:business_name) { should eq 'Bill Inc.' }
   end
 
-  describe '#add_source', :vcr do
-    before do
-      @card = Balanced::Card.new(
-          :number => '4111111111111111',
-          :expiration_month => '12',
-          :expiration_year => '2015'
-      ).save
-      @card.associate_to_customer(@customer)
-    end
-
-    it 'assumes the card is associated', :vcr do
-      @customer.cards.total.should eql(1)
-    end
-
-    it 'should make the card a source', :vcr do
-      @customer.add_source(@card)
-      @customer.source.should be_instance_of Balanced::Card
-      @customer.source.href.should eql(@card.href)
-    end
-
-  end
-
-  describe '#add_destination', :vcr do
-    before do
-      @bank_account = Balanced::BankAccount.new(
-          :account_number => '1234567980',
-          :routing_number => '111000025',
-          :name => 'Jack Q Merchant'
-      ).save
-      @bank_account.associate_to_customer(@customer)
-    end
-
-    it 'assumes the bank account is associated', :vcr do
-      @customer.bank_accounts.total.should eql(1)
-    end
-
-    it 'should make the bank account a destination', :vcr do
-      @customer.add_destination(@bank_account)
-      @customer.destination.should be_instance_of Balanced::BankAccount
-      @customer.destination.href.should eql(@bank_account.href)
-    end
-
-  end
-
   describe '#find_by_email', :vcr do
 
     context 'email address is in system', :vcr do
