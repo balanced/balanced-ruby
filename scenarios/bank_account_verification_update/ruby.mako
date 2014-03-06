@@ -13,20 +13,20 @@ verification.confirm(
 
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x10e417b20
+#<Balanced::BankAccountVerification:0x10680e2e0
  @attributes=
-  {"verification_status"=>"succeeded",
-   "links"=>{"bank_account"=>"BA3EMnkybAfEzVlbVquXFLEk"},
-   "attempts_remaining"=>2,
+  {"attempts_remaining"=>2,
    "attempts"=>1,
+   "links"=>{"bank_account"=>"BA3EMnkybAfEzVlbVquXFLEk"},
+   "deposit_status"=>"succeeded",
    "created_at"=>"2014-03-05T23:25:43.892899Z",
-   "id"=>"BZ3NheXIi1UxUiNtkaSo1ZI5",
    "href"=>"/verifications/BZ3NheXIi1UxUiNtkaSo1ZI5",
-   "meta"=>{},
+   "id"=>"BZ3NheXIi1UxUiNtkaSo1ZI5",
+   "verification_status"=>"succeeded",
    "updated_at"=>"2014-03-05T23:25:46.812376Z",
-   "deposit_status"=>"succeeded"},
+   "meta"=>{}},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>}>
+    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>}>
 
 % endif

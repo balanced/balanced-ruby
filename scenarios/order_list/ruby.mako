@@ -6,37 +6,37 @@ Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
 orders = Balanced::Order.all
 % elif mode == 'response':
-[#<Balanced::Order:0x10e481278
+[#<Balanced::Order:0x106879748
   @attributes=
-   {"amount"=>0,
-    "links"=>{"merchant"=>"CU4EeI9UPzRcOo2C3j1qFjQj"},
-    "description"=>"Order #12341234",
-    "delivery_address"=>
-     {"country_code"=>nil,
-      "line2"=>nil,
-      "line1"=>nil,
-      "state"=>nil,
-      "city"=>nil,
-      "postal_code"=>nil},
-    "created_at"=>"2014-03-05T23:26:52.111548Z",
-    "id"=>"OR520nGy59wfJ4mM7HR6TYrn",
-    "href"=>"/orders/OR520nGy59wfJ4mM7HR6TYrn",
-    "amount_escrowed"=>0,
-    "meta"=>{},
+   {"links"=>{"merchant"=>"CU4EeI9UPzRcOo2C3j1qFjQj"},
     "currency"=>"USD",
-    "updated_at"=>"2014-03-05T23:26:52.111551Z"},
+    "amount_escrowed"=>0,
+    "created_at"=>"2014-03-05T23:26:52.111548Z",
+    "href"=>"/orders/OR520nGy59wfJ4mM7HR6TYrn",
+    "description"=>"Order #12341234",
+    "amount"=>0,
+    "id"=>"OR520nGy59wfJ4mM7HR6TYrn",
+    "updated_at"=>"2014-03-05T23:26:52.111551Z",
+    "meta"=>{},
+    "delivery_address"=>
+     {"line2"=>nil,
+      "line1"=>nil,
+      "country_code"=>nil,
+      "postal_code"=>nil,
+      "city"=>nil,
+      "state"=>nil}},
   @hyperlinks=
    {"reversals"=>
-     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-    "debits"=>
-     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-    "merchant"=>
-     #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
-    "refunds"=>
-     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+     #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
     "credits"=>
-     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+     #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+    "merchant"=>
+     #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>,
     "buyers"=>
-     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>]
+     #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+    "debits"=>
+     #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+    "refunds"=>
+     #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>}>]
 
 % endif

@@ -7,41 +7,41 @@ Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
 card = Balanced::Card.fetch('/cards/CC4cbNzUmFqGrc1GmFpXp6fe')
 % elif mode == 'response':
-#<Balanced::Card:0x10e275920
+#<Balanced::Card:0x10666b960
  @attributes=
-  {"cvv_result"=>"Match",
+  {"cvv"=>"xxx",
    "avs_street_match"=>nil,
+   "address"=>
+    {"line2"=>nil,
+     "line1"=>nil,
+     "country_code"=>nil,
+     "postal_code"=>nil,
+     "city"=>nil,
+     "state"=>nil},
+   "number"=>"xxxxxxxxxxxx5100",
+   "cvv_match"=>"yes",
+   "avs_result"=>nil,
+   "name"=>nil,
+   "links"=>{"customer"=>nil},
+   "created_at"=>"2014-03-05T23:26:12.047635Z",
+   "brand"=>"MasterCard",
+   "href"=>"/cards/CC4cbNzUmFqGrc1GmFpXp6fe",
+   "id"=>"CC4cbNzUmFqGrc1GmFpXp6fe",
+   "avs_postal_match"=>nil,
+   "is_verified"=>true,
    "fingerprint"=>
     "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-   "avs_postal_match"=>nil,
-   "number"=>"xxxxxxxxxxxx5100",
-   "links"=>{"customer"=>nil},
-   "brand"=>"MasterCard",
-   "name"=>nil,
-   "created_at"=>"2014-03-05T23:26:12.047635Z",
-   "avs_result"=>nil,
-   "id"=>"CC4cbNzUmFqGrc1GmFpXp6fe",
-   "href"=>"/cards/CC4cbNzUmFqGrc1GmFpXp6fe",
-   "cvv"=>"xxx",
-   "meta"=>{},
-   "is_verified"=>true,
-   "updated_at"=>"2014-03-05T23:26:12.047639Z",
-   "cvv_match"=>"yes",
-   "address"=>
-    {"country_code"=>nil,
-     "line2"=>nil,
-     "line1"=>nil,
-     "state"=>nil,
-     "city"=>nil,
-     "postal_code"=>nil},
    "expiration_year"=>2020,
-   "expiration_month"=>12},
+   "expiration_month"=>12,
+   "updated_at"=>"2014-03-05T23:26:12.047639Z",
+   "meta"=>{},
+   "cvv_result"=>"Match"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
    "debits"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
    "customer"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>}>
 
 % endif

@@ -6,34 +6,34 @@ Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
 card = Balanced::Card.fetch('/cards/CC3ZsWHP2jMgvFrrzDzfZS0q')
 card.hold(
-  :amount => 5000,
-  :description => 'Some descriptive text for the debit in the dashboard'
+  :description => 'Some descriptive text for the debit in the dashboard',
+  :amount => 5000
 )
 % elif mode == 'response':
-#<Balanced::CardHold:0x10e35fe30
+#<Balanced::CardHold:0x106756000
  @attributes=
-  {"transaction_number"=>"HL299-976-7990",
-   "failure_reason_code"=>nil,
-   "amount"=>5000,
-   "links"=>{"debit"=>nil, "card"=>"CC3ZsWHP2jMgvFrrzDzfZS0q"},
-   "expires_at"=>"2014-03-12T23:26:09.014221Z",
+  {"status"=>"succeeded",
    "voided_at"=>nil,
-   "failure_reason"=>nil,
-   "description"=>"Some descriptive text for the debit in the dashboard",
-   "created_at"=>"2014-03-05T23:26:08.860551Z",
-   "id"=>"HL4fmk2370zAE7nAVujKxjtf",
-   "href"=>"/card_holds/HL4fmk2370zAE7nAVujKxjtf",
-   "meta"=>{},
+   "links"=>{"debit"=>nil, "card"=>"CC3ZsWHP2jMgvFrrzDzfZS0q"},
    "currency"=>"USD",
+   "created_at"=>"2014-03-05T23:26:08.860551Z",
+   "href"=>"/card_holds/HL4fmk2370zAE7nAVujKxjtf",
+   "description"=>"Some descriptive text for the debit in the dashboard",
+   "amount"=>5000,
+   "transaction_number"=>"HL299-976-7990",
+   "id"=>"HL4fmk2370zAE7nAVujKxjtf",
+   "failure_reason_code"=>nil,
+   "expires_at"=>"2014-03-12T23:26:09.014221Z",
    "updated_at"=>"2014-03-05T23:26:09.094208Z",
-   "status"=>"succeeded"},
+   "meta"=>{},
+   "failure_reason"=>nil},
  @hyperlinks=
   {"debit"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-   "debits"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-   "card"=>#<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+   "card"=>#<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>,
    "events"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+   "debits"=>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>}>
 
 % endif

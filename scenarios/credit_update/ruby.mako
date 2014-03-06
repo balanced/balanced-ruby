@@ -8,41 +8,41 @@ Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 credit = Balanced::Credit.fetch('/credits/CR4wyLukORa0TXhCYtjZrfw5')
 credit.description = 'New description for credit'
 credit.meta = {
-    'facebook.id' => '1234567890',
-    'anykey' => 'valuegoeshere'
+    'anykey' => 'valuegoeshere',
+    'facebook.id' => '1234567890'
 }
 credit.save
 
 % elif mode == 'response':
-#<Balanced::Credit:0x10e4bfca8
+#<Balanced::Credit:0x1068b7778
  @attributes=
-  {"transaction_number"=>"CR858-193-7792",
-   "failure_reason_code"=>nil,
+  {"status"=>"succeeded",
    "appears_on_statement_as"=>"example.com",
-   "amount"=>5000,
    "links"=>
-    {"destination"=>"BA4osUR5dW1HQkqoxl65lfNe",
-     "order"=>nil,
-     "customer"=>"CU4lcDzIlpDxgcuzHkzC4QHS"},
-   "failure_reason"=>nil,
-   "description"=>"New description for credit",
-   "created_at"=>"2014-03-05T23:26:24.160132Z",
-   "id"=>"CR4wyLukORa0TXhCYtjZrfw5",
-   "href"=>"/credits/CR4wyLukORa0TXhCYtjZrfw5",
-   "meta"=>{"facebook.id"=>"1234567890", "anykey"=>"valuegoeshere"},
+    {"order"=>nil,
+     "customer"=>"CU4lcDzIlpDxgcuzHkzC4QHS",
+     "destination"=>"BA4osUR5dW1HQkqoxl65lfNe"},
    "currency"=>"USD",
+   "created_at"=>"2014-03-05T23:26:24.160132Z",
+   "href"=>"/credits/CR4wyLukORa0TXhCYtjZrfw5",
+   "description"=>"New description for credit",
+   "amount"=>5000,
+   "transaction_number"=>"CR858-193-7792",
+   "id"=>"CR4wyLukORa0TXhCYtjZrfw5",
+   "failure_reason_code"=>nil,
    "updated_at"=>"2014-03-05T23:26:29.272502Z",
-   "status"=>"succeeded"},
+   "meta"=>{"anykey"=>"valuegoeshere", "facebook.id"=>"1234567890"},
+   "failure_reason"=>nil},
  @hyperlinks=
   {"reversals"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-   "destination"=>
-    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
-   "order"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
    "events"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+   "order"=>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
    "customer"=>
-    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>}>
+    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>,
+   "destination"=>
+    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>}>
 
 % endif

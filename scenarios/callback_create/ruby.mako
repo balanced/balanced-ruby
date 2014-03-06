@@ -9,14 +9,14 @@ callback = Balanced::Callback.new(
 ).save
 
 % elif mode == 'response':
-#<Balanced::Callback:0x10e4080a8
+#<Balanced::Callback:0x1067fe7f0
  @attributes=
-  {"method"=>"post",
-   "url"=>"http://www.example.com/callback",
-   "links"=>{},
-   "revision"=>"1.1",
+  {"links"=>{},
+   "method"=>"post",
+   "href"=>"/callbacks/CB40OMtABWHqkGcBEYpWVnAd",
    "id"=>"CB40OMtABWHqkGcBEYpWVnAd",
-   "href"=>"/callbacks/CB40OMtABWHqkGcBEYpWVnAd"},
+   "url"=>"http://www.example.com/callback",
+   "revision"=>"1.1"},
  @hyperlinks={}>
 
 % endif

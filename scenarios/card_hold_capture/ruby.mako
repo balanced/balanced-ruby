@@ -12,38 +12,38 @@ debit = card_hold.capture(
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x10e383240
+#<Balanced::Debit:0x106779500
  @attributes=
-  {"transaction_number"=>"W093-013-7624",
-   "failure_reason_code"=>nil,
+  {"status"=>"succeeded",
    "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
-   "amount"=>5000,
    "links"=>
     {"source"=>"CC3ZsWHP2jMgvFrrzDzfZS0q",
      "order"=>nil,
      "dispute"=>nil,
      "customer"=>"CU3EOo1JQiusqvWMhgNOKCQW"},
-   "failure_reason"=>nil,
-   "description"=>"Some descriptive text for the debit in the dashboard",
-   "created_at"=>"2014-03-05T23:26:06.474907Z",
-   "id"=>"WD4fFQTpXCoEa4bBG4M3DilA",
-   "href"=>"/debits/WD4fFQTpXCoEa4bBG4M3DilA",
-   "meta"=>{"holding.for"=>"user1", "meaningful.key"=>"some.value"},
    "currency"=>"USD",
+   "created_at"=>"2014-03-05T23:26:06.474907Z",
+   "href"=>"/debits/WD4fFQTpXCoEa4bBG4M3DilA",
+   "description"=>"Some descriptive text for the debit in the dashboard",
+   "amount"=>5000,
+   "transaction_number"=>"W093-013-7624",
+   "id"=>"WD4fFQTpXCoEa4bBG4M3DilA",
+   "failure_reason_code"=>nil,
    "updated_at"=>"2014-03-05T23:26:07.432800Z",
-   "status"=>"succeeded"},
+   "meta"=>{"meaningful.key"=>"some.value", "holding.for"=>"user1"},
+   "failure_reason"=>nil},
  @hyperlinks=
   {"source"=>
-    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
-   "order"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-   "refunds"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
-   "dispute"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>,
    "events"=>
-    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+   "order"=>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+   "refunds"=>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+   "dispute"=>
+    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
    "customer"=>
-    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>}>
+    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>}>
 
 % endif
