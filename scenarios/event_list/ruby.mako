@@ -3,57 +3,104 @@ Balanced::Event.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
 events = Balanced::Event.all
 % elif mode == 'response':
-[#<Balanced::Event:0x007fdc9d1787a8
+[#<Balanced::Event:0x10e2abef8
   @attributes=
-   {"callback_statuses"=>
-     {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
+   {"links"=>{},
+    "occurred_at"=>"2014-03-05T23:25:33.823000Z",
+    "callback_statuses"=>
+     {"failed"=>0, "retrying"=>0, "pending"=>0, "succeeded"=>0},
+    "id"=>"EV7838c0f6a4bd11e3937f060e77eca47a",
+    "href"=>"/events/EV7838c0f6a4bd11e3937f060e77eca47a",
     "entity"=>
-     {"customers"=>
-       [{"address"=>
-          {"city"=>nil,
-           "country_code"=>nil,
-           "line1"=>nil,
-           "line2"=>nil,
-           "postal_code"=>nil,
-           "state"=>nil},
-         "business_name"=>nil,
-         "created_at"=>"2014-01-27T22:55:50.253066Z",
-         "dob_month"=>nil,
-         "dob_year"=>nil,
-         "ein"=>nil,
-         "email"=>nil,
-         "href"=>"/customers/CU1iDnBalzHoZg47Np92rNrV",
-         "id"=>"CU1iDnBalzHoZg47Np92rNrV",
-         "links"=>{"destination"=>nil, "source"=>nil},
-         "merchant_status"=>"no-match",
-         "meta"=>{},
-         "name"=>nil,
-         "phone"=>nil,
-         "ssn_last4"=>nil,
-         "updated_at"=>"2014-01-27T22:55:50.767858Z"}],
-      "links"=>
-       {"customers.bank_accounts"=>"/customers/{customers.id}/bank_accounts",
-        "customers.card_holds"=>"/customers/{customers.id}/card_holds",
-        "customers.cards"=>"/customers/{customers.id}/cards",
-        "customers.credits"=>"/customers/{customers.id}/credits",
+     {"links"=>
+       {"customers.card_holds"=>"/customers/{customers.id}/card_holds",
         "customers.debits"=>"/customers/{customers.id}/debits",
-        "customers.destination"=>"/resources/{customers.destination}",
+        "customers.transactions"=>"/customers/{customers.id}/transactions",
         "customers.orders"=>"/customers/{customers.id}/orders",
-        "customers.refunds"=>"/customers/{customers.id}/refunds",
-        "customers.reversals"=>"/customers/{customers.id}/reversals",
+        "customers.cards"=>"/customers/{customers.id}/cards",
+        "customers.bank_accounts"=>"/customers/{customers.id}/bank_accounts",
+        "customers.destination"=>"/resources/{customers.destination}",
+        "customers.external_accounts"=>
+         "/customers/{customers.id}/external_accounts",
         "customers.source"=>"/resources/{customers.source}",
-        "customers.transactions"=>"/customers/{customers.id}/transactions"}},
-    "href"=>"/events/EV2abbb98487a611e3a86f026ba7d31e6f",
-    "id"=>"EV2abbb98487a611e3a86f026ba7d31e6f",
-    "links"=>{},
-    "occurred_at"=>"2014-01-27T22:55:50.767000Z",
+        "customers.reversals"=>"/customers/{customers.id}/reversals",
+        "customers.refunds"=>"/customers/{customers.id}/refunds",
+        "customers.credits"=>"/customers/{customers.id}/credits"},
+      "customers"=>
+       [{"dob_month"=>2,
+         "ein"=>nil,
+         "links"=>{"destination"=>nil, "source"=>nil},
+         "name"=>"William Henry Cavendish III",
+         "merchant_status"=>"underwritten",
+         "email"=>"whc@example.org",
+         "created_at"=>"2014-03-05T23:25:33.699184Z",
+         "id"=>"CU3EOo1JQiusqvWMhgNOKCQW",
+         "href"=>"/customers/CU3EOo1JQiusqvWMhgNOKCQW",
+         "dob_year"=>1947,
+         "phone"=>"+16505551212",
+         "meta"=>{},
+         "updated_at"=>"2014-03-05T23:25:33.823693Z",
+         "business_name"=>nil,
+         "address"=>
+          {"country_code"=>"USA",
+           "line2"=>nil,
+           "line1"=>nil,
+           "state"=>nil,
+           "city"=>"Nowhere",
+           "postal_code"=>"90210"},
+         "ssn_last4"=>"xxxx"}]},
     "type"=>"account.created"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x007fdc9d17a968/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>,
+ #<Balanced::Event:0x10e2a7a10
+  @attributes=
+   {"links"=>{},
+    "occurred_at"=>"2014-03-05T23:25:34.017000Z",
+    "callback_statuses"=>
+     {"failed"=>0, "retrying"=>0, "pending"=>0, "succeeded"=>0},
+    "id"=>"EV78640b08a4bd11e3937f060e77eca47a",
+    "href"=>"/events/EV78640b08a4bd11e3937f060e77eca47a",
+    "entity"=>
+     {"bank_accounts"=>
+       [{"account_type"=>"CHECKING",
+         "fingerprint"=>"6ybvaLUrJy07phK2EQ7pVk",
+         "bank_name"=>"WELLS FARGO BANK NA",
+         "links"=>
+          {"customer"=>"CU3EOo1JQiusqvWMhgNOKCQW",
+           "bank_account_verification"=>nil},
+         "can_credit"=>true,
+         "name"=>"TEST-MERCHANT-BANK-ACCOUNT",
+         "account_number"=>"xxxxxxxxxxx5555",
+         "created_at"=>"2014-03-05T23:25:34.017557Z",
+         "id"=>"BA3EZthJjXI5E73dSq9j10sG",
+         "href"=>"/bank_accounts/BA3EZthJjXI5E73dSq9j10sG",
+         "can_debit"=>true,
+         "routing_number"=>"121042882",
+         "meta"=>{},
+         "updated_at"=>"2014-03-05T23:25:34.017561Z",
+         "address"=>
+          {"country_code"=>nil,
+           "line2"=>nil,
+           "line1"=>nil,
+           "state"=>nil,
+           "city"=>nil,
+           "postal_code"=>nil}}],
+      "links"=>
+       {"bank_accounts.bank_account_verifications"=>
+         "/bank_accounts/{bank_accounts.id}/verifications",
+        "bank_accounts.debits"=>"/bank_accounts/{bank_accounts.id}/debits",
+        "bank_accounts.bank_account_verification"=>
+         "/verifications/{bank_accounts.bank_account_verification}",
+        "bank_accounts.customer"=>"/customers/{bank_accounts.customer}",
+        "bank_accounts.credits"=>"/bank_accounts/{bank_accounts.id}/credits"}},
+    "type"=>"bank_account.created"},
+  @hyperlinks=
+   {"callbacks"=>
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>]
 
 % endif

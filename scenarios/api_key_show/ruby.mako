@@ -2,16 +2,16 @@
 Balanced::ApiKey.fetch
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
-card = Balanced::ApiKey.fetch('/api_keys/AK1vqjn1eEHXP0JYXrBrjH5c')
+card = Balanced::ApiKey.fetch('/api_keys/AK3zUFsQ8aJ3aae9ZylavXLp')
 % elif mode == 'response':
-#<Balanced::ApiKey:0x007fdc9d2d6e88
+#<Balanced::ApiKey:0x10dd77518
  @attributes=
-  {"created_at"=>"2014-01-27T22:56:01.641736Z",
-   "href"=>"/api_keys/AK1vqjn1eEHXP0JYXrBrjH5c",
-   "id"=>"AK1vqjn1eEHXP0JYXrBrjH5c",
-   "links"=>{},
+  {"links"=>{},
+   "created_at"=>"2014-03-05T23:25:38.010269Z",
+   "id"=>"AK3zUFsQ8aJ3aae9ZylavXLp",
+   "href"=>"/api_keys/AK3zUFsQ8aJ3aae9ZylavXLp",
    "meta"=>{}},
  @hyperlinks={}>
 

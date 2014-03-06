@@ -3,34 +3,34 @@ Balanced::Reversal.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
 reversals = Balanced::Reversal.all
 % elif mode == 'response':
-[#<Balanced::Reversal:0x007fdc9b129420
+[#<Balanced::Reversal:0x10e36b398
   @attributes=
-   {"amount"=>3000,
-    "created_at"=>"2014-01-27T22:58:21.214829Z",
-    "currency"=>"USD",
-    "description"=>"Reversal for Order #1111",
-    "failure_reason"=>nil,
+   {"transaction_number"=>"RV541-000-1984",
     "failure_reason_code"=>nil,
-    "href"=>"/reversals/RV42n8M9XZWna427oPDDi4RG",
-    "id"=>"RV42n8M9XZWna427oPDDi4RG",
-    "links"=>{"credit"=>"CR40neytmVG2HDBp1opfF7sY", "order"=>nil},
+    "amount"=>3000,
+    "links"=>{"credit"=>"CR5j27kuJPX6voI8aokUWsEG", "order"=>nil},
+    "failure_reason"=>nil,
+    "description"=>"Reversal for Order #1111",
+    "created_at"=>"2014-03-05T23:27:05.479351Z",
+    "id"=>"RV5h1LgxTlH1OtHAZEfQbvbH",
+    "href"=>"/reversals/RV5h1LgxTlH1OtHAZEfQbvbH",
     "meta"=>
-     {"fulfillment.item.condition"=>"OK",
-      "merchant.feedback"=>"positive",
-      "user.refund_reason"=>"not happy with product"},
-    "status"=>"succeeded",
-    "transaction_number"=>"RV219-169-0008",
-    "updated_at"=>"2014-01-27T22:58:22.190749Z"},
+     {"merchant.feedback"=>"positive",
+      "user.refund_reason"=>"not happy with product",
+      "fulfillment.item.condition"=>"OK"},
+    "currency"=>"USD",
+    "updated_at"=>"2014-03-05T23:27:06.287586Z",
+    "status"=>"succeeded"},
   @hyperlinks=
    {"credit"=>
-     #<Proc:0x007fdc9b103c48/lib/balanced/resources/resource.rb:60 (lambda)>,
-    "events"=>
-     #<Proc:0x007fdc9b0aef68/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
     "order"=>
-     #<Proc:0x007fdc9b09f4c8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    "events"=>
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>]
 
 % endif
