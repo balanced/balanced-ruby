@@ -3,49 +3,49 @@ Balanced::Debit.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
-debit = Balanced::Debit.fetch('/debits/WD2Fd3jVcMZEWyXHtG3U1LRM')
+debit = Balanced::Debit.fetch('/debits/WD4scrlw85LkeIEQqOx3AgUW')
 debit.description = 'New description for debit'
 debit.meta = {
-    'anykey' => 'valuegoeshere',
-    'facebook.id' => '1234567890'
+    'facebook.id' => '1234567890',
+    'anykey' => 'valuegoeshere'
 }
 debit.save
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007fdc9d1b2750
+#<Balanced::Debit:0x10e2f3370
  @attributes=
-  {"amount"=>5000,
-   "appears_on_statement_as"=>"BAL*Statement text",
-   "created_at"=>"2014-01-27T22:57:05.511023Z",
-   "currency"=>"USD",
-   "description"=>"New description for debit",
-   "failure_reason"=>nil,
+  {"transaction_number"=>"W915-429-9125",
    "failure_reason_code"=>nil,
-   "href"=>"/debits/WD2Fd3jVcMZEWyXHtG3U1LRM",
-   "id"=>"WD2Fd3jVcMZEWyXHtG3U1LRM",
+   "appears_on_statement_as"=>"BAL*Statement text",
+   "amount"=>5000,
    "links"=>
-    {"customer"=>nil,
-     "dispute"=>nil,
+    {"source"=>"CC4cbNzUmFqGrc1GmFpXp6fe",
      "order"=>nil,
-     "source"=>"CC2uc8iPDjgyxOXHVtnZloyI"},
-   "meta"=>{"anykey"=>"valuegoeshere", "facebook.id"=>"1234567890"},
-   "status"=>"succeeded",
-   "transaction_number"=>"W906-153-1439",
-   "updated_at"=>"2014-01-27T22:57:53.776191Z"},
+     "dispute"=>nil,
+     "customer"=>nil},
+   "failure_reason"=>nil,
+   "description"=>"New description for debit",
+   "created_at"=>"2014-03-05T23:26:17.612909Z",
+   "id"=>"WD4scrlw85LkeIEQqOx3AgUW",
+   "href"=>"/debits/WD4scrlw85LkeIEQqOx3AgUW",
+   "meta"=>{"facebook.id"=>"1234567890", "anykey"=>"valuegoeshere"},
+   "currency"=>"USD",
+   "updated_at"=>"2014-03-05T23:26:46.305817Z",
+   "status"=>"succeeded"},
  @hyperlinks=
-  {"customer"=>
-    #<Proc:0x007fdc9d1b1800/lib/balanced/utils.rb:6 (lambda)>,
-   "dispute"=>
-    #<Proc:0x007fdc9d1b0dd8/lib/balanced/utils.rb:6 (lambda)>,
-   "events"=>
-    #<Proc:0x007fdc9d1ab478/lib/balanced/utils.rb:6 (lambda)>,
+  {"source"=>
+    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
    "order"=>
-    #<Proc:0x007fdc9d1aa938/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
    "refunds"=>
-    #<Proc:0x007fdc9d1a85c0/lib/balanced/utils.rb:6 (lambda)>,
-   "source"=>
-    #<Proc:0x007fdc9d1a3228/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "dispute"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "events"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "customer"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>
 
 % endif

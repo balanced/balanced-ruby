@@ -3,35 +3,35 @@ Balanced::Refund.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
 refunds = Balanced::Refund.all
 % elif mode == 'response':
-[#<Balanced::Refund:0x007fdc9c09f788
+[#<Balanced::Refund:0x10e3e3d70
   @attributes=
-   {"amount"=>3000,
-    "created_at"=>"2014-01-27T22:58:11.375665Z",
-    "currency"=>"USD",
-    "description"=>"Refund for Order #1111",
-    "href"=>"/refunds/RF3RklPuFgsgI50UuYtr4g6I",
-    "id"=>"RF3RklPuFgsgI50UuYtr4g6I",
+   {"transaction_number"=>"RF145-678-0145",
+    "amount"=>3000,
     "links"=>
-     {"debit"=>"WD3MKNxNTKBGgA7mX50yogiu", "dispute"=>nil, "order"=>nil},
+     {"debit"=>"WD57kmfV9Cgc0MiZkHOmFU1z", "order"=>nil, "dispute"=>nil},
+    "description"=>"Refund for Order #1111",
+    "created_at"=>"2014-03-05T23:26:58.437383Z",
+    "id"=>"RF5c71x7GALUPPdyexP4Weca",
+    "href"=>"/refunds/RF5c71x7GALUPPdyexP4Weca",
     "meta"=>
-     {"fulfillment.item.condition"=>"OK",
-      "merchant.feedback"=>"positive",
-      "user.refund_reason"=>"not happy with product"},
-    "status"=>"succeeded",
-    "transaction_number"=>"RF383-088-7077",
-    "updated_at"=>"2014-01-27T22:58:12.115131Z"},
+     {"merchant.feedback"=>"positive",
+      "user.refund_reason"=>"not happy with product",
+      "fulfillment.item.condition"=>"OK"},
+    "currency"=>"USD",
+    "updated_at"=>"2014-03-05T23:26:58.984962Z",
+    "status"=>"succeeded"},
   @hyperlinks=
    {"debit"=>
-     #<Proc:0x007fdc9c097d58/lib/balanced/resources/resource.rb:60 (lambda)>,
-    "dispute"=>
-     #<Proc:0x007fdc9c097290/lib/balanced/utils.rb:6 (lambda)>,
-    "events"=>
-     #<Proc:0x007fdc9c0945b8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
     "order"=>
-     #<Proc:0x007fdc9c08c890/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    "dispute"=>
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+    "events"=>
+     #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>]
 
 % endif

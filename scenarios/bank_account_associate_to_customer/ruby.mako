@@ -3,47 +3,47 @@ Balanced::Customer.add_bank_account
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
-customer = Balanced::Customer.fetch('/customers/CU3eeasZ9yQ86uzzIYZkrPGg')
+customer = Balanced::Customer.fetch('/customers/CU4EeI9UPzRcOo2C3j1qFjQj')
 customer.add_bank_account("")
 
 % elif mode == 'response':
-#<Balanced::BankAccount:0x007fdc9d2e7f30
+#<Balanced::BankAccount:0x10dd64378
  @attributes=
-  {"account_number"=>"xxxxxx0001",
-   "account_type"=>"checking",
-   "address"=>
-    {"city"=>nil,
-     "country_code"=>nil,
-     "line1"=>nil,
-     "line2"=>nil,
-     "postal_code"=>nil,
-     "state"=>nil},
-   "bank_name"=>"BANK OF AMERICA, N.A.",
-   "can_credit"=>true,
-   "can_debit"=>false,
-   "created_at"=>"2014-01-27T22:57:47.772481Z",
+  {"account_type"=>"checking",
    "fingerprint"=>
     "5f0ba9fa3f1122ef13b944a40abfe44e7eba9e16934e64200913cb4c402ace14",
-   "href"=>"/bank_accounts/BA3qNbYRqFM0Q7MXn3IcjGl0",
-   "id"=>"BA3qNbYRqFM0Q7MXn3IcjGl0",
+   "bank_name"=>"BANK OF AMERICA, N.A.",
    "links"=>
-    {"bank_account_verification"=>nil, "customer"=>"CU3eeasZ9yQ86uzzIYZkrPGg"},
-   "meta"=>{},
+    {"customer"=>"CU4EeI9UPzRcOo2C3j1qFjQj", "bank_account_verification"=>nil},
+   "can_credit"=>true,
    "name"=>"Johann Bernoulli",
+   "account_number"=>"xxxxxx0001",
+   "created_at"=>"2014-03-05T23:26:41.766297Z",
+   "id"=>"BA4JCiiAb4alhWMlZSv9POAU",
+   "href"=>"/bank_accounts/BA4JCiiAb4alhWMlZSv9POAU",
+   "can_debit"=>false,
    "routing_number"=>"121000358",
-   "updated_at"=>"2014-01-27T22:57:48.515195Z"},
+   "meta"=>{},
+   "updated_at"=>"2014-03-05T23:26:42.260213Z",
+   "address"=>
+    {"country_code"=>nil,
+     "line2"=>nil,
+     "line1"=>nil,
+     "state"=>nil,
+     "city"=>nil,
+     "postal_code"=>nil}},
  @hyperlinks=
-  {"bank_account_verification"=>
-    #<Proc:0x007fdc9d2e6f40/lib/balanced/utils.rb:6 (lambda)>,
-   "bank_account_verifications"=>
-    #<Proc:0x007fdc9d2e5000/lib/balanced/utils.rb:6 (lambda)>,
-   "credits"=>
-    #<Proc:0x007fdc9d2ef000/lib/balanced/utils.rb:6 (lambda)>,
-   "customer"=>
-    #<Proc:0x007fdc9b0271a8/lib/balanced/resources/resource.rb:60 (lambda)>,
+  {"bank_account_verifications"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
    "debits"=>
-    #<Proc:0x007fdc9b02e570/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "customer"=>
+    #<Proc:0x000000010dd8ce90@./lib/balanced/resources/resource.rb:60>,
+   "bank_account_verification"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "credits"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>
 
 % endif

@@ -3,9 +3,9 @@ Balanced::Customer.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
 
-customer = Balanced::Customer.fetch('/customers/CU33Y4cut21qu1d1lGYDBseQ')
+customer = Balanced::Customer.fetch('/customers/CU4xpIqZ7mf2fuLpBoXgoG7m')
 customer.email = 'email@newdomain.com'
 customer.meta = {
     'shipping-preference' => 'ground'
@@ -13,52 +13,54 @@ customer.meta = {
 customer.save
 
 % elif mode == 'response':
-#<Balanced::Customer:0x007fdc9d2cd360
+#<Balanced::Customer:0x10e39f530
  @attributes=
-  {"address"=>
-    {"city"=>nil,
-     "country_code"=>nil,
-     "line1"=>nil,
-     "line2"=>nil,
-     "postal_code"=>"48120",
-     "state"=>nil},
-   "business_name"=>nil,
-   "created_at"=>"2014-01-27T22:57:27.459187Z",
-   "dob_month"=>7,
-   "dob_year"=>1963,
+  {"dob_month"=>7,
    "ein"=>nil,
-   "email"=>"email@newdomain.com",
-   "href"=>"/customers/CU33Y4cut21qu1d1lGYDBseQ",
-   "id"=>"CU33Y4cut21qu1d1lGYDBseQ",
    "links"=>{"destination"=>nil, "source"=>nil},
-   "merchant_status"=>"underwritten",
-   "meta"=>{"shipping-preference"=>"ground"},
    "name"=>"Henry Ford",
+   "merchant_status"=>"underwritten",
+   "email"=>"email@newdomain.com",
+   "created_at"=>"2014-03-05T23:26:30.913960Z",
+   "id"=>"CU4xpIqZ7mf2fuLpBoXgoG7m",
+   "href"=>"/customers/CU4xpIqZ7mf2fuLpBoXgoG7m",
+   "dob_year"=>1963,
    "phone"=>nil,
-   "ssn_last4"=>nil,
-   "updated_at"=>"2014-01-27T22:57:34.512310Z"},
+   "meta"=>{"shipping-preference"=>"ground"},
+   "updated_at"=>"2014-03-05T23:26:35.592876Z",
+   "business_name"=>nil,
+   "address"=>
+    {"country_code"=>nil,
+     "line2"=>nil,
+     "line1"=>nil,
+     "state"=>nil,
+     "city"=>nil,
+     "postal_code"=>"48120"},
+   "ssn_last4"=>nil},
  @hyperlinks=
-  {"bank_accounts"=>
-    #<Proc:0x007fdc9d2c74d8/lib/balanced/utils.rb:6 (lambda)>,
-   "card_holds"=>
-    #<Proc:0x007fdc9d2c5480/lib/balanced/utils.rb:6 (lambda)>,
-   "cards"=>
-    #<Proc:0x007fdc9d2bf260/lib/balanced/utils.rb:6 (lambda)>,
-   "credits"=>
-    #<Proc:0x007fdc9d2bd2d0/lib/balanced/utils.rb:6 (lambda)>,
-   "debits"=>
-    #<Proc:0x007fdc9d28f8f8/lib/balanced/utils.rb:6 (lambda)>,
+  {"reversals"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
    "destination"=>
-    #<Proc:0x007fdc9d28ed40/lib/balanced/utils.rb:6 (lambda)>,
-   "orders"=>
-    #<Proc:0x007fdc9d28c978/lib/balanced/utils.rb:6 (lambda)>,
-   "refunds"=>
-    #<Proc:0x007fdc9d289ea8/lib/balanced/utils.rb:6 (lambda)>,
-   "reversals"=>
-    #<Proc:0x007fdc9d287748/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "bank_accounts"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "card_holds"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "debits"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
    "source"=>
-    #<Proc:0x007fdc9d285740/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
    "transactions"=>
-    #<Proc:0x007fdc9d2b4608/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "refunds"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "external_accounts"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "credits"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "orders"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>,
+   "cards"=>
+    #<Proc:0x000000010dd75010/lib/balanced/utils.rb:6>}>
 
 % endif
