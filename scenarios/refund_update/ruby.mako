@@ -3,42 +3,43 @@ Balanced::Refund.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
-refund = Balanced::Refund.fetch('/refunds/RF5c71x7GALUPPdyexP4Weca')
+refund = Balanced::Refund.fetch('/refunds/RF6HsnqferSuES9VZEWrthG2')
 refund.description = 'update this description'
 refund.meta = {
-    'user.refund.count' => '3',
+    'refund.reason' => 'user not happy with product',
     'user.notes' => 'very polite on the phone',
-    'refund.reason' => 'user not happy with product'
+    'user.refund.count' => '3'
 }
 refund.save
 
 % elif mode == 'response':
-#<Balanced::Refund:0x1067a0920
+#<Balanced::Refund:0x007ff2bd980668
  @attributes=
-  {"status"=>"succeeded",
-   "links"=>
-    {"debit"=>"WD57kmfV9Cgc0MiZkHOmFU1z", "order"=>nil, "dispute"=>nil},
+  {"amount"=>3000,
+   "created_at"=>"2014-03-06T19:23:46.176138Z",
    "currency"=>"USD",
-   "created_at"=>"2014-03-05T23:26:58.437383Z",
-   "href"=>"/refunds/RF5c71x7GALUPPdyexP4Weca",
    "description"=>"update this description",
-   "amount"=>3000,
-   "transaction_number"=>"RF145-678-0145",
-   "id"=>"RF5c71x7GALUPPdyexP4Weca",
-   "updated_at"=>"2014-03-05T23:27:03.196577Z",
+   "href"=>"/refunds/RF6HsnqferSuES9VZEWrthG2",
+   "id"=>"RF6HsnqferSuES9VZEWrthG2",
+   "links"=>
+    {"debit"=>"WD6BKYhbRzlRhfKSE1DcpqS5", "dispute"=>nil, "order"=>nil},
    "meta"=>
-    {"user.refund.count"=>"3",
+    {"refund.reason"=>"user not happy with product",
      "user.notes"=>"very polite on the phone",
-     "refund.reason"=>"user not happy with product"}},
+     "user.refund.count"=>"3"},
+   "status"=>"succeeded",
+   "transaction_number"=>"RF348-549-7723",
+   "updated_at"=>"2014-03-06T19:23:53.123358Z"},
  @hyperlinks=
-  {"debit"=>#<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>,
-   "order"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "events"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+  {"debit"=>
+    #<Proc:0x007ff2bd97a8a8/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>}>
+    #<Proc:0x007ff2bd97b398/lib/balanced/utils.rb:6 (lambda)>,
+   "events"=>
+    #<Proc:0x007ff2bd9788c8/lib/balanced/utils.rb:6 (lambda)>,
+   "order"=>
+    #<Proc:0x007ff2bd973580/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -2,21 +2,22 @@
 Balanced::Callback.new
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 callback = Balanced::Callback.new(
+  :method => 'post',
   :url => 'http://www.example.com/callback'
 ).save
 
 % elif mode == 'response':
-#<Balanced::Callback:0x1067fe7f0
+#<Balanced::Callback:0x007ff2bd972b08
  @attributes=
-  {"links"=>{},
+  {"href"=>"/callbacks/CB5pnz4XnaDpRFGlNMb6u50R",
+   "id"=>"CB5pnz4XnaDpRFGlNMb6u50R",
+   "links"=>{},
    "method"=>"post",
-   "href"=>"/callbacks/CB40OMtABWHqkGcBEYpWVnAd",
-   "id"=>"CB40OMtABWHqkGcBEYpWVnAd",
-   "url"=>"http://www.example.com/callback",
-   "revision"=>"1.1"},
+   "revision"=>"1.1",
+   "url"=>"http://www.example.com/callback"},
  @hyperlinks={}>
 
 % endif

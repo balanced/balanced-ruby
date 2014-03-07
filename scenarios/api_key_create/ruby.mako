@@ -3,19 +3,19 @@ Balanced::ApiKey.new
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 key = Balanced::ApiKey.new.save
 
 % elif mode == 'response':
-#<Balanced::ApiKey:0x1061b2388
+#<Balanced::ApiKey:0x007ff2bd9dc8a0
  @attributes=
-  {"links"=>{},
-   "created_at"=>"2014-03-05T23:25:38.010269Z",
-   "href"=>"/api_keys/AK3zUFsQ8aJ3aae9ZylavXLp",
-   "secret"=>"ak-test-L4Cs4roaWqT6O5EllIqqFQIiT8YB923X",
-   "id"=>"AK3zUFsQ8aJ3aae9ZylavXLp",
-   "meta"=>{}},
+  {"created_at"=>"2014-03-06T19:22:18.256643Z",
+   "href"=>"/api_keys/AK4Vt1mJyCtjdSiGgqAebarR",
+   "id"=>"AK4Vt1mJyCtjdSiGgqAebarR",
+   "links"=>{},
+   "meta"=>{},
+   "secret"=>"ak-test-4bQUCg96rUwLV8FZXSTeq8WUSqROO9yT"},
  @hyperlinks={}>
 
 % endif
