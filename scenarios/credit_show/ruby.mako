@@ -3,39 +3,39 @@ Balanced::Credit.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
-credit = Balanced::Credit.fetch('/credits/CR4wyLukORa0TXhCYtjZrfw5')
+credit = Balanced::Credit.fetch('/credits/CR5XXPwA1ckaTDSIg3593sEx')
 % elif mode == 'response':
-#<Balanced::Credit:0x106787c68
+#<Balanced::Credit:0x007ff2bd99fb08
  @attributes=
-  {"status"=>"succeeded",
+  {"amount"=>5000,
    "appears_on_statement_as"=>"example.com",
-   "links"=>
-    {"order"=>nil,
-     "customer"=>"CU4lcDzIlpDxgcuzHkzC4QHS",
-     "destination"=>"BA4osUR5dW1HQkqoxl65lfNe"},
+   "created_at"=>"2014-03-06T19:23:08.771807Z",
    "currency"=>"USD",
-   "created_at"=>"2014-03-05T23:26:24.160132Z",
-   "href"=>"/credits/CR4wyLukORa0TXhCYtjZrfw5",
    "description"=>nil,
-   "amount"=>5000,
-   "transaction_number"=>"CR858-193-7792",
-   "id"=>"CR4wyLukORa0TXhCYtjZrfw5",
+   "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "updated_at"=>"2014-03-05T23:26:24.536046Z",
+   "href"=>"/credits/CR5XXPwA1ckaTDSIg3593sEx",
+   "id"=>"CR5XXPwA1ckaTDSIg3593sEx",
+   "links"=>
+    {"customer"=>"CU5LVuaZG7gURfbA7TuMNoZa",
+     "destination"=>"BA5OqdmH8URGBYpilMITWsNW",
+     "order"=>nil},
    "meta"=>{},
-   "failure_reason"=>nil},
+   "status"=>"succeeded",
+   "transaction_number"=>"CR570-678-5174",
+   "updated_at"=>"2014-03-06T19:23:09.525306Z"},
  @hyperlinks=
-  {"reversals"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "events"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "order"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "customer"=>
-    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>,
+  {"customer"=>
+    #<Proc:0x007ff2bd99d150/lib/balanced/resources/resource.rb:60 (lambda)>,
    "destination"=>
-    #<Proc:0x0000000106184c80@./lib/balanced/resources/resource.rb:60>}>
+    #<Proc:0x007ff2bd98b630/lib/balanced/resources/resource.rb:60 (lambda)>,
+   "events"=>
+    #<Proc:0x007ff2bd988ae8/lib/balanced/utils.rb:6 (lambda)>,
+   "order"=>
+    #<Proc:0x007ff2bd995158/lib/balanced/utils.rb:6 (lambda)>,
+   "reversals"=>
+    #<Proc:0x007ff2bd994780/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

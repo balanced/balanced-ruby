@@ -3,50 +3,50 @@ Balanced::BankAccount.new
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 bank_account = Balanced::BankAccount.new(
-  :name => 'Johann Bernoulli',
+  :account_number => '9900000001',
   :account_type => 'checking',
-  :routing_number => '121000358',
-  :account_number => '9900000001'
+  :name => 'Johann Bernoulli',
+  :routing_number => '121000358'
 ).save
 
 % elif mode == 'response':
-#<Balanced::BankAccount:0x1060da2f8
+#<Balanced::BankAccount:0x007ff2bd9617b8
  @attributes=
-  {"address"=>
-    {"line2"=>nil,
-     "line1"=>nil,
-     "country_code"=>nil,
-     "postal_code"=>nil,
-     "city"=>nil,
-     "state"=>nil},
-   "can_debit"=>false,
-   "name"=>"Johann Bernoulli",
-   "links"=>{"bank_account_verification"=>nil, "customer"=>nil},
-   "bank_name"=>"BANK OF AMERICA, N.A.",
+  {"account_number"=>"xxxxxx0001",
    "account_type"=>"checking",
-   "created_at"=>"2014-03-05T23:26:41.766297Z",
-   "routing_number"=>"121000358",
-   "href"=>"/bank_accounts/BA4JCiiAb4alhWMlZSv9POAU",
+   "address"=>
+    {"city"=>nil,
+     "country_code"=>nil,
+     "line1"=>nil,
+     "line2"=>nil,
+     "postal_code"=>nil,
+     "state"=>nil},
+   "bank_name"=>"BANK OF AMERICA, N.A.",
    "can_credit"=>true,
-   "id"=>"BA4JCiiAb4alhWMlZSv9POAU",
+   "can_debit"=>false,
+   "created_at"=>"2014-03-06T19:23:27.876147Z",
    "fingerprint"=>
     "5f0ba9fa3f1122ef13b944a40abfe44e7eba9e16934e64200913cb4c402ace14",
-   "updated_at"=>"2014-03-05T23:26:41.766300Z",
+   "href"=>"/bank_accounts/BA6bLGpQZPOiTNRxF24rMd9m",
+   "id"=>"BA6bLGpQZPOiTNRxF24rMd9m",
+   "links"=>{"bank_account_verification"=>nil, "customer"=>nil},
    "meta"=>{},
-   "account_number"=>"xxxxxx0001"},
+   "name"=>"Johann Bernoulli",
+   "routing_number"=>"121000358",
+   "updated_at"=>"2014-03-06T19:23:27.876150Z"},
  @hyperlinks=
   {"bank_account_verification"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "credits"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "debits"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "customer"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+    #<Proc:0x007ff2bd960570/lib/balanced/utils.rb:6 (lambda)>,
    "bank_account_verifications"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>}>
+    #<Proc:0x007ff2bd959fb8/lib/balanced/utils.rb:6 (lambda)>,
+   "credits"=>
+    #<Proc:0x007ff2bd953a00/lib/balanced/utils.rb:6 (lambda)>,
+   "customer"=>
+    #<Proc:0x007ff2bd952e98/lib/balanced/utils.rb:6 (lambda)>,
+   "debits"=>
+    #<Proc:0x007ff2bd950bc0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

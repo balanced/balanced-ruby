@@ -3,45 +3,45 @@ Balanced::Card.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
-card = Balanced::Card.fetch('/cards/CC4cbNzUmFqGrc1GmFpXp6fe')
+card = Balanced::Card.fetch('/cards/CC5Buki6e4Kg4bDVZ3OSfQ8O')
 % elif mode == 'response':
-#<Balanced::Card:0x10666b960
+#<Balanced::Card:0x007ff2bc8c7a38
  @attributes=
-  {"cvv"=>"xxx",
-   "avs_street_match"=>nil,
-   "address"=>
-    {"line2"=>nil,
-     "line1"=>nil,
+  {"address"=>
+    {"city"=>nil,
      "country_code"=>nil,
+     "line1"=>nil,
+     "line2"=>nil,
      "postal_code"=>nil,
-     "city"=>nil,
      "state"=>nil},
-   "number"=>"xxxxxxxxxxxx5100",
-   "cvv_match"=>"yes",
-   "avs_result"=>nil,
-   "name"=>nil,
-   "links"=>{"customer"=>nil},
-   "created_at"=>"2014-03-05T23:26:12.047635Z",
-   "brand"=>"MasterCard",
-   "href"=>"/cards/CC4cbNzUmFqGrc1GmFpXp6fe",
-   "id"=>"CC4cbNzUmFqGrc1GmFpXp6fe",
    "avs_postal_match"=>nil,
-   "is_verified"=>true,
+   "avs_result"=>nil,
+   "avs_street_match"=>nil,
+   "brand"=>"MasterCard",
+   "created_at"=>"2014-03-06T19:22:55.617351Z",
+   "cvv"=>"xxx",
+   "cvv_match"=>"yes",
+   "cvv_result"=>"Match",
+   "expiration_month"=>12,
+   "expiration_year"=>2020,
    "fingerprint"=>
     "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-   "expiration_year"=>2020,
-   "expiration_month"=>12,
-   "updated_at"=>"2014-03-05T23:26:12.047639Z",
+   "href"=>"/cards/CC5Buki6e4Kg4bDVZ3OSfQ8O",
+   "id"=>"CC5Buki6e4Kg4bDVZ3OSfQ8O",
+   "is_verified"=>true,
+   "links"=>{"customer"=>nil},
    "meta"=>{},
-   "cvv_result"=>"Match"},
+   "name"=>nil,
+   "number"=>"xxxxxxxxxxxx5100",
+   "updated_at"=>"2014-03-06T19:22:55.617354Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
-   "debits"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>,
+    #<Proc:0x007ff2bc8c47e8/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x000000010616ce00/lib/balanced/utils.rb:6>}>
+    #<Proc:0x007ff2bc8be3c0/lib/balanced/utils.rb:6 (lambda)>,
+   "debits"=>
+    #<Proc:0x007ff2bc8bd880/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
