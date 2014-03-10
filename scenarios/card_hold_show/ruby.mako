@@ -3,34 +3,36 @@ Balanced::CardHold.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
-card_hold = Balanced::CardHold.fetch('/card_holds/HL2bT9uMRkTZkfSPmA2pBD9S')
+card_hold = Balanced::CardHold.fetch('/card_holds/HL5wAfv8JaMsEn9idXrLZZZT')
 
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fdc9d271808
+#<Balanced::CardHold:0x007ff2bdb73e20
  @attributes=
   {"amount"=>5000,
-   "created_at"=>"2014-01-27T22:56:39.379941Z",
+   "created_at"=>"2014-03-06T19:22:44.421804Z",
    "currency"=>"USD",
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "expires_at"=>"2014-02-03T22:56:39.876902Z",
+   "expires_at"=>"2014-03-13T19:22:44.661981Z",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/card_holds/HL2bT9uMRkTZkfSPmA2pBD9S",
-   "id"=>"HL2bT9uMRkTZkfSPmA2pBD9S",
-   "links"=>{"card"=>"CC2abDOQVm5aNFhHpcRvWS02", "debit"=>nil},
+   "href"=>"/card_holds/HL5wAfv8JaMsEn9idXrLZZZT",
+   "id"=>"HL5wAfv8JaMsEn9idXrLZZZT",
+   "links"=>{"card"=>"CC5nCSU0yFp3qxR4p6UZST7y", "debit"=>nil},
    "meta"=>{},
-   "transaction_number"=>"HL500-842-5492",
-   "updated_at"=>"2014-01-27T22:56:40.238140Z"},
+   "status"=>"succeeded",
+   "transaction_number"=>"HL116-606-6128",
+   "updated_at"=>"2014-03-06T19:22:44.816617Z",
+   "voided_at"=>nil},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fdc9d27bb28/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007ff2bdb71dc8/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fdc9d27ab10/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007ff2bdb70c48/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fdc9d2b7dd0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007ff2bdb7a450/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fdc9d282180/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007ff2bdb78da8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

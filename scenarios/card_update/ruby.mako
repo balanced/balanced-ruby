@@ -3,9 +3,9 @@ Balanced::Card.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
-card = Balanced::Card.fetch('/cards/CC2uc8iPDjgyxOXHVtnZloyI')
+card = Balanced::Card.fetch('/cards/CC5Buki6e4Kg4bDVZ3OSfQ8O')
 card.meta = {
   'facebook.user_id' => '0192837465',
   'my-own-customer-id' => '12345',
@@ -14,7 +14,7 @@ card.meta = {
 card.save
 
 % elif mode == 'response':
-#<Balanced::Card:0x007fdc9c2f0438
+#<Balanced::Card:0x007ff2bda0dd88
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -27,16 +27,16 @@ card.save
    "avs_result"=>nil,
    "avs_street_match"=>nil,
    "brand"=>"MasterCard",
-   "created_at"=>"2014-01-27T22:56:55.656375Z",
-   "cvv"=>nil,
-   "cvv_match"=>nil,
-   "cvv_result"=>nil,
+   "created_at"=>"2014-03-06T19:22:55.617351Z",
+   "cvv"=>"xxx",
+   "cvv_match"=>"yes",
+   "cvv_result"=>"Match",
    "expiration_month"=>12,
    "expiration_year"=>2020,
    "fingerprint"=>
     "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-   "href"=>"/cards/CC2uc8iPDjgyxOXHVtnZloyI",
-   "id"=>"CC2uc8iPDjgyxOXHVtnZloyI",
+   "href"=>"/cards/CC5Buki6e4Kg4bDVZ3OSfQ8O",
+   "id"=>"CC5Buki6e4Kg4bDVZ3OSfQ8O",
    "is_verified"=>true,
    "links"=>{"customer"=>nil},
    "meta"=>
@@ -45,13 +45,13 @@ card.save
      "twitter.id"=>"1234987650"},
    "name"=>nil,
    "number"=>"xxxxxxxxxxxx5100",
-   "updated_at"=>"2014-01-27T22:57:02.195769Z"},
+   "updated_at"=>"2014-03-06T19:22:59.186980Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fdc9c2f9e70/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007ff2bda075a0/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fdc9c2f9498/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007ff2bda06628/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fdc9c3035b0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007ff2bc142498/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

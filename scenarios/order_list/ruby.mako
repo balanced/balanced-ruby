@@ -2,15 +2,15 @@
 Balanced::Order.all
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 orders = Balanced::Order.all
 % elif mode == 'response':
-[#<Balanced::Order:0x007fdc9c1a8ff8
+[#<Balanced::Order:0x007ff2bdaf12e0
   @attributes=
    {"amount"=>0,
     "amount_escrowed"=>0,
-    "created_at"=>"2014-01-27T22:58:01.115720Z",
+    "created_at"=>"2014-03-06T19:23:39.207291Z",
     "currency"=>"USD",
     "delivery_address"=>
      {"city"=>nil,
@@ -20,23 +20,23 @@ orders = Balanced::Order.all
       "postal_code"=>nil,
       "state"=>nil},
     "description"=>"Order #12341234",
-    "href"=>"/orders/OR3FOihZa7lMHdAP5p8BJZVY",
-    "id"=>"OR3FOihZa7lMHdAP5p8BJZVY",
-    "links"=>{"merchant"=>"CU3eeasZ9yQ86uzzIYZkrPGg"},
+    "href"=>"/orders/OR6wcEVkOymvs4PairiGEcIx",
+    "id"=>"OR6wcEVkOymvs4PairiGEcIx",
+    "links"=>{"merchant"=>"CU64R7DS6DwuXYVg9RTskFK8"},
     "meta"=>{},
-    "updated_at"=>"2014-01-27T22:58:01.115723Z"},
+    "updated_at"=>"2014-03-06T19:23:39.207294Z"},
   @hyperlinks=
    {"buyers"=>
-     #<Proc:0x007fdc9c1a2b30/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007ff2bdafafe8/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fdc9c198b30/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007ff2bc93fda8/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fdc9c19a0c0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007ff2bc933288/lib/balanced/utils.rb:6 (lambda)>,
     "merchant"=>
-     #<Proc:0x007fdc9c198108/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007ff2bc9317d0/lib/balanced/resources/resource.rb:60 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fdc9c1916a0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007ff2bc92b6f0/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007fdc9c18b958/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007ff2bc9284a0/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

@@ -2,9 +2,9 @@
 Balanced::Credit.reverse
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1kvvievk0Qqw5wQPsrlM9g7wQwNe62cyc')
+Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
-reversal = Balanced::Credit.fetch('/credits/CR40neytmVG2HDBp1opfF7sY')
+reversal = Balanced::Credit.fetch('/credits/CR6NpuEtezCdLTYngDrSEODv')
 credit.reverse(
   :amount => 3000,
   :description => 'Reversal for Order #1111',
@@ -16,30 +16,30 @@ credit.reverse(
 )
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x007fdc9b8048d0
+#<Balanced::Reversal:0x007ff2bd951278
  @attributes=
   {"amount"=>3000,
-   "created_at"=>"2014-01-27T22:58:21.214829Z",
+   "created_at"=>"2014-03-06T19:23:55.596399Z",
    "currency"=>"USD",
    "description"=>"Reversal for Order #1111",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/reversals/RV42n8M9XZWna427oPDDi4RG",
-   "id"=>"RV42n8M9XZWna427oPDDi4RG",
-   "links"=>{"credit"=>"CR40neytmVG2HDBp1opfF7sY", "order"=>nil},
+   "href"=>"/reversals/RV6OCxJ1UhkG84is6H9PHjkZ",
+   "id"=>"RV6OCxJ1UhkG84is6H9PHjkZ",
+   "links"=>{"credit"=>"CR6NpuEtezCdLTYngDrSEODv", "order"=>nil},
    "meta"=>
     {"fulfillment.item.condition"=>"OK",
      "merchant.feedback"=>"positive",
      "user.refund_reason"=>"not happy with product"},
    "status"=>"succeeded",
-   "transaction_number"=>"RV219-169-0008",
-   "updated_at"=>"2014-01-27T22:58:22.190749Z"},
+   "transaction_number"=>"RV542-861-3670",
+   "updated_at"=>"2014-03-06T19:23:56.470321Z"},
  @hyperlinks=
   {"credit"=>
-    #<Proc:0x007fdc9b190b20/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007ff2bd94b350/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fdc9b188380/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007ff2bd948c90/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fdc9b1818c8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007ff2bd9480b0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -51,7 +51,7 @@ take and nap and wake up, then it should be done :/
       its(:href) { should match "/disputes/#{ @dispute.id }" }
       its(:status) { should match "pending" }
       its(:reason) { should match "fraud" }
-      its(:amount) { should eq -5566 }
+      its(:amount) { should eq 5566 }
     end
 
     describe '#transaction', :vcr do
