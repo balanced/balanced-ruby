@@ -1,1 +1,1 @@
-Balanced::Customer.add_card
+Balanced::Customer.associate_to_customer

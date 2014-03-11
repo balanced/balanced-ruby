@@ -13,7 +13,7 @@ customer.meta = {
 customer.save
 
 % elif mode == 'response':
-#<Balanced::Customer:0x007ff2bdac6e78
+#<Balanced::Customer:0x007fa4e48eccc8
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -39,28 +39,28 @@ customer.save
    "updated_at"=>"2014-03-06T19:23:20.140160Z"},
  @hyperlinks=
   {"bank_accounts"=>
-    #<Proc:0x007ff2bdabe8e0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48d4380/lib/balanced/utils.rb:6 (lambda)>,
    "card_holds"=>
-    #<Proc:0x007ff2bdab78b0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48e66c0/lib/balanced/utils.rb:6 (lambda)>,
    "cards"=>
-    #<Proc:0x007ff2bdaafd40/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48d28a0/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007ff2bdaad658/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48d10b8/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007ff2bdaa7370/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48df500/lib/balanced/utils.rb:6 (lambda)>,
    "destination"=>
-    #<Proc:0x007ff2bdaa65b0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48de6a0/lib/balanced/utils.rb:6 (lambda)>,
    "external_accounts"=>
-    #<Proc:0x007ff2bda9e3b0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48cfc68/lib/balanced/utils.rb:6 (lambda)>,
    "orders"=>
-    #<Proc:0x007ff2bda9da78/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48cd3f0/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007ff2bda940b8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48cafd8/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007ff2bc8ccd30/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48c01f0/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007ff2bc8c5440/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48c2bd0/lib/balanced/utils.rb:6 (lambda)>,
    "transactions"=>
-    #<Proc:0x007ff2bc8c5ff8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e3213df8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

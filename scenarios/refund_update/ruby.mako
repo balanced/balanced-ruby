@@ -15,7 +15,7 @@ refund.meta = {
 refund.save
 
 % elif mode == 'response':
-#<Balanced::Refund:0x007ff2bd980668
+#<Balanced::Refund:0x007fa4e4a31b10
  @attributes=
   {"amount"=>3000,
    "created_at"=>"2014-03-06T19:23:46.176138Z",
@@ -34,12 +34,12 @@ refund.save
    "updated_at"=>"2014-03-06T19:23:53.123358Z"},
  @hyperlinks=
   {"debit"=>
-    #<Proc:0x007ff2bd97a8a8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa4e4a2af90/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x007ff2bd97b398/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e4a2b620/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007ff2bd9788c8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e4a22bb0/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007ff2bd973580/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e4a22ca0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

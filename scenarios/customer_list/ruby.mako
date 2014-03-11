@@ -7,7 +7,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 customers = Balanced::Customer.all
 % elif mode == 'response':
-[#<Balanced::Customer:0x007ff2be108840
+[#<Balanced::Customer:0x007fa4e49cb388
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -33,30 +33,30 @@ customers = Balanced::Customer.all
     "updated_at"=>"2014-03-06T19:23:16.724050Z"},
   @hyperlinks=
    {"bank_accounts"=>
-     #<Proc:0x007ff2be0fa740/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49c84d0/lib/balanced/utils.rb:6 (lambda)>,
     "card_holds"=>
-     #<Proc:0x007ff2be0e98f0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49c2a58/lib/balanced/utils.rb:6 (lambda)>,
     "cards"=>
-     #<Proc:0x007ff2bd881348/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49c0410/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007ff2bd864ba8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49ba8d0/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007ff2bd861fe8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49b8378/lib/balanced/utils.rb:6 (lambda)>,
     "destination"=>
-     #<Proc:0x007ff2bd8603a0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49b3e18/lib/balanced/utils.rb:6 (lambda)>,
     "external_accounts"=>
-     #<Proc:0x007ff2bd850ba8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49b0bc8/lib/balanced/utils.rb:6 (lambda)>,
     "orders"=>
-     #<Proc:0x007ff2bd8472d8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49aa728/lib/balanced/utils.rb:6 (lambda)>,
     "refunds"=>
-     #<Proc:0x007ff2bc8a1d10/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49a81d0/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007ff2bc89a9c0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e49a0ea8/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007ff2bc899070/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e4998438/lib/balanced/utils.rb:6 (lambda)>,
     "transactions"=>
-     #<Proc:0x007ff2bc890b00/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Customer:0x007ff2bc890a38
+     #<Proc:0x007fa4e499a1e8/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Customer:0x007fa4e499a0a8
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -82,28 +82,28 @@ customers = Balanced::Customer.all
     "updated_at"=>"2014-03-06T19:23:05.747337Z"},
   @hyperlinks=
    {"bank_accounts"=>
-     #<Proc:0x007ff2bc888ce8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e4992cb8/lib/balanced/utils.rb:6 (lambda)>,
     "card_holds"=>
-     #<Proc:0x007ff2bc881420/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e2938940/lib/balanced/utils.rb:6 (lambda)>,
     "cards"=>
-     #<Proc:0x007ff2be0bb0b8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e29385d0/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007ff2bc848170/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e29324c8/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007ff2be03f878/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e292bab0/lib/balanced/utils.rb:6 (lambda)>,
     "destination"=>
-     #<Proc:0x007ff2bd833080/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e292afe8/lib/balanced/utils.rb:6 (lambda)>,
     "external_accounts"=>
-     #<Proc:0x007ff2bc0e5ea0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e2928c70/lib/balanced/utils.rb:6 (lambda)>,
     "orders"=>
-     #<Proc:0x007ff2bc0db748/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e291ae18/lib/balanced/utils.rb:6 (lambda)>,
     "refunds"=>
-     #<Proc:0x007ff2bc0082a8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e2918780/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007ff2bdb7b9b8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e41b1c38/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007ff2bdb7af18/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa4e41b0ba8/lib/balanced/utils.rb:6 (lambda)>,
     "transactions"=>
-     #<Proc:0x007ff2bdb78bf0/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa4e497f550/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

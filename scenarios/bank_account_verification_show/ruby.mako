@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 verification = Balanced::Verification.fetch('/verifications/BZ5alC0fajkuBOvOU7lVT7QJ')
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x007ff2bd93a6b8
+#<Balanced::BankAccountVerification:0x007fa4e41c2358
  @attributes=
   {"attempts"=>0,
    "attempts_remaining"=>3,
@@ -22,6 +22,6 @@ verification = Balanced::Verification.fetch('/verifications/BZ5alC0fajkuBOvOU7lV
    "verification_status"=>"pending"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x007ff2bd942250/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa4e41c0300/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif
