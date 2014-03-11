@@ -257,6 +257,11 @@ module Balanced
       end
 
       def fetch(*arguments)
+        if arguments.nil? ||
+           arguments.empty?  ||
+           arguments[0].empty?
+          raise Balanced::NotFound
+        end
         scope = arguments.slice!(0)
         options = arguments.slice!(0) || {}
         case scope

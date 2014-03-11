@@ -54,3 +54,21 @@ describe Balanced::UnassociatedCardError do
     should == "The Balanced::Card with uri=#{card.attributes['uri']} is not associated to a customer"
   end
 end
+
+describe 'Fetch NotFound' do
+  context 'href nil' do
+    it do
+      expect {
+        Balanced::Customer.fetch()
+      }.to raise_exception(Balanced::NotFound)
+    end
+  end
+
+  context 'href empty string' do
+    it do
+      expect {
+        Balanced::Customer.fetch("")
+      }.to raise_exception(Balanced::NotFound)
+    end
+  end
+end
