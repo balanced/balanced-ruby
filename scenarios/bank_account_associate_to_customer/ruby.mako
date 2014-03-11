@@ -9,7 +9,7 @@ customer = Balanced::Customer.fetch('/customers/CU64R7DS6DwuXYVg9RTskFK8')
 customer.add_bank_account("")
 
 % elif mode == 'response':
-#<Balanced::BankAccount:0x007ff2bd9ac0d8
+#<Balanced::BankAccount:0x007fa4e49b1fc8
  @attributes=
   {"account_number"=>"xxxxxx0001",
    "account_type"=>"checking",
@@ -36,14 +36,14 @@ customer.add_bank_account("")
    "updated_at"=>"2014-03-06T19:23:28.930538Z"},
  @hyperlinks=
   {"bank_account_verification"=>
-    #<Proc:0x007ff2bd9a6bb0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e49b09e8/lib/balanced/utils.rb:6 (lambda)>,
    "bank_account_verifications"=>
-    #<Proc:0x007ff2bd9a4630/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e49a9f30/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007ff2bd99df60/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e49a3ec8/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007ff2bd98bf18/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa4e49a12b8/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debits"=>
-    #<Proc:0x007ff2bd9897b8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e499a558/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

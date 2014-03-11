@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 order = Balanced::Order.fetch('/orders/OR6wcEVkOymvs4PairiGEcIx')
 
 % elif mode == 'response':
-#<Balanced::Order:0x007ff2bc1a1998
+#<Balanced::Order:0x007fa4e48f7e48
  @attributes=
   {"amount"=>0,
    "amount_escrowed"=>0,
@@ -29,16 +29,16 @@ order = Balanced::Order.fetch('/orders/OR6wcEVkOymvs4PairiGEcIx')
    "updated_at"=>"2014-03-06T19:23:39.207294Z"},
  @hyperlinks=
   {"buyers"=>
-    #<Proc:0x007ff2bc19b098/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48f4e78/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007ff2bdae7f10/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48eda60/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007ff2bdae5850/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48d76e8/lib/balanced/utils.rb:6 (lambda)>,
    "merchant"=>
-    #<Proc:0x007ff2bdadfbf8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa4e48e6e68/lib/balanced/resources/resource.rb:60 (lambda)>,
    "refunds"=>
-    #<Proc:0x007ff2bdad5090/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e48e58b0/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007ff2bdad4050/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e48d3390/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

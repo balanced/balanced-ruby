@@ -12,7 +12,7 @@ debit = card_hold.capture(
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007ff2bdaa68f8
+#<Balanced::Debit:0x007fa4e30d8150
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
@@ -34,16 +34,16 @@ debit = card_hold.capture(
    "updated_at"=>"2014-03-06T19:22:50.608819Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007ff2bdaa40d0/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa4e30f20c8/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x007ff2bdaaf5c0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e31024c8/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007ff2bdaad400/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e310a830/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007ff2bdaac730/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e3112f80/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007ff2bdab4f98/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e31201d0/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007ff2bdabd9e0/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa4e3131ea8/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

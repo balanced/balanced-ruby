@@ -16,7 +16,7 @@ credit.reverse(
 )
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x007ff2bd951278
+#<Balanced::Reversal:0x007fa4e3276bd8
  @attributes=
   {"amount"=>3000,
    "created_at"=>"2014-03-06T19:23:55.596399Z",
@@ -36,10 +36,10 @@ credit.reverse(
    "updated_at"=>"2014-03-06T19:23:56.470321Z"},
  @hyperlinks=
   {"credit"=>
-    #<Proc:0x007ff2bd94b350/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa4e326f798/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007ff2bd948c90/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e326c980/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007ff2bd9480b0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e3267f48/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

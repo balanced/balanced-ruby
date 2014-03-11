@@ -9,7 +9,7 @@ bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA50LpPrCTB63Ecm0wEgd
 verification = bank_account.verify
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x007ff2bd9290e8
+#<Balanced::BankAccountVerification:0x007fa4e4a48518
  @attributes=
   {"attempts"=>0,
    "attempts_remaining"=>3,
@@ -23,6 +23,6 @@ verification = bank_account.verify
    "verification_status"=>"pending"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x007ff2bc8a70d0/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa4e4a41f60/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif
