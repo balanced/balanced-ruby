@@ -5,6 +5,10 @@ Online Marketplace Payments
 [![Build Status](https://secure.travis-ci.org/balanced/balanced-ruby.png)](http://travis-ci.org/balanced/balanced-ruby)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/balanced/balanced-ruby)
 
+**v1.x requires Balanced API 1.1. Use [v0.x](https://github.com/balanced/balanced-ruby/tree/rev0) for Balanced API 1.0.**
+
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
