@@ -5,9 +5,11 @@ module Balanced
     attr_reader :response
 
     # @param [Hash] response the decoded json response body
-    def initialize(response)
+    def initialize(response=nil)
       @response = response
-      super error_message
+      unless response.nil?
+        super error_message
+      end
     end
 
     # @return [Hash]
