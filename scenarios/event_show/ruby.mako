@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 event = Balanced::Event.fetch('/events/EVa26caeeea56411e3838802219cc35fd9')
 
 % elif mode == 'response':
-#<Balanced::Event:0x007ff2bc0edf10
+#<Balanced::Event:0x007fa4e2919ba8
  @attributes=
   {"callback_statuses"=>
     {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
@@ -57,6 +57,6 @@ event = Balanced::Event.fetch('/events/EVa26caeeea56411e3838802219cc35fd9')
    "type"=>"account.created"},
  @hyperlinks=
   {"callbacks"=>
-    #<Proc:0x007ff2bc869208/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e291a1c0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

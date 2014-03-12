@@ -10,7 +10,7 @@ callback = Balanced::Callback.new(
 ).save
 
 % elif mode == 'response':
-#<Balanced::Callback:0x007ff2bd972b08
+#<Balanced::Callback:0x007fa4e327e810
  @attributes=
   {"href"=>"/callbacks/CB5pnz4XnaDpRFGlNMb6u50R",
    "id"=>"CB5pnz4XnaDpRFGlNMb6u50R",

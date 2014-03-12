@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 refund = Balanced::Refund.fetch('/refunds/RF6HsnqferSuES9VZEWrthG2')
 
 % elif mode == 'response':
-#<Balanced::Refund:0x007ff2bc1125e0
+#<Balanced::Refund:0x007fa4e4a50c40
  @attributes=
   {"amount"=>3000,
    "created_at"=>"2014-03-06T19:23:46.176138Z",
@@ -27,12 +27,12 @@ refund = Balanced::Refund.fetch('/refunds/RF6HsnqferSuES9VZEWrthG2')
    "updated_at"=>"2014-03-06T19:23:48.234584Z"},
  @hyperlinks=
   {"debit"=>
-    #<Proc:0x007ff2bd9b5f48/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa4e4a4aa98/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x007ff2bd9b6970/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e4a49df0/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007ff2bd9afb98/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa4e4a43f18/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007ff2bd9aed38/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa4e4a43338/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
