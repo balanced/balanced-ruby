@@ -78,6 +78,27 @@ describe Balanced::Account, :vcr do
 
     end
 
+    describe "#hold", :vcr do
+      before do
+        @buyer.debit :amount => 1250
+      end
+
+      context "args passed by name via options hash" do
+        subject {
+          @buyer.hold(
+              amount: 1250,
+              description: "description",
+              meta: {},
+              destination_uri: @bank_account.uri
+          )
+        }
+
+        its(:amount) { should == 1250 }
+        its(:meta) { should == {} }
+        its(:description) { should == "description" }
+      end
+    end
+
     describe "#credit", :vcr do
       before do
         @buyer.debit :amount => 1250

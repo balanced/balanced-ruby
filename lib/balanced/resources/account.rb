@@ -81,12 +81,14 @@ module Balanced
       amount = args[0] || options.fetch(:amount) { }
       meta = args[1] || options.fetch(:meta) { nil }
       source_uri = args[2] || options.fetch(:source_uri) { nil }
+      description = args[3] || options.fetch(:description) { nil }
 
       hold = Hold.new(
           :uri => self.holds_uri,
           :amount => amount,
           :meta => meta,
-          :source_uri => source_uri
+          :source_uri => source_uri,
+          :description => description
       )
       hold.save
     end

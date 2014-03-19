@@ -56,13 +56,15 @@ module Balanced
       options = args.last.is_a?(Hash) ? args.pop : {}
       amount = args[0] || options.fetch(:amount) { nil }
       meta = args[1] || options.fetch(:meta) { nil }
+      description = args[3] || options.fetch(:description) { nil }
 
       ensure_associated_to_account!
 
       self.account.hold(
           :amount => amount,
           :meta => meta,
-          :source_uri => self.uri
+          :source_uri => self.uri,
+          :description => description
       )
     end
 
