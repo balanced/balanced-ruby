@@ -2,15 +2,15 @@
 Balanced::Order.all
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
+Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
 
 orders = Balanced::Order.all
 % elif mode == 'response':
-[#<Balanced::Order:0x007fefd9160fc8
+[#<Balanced::Order:0x007fbaa40ec048
   @attributes=
    {"amount"=>0,
     "amount_escrowed"=>0,
-    "created_at"=>"2014-03-06T19:23:39.207291Z",
+    "created_at"=>"2014-03-20T18:18:23.280026Z",
     "currency"=>"USD",
     "delivery_address"=>
      {"city"=>nil,
@@ -20,23 +20,23 @@ orders = Balanced::Order.all
       "postal_code"=>nil,
       "state"=>nil},
     "description"=>"Order #12341234",
-    "href"=>"/orders/OR6wcEVkOymvs4PairiGEcIx",
-    "id"=>"OR6wcEVkOymvs4PairiGEcIx",
-    "links"=>{"merchant"=>"CU64R7DS6DwuXYVg9RTskFK8"},
+    "href"=>"/orders/ORb1Pk4q78R971l2LFiZwhM",
+    "id"=>"ORb1Pk4q78R971l2LFiZwhM",
+    "links"=>{"merchant"=>"CU7HlonBKQXhBkwRJdO2kZen"},
     "meta"=>{},
-    "updated_at"=>"2014-03-06T19:23:39.207294Z"},
+    "updated_at"=>"2014-03-20T18:18:23.280029Z"},
   @hyperlinks=
    {"buyers"=>
-     #<Proc:0x007fefd90fed78/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49c2078/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fefd9153620/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49c02a0/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fefd914ad18/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49ca480/lib/balanced/utils.rb:6 (lambda)>,
     "merchant"=>
-     #<Proc:0x007fefd9130738/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fbaa49c8ae0/lib/balanced/resources/resource.rb:60 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fefd9121d78/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49d2ce8/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007fefd91102f8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fbaa49d0f10/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

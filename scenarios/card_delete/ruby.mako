@@ -3,9 +3,9 @@ Balanced::Card.unstore
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
+Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
 
-card = Balanced::Card.fetch('/cards/CC5Buki6e4Kg4bDVZ3OSfQ8O')
+card = Balanced::Card.fetch('/cards/CC7fN4xs3PRrK3LBCuPSVxc4')
 card.unstore
 
 % elif mode == 'response':

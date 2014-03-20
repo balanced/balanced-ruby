@@ -2,9 +2,9 @@
 Balanced::Debit.refund
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
+Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
 
-debit = Balanced::Debit.fetch('/debits/WD6BKYhbRzlRhfKSE1DcpqS5')
+debit = Balanced::Debit.fetch('/debits/WD1doNnNgRQRLElx7ZHzsXS')
 debit.refund(
   :amount => 3000,
   :description => 'Refund for Order #1111',
@@ -16,31 +16,30 @@ debit.refund(
 )
 
 % elif mode == 'response':
-#<Balanced::Refund:0x007fefda2cd9c8
+#<Balanced::Refund:0x007fbaa583d7b0
  @attributes=
   {"amount"=>3000,
-   "created_at"=>"2014-03-06T19:23:46.176138Z",
+   "created_at"=>"2014-03-20T18:18:16.317927Z",
    "currency"=>"USD",
    "description"=>"Refund for Order #1111",
-   "href"=>"/refunds/RF6HsnqferSuES9VZEWrthG2",
-   "id"=>"RF6HsnqferSuES9VZEWrthG2",
-   "links"=>
-    {"debit"=>"WD6BKYhbRzlRhfKSE1DcpqS5", "dispute"=>nil, "order"=>nil},
+   "href"=>"/refunds/RF3bjK4tYeF06CM5kT1Gzge",
+   "id"=>"RF3bjK4tYeF06CM5kT1Gzge",
+   "links"=>{"debit"=>"WD1doNnNgRQRLElx7ZHzsXS", "dispute"=>nil, "order"=>nil},
    "meta"=>
     {"fulfillment.item.condition"=>"OK",
      "merchant.feedback"=>"positive",
      "user.refund_reason"=>"not happy with product"},
    "status"=>"succeeded",
-   "transaction_number"=>"RF348-549-7723",
-   "updated_at"=>"2014-03-06T19:23:48.234584Z"},
+   "transaction_number"=>"RF289-950-2729",
+   "updated_at"=>"2014-03-20T18:18:17.196608Z"},
  @hyperlinks=
   {"debit"=>
-    #<Proc:0x007fefda2d7e00/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fbaa5847cb0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fefda2d7478/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fbaa5847328/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fefda2d5600/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fbaa5845550/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fefda2d4c28/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fbaa5844b78/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -3,9 +3,9 @@ Balanced::Reversal.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
+Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
 
-reversal = Balanced::Reversal.fetch('/reversals/RV6OCxJ1UhkG84is6H9PHjkZ')
+reversal = Balanced::Reversal.fetch('/reversals/RVmcR4FZ5HLHkFEg38wsf9B')
 reversal.description = 'update this description'
 reversal.meta = {
     'refund.reason' => 'user not happy with product',
@@ -15,30 +15,30 @@ reversal.meta = {
 reversal.save
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x007fefdcbf1c28
+#<Balanced::Reversal:0x007fbaa50c4d30
  @attributes=
   {"amount"=>3000,
-   "created_at"=>"2014-03-06T19:23:55.596399Z",
+   "created_at"=>"2014-03-20T18:18:33.232301Z",
    "currency"=>"USD",
    "description"=>"update this description",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/reversals/RV6OCxJ1UhkG84is6H9PHjkZ",
-   "id"=>"RV6OCxJ1UhkG84is6H9PHjkZ",
-   "links"=>{"credit"=>"CR6NpuEtezCdLTYngDrSEODv", "order"=>nil},
+   "href"=>"/reversals/RVmcR4FZ5HLHkFEg38wsf9B",
+   "id"=>"RVmcR4FZ5HLHkFEg38wsf9B",
+   "links"=>{"credit"=>"CRl8vsIfwYjpcYnDk0K0ILQ", "order"=>nil},
    "meta"=>
     {"refund.reason"=>"user not happy with product",
      "user.notes"=>"very polite on the phone",
      "user.satisfaction"=>"6"},
    "status"=>"succeeded",
-   "transaction_number"=>"RV542-861-3670",
-   "updated_at"=>"2014-03-06T19:24:00.271458Z"},
+   "transaction_number"=>"RV397-485-2419",
+   "updated_at"=>"2014-03-20T18:18:39.424242Z"},
  @hyperlinks=
   {"credit"=>
-    #<Proc:0x007fefdcbf00f8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fbaa509ee28/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fefdcbfa260/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fbaa509cfb0/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fefdcbf98b0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fbaa509c600/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

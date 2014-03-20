@@ -1,11 +1,12 @@
 require 'rubygems'
 require 'erb'
 require 'json'
-#require 'ruby-debug'
 require './scenarios/helpers'
 require './lib/balanced'
 require 'pp'
-require 'json'
+require 'open-uri'
+
+SCENARIO_CACHE_URL = 'https://raw.githubusercontent.com/balanced/balanced-docs/master/scenario.cache'
 
 class BalancedResourceObject
   include Balanced::Resource
@@ -44,6 +45,17 @@ def tidy_response(response)
   return if ! response
   return response.gsub(/@\S(.*?)\Sbalanced-ruby/, '')
 end
+
+def fetch_scenario_cache
+  File.delete 'scenario.cache' if File.exist? 'scenario.cache'
+  open('scenario.cache', 'wb') do |f|
+    f << open(SCENARIO_CACHE_URL).read
+  end
+end
+
+fetch_scenario_cache
+
+raise RuntimeError, "scenario.cache not present" if ! File.exists? 'scenario.cache'
 
 parsed_data = JSON.parse(File.read('scenario.cache'))
 

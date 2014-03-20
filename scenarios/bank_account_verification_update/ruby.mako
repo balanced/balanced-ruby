@@ -3,9 +3,9 @@ Balanced::Verification.confirm
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
+Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
 
-verification = Balanced::Verification.fetch('/verifications/BZ5alC0fajkuBOvOU7lVT7QJ')
+verification = Balanced::Verification.fetch('/verifications/BZ6CHglHXFOUsyrdMAvPN2LZ')
 verification.confirm(
   amount_1 = 1,
   amount_2 = 1
@@ -13,20 +13,20 @@ verification.confirm(
 
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x007fefdb028fc8
+#<Balanced::BankAccountVerification:0x007fbaa6045d90
  @attributes=
   {"attempts"=>1,
    "attempts_remaining"=>2,
-   "created_at"=>"2014-03-06T19:22:24.651572Z",
+   "created_at"=>"2014-03-20T18:17:09.132006Z",
    "deposit_status"=>"succeeded",
-   "href"=>"/verifications/BZ5alC0fajkuBOvOU7lVT7QJ",
-   "id"=>"BZ5alC0fajkuBOvOU7lVT7QJ",
-   "links"=>{"bank_account"=>"BA50LpPrCTB63Ecm0wEgdOQM"},
+   "href"=>"/verifications/BZ6CHglHXFOUsyrdMAvPN2LZ",
+   "id"=>"BZ6CHglHXFOUsyrdMAvPN2LZ",
+   "links"=>{"bank_account"=>"BA6ARjzdSjbnDWFK6ykjuGhy"},
    "meta"=>{},
-   "updated_at"=>"2014-03-06T19:22:27.893114Z",
+   "updated_at"=>"2014-03-20T18:17:13.251706Z",
    "verification_status"=>"succeeded"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x007fefda30f490/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fbaa60442b0/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

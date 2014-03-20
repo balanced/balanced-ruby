@@ -34,3 +34,4 @@ spec/cassettes
 .DS_Store
 
 .rbenv-version
+scenario.cache

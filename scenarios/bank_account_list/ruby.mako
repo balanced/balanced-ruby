@@ -3,12 +3,12 @@ Balanced::BankAccount.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
+Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
 
 Balanced::BankAccount.all
 
 % elif mode == 'response':
-[#<Balanced::BankAccount:0x007fefd98120b0
+[#<Balanced::BankAccount:0x007fbaa49eae60
   @attributes=
    {"account_number"=>"xxxxxx0001",
     "account_type"=>"checking",
@@ -22,28 +22,28 @@ Balanced::BankAccount.all
     "bank_name"=>"BANK OF AMERICA, N.A.",
     "can_credit"=>true,
     "can_debit"=>false,
-    "created_at"=>"2014-03-06T19:22:30.247406Z",
+    "created_at"=>"2014-03-20T18:17:14.945832Z",
     "fingerprint"=>
      "5f0ba9fa3f1122ef13b944a40abfe44e7eba9e16934e64200913cb4c402ace14",
-    "href"=>"/bank_accounts/BA58WYAEUMrEtAkW5KAvWo5V",
-    "id"=>"BA58WYAEUMrEtAkW5KAvWo5V",
+    "href"=>"/bank_accounts/BA6JeIzD7zM6rmp0Nt8Mu9Sw",
+    "id"=>"BA6JeIzD7zM6rmp0Nt8Mu9Sw",
     "links"=>{"bank_account_verification"=>nil, "customer"=>nil},
     "meta"=>{},
     "name"=>"Johann Bernoulli",
     "routing_number"=>"121000358",
-    "updated_at"=>"2014-03-06T19:22:30.247410Z"},
+    "updated_at"=>"2014-03-20T18:17:14.945845Z"},
   @hyperlinks=
    {"bank_account_verification"=>
-     #<Proc:0x007fefd9811548/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49ea2f8/lib/balanced/utils.rb:6 (lambda)>,
     "bank_account_verifications"=>
-     #<Proc:0x007fefd98375e0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49e83e0/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fefd9835678/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49f2430/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fefd9834cc8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49f1a80/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fefd9842d28/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::BankAccount:0x007fefd9842cd8
+     #<Proc:0x007fbaa49fbaf8/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::BankAccount:0x007fbaa49fbaa8
   @attributes=
    {"account_number"=>"xxxxxx0001",
     "account_type"=>"checking",
@@ -57,28 +57,28 @@ Balanced::BankAccount.all
     "bank_name"=>"BANK OF AMERICA, N.A.",
     "can_credit"=>true,
     "can_debit"=>true,
-    "created_at"=>"2014-03-06T19:22:22.966278Z",
+    "created_at"=>"2014-03-20T18:17:07.496784Z",
     "fingerprint"=>
      "5f0ba9fa3f1122ef13b944a40abfe44e7eba9e16934e64200913cb4c402ace14",
-    "href"=>"/bank_accounts/BA50LpPrCTB63Ecm0wEgdOQM",
-    "id"=>"BA50LpPrCTB63Ecm0wEgdOQM",
+    "href"=>"/bank_accounts/BA6ARjzdSjbnDWFK6ykjuGhy",
+    "id"=>"BA6ARjzdSjbnDWFK6ykjuGhy",
     "links"=>
-     {"bank_account_verification"=>"BZ5alC0fajkuBOvOU7lVT7QJ",
+     {"bank_account_verification"=>"BZ6CHglHXFOUsyrdMAvPN2LZ",
       "customer"=>nil},
     "meta"=>{},
     "name"=>"Johann Bernoulli",
     "routing_number"=>"121000358",
-    "updated_at"=>"2014-03-06T19:22:27.888575Z"},
+    "updated_at"=>"2014-03-20T18:17:13.250120Z"},
   @hyperlinks=
    {"bank_account_verification"=>
-     #<Proc:0x007fefd9841180/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fbaa49f9f50/lib/balanced/resources/resource.rb:60 (lambda)>,
     "bank_account_verifications"=>
-     #<Proc:0x007fefd9857228/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa49f8060/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fefd98552e8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa4a020d8/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fefd9854938/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fbaa4a01728/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fefd985e9b0/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fbaa4a0b7c8/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif
