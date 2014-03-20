@@ -1,1 +1,1 @@
-Balanced::Customer.add_bank_account
+Balanced::BankAccount.associate_to_customer

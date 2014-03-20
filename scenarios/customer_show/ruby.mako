@@ -7,7 +7,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 customer = Balanced::Customer.fetch('/customers/CU5YopHN07Ul5XQnILUifeQT')
 % elif mode == 'response':
-#<Balanced::Customer:0x007fa4e4114f28
+#<Balanced::Customer:0x007fefda2be540
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -33,28 +33,28 @@ customer = Balanced::Customer.fetch('/customers/CU5YopHN07Ul5XQnILUifeQT')
    "updated_at"=>"2014-03-06T19:23:16.724050Z"},
  @hyperlinks=
   {"bank_accounts"=>
-    #<Proc:0x007fa4e410eb78/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda2bc380/lib/balanced/utils.rb:6 (lambda)>,
    "card_holds"=>
-    #<Proc:0x007fa4e410c3c8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda273018/lib/balanced/utils.rb:6 (lambda)>,
    "cards"=>
-    #<Proc:0x007fa4e4106680/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda2b5828/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa4e4104100/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda26e310/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa4e40fe2c8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda267f88/lib/balanced/utils.rb:6 (lambda)>,
    "destination"=>
-    #<Proc:0x007fa4e40fcb08/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda267588/lib/balanced/utils.rb:6 (lambda)>,
    "external_accounts"=>
-    #<Proc:0x007fa4e40e6f38/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda265238/lib/balanced/utils.rb:6 (lambda)>,
    "orders"=>
-    #<Proc:0x007fa4e40e3a68/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda25f270/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa4e40dfdf0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda25cd90/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa4e40dce98/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb872be8/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa4e40d4d88/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb8721e8/lib/balanced/utils.rb:6 (lambda)>,
    "transactions"=>
-    #<Proc:0x007fa4e40d6070/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fefda257ea8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

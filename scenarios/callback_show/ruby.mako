@@ -7,7 +7,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 callback = Balanced::Callback.fetch('/callbacks/CB5pnz4XnaDpRFGlNMb6u50R')
 % elif mode == 'response':
-#<Balanced::Callback:0x007fa4e3255f78
+#<Balanced::Callback:0x007fefdcbd8160
  @attributes=
   {"href"=>"/callbacks/CB5pnz4XnaDpRFGlNMb6u50R",
    "id"=>"CB5pnz4XnaDpRFGlNMb6u50R",

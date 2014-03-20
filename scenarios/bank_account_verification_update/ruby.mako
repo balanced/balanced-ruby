@@ -13,7 +13,7 @@ verification.confirm(
 
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x007fa4e4a1ae60
+#<Balanced::BankAccountVerification:0x007fefdb028fc8
  @attributes=
   {"attempts"=>1,
    "attempts_remaining"=>2,
@@ -27,6 +27,6 @@ verification.confirm(
    "verification_status"=>"succeeded"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x007fa4e4a18070/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fefda30f490/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

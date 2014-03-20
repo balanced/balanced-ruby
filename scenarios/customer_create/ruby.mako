@@ -16,7 +16,7 @@ customer = Balanced::Customer.new(
 customer.save
 
 % elif mode == 'response':
-#<Balanced::Customer:0x007fa4e4a197e0
+#<Balanced::Customer:0x007fefdb9a9958
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -42,28 +42,28 @@ customer.save
    "updated_at"=>"2014-03-06T19:23:22.907102Z"},
  @hyperlinks=
   {"bank_accounts"=>
-    #<Proc:0x007fa4e4a12058/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb983898/lib/balanced/utils.rb:6 (lambda)>,
    "card_holds"=>
-    #<Proc:0x007fa4e328f610/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb9819d0/lib/balanced/utils.rb:6 (lambda)>,
    "cards"=>
-    #<Proc:0x007fa4e32844b8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdcc6bb18/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa4e32862b8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdcc69c50/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa4e327e5e0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb97bd00/lib/balanced/utils.rb:6 (lambda)>,
    "destination"=>
-    #<Proc:0x007fa4e327d8e8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb97b2b0/lib/balanced/utils.rb:6 (lambda)>,
    "external_accounts"=>
-    #<Proc:0x007fa4e32766b0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb9793e8/lib/balanced/utils.rb:6 (lambda)>,
    "orders"=>
-    #<Proc:0x007fa4e326f720/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb9534e0/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa4e326c2a0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdb951578/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa4e3265bd0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda3cf718/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa4e3264640/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefda3ced18/lib/balanced/utils.rb:6 (lambda)>,
    "transactions"=>
-    #<Proc:0x007fa4e325e330/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fefda3cce78/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

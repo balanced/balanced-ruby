@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 Balanced::BankAccount.all
 
 % elif mode == 'response':
-[#<Balanced::BankAccount:0x007fa4e48ecca0
+[#<Balanced::BankAccount:0x007fefd98120b0
   @attributes=
    {"account_number"=>"xxxxxx0001",
     "account_type"=>"checking",
@@ -34,16 +34,16 @@ Balanced::BankAccount.all
     "updated_at"=>"2014-03-06T19:22:30.247410Z"},
   @hyperlinks=
    {"bank_account_verification"=>
-     #<Proc:0x007fa4e48d78f0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd9811548/lib/balanced/utils.rb:6 (lambda)>,
     "bank_account_verifications"=>
-     #<Proc:0x007fa4e48e7bb0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd98375e0/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fa4e48e5540/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd9835678/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fa4e48e4988/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd9834cc8/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa4e48d2148/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::BankAccount:0x007fa4e48d20f8
+     #<Proc:0x007fefd9842d28/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::BankAccount:0x007fefd9842cd8
   @attributes=
    {"account_number"=>"xxxxxx0001",
     "account_type"=>"checking",
@@ -71,14 +71,14 @@ Balanced::BankAccount.all
     "updated_at"=>"2014-03-06T19:22:27.888575Z"},
   @hyperlinks=
    {"bank_account_verification"=>
-     #<Proc:0x007fa4e48df988/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fefd9841180/lib/balanced/resources/resource.rb:60 (lambda)>,
     "bank_account_verifications"=>
-     #<Proc:0x007fa4e48dd430/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd9857228/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fa4e48ced68/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd98552e8/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fa4e48ce0e8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fefd9854938/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa4e48cb780/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fefd985e9b0/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

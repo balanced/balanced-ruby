@@ -1,3 +1,3 @@
 <%= boiler_plate %>
-customer = Balanced::Customer.fetch('<%= request['customer_href'] %>')
-customer.add_bank_account("<%= payload['bank_account_href'] %>")
+bank_account = Balanced::BankAccount.fetch("<%= request['uri'] %>")
+bank_account.associate_to_customer("<%= payload['customer'] %>")

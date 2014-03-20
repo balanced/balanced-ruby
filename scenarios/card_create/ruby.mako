@@ -13,7 +13,7 @@ card = Balanced::Card.new(
 ).save
 
 % elif mode == 'response':
-#<Balanced::Card:0x007fa4e49bacb8
+#<Balanced::Card:0x007fefd923b0b0
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -44,10 +44,10 @@ card = Balanced::Card.new(
    "updated_at"=>"2014-03-06T19:23:25.159506Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa4e49b8198/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefd9239030/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa4e49b3af8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefd9238680/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa4e49b0998/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fefd92427e8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

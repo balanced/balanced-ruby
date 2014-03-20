@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 key = Balanced::ApiKey.new.save
 
 % elif mode == 'response':
-#<Balanced::ApiKey:0x007fa4e49e9748
+#<Balanced::ApiKey:0x007fefda2bcda8
  @attributes=
   {"created_at"=>"2014-03-06T19:22:18.256643Z",
    "href"=>"/api_keys/AK4Vt1mJyCtjdSiGgqAebarR",

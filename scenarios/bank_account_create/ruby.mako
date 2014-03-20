@@ -13,7 +13,7 @@ bank_account = Balanced::BankAccount.new(
 ).save
 
 % elif mode == 'response':
-#<Balanced::BankAccount:0x007fa4e49749c0
+#<Balanced::BankAccount:0x007fefd9210928
  @attributes=
   {"account_number"=>"xxxxxx0001",
    "account_type"=>"checking",
@@ -39,14 +39,14 @@ bank_account = Balanced::BankAccount.new(
    "updated_at"=>"2014-03-06T19:23:27.876150Z"},
  @hyperlinks=
   {"bank_account_verification"=>
-    #<Proc:0x007fa4e496f858/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdc00bd78/lib/balanced/utils.rb:6 (lambda)>,
    "bank_account_verifications"=>
-    #<Proc:0x007fa4e496d508/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdc009e60/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa4e4966b40/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdc013eb0/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa4e4965f60/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdc013500/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa4e495fcc8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fefdc0115c0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

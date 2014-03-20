@@ -1,5 +1,5 @@
 % if mode == 'definition':
-Balanced::Customer.associate_to_customer
+Balanced::Card.associate_to_customer
 
 % elif mode == 'request':
 require 'balanced'
@@ -7,9 +7,8 @@ Balanced.configure('ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul')
 
 card = Balanced::Card.fetch('/cards/CC68IoCVpoFlkugB7xt52p8C')
 card.associate_to_customer('/customers/CU64R7DS6DwuXYVg9RTskFK8')
-
 % elif mode == 'response':
-#<Balanced::Card:0x007fa4e49f12e0
+#<Balanced::Card:0x007fefdcbe93e8
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -40,10 +39,10 @@ card.associate_to_customer('/customers/CU64R7DS6DwuXYVg9RTskFK8')
    "updated_at"=>"2014-03-06T19:23:25.633918Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa4e49e9810/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fefdcbf32f8/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa4e49e39d8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fefdcbf1958/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa4e49e1ac0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fefdcbfbac0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
