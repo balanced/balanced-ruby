@@ -1,38 +1,38 @@
 % if mode == 'definition':
-Balanced::CardHold.void
+Balanced::CardHold.unstore
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
+Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
 
-card_hold = Balanced::CardHold.fetch('/card_holds/HL7bTcFBCjdbuf5K5U74XxWU')
-card_hold.void
+card_hold = Balanced::CardHold.fetch('/card_holds/HLjSXY6l7UHGZD9v0YIbNHM')
+card_hold.unstore
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fbaa1c158f0
+#<Balanced::CardHold:0x007fc09e192c18
  @attributes=
   {"amount"=>5000,
-   "created_at"=>"2014-03-20T18:17:40.426090Z",
+   "created_at"=>"2014-04-01T16:38:34.472098Z",
    "currency"=>"USD",
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "expires_at"=>"2014-03-27T18:17:40.638628Z",
+   "expires_at"=>"2014-04-08T16:38:34.541889Z",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/card_holds/HL7bTcFBCjdbuf5K5U74XxWU",
-   "id"=>"HL7bTcFBCjdbuf5K5U74XxWU",
-   "links"=>{"card"=>"CC72u3c6W1c67gNEnrMGHc7Y", "debit"=>nil},
+   "href"=>"/card_holds/HLjSXY6l7UHGZD9v0YIbNHM",
+   "id"=>"HLjSXY6l7UHGZD9v0YIbNHM",
+   "links"=>{"card"=>"CCnjE94RvMPW7RnmLdzIL42", "debit"=>nil},
    "meta"=>{},
    "status"=>"succeeded",
-   "transaction_number"=>"HL025-263-9127",
-   "updated_at"=>"2014-03-20T18:17:41.319073Z",
-   "voided_at"=>"2014-03-20T18:17:41.319077Z"},
+   "transaction_number"=>"HL455-649-4634",
+   "updated_at"=>"2014-04-01T16:38:35.162562Z",
+   "voided_at"=>"2014-04-01T16:38:35.162566Z"},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fbaa492b358/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fc09e191048/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fbaa492a9d0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fc09e1906c0/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fbaa4928a90/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fc09e16a790/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fbaa49204a8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fc09e168850/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -3,75 +3,75 @@ Balanced::Debit.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
+Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
 
 debits = Balanced::Debit.all
 % elif mode == 'response':
-[#<Balanced::Debit:0x007fbaa335c7e8
+[#<Balanced::Debit:0x007fc09e121130
   @attributes=
    {"amount"=>5000,
     "appears_on_statement_as"=>"BAL*Statement text",
-    "created_at"=>"2014-03-20T18:17:52.274298Z",
+    "created_at"=>"2014-04-01T16:38:46.197439Z",
     "currency"=>"USD",
     "description"=>"Some descriptive text for the debit in the dashboard",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/debits/WD7pddP29XzWJaKVUlMKETIb",
-    "id"=>"WD7pddP29XzWJaKVUlMKETIb",
+    "href"=>"/debits/WDx4mKqQWmCevBueqfMcxoO",
+    "id"=>"WDx4mKqQWmCevBueqfMcxoO",
     "links"=>
-     {"customer"=>"CU6Puxkmu24SfVbY0oi1fPLw",
+     {"customer"=>"CUb38G1IRIovbbaJlMMKUqG",
       "dispute"=>nil,
       "order"=>nil,
-      "source"=>"CC7mV4UKT6jJOh6nerLFvHJu"},
+      "source"=>"CCHv1QwjLfCxskorXDf8bmm"},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"W994-941-8993",
-    "updated_at"=>"2014-03-20T18:17:53.391444Z"},
+    "transaction_number"=>"W620-466-3407",
+    "updated_at"=>"2014-04-01T16:38:46.984587Z"},
   @hyperlinks=
    {"customer"=>
-     #<Proc:0x007fbaa333acd8/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fc09e12b630/lib/balanced/resources/resource.rb:60 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fbaa3338438/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e12aca8/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fbaa3340ae8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e128ed0/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fbaa3343518/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e1284f8/lib/balanced/utils.rb:6 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fbaa332f310/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e132700/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fbaa331f2f8/lib/balanced/resources/resource.rb:60 (lambda)>}>,
- #<Balanced::Debit:0x007fbaa331f2a8
+     #<Proc:0x007fc09e130e28/lib/balanced/resources/resource.rb:60 (lambda)>}>,
+ #<Balanced::Debit:0x007fc09e130dd8
   @attributes=
    {"amount"=>5000,
     "appears_on_statement_as"=>"BAL*ShowsUpOnStmt",
-    "created_at"=>"2014-03-20T18:17:38.132058Z",
+    "created_at"=>"2014-04-01T16:38:32.640465Z",
     "currency"=>"USD",
     "description"=>"Some descriptive text for the debit in the dashboard",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/debits/WD79jzWY34PvtKnLbvlFsZok",
-    "id"=>"WD79jzWY34PvtKnLbvlFsZok",
+    "href"=>"/debits/WDhP7maX0Ymia6sAqaiwv3M",
+    "id"=>"WDhP7maX0Ymia6sAqaiwv3M",
     "links"=>
-     {"customer"=>"CU6nhM0U1TMK0aJS68CN03SS",
+     {"customer"=>"CU7ny5y6tdGmz5q0xDQJco9O",
       "dispute"=>nil,
       "order"=>nil,
-      "source"=>"CC72u3c6W1c67gNEnrMGHc7Y"},
+      "source"=>"CCnjE94RvMPW7RnmLdzIL42"},
     "meta"=>{"holding.for"=>"user1", "meaningful.key"=>"some.value"},
     "status"=>"succeeded",
-    "transaction_number"=>"W504-951-9328",
-    "updated_at"=>"2014-03-20T18:17:39.077226Z"},
+    "transaction_number"=>"W966-476-5964",
+    "updated_at"=>"2014-04-01T16:38:33.142867Z"},
   @hyperlinks=
    {"customer"=>
-     #<Proc:0x007fbaa3313c28/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fc09e143258/lib/balanced/resources/resource.rb:60 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fbaa33123c8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e1428d0/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fbaa32f3bd0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e140b48/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fbaa32f2a00/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e140170/lib/balanced/utils.rb:6 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fbaa32ea440/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fc09e14a3a0/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fbaa32e3848/lib/balanced/resources/resource.rb:60 (lambda)>}>]
+     #<Proc:0x007fc09e148ac8/lib/balanced/resources/resource.rb:60 (lambda)>}>]
 
 % endif

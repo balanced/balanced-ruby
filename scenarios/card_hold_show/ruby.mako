@@ -3,36 +3,36 @@ Balanced::CardHold.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1')
+Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
 
-card_hold = Balanced::CardHold.fetch('/card_holds/HL73rLlJ9e9d0jCowQ1BZUSP')
+card_hold = Balanced::CardHold.fetch('/card_holds/HLbr4hg4i7Mg2wAEroOwJhk')
 
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fbaa582ebc0
+#<Balanced::CardHold:0x007fc09e2db3b8
  @attributes=
   {"amount"=>5000,
-   "created_at"=>"2014-03-20T18:17:32.915781Z",
+   "created_at"=>"2014-04-01T16:38:26.958994Z",
    "currency"=>"USD",
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "expires_at"=>"2014-03-27T18:17:33.075030Z",
+   "expires_at"=>"2014-04-08T16:38:27.034339Z",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/card_holds/HL73rLlJ9e9d0jCowQ1BZUSP",
-   "id"=>"HL73rLlJ9e9d0jCowQ1BZUSP",
-   "links"=>{"card"=>"CC72u3c6W1c67gNEnrMGHc7Y", "debit"=>nil},
+   "href"=>"/card_holds/HLbr4hg4i7Mg2wAEroOwJhk",
+   "id"=>"HLbr4hg4i7Mg2wAEroOwJhk",
+   "links"=>{"card"=>"CCnjE94RvMPW7RnmLdzIL42", "debit"=>nil},
    "meta"=>{},
    "status"=>"succeeded",
-   "transaction_number"=>"HL641-654-0600",
-   "updated_at"=>"2014-03-20T18:17:33.221006Z",
+   "transaction_number"=>"HL608-811-6933",
+   "updated_at"=>"2014-04-01T16:38:27.089203Z",
    "voided_at"=>nil},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fbaa582cfc8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fc09e2d98b0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fbaa582c618/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fc09e2d8ed8/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fbaa49e2620/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fc09e2d2f10/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fbaa49e0618/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fc09e2d1048/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
