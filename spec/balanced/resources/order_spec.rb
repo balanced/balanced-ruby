@@ -71,7 +71,7 @@ describe Balanced::Order, :vcr, :marketplace => true do
       @order.amount_escrowed.should eq 10000
       
       debit.description.should eq @debit_description
-      debit.appears_on_statement_as.should eq @debit_statement_message
+      debit.appears_on_statement_as.should eq "BAL*" << @debit_statement_message
 
       credit = @order.credit_to(
           :destination => @bank_account,
