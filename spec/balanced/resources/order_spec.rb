@@ -55,9 +55,9 @@ describe Balanced::Order, :vcr, :marketplace => true do
     it 'should debit buyer and pay merchant' do
       # statement/description to test passthrough to debit/credit
       @debit_description = 'Debit Description'
-      @debit_statement_message = 'Debit Statement Message'
+      @debit_statement_message = 'Debit Message'
       @credit_description = 'Credit Description'
-      @credit_statement_message = 'Credit Statement Message'
+      @credit_statement_message = 'Credit Message'
       
       debit = @order.debit_from(
           :source => @card,
