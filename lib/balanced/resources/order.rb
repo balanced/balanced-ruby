@@ -32,10 +32,16 @@ module Balanced
 
       source = options[:source]
       amount = options[:amount]
+      
+      # extra parameters for labeling transactions 
+      description = options[:description]
+      appears_on_statement_as = options[:appears_on_statement_as]
 
       debit = source.debit(
           :amount => amount,
-          :order => self.href
+          :order => self.href,
+          :appears_on_statement_as => appears_on_statement_as,
+          :description => description
       )
 
       debit
@@ -43,10 +49,23 @@ module Balanced
 
     def credit_to(options={})
       Balanced::Utils.assert_required_keys(options, :required => [:destination, :amount])
+      
       destination = options[:destination]
       amount = options[:amount]
+      
+      # extra parameters for labeling transactions 
+      description = options[:description]
+      appears_on_statement_as = options[:appears_on_statement_as]
+      
       # should have a way here to disburse more funds to another account, but not required
-      destination.credit(:amount => amount, :order => self.href)
+      credit = destination.credit(
+        :amount => amount, 
+        :order => self.href,
+        :appears_on_statement_as => appears_on_statement_as,
+        :description => description
+      )
+        
+      credit
     end
 
     private
