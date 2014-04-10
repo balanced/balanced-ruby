@@ -30,23 +30,24 @@ module Balanced
     def debit_from(options={})
       Balanced::Utils.assert_required_keys(options, :required => [:source, :amount])
 
+      options[:order] = self.href
       source = options[:source]
-      amount = options[:amount]
-
-      debit = source.debit(
-          :amount => amount,
-          :order => self.href
-      )
-
+      
+      debit = source.debit(options)
+      
       debit
     end
 
     def credit_to(options={})
       Balanced::Utils.assert_required_keys(options, :required => [:destination, :amount])
+
+      options[:order] = self.href
       destination = options[:destination]
-      amount = options[:amount]
+      
       # should have a way here to disburse more funds to another account, but not required
-      destination.credit(:amount => amount, :order => self.href)
+      credit = destination.credit(options)
+        
+      credit
     end
 
     private
