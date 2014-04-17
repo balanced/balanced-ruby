@@ -14,7 +14,6 @@ module Balanced
 
     def reverse(options={})
       options[:href] = self.reversals.href
-      puts "OPTIONS _______ #{options.inspect}"
 
       reversal = Reversal.new(options)
       reversal.save
