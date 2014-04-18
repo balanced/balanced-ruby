@@ -24,14 +24,9 @@ module Balanced
     # @return [Refund]
     def refund(options={})
 
-      amount = options[:amount]
-      description = options[:description]
+      options[:href] = self.refunds.href
 
-      refund = Refund.new(
-          :href => self.refunds.href,
-          :amount => amount,
-          :description => description
-      )
+      refund = Refund.new(options)
       refund.save
     end
 

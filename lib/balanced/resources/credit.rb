@@ -13,14 +13,9 @@ module Balanced
     define_hypermedia_types [:credits]
 
     def reverse(options={})
-      amount = options[:amount]
-      description = options[:description]
+      options[:href] = self.reversals.href
 
-      reversal = Reversal.new(
-          :href => self.reversals.href,
-          :amount => amount,
-          :description => description
-      )
+      reversal = Reversal.new(options)
       reversal.save
     end
 

@@ -58,34 +58,39 @@ describe Balanced::Order, :vcr, :marketplace => true do
       @debit_statement_message = 'Debit Message'
       @credit_description = 'Credit Description'
       @credit_statement_message = 'Credit Message'
-      
+      @meta = {"order_id" => "1111"}
+
       debit = @order.debit_from(
           :source => @card,
           :amount => 10000,
           :appears_on_statement_as => @debit_statement_message,
-          :description => @debit_description
+          :description => @debit_description,
+          :meta => @meta
       )
 
       @order.reload
       @order.amount.should eq 10000
       @order.amount_escrowed.should eq 10000
-      
+
       debit.description.should eq @debit_description
+      debit.meta.should eq @meta
       debit.appears_on_statement_as.should eq "BAL*" << @debit_statement_message
 
       credit = @order.credit_to(
           :destination => @bank_account,
           :amount => 8000,
           :appears_on_statement_as => @credit_statement_message,
-          :description => @credit_description
+          :description => @credit_description,
+          :meta => @meta
       )
-      
+
       @order.reload
       @order.amount.should eq 10000
       @order.amount_escrowed.should eq 2000
       @order.debits.map { |d| d.href }.should include(debit.href)
-      
+
       credit.description.should eq @credit_description
+      credit.meta.should eq @meta
       credit.appears_on_statement_as.should eq @credit_statement_message
     end
 

@@ -61,6 +61,9 @@ describe Balanced::Debit, :vcr do
   end
 
   describe '#refund', :vcr do
+    before do
+      @meta = {"order_id" => "11111"}
+    end
     subject do
       debit = Balanced::Debit.new(
           :amount => 1234,
@@ -68,15 +71,17 @@ describe Balanced::Debit, :vcr do
               :number => '5105105105105100',
               :expiration_month => '12',
               :expiration_year => '2015'
-          })
+          },
+          :meta => @meta)
       debit.save
-      refund = debit.refund
+      refund = debit.refund({:meta => @meta})
       refund
     end
 
     it { should_not be_nil }
     it { should be_instance_of Balanced::Refund }
     its(:amount) { should eql 1234 }
+    its(:meta) {should eq @meta}
 
   end
 end

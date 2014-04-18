@@ -13,6 +13,7 @@ describe Balanced::Credit, :vcr do
 
     # An initial balance for the marketplace
     card.debit(:amount => 1000000)
+    @meta = {"order_id" => "1111"}
   end
 
   describe '#create', :vcr do
@@ -25,7 +26,8 @@ describe Balanced::Credit, :vcr do
               :account_number => '0987654321',
               :name => 'Timmy T. McTimmerson',
               :type => 'checking'
-          }
+          },
+          :meta => @meta
       ).save
     end
 
@@ -37,6 +39,11 @@ describe Balanced::Credit, :vcr do
     describe 'customer', :vcr do
       subject { @credit.customer }
       it { should be_nil }
+    end
+
+    describe 'meta', :vcr do
+      subject { @credit.meta }
+      it { should eq @meta }
     end
 
   end
@@ -51,9 +58,10 @@ describe Balanced::Credit, :vcr do
               :account_number => '0987654321',
               :name => 'Timmy T. McTimmerson',
               :type => 'checking'
-          }
+          },
+          :meta => @meta
       ).save
-      @reversal = @credit.reverse
+      @reversal = @credit.reverse({:meta => @meta})
     end
 
     describe '#amount', :vcr do
@@ -65,6 +73,12 @@ describe Balanced::Credit, :vcr do
       subject { @reversal }
       it { should be_instance_of Balanced::Reversal }
     end
+
+    describe '#meta', :vcr do
+      subject { @reversal.meta }
+      it { should == @meta }
+    end
+
   end
 
   describe 'credit with underwritten customer' do
@@ -75,7 +89,8 @@ describe Balanced::Credit, :vcr do
           :dob_year => 1963,
           :address => {
               :postal_code => '48120'
-          }
+          },
+          :meta => @meta
       ).save
       @bank_account = Balanced::BankAccount.new(
           :routing_number => '321174851',
@@ -86,7 +101,8 @@ describe Balanced::Credit, :vcr do
       @bank_account.associate_to_customer(@customer)
       @credit = @bank_account.credit(
           :amount => 5000,
-          :description => 'A sweet ride'
+          :description => 'A sweet ride',
+          :meta => @meta
       )
     end
 
@@ -103,6 +119,11 @@ describe Balanced::Credit, :vcr do
     describe 'status' do
       subject { @credit.status }
       it { should eq 'succeeded' }
+    end
+
+    describe 'meta', :vcr do
+      subject { @credit.meta }
+      it { should eq @meta }
     end
   end
 end
