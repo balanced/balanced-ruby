@@ -3,12 +3,12 @@ Balanced::Event.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
-event = Balanced::Event.fetch('/events/EVf282e6dab9bb11e38b4402dbb40573f0')
+event = Balanced::Event.fetch('/events/EVfbb73252c68011e3bb20061e5f402045')
 
 % elif mode == 'response':
-#<Balanced::Event:0x007fc09e288bb8
+#<Balanced::Event:0x007fb793d7bae8
  @attributes=
   {"callback_statuses"=>
     {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
@@ -22,20 +22,20 @@ event = Balanced::Event.fetch('/events/EVf282e6dab9bb11e38b4402dbb40573f0')
           "postal_code"=>"90210",
           "state"=>nil},
         "business_name"=>nil,
-        "created_at"=>"2014-04-01T16:37:52.710523Z",
+        "created_at"=>"2014-04-17T22:38:35.705116Z",
         "dob_month"=>2,
         "dob_year"=>1947,
         "ein"=>nil,
         "email"=>"whc@example.org",
-        "href"=>"/customers/CU7ny5y6tdGmz5q0xDQJco9O",
-        "id"=>"CU7ny5y6tdGmz5q0xDQJco9O",
+        "href"=>"/customers/CU7EYury1BOjhbW83bqFKfVr",
+        "id"=>"CU7EYury1BOjhbW83bqFKfVr",
         "links"=>{"destination"=>nil, "source"=>nil},
         "merchant_status"=>"underwritten",
         "meta"=>{},
         "name"=>"William Henry Cavendish III",
         "phone"=>"+16505551212",
         "ssn_last4"=>"xxxx",
-        "updated_at"=>"2014-04-01T16:37:52.811910Z"}],
+        "updated_at"=>"2014-04-17T22:38:35.758188Z"}],
      "links"=>
       {"customers.bank_accounts"=>"/customers/{customers.id}/bank_accounts",
        "customers.card_holds"=>"/customers/{customers.id}/card_holds",
@@ -50,13 +50,13 @@ event = Balanced::Event.fetch('/events/EVf282e6dab9bb11e38b4402dbb40573f0')
        "customers.reversals"=>"/customers/{customers.id}/reversals",
        "customers.source"=>"/resources/{customers.source}",
        "customers.transactions"=>"/customers/{customers.id}/transactions"}},
-   "href"=>"/events/EVf282e6dab9bb11e38b4402dbb40573f0",
-   "id"=>"EVf282e6dab9bb11e38b4402dbb40573f0",
+   "href"=>"/events/EVfbb73252c68011e3bb20061e5f402045",
+   "id"=>"EVfbb73252c68011e3bb20061e5f402045",
    "links"=>{},
-   "occurred_at"=>"2014-04-01T16:37:52.811000Z",
+   "occurred_at"=>"2014-04-17T22:38:35.758000Z",
    "type"=>"account.created"},
  @hyperlinks=
   {"callbacks"=>
-    #<Proc:0x007fc09e29b858/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb793d7a788/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -3,35 +3,35 @@ Balanced::Refund.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
 refunds = Balanced::Refund.all
 % elif mode == 'response':
-[#<Balanced::Refund:0x007fc09cdaa430
+[#<Balanced::Refund:0x007fb793b453a0
   @attributes=
    {"amount"=>3000,
-    "created_at"=>"2014-04-01T16:39:09.590474Z",
+    "created_at"=>"2014-04-17T22:39:47.779017Z",
     "currency"=>"USD",
     "description"=>"Refund for Order #1111",
-    "href"=>"/refunds/RFXnfW2ixFL6qra1mgF5wR8",
-    "id"=>"RFXnfW2ixFL6qra1mgF5wR8",
+    "href"=>"/refunds/RF1mYWVCnVu5NkDAl47rDgMx",
+    "id"=>"RF1mYWVCnVu5NkDAl47rDgMx",
     "links"=>
-     {"debit"=>"WDVNXTW2eo8YXgikJOXqVgy", "dispute"=>nil, "order"=>nil},
+     {"debit"=>"WD19cDwPJMMJj6UWn4YI2bGZ", "dispute"=>nil, "order"=>nil},
     "meta"=>
      {"fulfillment.item.condition"=>"OK",
       "merchant.feedback"=>"positive",
       "user.refund_reason"=>"not happy with product"},
     "status"=>"succeeded",
-    "transaction_number"=>"RF073-158-2913",
-    "updated_at"=>"2014-04-01T16:39:10.174457Z"},
+    "transaction_number"=>"RF938-498-8864",
+    "updated_at"=>"2014-04-17T22:39:48.442287Z"},
   @hyperlinks=
    {"debit"=>
-     #<Proc:0x007fc09cda88d8/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fb793b3f7c0/lib/balanced/resources/resource.rb:60 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fc09cda3ef0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fb793b3ee38/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fc09cda1fd8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fb793b3cfe8/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fc09cda1510/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fb793b3c480/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

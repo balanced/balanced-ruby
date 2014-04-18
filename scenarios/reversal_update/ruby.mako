@@ -3,9 +3,9 @@ Balanced::Reversal.save
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
-reversal = Balanced::Reversal.fetch('/reversals/RV1g9oXOqXgXYezFUtmqg4S2')
+reversal = Balanced::Reversal.fetch('/reversals/RV1Lqw4ZTPoeuldngynU1z6J')
 reversal.description = 'update this description'
 reversal.meta = {
     'refund.reason' => 'user not happy with product',
@@ -15,30 +15,30 @@ reversal.meta = {
 reversal.save
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x007fc09e8ac850
+#<Balanced::Reversal:0x007fb793a5c8d0
  @attributes=
   {"amount"=>3000,
-   "created_at"=>"2014-04-01T16:39:26.285756Z",
+   "created_at"=>"2014-04-17T22:40:20.199870Z",
    "currency"=>"USD",
    "description"=>"update this description",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/reversals/RV1g9oXOqXgXYezFUtmqg4S2",
-   "id"=>"RV1g9oXOqXgXYezFUtmqg4S2",
-   "links"=>{"credit"=>"CR1gIgujcGCCERRlL4KwljLG", "order"=>nil},
+   "href"=>"/reversals/RV1Lqw4ZTPoeuldngynU1z6J",
+   "id"=>"RV1Lqw4ZTPoeuldngynU1z6J",
+   "links"=>{"credit"=>"CR1KskgNXcoA6e52QczoCYyF", "order"=>nil},
    "meta"=>
     {"refund.reason"=>"user not happy with product",
      "user.notes"=>"very polite on the phone",
      "user.satisfaction"=>"6"},
    "status"=>"succeeded",
-   "transaction_number"=>"RV770-348-1487",
-   "updated_at"=>"2014-04-01T16:39:30.696628Z"},
+   "transaction_number"=>"RV365-228-5418",
+   "updated_at"=>"2014-04-17T22:40:24.560642Z"},
  @hyperlinks=
   {"credit"=>
-    #<Proc:0x007fc09b48a298/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fb793a6ad18/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fc09b488448/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb793a68e50/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fc09b4835d8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb793a68428/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

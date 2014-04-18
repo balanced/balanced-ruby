@@ -3,62 +3,62 @@ Balanced::CardHold.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
 holds = Balanced::CardHold.all
 % elif mode == 'response':
-[#<Balanced::CardHold:0x007fc09cdc11a8
+[#<Balanced::CardHold:0x007fb793b46ea8
   @attributes=
    {"amount"=>5000,
-    "created_at"=>"2014-04-01T16:38:26.958994Z",
+    "created_at"=>"2014-04-17T22:39:06.875506Z",
     "currency"=>"USD",
     "description"=>"Some descriptive text for the debit in the dashboard",
-    "expires_at"=>"2014-04-08T16:38:27.034339Z",
+    "expires_at"=>"2014-04-24T22:39:06.984691Z",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/card_holds/HLbr4hg4i7Mg2wAEroOwJhk",
-    "id"=>"HLbr4hg4i7Mg2wAEroOwJhk",
-    "links"=>{"card"=>"CCnjE94RvMPW7RnmLdzIL42", "debit"=>nil},
+    "href"=>"/card_holds/HLqY5FcrUWcnBzMkHpKK1WB",
+    "id"=>"HLqY5FcrUWcnBzMkHpKK1WB",
+    "links"=>{"card"=>"CCCk1CEzUN0gDA5qh8um0rv", "debit"=>nil},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"HL608-811-6933",
-    "updated_at"=>"2014-04-01T16:38:27.089203Z",
+    "transaction_number"=>"HL019-852-0737",
+    "updated_at"=>"2014-04-17T22:39:07.063348Z",
     "voided_at"=>nil},
   @hyperlinks=
    {"card"=>
-     #<Proc:0x007fc09cdc3660/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fb793b453c8/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debit"=>
-     #<Proc:0x007fc09cdc2738/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fb793b44978/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fc09cdbb0a0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fb793b3eaf0/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fc09cdb91d8/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::CardHold:0x007fc09cdb9188
+     #<Proc:0x007fb793b3cb88/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::CardHold:0x007fb793b3cb38
   @attributes=
    {"amount"=>10000000,
-    "created_at"=>"2014-04-01T16:37:55.833629Z",
+    "created_at"=>"2014-04-17T22:38:37.899811Z",
     "currency"=>"USD",
     "description"=>nil,
-    "expires_at"=>"2014-04-08T16:37:56.289170Z",
+    "expires_at"=>"2014-04-24T22:38:38.142449Z",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/card_holds/HL7r3RJ58D3uWBvoXMnp0Z3i",
-    "id"=>"HL7r3RJ58D3uWBvoXMnp0Z3i",
+    "href"=>"/card_holds/HL6oIBR6m4BzAeUXosLwfkl",
+    "id"=>"HL6oIBR6m4BzAeUXosLwfkl",
     "links"=>
-     {"card"=>"CC7BcAIFEseMKZ3LVF9Uz9Lo", "debit"=>"WD7r7ZcBNuaG0S1dP9aHm7OU"},
+     {"card"=>"CC5DFSUEWpcjqEpKk9C7zHr", "debit"=>"WD6pyKzMk7d3rOqmqd4UE8F"},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"HL694-320-8073",
-    "updated_at"=>"2014-04-01T16:37:56.771848Z",
+    "transaction_number"=>"HL939-753-8065",
+    "updated_at"=>"2014-04-17T22:38:38.586817Z",
     "voided_at"=>nil},
   @hyperlinks=
    {"card"=>
-     #<Proc:0x007fc09cdab600/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fb793b36f30/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debit"=>
-     #<Proc:0x007fc09cda9c88/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fb793b35658/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debits"=>
-     #<Proc:0x007fc09cda3d10/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fb793b2f668/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fc09cda1da8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fb793b2d7a0/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

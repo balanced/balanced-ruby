@@ -3,14 +3,14 @@ Balanced::Callback.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
-callback = Balanced::Callback.fetch('/callbacks/CB6K21Z5b8imJRPeZEBoHPq')
+callback = Balanced::Callback.fetch('/callbacks/CBwxLHWPLsoBqKqVyUvZRKp')
 % elif mode == 'response':
-#<Balanced::Callback:0x007fc09e2d84d8
+#<Balanced::Callback:0x007fb793da0190
  @attributes=
-  {"href"=>"/callbacks/CB6K21Z5b8imJRPeZEBoHPq",
-   "id"=>"CB6K21Z5b8imJRPeZEBoHPq",
+  {"href"=>"/callbacks/CBwxLHWPLsoBqKqVyUvZRKp",
+   "id"=>"CBwxLHWPLsoBqKqVyUvZRKp",
    "links"=>{},
    "method"=>"post",
    "revision"=>"1.1",

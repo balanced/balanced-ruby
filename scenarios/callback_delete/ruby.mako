@@ -3,9 +3,9 @@ Balanced::Callback.unstore
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
-callback = Balanced::Callback.fetch('/callbacks/CB6K21Z5b8imJRPeZEBoHPq')
+callback = Balanced::Callback.fetch('/callbacks/CBwxLHWPLsoBqKqVyUvZRKp')
 callback.unstore
 % elif mode == 'response':
 

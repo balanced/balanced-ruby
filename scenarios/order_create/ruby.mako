@@ -3,18 +3,18 @@ Balanced::Customer.create_order
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
-merchant_customer = Balanced::Customer.fetch('/customers/CU116TOiXnCfxHyDErDcMtpU')
+merchant_customer = Balanced::Customer.fetch('/customers/CU1eX3FIMntmCLmi2VfWA2db')
 merchant_customer.create_order(
   :description => 'Order #12341234'
 )
 % elif mode == 'response':
-#<Balanced::Order:0x007fc09e2f2d38
+#<Balanced::Order:0x007fb793d42888
  @attributes=
   {"amount"=>0,
    "amount_escrowed"=>0,
-   "created_at"=>"2014-04-01T16:39:16.292666Z",
+   "created_at"=>"2014-04-17T22:40:10.393839Z",
    "currency"=>"USD",
    "delivery_address"=>
     {"city"=>nil,
@@ -24,23 +24,23 @@ merchant_customer.create_order(
      "postal_code"=>nil,
      "state"=>nil},
    "description"=>"Order #12341234",
-   "href"=>"/orders/OR16uowitglVKoM6x5DxkKVq",
-   "id"=>"OR16uowitglVKoM6x5DxkKVq",
-   "links"=>{"merchant"=>"CU116TOiXnCfxHyDErDcMtpU"},
+   "href"=>"/orders/OR1MqLeXKqwqqW254i3GJ72F",
+   "id"=>"OR1MqLeXKqwqqW254i3GJ72F",
+   "links"=>{"merchant"=>"CU1eX3FIMntmCLmi2VfWA2db"},
    "meta"=>{},
-   "updated_at"=>"2014-04-01T16:39:16.292669Z"},
+   "updated_at"=>"2014-04-17T22:40:10.393841Z"},
  @hyperlinks=
   {"buyers"=>
-    #<Proc:0x007fc09e2f0c90/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb793d407b8/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fc09e2fadd0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb793d3a8e0/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fc09e2f8f30/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb793d38a68/lib/balanced/utils.rb:6 (lambda)>,
    "merchant"=>
-    #<Proc:0x007fc09e303570/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fb793d32f28/lib/balanced/resources/resource.rb:60 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fc09e301720/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb793d30fe8/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fc09e30b838/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb793d2b110/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

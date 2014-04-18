@@ -3,11 +3,11 @@ Balanced::Event.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2fYjkv4Tz5l3iPCtOlgLolmF15XPXlRCr')
+Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
 
 events = Balanced::Event.all
 % elif mode == 'response':
-[#<Balanced::Event:0x007fc09e212dc8
+[#<Balanced::Event:0x007fb793de3328
   @attributes=
    {"callback_statuses"=>
      {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
@@ -21,20 +21,20 @@ events = Balanced::Event.all
            "postal_code"=>"90210",
            "state"=>nil},
          "business_name"=>nil,
-         "created_at"=>"2014-04-01T16:37:52.710523Z",
+         "created_at"=>"2014-04-17T22:38:35.705116Z",
          "dob_month"=>2,
          "dob_year"=>1947,
          "ein"=>nil,
          "email"=>"whc@example.org",
-         "href"=>"/customers/CU7ny5y6tdGmz5q0xDQJco9O",
-         "id"=>"CU7ny5y6tdGmz5q0xDQJco9O",
+         "href"=>"/customers/CU7EYury1BOjhbW83bqFKfVr",
+         "id"=>"CU7EYury1BOjhbW83bqFKfVr",
          "links"=>{"destination"=>nil, "source"=>nil},
          "merchant_status"=>"underwritten",
          "meta"=>{},
          "name"=>"William Henry Cavendish III",
          "phone"=>"+16505551212",
          "ssn_last4"=>"xxxx",
-         "updated_at"=>"2014-04-01T16:37:52.811910Z"}],
+         "updated_at"=>"2014-04-17T22:38:35.758188Z"}],
       "links"=>
        {"customers.bank_accounts"=>"/customers/{customers.id}/bank_accounts",
         "customers.card_holds"=>"/customers/{customers.id}/card_holds",
@@ -49,15 +49,15 @@ events = Balanced::Event.all
         "customers.reversals"=>"/customers/{customers.id}/reversals",
         "customers.source"=>"/resources/{customers.source}",
         "customers.transactions"=>"/customers/{customers.id}/transactions"}},
-    "href"=>"/events/EVf282e6dab9bb11e38b4402dbb40573f0",
-    "id"=>"EVf282e6dab9bb11e38b4402dbb40573f0",
+    "href"=>"/events/EVfbb73252c68011e3bb20061e5f402045",
+    "id"=>"EVfbb73252c68011e3bb20061e5f402045",
     "links"=>{},
-    "occurred_at"=>"2014-04-01T16:37:52.811000Z",
+    "occurred_at"=>"2014-04-17T22:38:35.758000Z",
     "type"=>"account.created"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x007fc09e211a90/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Event:0x007fc09e211a40
+     #<Proc:0x007fb793de1fa0/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Event:0x007fb793de1f50
   @attributes=
    {"callback_statuses"=>
      {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
@@ -75,17 +75,17 @@ events = Balanced::Event.all
          "bank_name"=>"WELLS FARGO BANK NA",
          "can_credit"=>true,
          "can_debit"=>true,
-         "created_at"=>"2014-04-01T16:37:53.068496Z",
+         "created_at"=>"2014-04-17T22:38:35.932190Z",
          "fingerprint"=>"6ybvaLUrJy07phK2EQ7pVk",
-         "href"=>"/bank_accounts/BA7nJt1p20jhEVkds8cuGuuA",
-         "id"=>"BA7nJt1p20jhEVkds8cuGuuA",
+         "href"=>"/bank_accounts/BA7F2RcUvmWA5HA7ot6o33dH",
+         "id"=>"BA7F2RcUvmWA5HA7ot6o33dH",
          "links"=>
           {"bank_account_verification"=>nil,
-           "customer"=>"CU7ny5y6tdGmz5q0xDQJco9O"},
+           "customer"=>"CU7EYury1BOjhbW83bqFKfVr"},
          "meta"=>{},
          "name"=>"TEST-MERCHANT-BANK-ACCOUNT",
          "routing_number"=>"121042882",
-         "updated_at"=>"2014-04-01T16:37:53.068500Z"}],
+         "updated_at"=>"2014-04-17T22:38:35.932192Z"}],
       "links"=>
        {"bank_accounts.bank_account_verification"=>
          "/verifications/{bank_accounts.bank_account_verification}",
@@ -94,13 +94,13 @@ events = Balanced::Event.all
         "bank_accounts.credits"=>"/bank_accounts/{bank_accounts.id}/credits",
         "bank_accounts.customer"=>"/customers/{bank_accounts.customer}",
         "bank_accounts.debits"=>"/bank_accounts/{bank_accounts.id}/debits"}},
-    "href"=>"/events/EVf2b5219ab9bb11e38b4402dbb40573f0",
-    "id"=>"EVf2b5219ab9bb11e38b4402dbb40573f0",
+    "href"=>"/events/EVfbda325cc68011e3bb20061e5f402045",
+    "id"=>"EVfbda325cc68011e3bb20061e5f402045",
     "links"=>{},
-    "occurred_at"=>"2014-04-01T16:37:53.068000Z",
+    "occurred_at"=>"2014-04-17T22:38:35.932000Z",
     "type"=>"bank_account.created"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x007fc09e210758/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fb793de0c68/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif
