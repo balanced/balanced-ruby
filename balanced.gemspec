@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{https://docs.balancedpayments.com/}
   gem.homepage      = "https://www.balancedpayments.com"
 
-  gem.add_dependency("faraday", '~> 0.8.6')
+  gem.add_dependency("faraday", ['>= 0.8.6', '< 0.10'])
   gem.add_dependency("faraday_middleware", '~> 0.9.0')
   gem.add_dependency("addressable", '~> 2.3.5')
 
