@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Sign up on https://balancedpayments.com/}
   gem.homepage      = "https://balancedpayments.com"
 
-  gem.add_dependency("faraday", '>= 0.8.6')
+  gem.add_dependency("faraday", '~> 0.8.6')
   gem.add_dependency("faraday_middleware", '~> 0.9.0')
 
   gem.files         = `git ls-files`.split($\)

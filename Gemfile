@@ -2,9 +2,7 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in balanced.gemspec
 
-gem "faraday"
-gem "faraday_middleware"
-gem "json"
+gemspec
 
 group :development do
   gem "yard"
