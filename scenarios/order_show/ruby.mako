@@ -3,16 +3,16 @@ Balanced::Order.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
+Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
-order = Balanced::Order.fetch('/orders/OR1MqLeXKqwqqW254i3GJ72F')
+order = Balanced::Order.fetch('/orders/OR6d55qbtKx5aWSURkQeodRr')
 
 % elif mode == 'response':
-#<Balanced::Order:0x007fb793c84928
+#<Balanced::Order:0x007fa6d2277448
  @attributes=
   {"amount"=>0,
    "amount_escrowed"=>0,
-   "created_at"=>"2014-04-17T22:40:10.393839Z",
+   "created_at"=>"2014-04-25T20:18:43.120760Z",
    "currency"=>"USD",
    "delivery_address"=>
     {"city"=>nil,
@@ -22,23 +22,23 @@ order = Balanced::Order.fetch('/orders/OR1MqLeXKqwqqW254i3GJ72F')
      "postal_code"=>nil,
      "state"=>nil},
    "description"=>"Order #12341234",
-   "href"=>"/orders/OR1MqLeXKqwqqW254i3GJ72F",
-   "id"=>"OR1MqLeXKqwqqW254i3GJ72F",
-   "links"=>{"merchant"=>"CU1eX3FIMntmCLmi2VfWA2db"},
+   "href"=>"/orders/OR6d55qbtKx5aWSURkQeodRr",
+   "id"=>"OR6d55qbtKx5aWSURkQeodRr",
+   "links"=>{"merchant"=>"CU4MnFEab304anOtUtEu5hkN"},
    "meta"=>{},
-   "updated_at"=>"2014-04-17T22:40:10.393841Z"},
+   "updated_at"=>"2014-04-25T20:18:43.120762Z"},
  @hyperlinks=
   {"buyers"=>
-    #<Proc:0x007fb793c923e8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa6d2265d10/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fb793c903e0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa6d226fc48/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fb793c823f8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa6d226d6c8/lib/balanced/utils.rb:6 (lambda)>,
    "merchant"=>
-    #<Proc:0x007fb793c805f8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa6d225f898/lib/balanced/resources/resource.rb:60 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fb793c7a590/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa6d2257cd8/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fb793c78538/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa6d2255320/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -2,11 +2,11 @@
 Balanced::Card.all
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
+Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 cards = Balanced::Card.all
 % elif mode == 'response':
-[#<Balanced::Card:0x007fb793a7f970
+[#<Balanced::Card:0x007fa6d2144558
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -19,7 +19,7 @@ cards = Balanced::Card.all
     "avs_result"=>nil,
     "avs_street_match"=>nil,
     "brand"=>"MasterCard",
-    "created_at"=>"2014-04-17T22:39:16.874876Z",
+    "created_at"=>"2014-04-25T20:09:52.175221Z",
     "cvv"=>"xxx",
     "cvv_match"=>"yes",
     "cvv_result"=>"Match",
@@ -27,22 +27,22 @@ cards = Balanced::Card.all
     "expiration_year"=>2020,
     "fingerprint"=>
      "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-    "href"=>"/cards/CCOeoFZJMd94AruXU0wuSI9",
-    "id"=>"CCOeoFZJMd94AruXU0wuSI9",
+    "href"=>"/cards/CC4mYF7dj7X6OA2K5F0Qyb4N",
+    "id"=>"CC4mYF7dj7X6OA2K5F0Qyb4N",
     "is_verified"=>true,
     "links"=>{"customer"=>nil},
     "meta"=>{},
     "name"=>nil,
     "number"=>"xxxxxxxxxxxx5100",
-    "updated_at"=>"2014-04-17T22:39:16.874878Z"},
+    "updated_at"=>"2014-04-25T20:09:52.175224Z"},
   @hyperlinks=
    {"card_holds"=>
-     #<Proc:0x007fb793a7cce8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa6d213e090/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fb793a77f90/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa6d213d5c8/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fb793a75ee8/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Card:0x007fb793a75e98
+     #<Proc:0x007fa6d2137740/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Card:0x007fa6d21376f0
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -55,7 +55,7 @@ cards = Balanced::Card.all
     "avs_result"=>nil,
     "avs_street_match"=>nil,
     "brand"=>"MasterCard",
-    "created_at"=>"2014-04-17T22:39:06.284782Z",
+    "created_at"=>"2014-04-25T20:09:41.078409Z",
     "cvv"=>"xxx",
     "cvv_match"=>"yes",
     "cvv_result"=>"Match",
@@ -63,20 +63,20 @@ cards = Balanced::Card.all
     "expiration_year"=>2020,
     "fingerprint"=>
      "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-    "href"=>"/cards/CCCk1CEzUN0gDA5qh8um0rv",
-    "id"=>"CCCk1CEzUN0gDA5qh8um0rv",
+    "href"=>"/cards/CC4auQXiAWMBxJcEUIMYeZFj",
+    "id"=>"CC4auQXiAWMBxJcEUIMYeZFj",
     "is_verified"=>true,
-    "links"=>{"customer"=>"CU7EYury1BOjhbW83bqFKfVr"},
+    "links"=>{"customer"=>"CU3z3rwGWGazDwwyLy0rNqfj"},
     "meta"=>{},
     "name"=>nil,
     "number"=>"xxxxxxxxxxxx5100",
-    "updated_at"=>"2014-04-17T22:39:06.871606Z"},
+    "updated_at"=>"2014-04-25T20:09:41.708881Z"},
   @hyperlinks=
    {"card_holds"=>
-     #<Proc:0x007fb793a76668/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa6d21355a8/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fb793a6e508/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa6d212f568/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debits"=>
-     #<Proc:0x007fb793a6c6b8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa6d212d6a0/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

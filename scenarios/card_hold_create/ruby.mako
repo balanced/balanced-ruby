@@ -2,39 +2,39 @@
 Balanced::Card.hold
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
+Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
-card = Balanced::Card.fetch('/cards/CCCk1CEzUN0gDA5qh8um0rv')
+card = Balanced::Card.fetch('/cards/CC4auQXiAWMBxJcEUIMYeZFj')
 card.hold(
   :amount => 5000,
   :description => 'Some descriptive text for the debit in the dashboard'
 )
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fb793b6f128
+#<Balanced::CardHold:0x007fa6d2235de0
  @attributes=
   {"amount"=>5000,
-   "created_at"=>"2014-04-17T22:39:13.915486Z",
+   "created_at"=>"2014-04-25T20:09:48.990540Z",
    "currency"=>"USD",
    "description"=>"Some descriptive text for the debit in the dashboard",
-   "expires_at"=>"2014-04-24T22:39:14.014926Z",
+   "expires_at"=>"2014-05-02T20:09:49.096484Z",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/card_holds/HLKUg5lJJ5fQZpvaAujCWZH",
-   "id"=>"HLKUg5lJJ5fQZpvaAujCWZH",
-   "links"=>{"card"=>"CCCk1CEzUN0gDA5qh8um0rv", "debit"=>nil},
+   "href"=>"/card_holds/HL4joUazeM3BJE6emmv2Q8EF",
+   "id"=>"HL4joUazeM3BJE6emmv2Q8EF",
+   "links"=>{"card"=>"CC4auQXiAWMBxJcEUIMYeZFj", "debit"=>nil},
    "meta"=>{},
    "status"=>"succeeded",
-   "transaction_number"=>"HL198-143-2621",
-   "updated_at"=>"2014-04-17T22:39:14.097528Z",
+   "transaction_number"=>"HL161-849-8610",
+   "updated_at"=>"2014-04-25T20:09:49.228091Z",
    "voided_at"=>nil},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fb793b6d698/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa6d2234120/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fb793b6cd10/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa6d222f800/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fb793b66c08/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa6d222d848/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fb793b64a70/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa6d2227808/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

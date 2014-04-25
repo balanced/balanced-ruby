@@ -3,39 +3,39 @@ Balanced::Credit.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-1ByQgRpcQLTwmOhCBUofyIHm0r96qPm8s')
+Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 credits = Balanced::Credit.all
 % elif mode == 'response':
-[#<Balanced::Credit:0x007fb794a04170
+[#<Balanced::Credit:0x007fa6d33b8838
   @attributes=
    {"amount"=>5000,
     "appears_on_statement_as"=>"example.com",
-    "created_at"=>"2014-04-17T22:39:27.622238Z",
+    "created_at"=>"2014-04-25T20:10:02.398021Z",
     "currency"=>"USD",
     "description"=>nil,
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/credits/CROijU7WflyjITPTGU9GMlL",
-    "id"=>"CROijU7WflyjITPTGU9GMlL",
+    "href"=>"/credits/CR4yt4sdkTWI1t3HVS16mNAV",
+    "id"=>"CR4yt4sdkTWI1t3HVS16mNAV",
     "links"=>
-     {"customer"=>"CUeXNjpejPooRtSnJLc6SRD",
-      "destination"=>"BAscOV2erMwv3yhIb5sFTaV",
+     {"customer"=>"CU3VYCUIfwngJsidJWdGw2W5",
+      "destination"=>"BA3Y63fK5STwlhKNMkE3Utmd",
       "order"=>nil},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"CR574-106-7569",
-    "updated_at"=>"2014-04-17T22:39:27.978440Z"},
+    "transaction_number"=>"CR883-913-0274",
+    "updated_at"=>"2014-04-25T20:10:03.049785Z"},
   @hyperlinks=
    {"customer"=>
-     #<Proc:0x007fb7949f33e8/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa6d33ab3e0/lib/balanced/resources/resource.rb:60 (lambda)>,
     "destination"=>
-     #<Proc:0x007fb7949eba08/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa6d33a0558/lib/balanced/resources/resource.rb:60 (lambda)>,
     "events"=>
-     #<Proc:0x007fb7949e03b0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa6d33889f8/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fb7949daff0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa6d33833b8/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007fb7949d35e8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa6d337b1e0/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif
