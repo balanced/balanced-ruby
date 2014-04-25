@@ -1,1 +1,1 @@
-Balanced::Dispute.fetch
+Balanced::Debit.dispute
