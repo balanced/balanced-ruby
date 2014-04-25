@@ -14,7 +14,7 @@ card.meta = {
 card.save
 
 % elif mode == 'response':
-#<Balanced::Card:0x007fa6d34449a0
+#<Balanced::Card:0x007fa93b5e48b8
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -48,10 +48,10 @@ card.save
    "updated_at"=>"2014-04-25T20:09:55.802789Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa6d342ec40/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b5cee78/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa6d3423098/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b5c2ee8/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d3413dc8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b5b3d80/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

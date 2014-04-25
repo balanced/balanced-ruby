@@ -8,7 +8,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 card_hold = Balanced::CardHold.fetch('/card_holds/HL4joUazeM3BJE6emmv2Q8EF')
 card_hold.unstore
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fa6d216dac0
+#<Balanced::CardHold:0x007fa93b71db58
  @attributes=
   {"amount"=>5000,
    "created_at"=>"2014-04-25T20:09:48.990540Z",
@@ -27,12 +27,12 @@ card_hold.unstore
    "voided_at"=>"2014-04-25T20:09:49.731656Z"},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fa6d216feb0/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b71f9d0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fa6d2167580/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b717618/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d2165438/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b715520/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d215f600/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b70f698/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

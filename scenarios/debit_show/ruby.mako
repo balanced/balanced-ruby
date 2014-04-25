@@ -8,7 +8,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 debit = Balanced::Debit.fetch('/debits/WD4vEUJj36IpPHTnLKMYzHgh')
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007fa6d25751e0
+#<Balanced::Debit:0x007fa93eb35288
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"BAL*Statement text",
@@ -30,16 +30,16 @@ debit = Balanced::Debit.fetch('/debits/WD4vEUJj36IpPHTnLKMYzHgh')
    "updated_at"=>"2014-04-25T20:10:00.865462Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007fa6d256f650/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93eb276b0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fa6d256eca0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb26d28/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d256ce28/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb24e88/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa6d256c450/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb244b0/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa6d2564070/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb1c0a8/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa6d254fa58/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa93eb07ab8/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

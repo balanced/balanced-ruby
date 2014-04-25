@@ -7,7 +7,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 card = Balanced::Card.fetch('/cards/CC4mYF7dj7X6OA2K5F0Qyb4N')
 % elif mode == 'response':
-#<Balanced::Card:0x007fa6d34c7b70
+#<Balanced::Card:0x007fa93b667998
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -38,10 +38,10 @@ card = Balanced::Card.fetch('/cards/CC4mYF7dj7X6OA2K5F0Qyb4N')
    "updated_at"=>"2014-04-25T20:09:52.175224Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa6d34bf380/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b65f1d0/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa6d34bc6f8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b65c610/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d34b4200/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b654140/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

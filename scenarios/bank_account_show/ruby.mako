@@ -7,7 +7,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA3PDwDCkdeC4OgPtPNwoCWl')
 
 % elif mode == 'response':
-#<Balanced::BankAccount:0x007fa6d258ced0
+#<Balanced::BankAccount:0x007fa93eb44e18
  @attributes=
   {"account_number"=>"xxxxxx0001",
    "account_type"=>"checking",
@@ -33,14 +33,14 @@ bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA3PDwDCkdeC4OgPtPNwo
    "updated_at"=>"2014-04-25T20:09:22.528628Z"},
  @hyperlinks=
   {"bank_account_verification"=>
-    #<Proc:0x007fa6d258c368/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb442b0/lib/balanced/utils.rb:6 (lambda)>,
    "bank_account_verifications"=>
-    #<Proc:0x007fa6d2576388/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb36368/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa6d2574308/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb34400/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa6d256f998/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93eb279d0/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d256d9b8/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93eb259f0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

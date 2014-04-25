@@ -7,7 +7,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 events = Balanced::Event.all
 % elif mode == 'response':
-[#<Balanced::Event:0x007fa6d2497110
+[#<Balanced::Event:0x007fa93ea4f170
   @attributes=
    {"callback_statuses"=>
      {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
@@ -51,8 +51,8 @@ events = Balanced::Event.all
     "type"=>"bank_account.created"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x007fa6d2495d10/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Event:0x007fa6d2495c98
+     #<Proc:0x007fa93ea4dd70/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Event:0x007fa93ea4dd20
   @attributes=
    {"callback_statuses"=>
      {"failed"=>0, "pending"=>0, "retrying"=>0, "succeeded"=>0},
@@ -101,6 +101,6 @@ events = Balanced::Event.all
     "type"=>"account.created"},
   @hyperlinks=
    {"callbacks"=>
-     #<Proc:0x007fa6d24948c0/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa93ea4c920/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

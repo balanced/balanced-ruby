@@ -7,7 +7,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 credit = Balanced::Credit.fetch('/credits/CR4yt4sdkTWI1t3HVS16mNAV')
 % elif mode == 'response':
-#<Balanced::Credit:0x007fa6d3330550
+#<Balanced::Credit:0x007fa93b4d03a0
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"example.com",
@@ -28,14 +28,14 @@ credit = Balanced::Credit.fetch('/credits/CR4yt4sdkTWI1t3HVS16mNAV')
    "updated_at"=>"2014-04-25T20:10:03.049785Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007fa6d3328f30/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b4c8df8/lib/balanced/resources/resource.rb:60 (lambda)>,
    "destination"=>
-    #<Proc:0x007fa6d3321848/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b4c1670/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d3312280/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b4b1f90/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa6d330b840/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b4ab5c8/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa6d32fa888/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b49a778/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

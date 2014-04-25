@@ -6,7 +6,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 card = Balanced::ApiKey.fetch('/api_keys/AK3DgZwSCD2ggxGSw1bsiyDX')
 % elif mode == 'response':
-#<Balanced::ApiKey:0x007fa6d258da88
+#<Balanced::ApiKey:0x007fa93eb45a48
  @attributes=
   {"created_at"=>"2014-04-25T20:09:11.537493Z",
    "href"=>"/api_keys/AK3DgZwSCD2ggxGSw1bsiyDX",

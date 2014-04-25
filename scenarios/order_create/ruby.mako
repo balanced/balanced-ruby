@@ -10,7 +10,7 @@ merchant_customer.create_order(
   :description => 'Order #12341234'
 )
 % elif mode == 'response':
-#<Balanced::Order:0x007fa6d23ad2b8
+#<Balanced::Order:0x007fa93e965318
  @attributes=
   {"amount"=>0,
    "amount_escrowed"=>0,
@@ -31,16 +31,16 @@ merchant_customer.create_order(
    "updated_at"=>"2014-04-25T20:18:43.120762Z"},
  @hyperlinks=
   {"buyers"=>
-    #<Proc:0x007fa6d23a6f58/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93e95f008/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa6d23a4b18/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93e95cba0/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d239ea38/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93e956b10/lib/balanced/utils.rb:6 (lambda)>,
    "merchant"=>
-    #<Proc:0x007fa6d239cf58/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93e955008/lib/balanced/resources/resource.rb:60 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa6d2396f90/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93e94f018/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa6d2394fb0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93e94d038/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

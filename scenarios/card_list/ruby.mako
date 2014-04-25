@@ -6,7 +6,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 cards = Balanced::Card.all
 % elif mode == 'response':
-[#<Balanced::Card:0x007fa6d2144558
+[#<Balanced::Card:0x007fa93b6f4618
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -37,12 +37,12 @@ cards = Balanced::Card.all
     "updated_at"=>"2014-04-25T20:09:52.175224Z"},
   @hyperlinks=
    {"card_holds"=>
-     #<Proc:0x007fa6d213e090/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b6ee128/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fa6d213d5c8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b6ed638/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa6d2137740/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Card:0x007fa6d21376f0
+     #<Proc:0x007fa93b6e77b0/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Card:0x007fa93b6e7760
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -73,10 +73,10 @@ cards = Balanced::Card.all
     "updated_at"=>"2014-04-25T20:09:41.708881Z"},
   @hyperlinks=
    {"card_holds"=>
-     #<Proc:0x007fa6d21355a8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b6e5618/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fa6d212f568/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa93b6df628/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa6d212d6a0/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa93b6dd760/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

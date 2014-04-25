@@ -1,6 +1,5 @@
 % if mode == 'definition':
-Balanced::Dispute.fetch
-
+Balanced::Debit.dispute
 % elif mode == 'request':
 require 'balanced'
 Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
@@ -9,7 +8,7 @@ debit = Balanced::Debit.fetch('/debits/WD4YCKAyFrQBFYuFCUCRynOx')
 dispute = debit.dispute
 
 % elif mode == 'response':
-#<Balanced::Dispute:0x007fa6d263cda8
+#<Balanced::Dispute:0x007fa93ebf4d68
  @attributes=
   {"amount"=>5000,
    "created_at"=>"2014-04-25T20:18:33.022136Z",
@@ -25,8 +24,8 @@ dispute = debit.dispute
    "updated_at"=>"2014-04-25T20:18:33.022139Z"},
  @hyperlinks=
   {"events"=>
-    #<Proc:0x007fa6d2646d08/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ebfecc8/lib/balanced/utils.rb:6 (lambda)>,
    "transaction"=>
-    #<Proc:0x007fa6d2645368/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa93ebfd328/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

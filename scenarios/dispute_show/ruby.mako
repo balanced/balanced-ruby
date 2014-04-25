@@ -8,7 +8,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 dispute = Balanced::Dispute.fetch('/disputes/DT61IA2iRqyYBLqUCJNt5XNV')
 
 % elif mode == 'response':
-#<Balanced::Dispute:0x007fa6d24d58e8
+#<Balanced::Dispute:0x007fa93ea8d948
  @attributes=
   {"amount"=>5000,
    "created_at"=>"2014-04-25T20:18:33.022136Z",
@@ -24,8 +24,8 @@ dispute = Balanced::Dispute.fetch('/disputes/DT61IA2iRqyYBLqUCJNt5XNV')
    "updated_at"=>"2014-04-25T20:18:33.022139Z"},
  @hyperlinks=
   {"events"=>
-    #<Proc:0x007fa6d24cf420/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ea87458/lib/balanced/utils.rb:6 (lambda)>,
    "transaction"=>
-    #<Proc:0x007fa6d24cd6c0/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa93ea856f8/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

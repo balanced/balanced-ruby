@@ -6,7 +6,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 disputes = Balanced::Dispute.all
 % elif mode == 'response':
-[#<Balanced::Dispute:0x007fa6d24f50f8
+[#<Balanced::Dispute:0x007fa93eaad108
   @attributes=
    {"amount"=>5000,
     "created_at"=>"2014-04-25T20:18:33.022136Z",
@@ -22,8 +22,8 @@ disputes = Balanced::Dispute.all
     "updated_at"=>"2014-04-25T20:18:33.022139Z"},
   @hyperlinks=
    {"events"=>
-     #<Proc:0x007fa6d24eef28/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93eaa6f60/lib/balanced/utils.rb:6 (lambda)>,
     "transaction"=>
-     #<Proc:0x007fa6d24ed498/lib/balanced/resources/resource.rb:60 (lambda)>}>]
+     #<Proc:0x007fa93eaa54d0/lib/balanced/resources/resource.rb:60 (lambda)>}>]
 
 % endif

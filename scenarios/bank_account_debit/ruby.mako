@@ -13,7 +13,7 @@ bank_account.debit(
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007fa6d2625bd0
+#<Balanced::Debit:0x007fa93ebddb68
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"BAL*Statement text",
@@ -35,16 +35,16 @@ bank_account.debit(
    "updated_at"=>"2014-04-25T20:09:34.551675Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007fa6d2625090/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ebdd028/lib/balanced/utils.rb:6 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fa6d2624708/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ebdc6a0/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d262e820/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ebe67e0/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa6d262de48/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ebe5e08/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa6d2637fb0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93ebeff70/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa6d2636610/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fa93ebee5d0/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

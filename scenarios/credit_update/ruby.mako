@@ -14,7 +14,7 @@ credit.meta = {
 credit.save
 
 % elif mode == 'response':
-#<Balanced::Credit:0x007fa6d32c8ae0
+#<Balanced::Credit:0x007fa93b4689f8
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"example.com",
@@ -35,14 +35,14 @@ credit.save
    "updated_at"=>"2014-04-25T20:10:07.895933Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007fa6d32b9d10/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b459958/lib/balanced/resources/resource.rb:60 (lambda)>,
    "destination"=>
-    #<Proc:0x007fa6d32b16d8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b451488/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d32aa680/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b44a4f8/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa6d32a9348/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b449198/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa6d3293188/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b432c18/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

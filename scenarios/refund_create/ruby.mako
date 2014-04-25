@@ -16,7 +16,7 @@ debit.refund(
 )
 
 % elif mode == 'response':
-#<Balanced::Refund:0x007fa6d21fd558
+#<Balanced::Refund:0x007fa93b7ad5f0
  @attributes=
   {"amount"=>3000,
    "created_at"=>"2014-04-25T20:10:22.593252Z",
@@ -35,12 +35,12 @@ debit.refund(
    "updated_at"=>"2014-04-25T20:10:23.032505Z"},
  @hyperlinks=
   {"debit"=>
-    #<Proc:0x007fa6d21f78d8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b7a79c0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fa6d21f6f00/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b7a6fe8/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d21f4f70/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b7a5058/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa6d21f4570/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b7a4680/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

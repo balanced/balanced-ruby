@@ -15,7 +15,7 @@ reversal.meta = {
 reversal.save
 
 % elif mode == 'response':
-#<Balanced::Reversal:0x007fa6d34cd2a0
+#<Balanced::Reversal:0x007fa93b66d2a8
  @attributes=
   {"amount"=>3000,
    "created_at"=>"2014-04-25T20:18:55.008280Z",
@@ -35,10 +35,10 @@ reversal.save
    "updated_at"=>"2014-04-25T20:19:01.228936Z"},
  @hyperlinks=
   {"credit"=>
-    #<Proc:0x007fa6d34c64a0/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b666318/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d34bc1d0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b65c098/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa6d34b5e20/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b655dd8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

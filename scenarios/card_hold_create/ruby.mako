@@ -10,7 +10,7 @@ card.hold(
   :description => 'Some descriptive text for the debit in the dashboard'
 )
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fa6d2235de0
+#<Balanced::CardHold:0x007fa93b7e5ea0
  @attributes=
   {"amount"=>5000,
    "created_at"=>"2014-04-25T20:09:48.990540Z",
@@ -29,12 +29,12 @@ card.hold(
    "voided_at"=>nil},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fa6d2234120/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b7e41e0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fa6d222f800/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b7df898/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d222d848/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b7dd8e0/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d2227808/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b7d78a0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

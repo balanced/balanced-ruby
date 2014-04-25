@@ -14,7 +14,7 @@ card_hold.meta = {
 card_hold.save
 
 % elif mode == 'response':
-#<Balanced::CardHold:0x007fa6d219c758
+#<Balanced::CardHold:0x007fa93b74c868
  @attributes=
   {"amount"=>5000,
    "created_at"=>"2014-04-25T20:09:41.712497Z",
@@ -33,12 +33,12 @@ card_hold.save
    "voided_at"=>nil},
  @hyperlinks=
   {"card"=>
-    #<Proc:0x007fa6d2196b28/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa93b746c10/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debit"=>
-    #<Proc:0x007fa6d2195ef8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b745f90/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa6d2196ba0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa93b746788/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa6d218dc58/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa93b73dcf0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

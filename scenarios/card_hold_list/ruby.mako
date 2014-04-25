@@ -7,7 +7,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 holds = Balanced::CardHold.all
 % elif mode == 'response':
-[#<Balanced::CardHold:0x007fa6d220d430
+[#<Balanced::CardHold:0x007fa93b7bd4f0
   @attributes=
    {"amount"=>5000,
     "created_at"=>"2014-04-25T20:09:41.712497Z",
@@ -26,14 +26,14 @@ holds = Balanced::CardHold.all
     "voided_at"=>nil},
   @hyperlinks=
    {"card"=>
-     #<Proc:0x007fa6d2207940/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa93b7b79b0/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debit"=>
-     #<Proc:0x007fa6d2206ef0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b7b6f60/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa6d2204d58/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b7b4df0/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fa6d21fef48/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::CardHold:0x007fa6d21feef8
+     #<Proc:0x007fa93b7aefb8/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::CardHold:0x007fa93b7aef68
   @attributes=
    {"amount"=>10000000,
     "created_at"=>"2014-04-25T20:09:10.201844Z",
@@ -53,12 +53,12 @@ holds = Balanced::CardHold.all
     "voided_at"=>nil},
   @hyperlinks=
    {"card"=>
-     #<Proc:0x007fa6d21fd288/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa93b7ad2f8/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debit"=>
-     #<Proc:0x007fa6d21f7888/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa93b7a7948/lib/balanced/resources/resource.rb:60 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa6d21f56c8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b7a5788/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fa6d21ef728/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa93b79f7e8/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

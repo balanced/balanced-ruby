@@ -7,7 +7,7 @@ Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
 
 reversals = Balanced::Reversal.all
 % elif mode == 'response':
-[#<Balanced::Reversal:0x007fa6d2137308
+[#<Balanced::Reversal:0x007fa93b6e73f0
   @attributes=
    {"amount"=>3000,
     "created_at"=>"2014-04-25T20:18:55.008280Z",
@@ -27,10 +27,10 @@ reversals = Balanced::Reversal.all
     "updated_at"=>"2014-04-25T20:18:57.393905Z"},
   @hyperlinks=
    {"credit"=>
-     #<Proc:0x007fa6d21357b0/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa93b6e5848/lib/balanced/resources/resource.rb:60 (lambda)>,
     "events"=>
-     #<Proc:0x007fa6d212f220/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa93b6df330/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fa6d212e7f8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa93b6de908/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif
