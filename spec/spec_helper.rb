@@ -4,6 +4,7 @@ require 'balanced'
 require 'vcr'
 require 'json'
 require 'securerandom'
+require 'webmock'
 
 begin
   require 'ruby-debug'
@@ -14,7 +15,8 @@ end
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
-  c.hook_into :faraday
+  #c.hook_into :faraday
+  c.hook_into :webmock # TEMP WORK AROUND FOR https://github.com/vcr/vcr/issues/386
   c.configure_rspec_metadata!
   c.default_cassette_options = {:record => :new_episodes}
   c.allow_http_connections_when_no_cassette = true

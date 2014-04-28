@@ -39,8 +39,7 @@ module Balanced
         logger.level = Logger.const_get(config[:logging_level].to_s)
       end
 
-      Faraday.register_middleware :response,
-          :handle_balanced_errors => lambda {Faraday::Response::RaiseBalancedError}
+      Faraday::Response.register_middleware :handle_balanced_errors => lambda { Faraday::Response::RaiseBalancedError }
 
       options = {
         :request => {

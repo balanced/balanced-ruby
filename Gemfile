@@ -19,4 +19,5 @@ group :test do
   gem "rspec", '~> 2.14.1'
   gem "rake", '~> 10.0.3'
   gem "vcr", '~> 2.4.0'
+  gem "webmock"
 end
