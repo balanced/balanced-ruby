@@ -1,3 +1,8 @@
+## 1.0.2
+
+* Pass all options through to underlying calls (#169, #170)
+
+
 ## 1.0.1
 
 * Fix for nil or empty string resource fetch
