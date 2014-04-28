@@ -9,8 +9,7 @@ describe Faraday::Response::RaiseBalancedError, :type => :response do
   context "integration test" do
 
     before(:each) do
-      Faraday.register_middleware :response,
-          :handle_balanced_errors => lambda { described_class }
+      Faraday::Response.register_middleware :handle_balanced_errors => lambda { described_class }
       VCR.turn_off!
     end
 
