@@ -3,9 +3,9 @@ Balanced::BankAccount.debit
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
+Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
 
-bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA3IhKG3bIN22cLHbaOIGtHb')
+bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA7lb2roygfhwDfbvikDLcHP')
 bank_account.debit(
   :amount => 5000,
   :appears_on_statement_as => 'Statement text',
@@ -13,38 +13,38 @@ bank_account.debit(
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007fa93ebddb68
+#<Balanced::Debit:0x007fb60b1194f0
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"BAL*Statement text",
-   "created_at"=>"2014-04-25T20:09:33.925749Z",
+   "created_at"=>"2014-04-25T22:00:13.215147Z",
    "currency"=>"USD",
    "description"=>"Some descriptive text for the debit in the dashboard",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/debits/WD42s4BBkPXvzXTxyo7CLfFj",
-   "id"=>"WD42s4BBkPXvzXTxyo7CLfFj",
+   "href"=>"/debits/WD7BQhTIsYYSdWYr3QkpTSml",
+   "id"=>"WD7BQhTIsYYSdWYr3QkpTSml",
    "links"=>
     {"customer"=>nil,
      "dispute"=>nil,
      "order"=>nil,
-     "source"=>"BA3IhKG3bIN22cLHbaOIGtHb"},
+     "source"=>"BA7lb2roygfhwDfbvikDLcHP"},
    "meta"=>{},
    "status"=>"succeeded",
-   "transaction_number"=>"W212-186-3238",
-   "updated_at"=>"2014-04-25T20:09:34.551675Z"},
+   "transaction_number"=>"W037-237-6091",
+   "updated_at"=>"2014-04-25T22:00:13.474988Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007fa93ebdd028/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b118668/lib/balanced/utils.rb:6 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fa93ebdc6a0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b1ffea0/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa93ebe67e0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b1fda38/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa93ebe5e08/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b1fd088/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa93ebeff70/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b1f10f8/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa93ebee5d0/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fb60b1ef078/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

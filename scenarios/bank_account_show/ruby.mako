@@ -2,12 +2,12 @@
 Balanced::BankAccount.fetch
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
+Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
 
-bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA3PDwDCkdeC4OgPtPNwoCWl')
+bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA7sojXcP7oSdQyrjUA7wXg9')
 
 % elif mode == 'response':
-#<Balanced::BankAccount:0x007fa93eb44e18
+#<Balanced::BankAccount:0x007fb60a8a5be8
  @attributes=
   {"account_number"=>"xxxxxx0001",
    "account_type"=>"checking",
@@ -21,26 +21,26 @@ bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA3PDwDCkdeC4OgPtPNwo
    "bank_name"=>"BANK OF AMERICA, N.A.",
    "can_credit"=>true,
    "can_debit"=>false,
-   "created_at"=>"2014-04-25T20:09:22.528624Z",
+   "created_at"=>"2014-04-25T22:00:04.813389Z",
    "fingerprint"=>
     "5f0ba9fa3f1122ef13b944a40abfe44e7eba9e16934e64200913cb4c402ace14",
-   "href"=>"/bank_accounts/BA3PDwDCkdeC4OgPtPNwoCWl",
-   "id"=>"BA3PDwDCkdeC4OgPtPNwoCWl",
+   "href"=>"/bank_accounts/BA7sojXcP7oSdQyrjUA7wXg9",
+   "id"=>"BA7sojXcP7oSdQyrjUA7wXg9",
    "links"=>{"bank_account_verification"=>nil, "customer"=>nil},
    "meta"=>{},
    "name"=>"Johann Bernoulli",
    "routing_number"=>"121000358",
-   "updated_at"=>"2014-04-25T20:09:22.528628Z"},
+   "updated_at"=>"2014-04-25T22:00:04.813391Z"},
  @hyperlinks=
   {"bank_account_verification"=>
-    #<Proc:0x007fa93eb442b0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60a8a4b30/lib/balanced/utils.rb:6 (lambda)>,
    "bank_account_verifications"=>
-    #<Proc:0x007fa93eb36368/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60a8b0e58/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa93eb34400/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60a8b6d08/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa93eb279d0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60a8b6358/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa93eb259f0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb60a8b4300/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
