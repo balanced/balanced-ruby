@@ -1,1 +1,1 @@
-Balanced::Order.debit
+Balanced::Order.debit_from
