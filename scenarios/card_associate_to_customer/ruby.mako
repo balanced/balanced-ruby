@@ -3,12 +3,12 @@ Balanced::Card.associate_to_customer
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
+Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
 
-card = Balanced::Card.fetch('/cards/CC4tvKLTKXcBJAgkGvPEW58N')
-card.associate_to_customer('/customers/CU3VYCUIfwngJsidJWdGw2W5')
+card = Balanced::Card.fetch('/cards/CCf1fF6z2RjwvniinUVefhb')
+card.associate_to_customer('/customers/CU7yCmXG2RxyyIkcHG3SIMUF')
 % elif mode == 'response':
-#<Balanced::Card:0x007fa93ea3d100
+#<Balanced::Card:0x007fb60b3912a0
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -21,7 +21,7 @@ card.associate_to_customer('/customers/CU3VYCUIfwngJsidJWdGw2W5')
    "avs_result"=>nil,
    "avs_street_match"=>nil,
    "brand"=>"MasterCard",
-   "created_at"=>"2014-04-25T20:09:57.984444Z",
+   "created_at"=>"2014-04-25T22:00:36.548055Z",
    "cvv"=>"xxx",
    "cvv_match"=>"yes",
    "cvv_result"=>"Match",
@@ -29,20 +29,20 @@ card.associate_to_customer('/customers/CU3VYCUIfwngJsidJWdGw2W5')
    "expiration_year"=>2020,
    "fingerprint"=>
     "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-   "href"=>"/cards/CC4tvKLTKXcBJAgkGvPEW58N",
-   "id"=>"CC4tvKLTKXcBJAgkGvPEW58N",
+   "href"=>"/cards/CCf1fF6z2RjwvniinUVefhb",
+   "id"=>"CCf1fF6z2RjwvniinUVefhb",
    "is_verified"=>true,
-   "links"=>{"customer"=>"CU3VYCUIfwngJsidJWdGw2W5"},
+   "links"=>{"customer"=>"CU7yCmXG2RxyyIkcHG3SIMUF"},
    "meta"=>{},
    "name"=>nil,
    "number"=>"xxxxxxxxxxxx5100",
-   "updated_at"=>"2014-04-25T20:09:58.467948Z"},
+   "updated_at"=>"2014-04-25T22:00:37.042031Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa93ea36788/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b392038/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa93ea34190/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fb60b39c588/lib/balanced/resources/resource.rb:60 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa93ea2e240/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb60b3a1ec0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

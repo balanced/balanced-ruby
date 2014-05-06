@@ -3,7 +3,7 @@ Balanced::Card.new
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-22IOkhevjZlmRP2do6CZixkkDshTiOjTV')
+Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
 
 card = Balanced::Card.new(
   :cvv => '123',
@@ -13,7 +13,7 @@ card = Balanced::Card.new(
 ).save
 
 % elif mode == 'response':
-#<Balanced::Card:0x007fa93ea04be8
+#<Balanced::Card:0x007fb60b3c2a08
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -26,7 +26,7 @@ card = Balanced::Card.new(
    "avs_result"=>nil,
    "avs_street_match"=>nil,
    "brand"=>"MasterCard",
-   "created_at"=>"2014-04-25T20:09:57.984444Z",
+   "created_at"=>"2014-04-25T22:00:36.548055Z",
    "cvv"=>"xxx",
    "cvv_match"=>"yes",
    "cvv_result"=>"Match",
@@ -34,20 +34,20 @@ card = Balanced::Card.new(
    "expiration_year"=>2020,
    "fingerprint"=>
     "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-   "href"=>"/cards/CC4tvKLTKXcBJAgkGvPEW58N",
-   "id"=>"CC4tvKLTKXcBJAgkGvPEW58N",
+   "href"=>"/cards/CCf1fF6z2RjwvniinUVefhb",
+   "id"=>"CCf1fF6z2RjwvniinUVefhb",
    "is_verified"=>true,
    "links"=>{"customer"=>nil},
    "meta"=>{},
    "name"=>nil,
    "number"=>"xxxxxxxxxxxx5100",
-   "updated_at"=>"2014-04-25T20:09:57.984446Z"},
+   "updated_at"=>"2014-04-25T22:00:36.548057Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa93e9fe568/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b3c7648/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa93e9fd500/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb60b3c66f8/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa93e9cf678/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb60b3cc0a8/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

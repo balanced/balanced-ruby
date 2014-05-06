@@ -2,7 +2,7 @@
 Balanced::Customer.unstore
 
 % elif mode == 'request':
-customer = Balanced::Customer.fetch('/customers/CU4MnFEab304anOtUtEu5hkN')
+customer = Balanced::Customer.fetch('/customers/CUxN95d3eKLokMS6CymVtIB')
 customer.unstore
 
 % elif mode == 'response':
