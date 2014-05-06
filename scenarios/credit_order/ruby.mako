@@ -8,11 +8,11 @@ Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
 order = Balanced::Order.fetch('/orders/OR5QcYnwysJXQswImokq6ZSx')
 bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA5KLH6jhFgtVENHXOcF3Cfj/credits')
 order.credit_to(
-    :source => card,
+    :source => bank_account,
     :amount => '5000'
 )
 % elif mode == 'response':
-#<Balanced::Credit:0x007f80e38e52e0
+#<Balanced::Credit:0x007f9a9b44dff8
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"example.com",
@@ -33,14 +33,14 @@ order.credit_to(
    "updated_at"=>"2014-05-05T16:53:39.441985Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007f80e38e2ea0/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007f9a9b44bbe0/lib/balanced/resources/resource.rb:60 (lambda)>,
    "destination"=>
-    #<Proc:0x007f80e38e1168/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007f9a9b449e58/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007f80e38ddf18/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007f9a9b446cd0/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007f80e38db4e8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007f9a9b444250/lib/balanced/resources/resource.rb:60 (lambda)>,
    "reversals"=>
-    #<Proc:0x007f80e38d8bd0/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007f9a9b4418c0/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
