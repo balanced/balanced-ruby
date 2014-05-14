@@ -12,40 +12,153 @@ describe Balanced::Credit, :vcr do
     ).save
 
     # An initial balance for the marketplace
-    card.debit(:amount => 1000000)
+    card.debit(:amount => 10000000)
     @meta = {"order_id" => "1111"}
   end
 
-  describe '#create', :vcr do
-    before do
-      @credit = Balanced::Credit.new(
-          :amount => 5000,
-          :description => 'A sweet ride',
-          :destination => {
-              :routing_number => '321174851',
-              :account_number => '0987654321',
-              :name => 'Timmy T. McTimmerson',
-              :type => 'checking'
-          },
-          :meta => @meta
-      ).save
-    end
+  context 'BankAccount' do
+    describe '#create', :vcr do
+      before do
+        @credit = Balanced::Credit.new(
+            :amount => 5000,
+            :description => 'A sweet ride',
+            :destination => {
+                :routing_number => '321174851',
+                :account_number => '0987654321',
+                :name => 'Timmy T. McTimmerson',
+                :type => 'checking'
+            },
+            :meta => @meta
+        ).save
+      end
 
-    describe 'amount', :vcr do
-      subject { @credit.amount }
-      it { should == 5000 }
-    end
+      describe 'amount', :vcr do
+        subject { @credit.amount }
+        it { should == 5000 }
+      end
 
-    describe 'customer', :vcr do
-      subject { @credit.customer }
-      it { should be_nil }
-    end
+      describe 'customer', :vcr do
+        subject { @credit.customer }
+        it { should be_nil }
+      end
 
-    describe 'meta', :vcr do
-      subject { @credit.meta }
-      it { should eq @meta }
-    end
+      describe 'meta', :vcr do
+        subject { @credit.meta }
+        it { should eq @meta }
+      end
 
+    end
+  end
+  
+  context 'Card' do
+    describe '#create', :vcr do
+      context 'succeed' do
+        context 'existing card' do
+          before do
+            @card = Balanced::Card.new(
+              :name => 'Johannes Bach',
+              :number => '4342561111111118',
+              :expiration_month => '05',
+              :expiration_year => '2015'
+            ).save
+      
+            @credit = Balanced::Credit.new(
+                :amount => 250000,
+                :description => 'A sweet ride',
+                :destination => @card.href,
+                :meta => @meta
+            ).save
+          end
+  
+          describe 'attributes', :vcr do
+            let(:credit) { @credit }
+        
+            it 'should have valid attributes' do
+              expect(credit.href).to eq("/credits/#{@credit.id}")
+              expect(credit.amount).to eq(250000)
+              expect(credit.meta).to eq(@meta)
+              expect(credit.status).to eq('succeeded')
+            end
+          end
+        end
+    
+        context 'card in request' do
+          before do
+            @credit = Balanced::Credit.new(
+                :amount => 250000,
+                :description => 'A sweet ride',
+                :destination => {
+                  :name => 'Johannes Bach',
+                  :number => '4342561111111118',
+                  :expiration_month => '05',
+                  :expiration_year => '2015'
+                },
+                :meta => @meta
+            ).save
+          end
+  
+          describe 'attributes', :vcr do
+            let(:credit) { @credit }
+        
+            it 'should have valid attributes' do
+              expect(credit.href).to eq("/credits/#{@credit.id}")
+              expect(credit.amount).to eq(250000)
+              expect(credit.meta).to eq(@meta)
+              expect(credit.status).to eq('succeeded')
+            end
+          end
+        end
+      end
+
+      context 'fail' do
+        describe 'can_credit false' do
+          it do
+            expect {
+              @credit = Balanced::Credit.new(
+                :amount => 1234,
+                :destination => {
+                  :name => 'Georg Telemann',
+                  :number => '4111111111111111',
+                  :expiration_month => '12',
+                  :expiration_year => '2016'
+                }
+              ).save
+            }.to raise_exception(Balanced::Conflict)
+          end
+        end
+
+        describe 'credit amount limit' do
+          it do
+            expect {
+              @credit = Balanced::Credit.new(
+                :amount => 250001,
+                :destination => {
+                  :name => 'Georg Telemann',
+                  :number => '4342561111111118',
+                  :expiration_month => '05',
+                  :expiration_year => '2015'
+                }
+              ).save
+            }.to raise_exception(Balanced::Conflict)
+          end
+        end
+
+        describe 'requires cardholder name' do
+          it do
+            expect {
+              @credit = Balanced::Credit.new(
+                :amount => 1234,
+                :destination => {
+                  :number => '4342561111111118',
+                  :expiration_month => '05',
+                  :expiration_year => '2015'
+                }
+              ).save
+            }.to raise_exception(Balanced::BadRequest)
+          end
+        end
+      end
+    end
   end
 
   describe '#reverse', :vcr do

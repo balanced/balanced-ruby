@@ -12,22 +12,84 @@ describe Balanced::Card, :vcr do
         :expiration_year => '2020',
         :cvv => '123'
     ).save
+    @card.debit(:amount => 1000000)
   end
 
   describe 'card', :vcr do
-    it 'should be a Balanced::Card' do
-      @card.should be_instance_of Balanced::Card
+    describe 'standard card' do
+      it 'should be a Balanced::Card' do
+        @card.should be_instance_of Balanced::Card
+      end
+
+      describe 'attributes', :vcr do
+        subject { @card }
+        its(:href) { should match "/cards/#{@card.id}" }
+        its(:number) { should end_with '5100' }
+        its(:expiration_month) { should eql 12 }
+        its(:expiration_year) { should eql 2020 }
+        its(:cvv) { should eql 'xxx' }
+        its(:cvv_match) { should eql 'yes' }
+        its(:cvv_result) { should eql 'Match' }
+        its(:can_credit) { should eql false }
+        its(:can_debit) { should eql true }
+        its(:bank_name) { should eql 'BANK OF HAWAII' }
+      end
     end
 
-    describe 'attributes', :vcr do
-      subject { @card }
-      its(:href) { should match "/cards/#{@card.id}" }
-      its(:number) { should end_with '5100' }
-      its(:expiration_month) { should eql 12 }
-      its(:expiration_year) { should eql 2020 }
-      its(:cvv) { should eql 'xxx' }
-      its(:cvv_match) { should eql 'yes' }
-      its(:cvv_result) { should eql 'Match' }
+    describe 'card that can be credited' do
+      before do
+        @push_card = Balanced::Card.new(
+          :name => 'Johannes Bach',
+          :number => '4342561111111118',
+          :expiration_month => '05',
+          :expiration_year => '2015',
+          :cvv => '123'
+        ).save
+      end
+
+      it 'should be a Balanced::Card' do
+        @push_card.should be_instance_of Balanced::Card
+      end
+
+      describe 'attributes', :vcr do
+        subject { @push_card }
+        its(:href) { should match "/cards/#{@push_card.id}" }
+        its(:number) { should end_with '1118' }
+        its(:expiration_month) { should eql 05 }
+        its(:expiration_year) { should eql 2015 }
+        its(:cvv) { should eql 'xxx' }
+        its(:cvv_match) { should eql 'yes' }
+        its(:cvv_result) { should eql 'Match' }
+        its(:can_credit) { should eql true }
+        its(:can_debit) { should eql true }
+        its(:bank_name) { should eql 'WELLS FARGO BANK, N.A.' }
+        its(:category) { should eql 'classic' }
+        its(:type) { should eql 'debit'}
+      end
+
+      describe '#credit' do
+        before do
+          @meta = {
+            'invoice_id' => '1024'
+          }
+          @credit = @push_card.credit(
+            :amount => 1234,
+            :description => 'Some descriptive text',
+            :meta => @meta
+          )
+        end
+
+        describe 'attributes', :vcr do
+          let(:credit) { @credit }
+
+          it 'should have valid attributes' do
+            expect(credit.href).to eq("/credits/#{@credit.id}")
+            expect(credit.amount).to eq(1234)
+            expect(credit.meta).to eq(@meta)
+            expect(credit.status).to eq('succeeded')
+          end
+        end
+      end
     end
 
     describe 'creating a one-time debit', :vcr => {:record => :new_episodes} do
