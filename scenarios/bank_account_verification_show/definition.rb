@@ -1,1 +1,1 @@
-Balanced::Verification.fetch
+Balanced::BankAccountVerification.fetch

@@ -2,7 +2,7 @@
 Balanced::Callback.new
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
+Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
 
 callback = Balanced::Callback.new(
   :method => 'post',
@@ -10,10 +10,10 @@ callback = Balanced::Callback.new(
 ).save
 
 % elif mode == 'response':
-#<Balanced::Callback:0x007fb60b358f18
+#<Balanced::Callback:0x007fa7d18d5d58
  @attributes=
-  {"href"=>"/callbacks/CB7DP9sW9wRe19dFRutynahb",
-   "id"=>"CB7DP9sW9wRe19dFRutynahb",
+  {"href"=>"/callbacks/CB2YCHTwHXMx9fZRKSbW3wNj",
+   "id"=>"CB2YCHTwHXMx9fZRKSbW3wNj",
    "links"=>{},
    "method"=>"post",
    "revision"=>"1.1",

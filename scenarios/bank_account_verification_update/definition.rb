@@ -1,1 +1,1 @@
-Balanced::Verification.confirm
+Balanced::BankAccountVerification.confirm

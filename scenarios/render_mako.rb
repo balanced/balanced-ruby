@@ -53,7 +53,7 @@ def fetch_scenario_cache
   end
 end
 
-# fetch_scenario_cache
+fetch_scenario_cache
 
 raise RuntimeError, "scenario.cache not present" if ! File.exists? 'scenario.cache'
 

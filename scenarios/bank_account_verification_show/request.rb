@@ -1,2 +1,2 @@
 <%= boiler_plate %>
-verification = Balanced::Verification.fetch('<%=request['uri']%>')
+verification = Balanced::BankAccountVerification.fetch('<%=request['uri']%>')

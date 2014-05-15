@@ -1,1 +1,1 @@
-    Balanced::Verification.new.save
+Balanced::BankAccount.verify

@@ -2,11 +2,11 @@
 Balanced::Card.all
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-aUV295IugdhWSNx2JFckYBCSvfY2ibgq')
+Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
 
 cards = Balanced::Card.all
 % elif mode == 'response':
-[#<Balanced::Card:0x007fb60b1dcfb8
+[#<Balanced::Card:0x007fa7d3349590
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -18,8 +18,12 @@ cards = Balanced::Card.all
     "avs_postal_match"=>nil,
     "avs_result"=>nil,
     "avs_street_match"=>nil,
+    "bank"=>"BANK OF HAWAII",
     "brand"=>"MasterCard",
-    "created_at"=>"2014-04-25T22:00:30.351615Z",
+    "can_credit"=>false,
+    "can_debit"=>true,
+    "category"=>nil,
+    "created_at"=>"2014-05-15T00:40:43.949061Z",
     "cvv"=>"xxx",
     "cvv_match"=>"yes",
     "cvv_result"=>"Match",
@@ -27,22 +31,27 @@ cards = Balanced::Card.all
     "expiration_year"=>2020,
     "fingerprint"=>
      "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-    "href"=>"/cards/CC832pqCbRPor1ewRdxPvnv",
-    "id"=>"CC832pqCbRPor1ewRdxPvnv",
+    "href"=>"/cards/CC4gG6BE70pMOYKPBive9qoF",
+    "id"=>"CC4gG6BE70pMOYKPBive9qoF",
     "is_verified"=>true,
     "links"=>{"customer"=>nil},
     "meta"=>{},
     "name"=>nil,
     "number"=>"xxxxxxxxxxxx5100",
-    "updated_at"=>"2014-04-25T22:00:30.351617Z"},
+    "type"=>"",
+    "updated_at"=>"2014-05-15T00:40:43.949064Z"},
   @hyperlinks=
    {"card_holds"=>
-     #<Proc:0x007fb60b1cfe80/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa7d3346bb0/lib/balanced/utils.rb:6 (lambda)>,
+    "credits"=>
+     #<Proc:0x007fa7d3343af0/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fb60b1cd310/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa7d3343140/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fb60b1c4cd8/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Card:0x007fb60b1c4c60
+     #<Proc:0x007fa7d3341278/lib/balanced/utils.rb:6 (lambda)>,
+    "disputes"=>
+     #<Proc:0x007fa7d333b0a8/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Card:0x007fa7d333b058
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -54,8 +63,12 @@ cards = Balanced::Card.all
     "avs_postal_match"=>nil,
     "avs_result"=>nil,
     "avs_street_match"=>nil,
+    "bank"=>"BANK OF HAWAII",
     "brand"=>"MasterCard",
-    "created_at"=>"2014-04-25T22:00:19.891594Z",
+    "can_credit"=>false,
+    "can_debit"=>true,
+    "category"=>nil,
+    "created_at"=>"2014-05-15T00:39:38.599386Z",
     "cvv"=>"xxx",
     "cvv_match"=>"yes",
     "cvv_result"=>"Match",
@@ -63,20 +76,25 @@ cards = Balanced::Card.all
     "expiration_year"=>2020,
     "fingerprint"=>
      "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-    "href"=>"/cards/CC7JlMyXyZ8W3RBfE1SSlnrD",
-    "id"=>"CC7JlMyXyZ8W3RBfE1SSlnrD",
+    "href"=>"/cards/CC35aRYQB8XnL0CxtKGFG7d3",
+    "id"=>"CC35aRYQB8XnL0CxtKGFG7d3",
     "is_verified"=>true,
-    "links"=>{"customer"=>"CU7c8cBtxfllT4M6zDyjbJA1"},
+    "links"=>{"customer"=>nil},
     "meta"=>{},
     "name"=>nil,
     "number"=>"xxxxxxxxxxxx5100",
-    "updated_at"=>"2014-04-25T22:00:20.553921Z"},
+    "type"=>"",
+    "updated_at"=>"2014-05-15T00:39:38.599390Z"},
   @hyperlinks=
    {"card_holds"=>
-     #<Proc:0x007fb60b1ad8d0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa7d3338e98/lib/balanced/utils.rb:6 (lambda)>,
+    "credits"=>
+     #<Proc:0x007fa7d3332f98/lib/balanced/utils.rb:6 (lambda)>,
     "customer"=>
-     #<Proc:0x007fb60b1a7e08/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa7d3332598/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fb60b19be00/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa7d3330040/lib/balanced/utils.rb:6 (lambda)>,
+    "disputes"=>
+     #<Proc:0x007fa7d3329920/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif
