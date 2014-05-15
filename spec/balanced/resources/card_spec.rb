@@ -63,7 +63,7 @@ describe Balanced::Card, :vcr do
         its(:can_credit) { should eql true }
         its(:can_debit) { should eql true }
         its(:bank_name) { should eql 'WELLS FARGO BANK, N.A.' }
-        its(:category) { should eql 'classic' }
+        its(:category) { should eql 'other' }
         its(:type) { should eql 'debit'}
       end
 
