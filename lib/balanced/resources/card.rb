@@ -23,6 +23,10 @@ module Balanced
     # @param [Hash] options
     # @return [Credit]
     def credit(options={})
+      if ! defined? self.credits
+        raise Balanced::FundingInstrumentNotCreditable
+      end
+
       options[:href] = self.credits.href
       credit = Balanced::Credit.new(options)
       credit.save

@@ -112,18 +112,34 @@ describe Balanced::Credit, :vcr do
 
       context 'fail' do
         describe 'can_credit false' do
-          it do
-            expect {
-              @credit = Balanced::Credit.new(
-                :amount => 1234,
-                :destination => {
+          context 'card in request' do
+            it do
+              expect {
+                @credit = Balanced::Credit.new(
+                  :amount => 1234,
+                  :destination => {
+                    :name => 'Georg Telemann',
+                    :number => '4111111111111111',
+                    :expiration_month => '12',
+                    :expiration_year => '2016'
+                  }
+                ).save
+              }.to raise_exception(Balanced::Conflict)
+            end
+          end
+          
+          context 'card#credit' do
+            it do
+              expect {
+                @card = Balanced::Card.new(
                   :name => 'Georg Telemann',
                   :number => '4111111111111111',
                   :expiration_month => '12',
                   :expiration_year => '2016'
-                }
-              ).save
-            }.to raise_exception(Balanced::Conflict)
+                ).save
+                @card.credit(:amount => 1234)
+              }.to raise_exception(Balanced::FundingInstrumentNotCreditable)
+            end
           end
         end
 
