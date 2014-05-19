@@ -8,7 +8,7 @@ module Balanced
 
     define_hypermedia_types [:cards]
 
-    # Creates a Debit of funds from this Card to the Marketplace's escrow account.
+    # Creates a Debit of funds from this Card.
     #
     # @param [Hash] options
     # @return [Debit]
@@ -16,6 +16,20 @@ module Balanced
       options[:href] = self.debits.href
       debit = Balanced::Debit.new(options)
       debit.save
+    end
+
+    # Creates a Credit of funds to this Card.
+    #
+    # @param [Hash] options
+    # @return [Credit]
+    def credit(options={})
+      if ! defined? self.credits
+        raise Balanced::FundingInstrumentNotCreditable
+      end
+
+      options[:href] = self.credits.href
+      credit = Balanced::Credit.new(options)
+      credit.save
     end
 
     # Creates a Hold of funds from this Card to your Marketplace.

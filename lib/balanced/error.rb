@@ -129,8 +129,8 @@ module Balanced
   class FundingInstrumentVerificationError < Error; end
 
   # Raised when Balanced has an issue with you verifying a bank account
-  class BankAccountVerificationFailure < FundingInstrumentVerificationError
-
-  end
+  class BankAccountVerificationFailure < FundingInstrumentVerificationError; end
+  
+  class FundingInstrumentNotCreditable < Error; end
 
 end
