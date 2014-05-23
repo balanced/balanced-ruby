@@ -1,3 +1,8 @@
+## 1.1.0
+
+* Push to card support
+* Workaround fixes to allow flexible Faraday versions up to 0.9 (#173)
+
 ## 1.0.2
 
 * Pass all options through to underlying calls (#169, #170)
