@@ -29,4 +29,14 @@ describe Balanced::Resource do
       new_ak.should be_instance_of(Balanced::ApiKey)
     end
   end
+
+  describe 'fetch' do
+    it 'raises a Balanced::NotFound exception when called with no arguments' do
+      expect { @ak.fetch() }.to raise_exception(Balanced::NotFound)
+    end
+
+    it 'raises a Balanced::NotFound exception when called with a nil first argument' do
+      expect { @ak.fetch(nil) }.to raise_exception(Balanced::NotFound)
+    end
+  end
 end
