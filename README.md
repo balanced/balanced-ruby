@@ -28,7 +28,7 @@ Or install it yourself as:
 * [Balanced Overview](https://docs.balancedpayments.com/?language=ruby)
 * [RDoc](http://rubydoc.info/gems/balanced)
 * [Balanced API with Ruby examples](https://docs.balancedpayments.com/api?language=ruby)
-* [Example scripts](https://github.com/balanced/balanced-ruby/tree/master/examples)
+* [Example scripts](https://github.com/balanced/balanced-ruby/tree/master/scenarios)
 
 ## Contributing
 
