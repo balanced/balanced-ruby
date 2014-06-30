@@ -259,6 +259,7 @@ module Balanced
       def fetch(*arguments)
         if arguments.nil? ||
            arguments.empty?  ||
+           arguments[0].nil? ||
            arguments[0].empty?
           raise Balanced::NotFound
         end
