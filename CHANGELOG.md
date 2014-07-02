@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Fix nil fetch exception
+* Remove balanced-specific subdirectories from the global $LOAD_PATH
+
 ## 1.1.0
 
 * Push to card support
