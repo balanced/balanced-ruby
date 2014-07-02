@@ -2,7 +2,7 @@ require 'logger'
 require 'uri'
 require 'faraday'
 require 'faraday_middleware'
-require 'balanced_exception_middleware'
+require 'balanced/response/balanced_exception_middleware'
 
 
 module Balanced

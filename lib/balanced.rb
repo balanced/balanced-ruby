@@ -1,5 +1,3 @@
-$:.unshift File.join(File.dirname(__FILE__), "balanced", "resources")
-$:.unshift File.join(File.dirname(__FILE__), "balanced", "response")
 
 require 'uri'
 require 'balanced/version' unless defined? Balanced::VERSION
