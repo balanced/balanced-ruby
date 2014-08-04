@@ -1,16 +1,12 @@
 require File.expand_path('../../pager', __FILE__)
 require File.expand_path('../../utils', __FILE__)
 require 'addressable/template'
-require 'pp'
-
 
 module Balanced
 
   module Resource
-
     attr_accessor :attributes
     attr_accessor :hyperlinks
-
     attr_accessor :id
     attr_accessor :href
     attr_accessor :links
@@ -260,7 +256,7 @@ module Balanced
         if arguments.nil? ||
            arguments.empty?  ||
            arguments[0].nil? ||
-           arguments[0].empty?
+           arguments[0].to_s.empty? # no symbol.empty? in 1.8.7
           raise Balanced::NotFound
         end
         scope = arguments.slice!(0)

@@ -2,7 +2,7 @@ module Balanced
 
   module Utils
 
-    def callable( callable_or_not )
+    def callable(callable_or_not)
       callable_or_not.respond_to?(:call) ? callable_or_not : lambda { callable_or_not }
     end
 
