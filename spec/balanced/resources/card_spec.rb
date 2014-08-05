@@ -64,7 +64,7 @@ describe Balanced::Card, :vcr do
         its(:can_debit) { should eql true }
         its(:bank_name) { should eql 'WELLS FARGO BANK, N.A.' }
         its(:category) { should eql 'other' }
-        its(:type) { should eql 'debit'}
+        its(:class) { should eql Balanced::Card }
       end
 
       describe '#credit' do
@@ -80,13 +80,13 @@ describe Balanced::Card, :vcr do
         end
 
         describe 'attributes', :vcr do
-          let(:credit) { @credit }
+          let(:the_credit) { @credit }
 
           it 'should have valid attributes' do
-            expect(credit.href).to eq("/credits/#{@credit.id}")
-            expect(credit.amount).to eq(1234)
-            expect(credit.meta).to eq(@meta)
-            expect(credit.status).to eq('succeeded')
+            expect(the_credit.href).to eq("/credits/#{@credit.id}")
+            expect(the_credit.amount).to eq(1234)
+            expect(the_credit.meta).to eq(@meta)
+            expect(the_credit.status).to eq('succeeded')
           end
         end
       end

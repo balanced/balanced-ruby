@@ -23,7 +23,7 @@ module Balanced
     # @param [Hash] options
     # @return [Credit]
     def credit(options={})
-      if ! defined? self.credits
+      if ! self.respond_to?(:credits)
         raise Balanced::FundingInstrumentNotCreditable
       end
 
