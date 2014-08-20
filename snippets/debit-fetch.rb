@@ -1,0 +1,1 @@
+debit = Balanced::Debit.fetch(debit_href)
