@@ -1,2 +1,2 @@
-@credit = @order.credits.first
-@credit.reverse
+credit = Balanced::Credit.fetch(credit_href)
+credit.reverse
