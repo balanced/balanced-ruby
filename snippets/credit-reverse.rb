@@ -1,2 +1,1 @@
-@credit = @order.credits.first
-@credit.reverse
+credit.reverse
