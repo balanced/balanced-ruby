@@ -8,7 +8,7 @@ Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
 order = Balanced::Order.fetch('/orders/OR4R53c8wdUiVEUiegSHpwaN')
 bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA2EmblHC08bmwiwwNrbI0Rj/credits')
 order.credit_to(
-    :source => bank_account,
+    :destination => bank_account,
     :amount => 5000
 )
 % elif mode == 'response':
