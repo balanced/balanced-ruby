@@ -1,4 +1,5 @@
-Balanced::Marketplace.mine.owner_customer.bank_accounts.first.credit(
-    :amount => 2000,
-    :description => "Credit from order escrow to marketplace bank account"
+marketplace_account = Balanced::Marketplace.mine.owner_customer.bank_accounts.first
+order.credit_to(
+    :destination=>marketplace_account,
+    :amount => 2000
 )
