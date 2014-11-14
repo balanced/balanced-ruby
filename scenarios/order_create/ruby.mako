@@ -3,18 +3,18 @@ Balanced::Customer.create_order
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
+Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
 
-merchant_customer = Balanced::Customer.fetch('/customers/CU56PvhKAwSiV6LahZCcBMJ7')
+merchant_customer = Balanced::Customer.fetch('/customers/CU40AyvBB6ny9u3oelCwyc3C')
 merchant_customer.create_order(
   :description => 'Order #12341234'
 )
 % elif mode == 'response':
-#<Balanced::Order:0x007fa7d32081e0
+#<Balanced::Order:0x007fa0e14e8ae8
  @attributes=
   {"amount"=>0,
    "amount_escrowed"=>0,
-   "created_at"=>"2014-05-15T00:43:14.079629Z",
+   "created_at"=>"2014-11-14T19:35:55.950248Z",
    "currency"=>"USD",
    "delivery_address"=>
     {"city"=>nil,
@@ -24,23 +24,23 @@ merchant_customer.create_order(
      "postal_code"=>nil,
      "state"=>nil},
    "description"=>"Order #12341234",
-   "href"=>"/orders/OR6Zx317bzTVRgDxt3JqnZIx",
-   "id"=>"OR6Zx317bzTVRgDxt3JqnZIx",
-   "links"=>{"merchant"=>"CU56PvhKAwSiV6LahZCcBMJ7"},
+   "href"=>"/orders/OR2UWXCNY2nKlqIQhQhWN3Jm",
+   "id"=>"OR2UWXCNY2nKlqIQhQhWN3Jm",
+   "links"=>{"merchant"=>"CU40AyvBB6ny9u3oelCwyc3C"},
    "meta"=>{},
-   "updated_at"=>"2014-05-15T00:43:14.079632Z"},
+   "updated_at"=>"2014-11-14T19:35:55.950250Z"},
  @hyperlinks=
   {"buyers"=>
-    #<Proc:0x007fa7d3204e00/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa0e14e6018@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa7d3202588/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa0e14e39d0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa7d31fb8a0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa0e14e1400@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "merchant"=>
-    #<Proc:0x007fa7d31f97f8/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fa0e14df4e8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa7d31f30d8/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fa0e14dd0d0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa7d31f1120/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fa0e14dab50@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif
