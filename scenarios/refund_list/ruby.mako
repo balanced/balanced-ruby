@@ -3,35 +3,35 @@ Balanced::Refund.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
+Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
 
 refunds = Balanced::Refund.all
 % elif mode == 'response':
-[#<Balanced::Refund:0x007fa7d422dcf0
+[#<Balanced::Refund:0x007fa0e1428950
   @attributes=
    {"amount"=>3000,
-    "created_at"=>"2014-05-15T00:42:22.128891Z",
+    "created_at"=>"2014-11-14T19:30:06.601027Z",
     "currency"=>"USD",
     "description"=>"Refund for Order #1111",
-    "href"=>"/refunds/RF635DEq9cKcoNDr0ljY4dU1",
-    "id"=>"RF635DEq9cKcoNDr0ljY4dU1",
+    "href"=>"/refunds/RF4n5AfJ8MRB55oTzVWTRoVa",
+    "id"=>"RF4n5AfJ8MRB55oTzVWTRoVa",
     "links"=>
-     {"debit"=>"WD5z5CvSR6PFx0GgUFn0icKx", "dispute"=>nil, "order"=>nil},
+     {"debit"=>"WD4heQm0HfB6IpymdvsGM8dv", "dispute"=>nil, "order"=>nil},
     "meta"=>
      {"fulfillment.item.condition"=>"OK",
       "merchant.feedback"=>"positive",
       "user.refund_reason"=>"not happy with product"},
     "status"=>"succeeded",
-    "transaction_number"=>"RF710-400-6883",
-    "updated_at"=>"2014-05-15T00:42:32.373753Z"},
+    "transaction_number"=>"RFAWI-6JR-KYIV",
+    "updated_at"=>"2014-11-14T19:30:08.903273Z"},
   @hyperlinks=
    {"debit"=>
-     #<Proc:0x007fa7d42275f8/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa0e1426128@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fa7d4226720/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e1425778@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fa7d4224420/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e1422e88@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fa7d421f970/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa0e14224d8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif

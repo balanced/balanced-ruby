@@ -3,75 +3,81 @@ Balanced::Debit.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
+Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
 
 debits = Balanced::Debit.all
 % elif mode == 'response':
-[#<Balanced::Debit:0x007fa7d1968d60
+[#<Balanced::Debit:0x007fa0e1564be8
   @attributes=
    {"amount"=>5000,
     "appears_on_statement_as"=>"BAL*example.com",
-    "created_at"=>"2014-05-15T00:41:37.159166Z",
+    "created_at"=>"2014-11-14T19:29:49.012489Z",
     "currency"=>"USD",
     "description"=>"Order #12341234",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/debits/WD5ewolo9HEVQkv8dcyx87gd",
-    "id"=>"WD5ewolo9HEVQkv8dcyx87gd",
+    "href"=>"/debits/WD43j6TF6kVllWR8ZB9c3HiM",
+    "id"=>"WD43j6TF6kVllWR8ZB9c3HiM",
     "links"=>
-     {"customer"=>"CU2L981m9AtPY8pjpGpjnjnf",
+     {"card_hold"=>"HL43hZlL9kOYc7YpCudLL7NK",
+      "customer"=>nil,
       "dispute"=>nil,
-      "order"=>"OR4R53c8wdUiVEUiegSHpwaN",
-      "source"=>"CC4xXVOyMBDdk7FtzG9HwtBv"},
+      "order"=>"OR3BXTqXewuSy1Cu3g6N2Sjj",
+      "source"=>"CC33DRVrekWpiHYjxSdVuqWc"},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"W941-130-0831",
-    "updated_at"=>"2014-05-15T00:41:40.522871Z"},
+    "transaction_number"=>"W1CV-D64-23NY",
+    "updated_at"=>"2014-11-14T19:29:54.642888Z"},
   @hyperlinks=
-   {"customer"=>
-     #<Proc:0x007fa7d1959f90/lib/balanced/resources/resource.rb:60 (lambda)>,
+   {"card_hold"=>
+     #<Proc:0x007fa0e156ad90@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+    "customer"=>
+     #<Proc:0x007fa0e156a430@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fa7d1958ff0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e1569ad0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fa7d1950648/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e156fc50@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fa7d1940a68/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fa0e156e2b0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fa7d1930708/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e156c438@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fa7d19235f8/lib/balanced/resources/resource.rb:60 (lambda)>}>,
- #<Balanced::Debit:0x007fa7d1923558
+     #<Proc:0x007fa0e1572a90@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>,
+ #<Balanced::Debit:0x007fa0e1572a40
   @attributes=
    {"amount"=>5000,
-    "appears_on_statement_as"=>"BAL*Statement text",
-    "created_at"=>"2014-05-15T00:41:07.283881Z",
+    "appears_on_statement_as"=>"BAL*example.com",
+    "created_at"=>"2014-11-14T19:29:25.219306Z",
     "currency"=>"USD",
-    "description"=>"Some descriptive text for the debit in the dashboard",
+    "description"=>"Order #12341234",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/debits/WD4GV5z2pEIRZ9cBSuyuykQx",
-    "id"=>"WD4GV5z2pEIRZ9cBSuyuykQx",
+    "href"=>"/debits/WD3CxTqrRDWynU189qdNf9Xq",
+    "id"=>"WD3CxTqrRDWynU189qdNf9Xq",
     "links"=>
-     {"customer"=>"CU2L981m9AtPY8pjpGpjnjnf",
+     {"card_hold"=>"HL3CxhLaA60AV6X8pLxscwz6",
+      "customer"=>nil,
       "dispute"=>nil,
-      "order"=>nil,
-      "source"=>"CC4xXVOyMBDdk7FtzG9HwtBv"},
+      "order"=>"OR3BXTqXewuSy1Cu3g6N2Sjj",
+      "source"=>"CC33DRVrekWpiHYjxSdVuqWc"},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"W235-372-7348",
-    "updated_at"=>"2014-05-15T00:41:11.755100Z"},
+    "transaction_number"=>"WWAG-T69-DVPI",
+    "updated_at"=>"2014-11-14T19:29:27.243249Z"},
   @hyperlinks=
-   {"customer"=>
-     #<Proc:0x007fa7d191b010/lib/balanced/resources/resource.rb:60 (lambda)>,
+   {"card_hold"=>
+     #<Proc:0x007fa0e1570c18@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+    "customer"=>
+     #<Proc:0x007fa0e1578288@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fa7d1919b70/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e1577928@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fa7d1910e58/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e1575ad8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fa7d18ed6b0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e157c130@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fa7d18d5fb0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e157a2e0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fa7d18cddd8/lib/balanced/resources/resource.rb:60 (lambda)>}>]
+     #<Proc:0x007fa0e1578968@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>]
 
 % endif

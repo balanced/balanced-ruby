@@ -3,11 +3,11 @@ Balanced::Customer.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
+Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
 
 customers = Balanced::Customer.all
 % elif mode == 'response':
-[#<Balanced::Customer:0x007fa7d2815548
+[#<Balanced::Customer:0x007fa0e14a2700
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -17,48 +17,48 @@ customers = Balanced::Customer.all
       "postal_code"=>"48120",
       "state"=>nil},
     "business_name"=>nil,
-    "created_at"=>"2014-05-15T00:41:24.028958Z",
+    "created_at"=>"2014-11-14T19:29:39.728907Z",
     "dob_month"=>7,
     "dob_year"=>1963,
     "ein"=>nil,
     "email"=>nil,
-    "href"=>"/customers/CU4ZKTtaAaR7Rc5M8EP2gLlP",
-    "id"=>"CU4ZKTtaAaR7Rc5M8EP2gLlP",
+    "href"=>"/customers/CU3SSJgvA5Z69kt05MusbPeE",
+    "id"=>"CU3SSJgvA5Z69kt05MusbPeE",
     "links"=>{"destination"=>nil, "source"=>nil},
     "merchant_status"=>"underwritten",
     "meta"=>{},
     "name"=>"Henry Ford",
     "phone"=>nil,
     "ssn_last4"=>nil,
-    "updated_at"=>"2014-05-15T00:41:24.914750Z"},
+    "updated_at"=>"2014-11-14T19:29:40.703739Z"},
   @hyperlinks=
    {"bank_accounts"=>
-     #<Proc:0x007fa7d280c9c0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14a8290@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "card_holds"=>
-     #<Proc:0x007fa7d1e7b9d8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14a63f0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "cards"=>
-     #<Proc:0x007fa7d1e69af8/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14a4550@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fa7d1e5ba98/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14aa680@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa7d1e52358/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14a87e0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "destination"=>
-     #<Proc:0x007fa7d1e50738/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14afe28@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "disputes"=>
-     #<Proc:0x007fa7d1e482e0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14adfb0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "external_accounts"=>
-     #<Proc:0x007fa7d1e3bb08/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14b4108@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "orders"=>
-     #<Proc:0x007fa7d1e33980/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14b2268@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fa7d1e2a420/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14b8398@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007fa7d1e0b1b0/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14b64f8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fa7d1e0a238/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14b5b70@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "transactions"=>
-     #<Proc:0x007fa7d1e01cf0/lib/balanced/utils.rb:6 (lambda)>}>,
- #<Balanced::Customer:0x007fa7d1e01c78
+     #<Proc:0x007fa0e14bbcf0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>,
+ #<Balanced::Customer:0x007fa0e14bbca0
   @attributes=
    {"address"=>
      {"city"=>nil,
@@ -68,46 +68,46 @@ customers = Balanced::Customer.all
       "postal_code"=>"48120",
       "state"=>nil},
     "business_name"=>nil,
-    "created_at"=>"2014-05-15T00:39:20.790653Z",
+    "created_at"=>"2014-11-14T19:28:02.058549Z",
     "dob_month"=>7,
     "dob_year"=>1963,
     "ein"=>nil,
     "email"=>nil,
-    "href"=>"/customers/CU2L981m9AtPY8pjpGpjnjnf",
-    "id"=>"CU2L981m9AtPY8pjpGpjnjnf",
+    "href"=>"/customers/CU2718cI8PkMdFyPjboZLZfn",
+    "id"=>"CU2718cI8PkMdFyPjboZLZfn",
     "links"=>{"destination"=>nil, "source"=>nil},
     "merchant_status"=>"underwritten",
     "meta"=>{},
     "name"=>"Henry Ford",
     "phone"=>nil,
     "ssn_last4"=>nil,
-    "updated_at"=>"2014-05-15T00:39:21.958148Z"},
+    "updated_at"=>"2014-11-14T19:28:04.120089Z"},
   @hyperlinks=
    {"bank_accounts"=>
-     #<Proc:0x007fa7d1de0898/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14b9860@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "card_holds"=>
-     #<Proc:0x007fa7d1dc9738/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14bf9b8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "cards"=>
-     #<Proc:0x007fa7d1dc1a60/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14bdb40@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "credits"=>
-     #<Proc:0x007fa7d1db8730/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14c3c98@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "debits"=>
-     #<Proc:0x007fa7d1dab350/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14c1e20@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "destination"=>
-     #<Proc:0x007fa7d1daa298/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14c1498@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "disputes"=>
-     #<Proc:0x007fa7d1da1530/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14c7640@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "external_accounts"=>
-     #<Proc:0x007fa7d1d92328/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14c57c8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "orders"=>
-     #<Proc:0x007fa7d1d83170/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14cb920@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fa7d1d79558/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14c9aa8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "reversals"=>
-     #<Proc:0x007fa7d1d71d08/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14cfc28@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fa7d1d70228/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fa0e14cf2a0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
     "transactions"=>
-     #<Proc:0x007fa7d1d639d8/lib/balanced/utils.rb:6 (lambda)>}>]
+     #<Proc:0x007fa0e14cd450@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>]
 
 % endif
