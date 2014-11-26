@@ -59,5 +59,13 @@ module Balanced
       save
     end
 
+    # Returns an Account with type 'payable'
+    #
+    # @return [Customer]
+    def payable_account
+      payable_account = self.accounts.where(:account_type=>'payable').first
+      payable_account
+    end
+
   end
 end
