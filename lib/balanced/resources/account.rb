@@ -20,6 +20,10 @@ module Balanced
     #
     # @return [Credit]
     def settle(options = {})
+      Balanced::Utils.assert_required_keys(
+          options,
+          :required => [:funding_instrument]
+      )
       options[:href] = self.settlements.href
       settlement = Balanced::Settlement.new(options)
       settlement.save
