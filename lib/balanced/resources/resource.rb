@@ -109,7 +109,9 @@ module Balanced
     def sanitize
       to_submit = {}
       @attributes.each do |key, value|
-        unless value.is_a? Balanced::Resource
+        if value.is_a? Balanced::Resource
+          to_submit[key] = value.href if value.href
+        else
           to_submit[key] = value
         end
       end
