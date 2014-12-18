@@ -2,48 +2,51 @@
 Balanced::Order.debit_from
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-order = Balanced::Order.fetch('/orders/OR4R53c8wdUiVEUiegSHpwaN')
-card = Balanced::Card.fetch('/cards/CC4xXVOyMBDdk7FtzG9HwtBv')
+order = Balanced::Order.fetch('/orders/OR6c6n11zKSFfjE6kGNKtsE8')
+card = Balanced::Card.fetch('/cards/CC73IyzxPUu2z89NH8GrJhLn')
 order.debit_from(
     :source => card,
     :amount => 5000
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007fa7d40fd6a0
+#<Balanced::Debit:0x007fcde12d05d0
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"BAL*example.com",
-   "created_at"=>"2014-05-15T00:41:37.159166Z",
+   "created_at"=>"2014-12-17T21:25:04.086780Z",
    "currency"=>"USD",
    "description"=>"Order #12341234",
    "failure_reason"=>nil,
    "failure_reason_code"=>nil,
-   "href"=>"/debits/WD5ewolo9HEVQkv8dcyx87gd",
-   "id"=>"WD5ewolo9HEVQkv8dcyx87gd",
+   "href"=>"/debits/WD7dRwgfkmvirShpxn7JA8JL",
+   "id"=>"WD7dRwgfkmvirShpxn7JA8JL",
    "links"=>
-    {"customer"=>"CU2L981m9AtPY8pjpGpjnjnf",
+    {"card_hold"=>"HL7dQKkSsFJpaZppKe2pB4TX",
+     "customer"=>nil,
      "dispute"=>nil,
-     "order"=>"OR4R53c8wdUiVEUiegSHpwaN",
-     "source"=>"CC4xXVOyMBDdk7FtzG9HwtBv"},
+     "order"=>"OR6c6n11zKSFfjE6kGNKtsE8",
+     "source"=>"CC73IyzxPUu2z89NH8GrJhLn"},
    "meta"=>{},
    "status"=>"succeeded",
-   "transaction_number"=>"W941-130-0831",
-   "updated_at"=>"2014-05-15T00:41:40.522871Z"},
+   "transaction_number"=>"WG9L-4UP-ZQQN",
+   "updated_at"=>"2014-12-17T21:25:04.922248Z"},
  @hyperlinks=
-  {"customer"=>
-    #<Proc:0x007fa7d4187b48/lib/balanced/resources/resource.rb:60 (lambda)>,
+  {"card_hold"=>
+    #<Proc:0x007fcde12daa58/lib/balanced/resources/resource.rb:56 (lambda)>,
+   "customer"=>
+    #<Proc:0x007fcde12da0d0/lib/balanced/utils.rb:6 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fa7d41871c0/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde12d9748/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa7d4185370/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde12e3888/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa7d418f988/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fcde12e1ee8/lib/balanced/resources/resource.rb:56 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa7d418db38/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde12e0098/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa7d418c1c0/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fcde12ea6d8/lib/balanced/resources/resource.rb:56 (lambda)>}>
 
 % endif

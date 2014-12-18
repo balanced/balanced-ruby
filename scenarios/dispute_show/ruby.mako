@@ -3,29 +3,29 @@ Balanced::Dispute.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-2q80HU8DISm2atgm0iRKRVIePzDb34qYp')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-dispute = Balanced::Dispute.fetch('/disputes/DT6BoisMcacTIu3QWX32JVtl')
+dispute = Balanced::Dispute.fetch('/disputes/DTbbQLxrNf790FmaKsgqRPa')
 
 % elif mode == 'response':
-#<Balanced::Dispute:0x007fa7d30c2740
+#<Balanced::Dispute:0x007fcde196f148
  @attributes=
   {"amount"=>5000,
-   "created_at"=>"2014-05-15T00:42:52.610582Z",
+   "created_at"=>"2014-12-17T21:25:45.321785Z",
    "currency"=>"USD",
-   "href"=>"/disputes/DT6BoisMcacTIu3QWX32JVtl",
-   "id"=>"DT6BoisMcacTIu3QWX32JVtl",
-   "initiated_at"=>"2014-05-15T00:42:41.973330Z",
-   "links"=>{"transaction"=>"WD6mairBakAx5t8ETjMYFu7T"},
+   "href"=>"/disputes/DTbbQLxrNf790FmaKsgqRPa",
+   "id"=>"DTbbQLxrNf790FmaKsgqRPa",
+   "initiated_at"=>"2014-12-17T21:23:52.616968Z",
+   "links"=>{"transaction"=>"WD7M75BRYlRsQTImIHFf8O9W"},
    "meta"=>{},
    "reason"=>"fraud",
-   "respond_by"=>"2014-06-14T00:42:41.973334Z",
+   "respond_by"=>"2015-01-16T21:23:52.616970Z",
    "status"=>"pending",
-   "updated_at"=>"2014-05-15T00:42:52.610592Z"},
+   "updated_at"=>"2014-12-17T21:25:45.321787Z"},
  @hyperlinks=
   {"events"=>
-    #<Proc:0x007fa7d30c0558/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde196d1e0/lib/balanced/utils.rb:6 (lambda)>,
    "transaction"=>
-    #<Proc:0x007fa7d30be898/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fcde196ed88/lib/balanced/resources/resource.rb:56 (lambda)>}>
 
 % endif
