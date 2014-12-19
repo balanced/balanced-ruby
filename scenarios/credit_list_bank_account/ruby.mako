@@ -3,9 +3,9 @@ Balanced::BankAccount.credits
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA1D19WqGc3j78IAhFIkasQd')
+bank_account = Balanced::BankAccount.fetch('/bank_accounts/BA6z9hDVGj7utvQSiIhHuuhf')
 credits = bank_account.credits
 % elif mode == 'response':
 []

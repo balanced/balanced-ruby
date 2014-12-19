@@ -3,11 +3,11 @@ Balanced::Card.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-card = Balanced::Card.fetch('/cards/CC33DRVrekWpiHYjxSdVuqWc')
+card = Balanced::Card.fetch('/cards/CC73IyzxPUu2z89NH8GrJhLn')
 % elif mode == 'response':
-#<Balanced::Card:0x007fa0e1bf2fc8
+#<Balanced::Card:0x007fcde1937900
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -24,7 +24,7 @@ card = Balanced::Card.fetch('/cards/CC33DRVrekWpiHYjxSdVuqWc')
    "can_credit"=>false,
    "can_debit"=>true,
    "category"=>"other",
-   "created_at"=>"2014-11-14T19:28:54.173121Z",
+   "created_at"=>"2014-12-17T21:24:55.056930Z",
    "cvv"=>"xxx",
    "cvv_match"=>"yes",
    "cvv_result"=>"Match",
@@ -32,23 +32,23 @@ card = Balanced::Card.fetch('/cards/CC33DRVrekWpiHYjxSdVuqWc')
    "expiration_year"=>2020,
    "fingerprint"=>
     "fc4ccd5de54f42a5e75f76fbfde60948440c7a382ee7d21b2bc509ab9cfed788",
-   "href"=>"/cards/CC33DRVrekWpiHYjxSdVuqWc",
-   "id"=>"CC33DRVrekWpiHYjxSdVuqWc",
+   "href"=>"/cards/CC73IyzxPUu2z89NH8GrJhLn",
+   "id"=>"CC73IyzxPUu2z89NH8GrJhLn",
    "is_verified"=>true,
    "links"=>{"customer"=>nil},
    "meta"=>{},
    "name"=>nil,
    "number"=>"xxxxxxxxxxxx5100",
    "type"=>"credit",
-   "updated_at"=>"2014-11-14T19:28:54.173123Z"},
+   "updated_at"=>"2014-12-17T21:24:55.056933Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa0e13816c8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde19356f0/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa0e1380b60@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde1934d40/lib/balanced/utils.rb:6 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa0e137e4f0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde192d338/lib/balanced/utils.rb:6 (lambda)>,
    "disputes"=>
-    #<Proc:0x007fa0e1383ec8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fcde191ea90/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

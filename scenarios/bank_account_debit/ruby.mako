@@ -13,7 +13,7 @@ bank_account.debit(
 )
 
 % elif mode == 'response':
-#<Balanced::Debit:0x007fa0e1b3ca70
+#<Balanced::Debit:0x007fb1e9473a68
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"BAL*Statement text",
@@ -36,18 +36,18 @@ bank_account.debit(
    "updated_at"=>"2014-11-14T19:28:20.985200Z"},
  @hyperlinks=
   {"card_hold"=>
-    #<Proc:0x007fa0e1b43c30@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e9472f28@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa0e1b432d0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e94725a0@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "dispute"=>
-    #<Proc:0x007fa0e1b42970@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e9471c18@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "events"=>
-    #<Proc:0x007fa0e1b40af8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e947bd58@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa0e1b48140@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e947b380@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "refunds"=>
-    #<Proc:0x007fa0e1b462a0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e9479530@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "source"=>
-    #<Proc:0x007fa0e1b44900@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fb1e9483b48@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>
 
 % endif

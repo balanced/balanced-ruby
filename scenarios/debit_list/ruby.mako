@@ -3,81 +3,81 @@ Balanced::Debit.all
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
 debits = Balanced::Debit.all
 % elif mode == 'response':
-[#<Balanced::Debit:0x007fa0e1564be8
+[#<Balanced::Debit:0x007fcde197e940
+  @attributes=
+   {"amount"=>5000,
+    "appears_on_statement_as"=>"BAL*Statement text",
+    "created_at"=>"2014-12-17T21:25:24.286272Z",
+    "currency"=>"USD",
+    "description"=>"Some descriptive text for the debit in the dashboard",
+    "failure_reason"=>nil,
+    "failure_reason_code"=>nil,
+    "href"=>"/debits/WD7AAkAyeN6YTeHJTn1ThPYA",
+    "id"=>"WD7AAkAyeN6YTeHJTn1ThPYA",
+    "links"=>
+     {"card_hold"=>"HL7Az4UI0XU8rHAqmNY0Snp6",
+      "customer"=>nil,
+      "dispute"=>nil,
+      "order"=>nil,
+      "source"=>"CC73IyzxPUu2z89NH8GrJhLn"},
+    "meta"=>{},
+    "status"=>"succeeded",
+    "transaction_number"=>"WDQN-HJW-1YIP",
+    "updated_at"=>"2014-12-17T21:25:25.027834Z"},
+  @hyperlinks=
+   {"card_hold"=>
+     #<Proc:0x007fcde197ce10/lib/balanced/resources/resource.rb:56 (lambda)>,
+    "customer"=>
+     #<Proc:0x007fcde197c488/lib/balanced/utils.rb:6 (lambda)>,
+    "dispute"=>
+     #<Proc:0x007fcde09abb08/lib/balanced/utils.rb:6 (lambda)>,
+    "events"=>
+     #<Proc:0x007fcde09a9c40/lib/balanced/utils.rb:6 (lambda)>,
+    "order"=>
+     #<Proc:0x007fcde09a91f0/lib/balanced/utils.rb:6 (lambda)>,
+    "refunds"=>
+     #<Proc:0x007fcde09bb3a0/lib/balanced/utils.rb:6 (lambda)>,
+    "source"=>
+     #<Proc:0x007fcde09b9a28/lib/balanced/resources/resource.rb:56 (lambda)>}>,
+ #<Balanced::Debit:0x007fcde09b99d8
   @attributes=
    {"amount"=>5000,
     "appears_on_statement_as"=>"BAL*example.com",
-    "created_at"=>"2014-11-14T19:29:49.012489Z",
+    "created_at"=>"2014-12-17T21:25:04.086780Z",
     "currency"=>"USD",
     "description"=>"Order #12341234",
     "failure_reason"=>nil,
     "failure_reason_code"=>nil,
-    "href"=>"/debits/WD43j6TF6kVllWR8ZB9c3HiM",
-    "id"=>"WD43j6TF6kVllWR8ZB9c3HiM",
+    "href"=>"/debits/WD7dRwgfkmvirShpxn7JA8JL",
+    "id"=>"WD7dRwgfkmvirShpxn7JA8JL",
     "links"=>
-     {"card_hold"=>"HL43hZlL9kOYc7YpCudLL7NK",
+     {"card_hold"=>"HL7dQKkSsFJpaZppKe2pB4TX",
       "customer"=>nil,
       "dispute"=>nil,
-      "order"=>"OR3BXTqXewuSy1Cu3g6N2Sjj",
-      "source"=>"CC33DRVrekWpiHYjxSdVuqWc"},
+      "order"=>"OR6c6n11zKSFfjE6kGNKtsE8",
+      "source"=>"CC73IyzxPUu2z89NH8GrJhLn"},
     "meta"=>{},
     "status"=>"succeeded",
-    "transaction_number"=>"W1CV-D64-23NY",
-    "updated_at"=>"2014-11-14T19:29:54.642888Z"},
+    "transaction_number"=>"WG9L-4UP-ZQQN",
+    "updated_at"=>"2014-12-17T21:25:04.922248Z"},
   @hyperlinks=
    {"card_hold"=>
-     #<Proc:0x007fa0e156ad90@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fcde09cbe58/lib/balanced/resources/resource.rb:56 (lambda)>,
     "customer"=>
-     #<Proc:0x007fa0e156a430@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fcde09cb4d0/lib/balanced/utils.rb:6 (lambda)>,
     "dispute"=>
-     #<Proc:0x007fa0e1569ad0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fcde09cab48/lib/balanced/utils.rb:6 (lambda)>,
     "events"=>
-     #<Proc:0x007fa0e156fc50@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fcde09c8d20/lib/balanced/utils.rb:6 (lambda)>,
     "order"=>
-     #<Proc:0x007fa0e156e2b0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+     #<Proc:0x007fcde09d3310/lib/balanced/resources/resource.rb:56 (lambda)>,
     "refunds"=>
-     #<Proc:0x007fa0e156c438@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+     #<Proc:0x007fcde09d14e8/lib/balanced/utils.rb:6 (lambda)>,
     "source"=>
-     #<Proc:0x007fa0e1572a90@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>,
- #<Balanced::Debit:0x007fa0e1572a40
-  @attributes=
-   {"amount"=>5000,
-    "appears_on_statement_as"=>"BAL*example.com",
-    "created_at"=>"2014-11-14T19:29:25.219306Z",
-    "currency"=>"USD",
-    "description"=>"Order #12341234",
-    "failure_reason"=>nil,
-    "failure_reason_code"=>nil,
-    "href"=>"/debits/WD3CxTqrRDWynU189qdNf9Xq",
-    "id"=>"WD3CxTqrRDWynU189qdNf9Xq",
-    "links"=>
-     {"card_hold"=>"HL3CxhLaA60AV6X8pLxscwz6",
-      "customer"=>nil,
-      "dispute"=>nil,
-      "order"=>"OR3BXTqXewuSy1Cu3g6N2Sjj",
-      "source"=>"CC33DRVrekWpiHYjxSdVuqWc"},
-    "meta"=>{},
-    "status"=>"succeeded",
-    "transaction_number"=>"WWAG-T69-DVPI",
-    "updated_at"=>"2014-11-14T19:29:27.243249Z"},
-  @hyperlinks=
-   {"card_hold"=>
-     #<Proc:0x007fa0e1570c18@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
-    "customer"=>
-     #<Proc:0x007fa0e1578288@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
-    "dispute"=>
-     #<Proc:0x007fa0e1577928@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
-    "events"=>
-     #<Proc:0x007fa0e1575ad8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
-    "order"=>
-     #<Proc:0x007fa0e157c130@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
-    "refunds"=>
-     #<Proc:0x007fa0e157a2e0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
-    "source"=>
-     #<Proc:0x007fa0e1578968@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>]
+     #<Proc:0x007fcde09dbb28/lib/balanced/resources/resource.rb:56 (lambda)>}>]
 
 % endif

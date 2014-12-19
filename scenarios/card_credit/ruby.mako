@@ -11,7 +11,7 @@ card.credit(
 )
 
 % elif mode == 'response':
-#<Balanced::Credit:0x007fa0e1022a90
+#<Balanced::Credit:0x007fb1e899b640
  @attributes=
   {"amount"=>5000,
    "appears_on_statement_as"=>"example.com",
@@ -32,14 +32,14 @@ card.credit(
    "updated_at"=>"2014-11-14T19:29:19.965523Z"},
  @hyperlinks=
   {"customer"=>
-    #<Proc:0x007fa0e10a3be0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fb1e8999980@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
    "destination"=>
-    #<Proc:0x007fa0e10b28e8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fb1e98e3d78@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
    "events"=>
-    #<Proc:0x007fa0e10b6b50@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e98e1bb8@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "order"=>
-    #<Proc:0x007fa0e10bdfb8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fb1e98e1168@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
    "reversals"=>
-    #<Proc:0x007fa0e10d46a0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fb1e8993288@/Users/ben/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

@@ -3,12 +3,12 @@ Balanced::Card.associate_to_customer
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-card = Balanced::Card.fetch('/cards/CC3IBNr3erYpVuuZDyWNFfet')
-card.associate_to_customer('/customers/CU40AyvBB6ny9u3oelCwyc3C')
+card = Balanced::Card.fetch('/cards/CC7bBGoeKPe5DBKWgduZd5Cl')
+card.associate_to_customer('/customers/CU68iUpvvUwpRpuuBL3u9Slq')
 % elif mode == 'response':
-#<Balanced::Card:0x007fa0e140ae28
+#<Balanced::Card:0x007fcde3ac9ed8
  @attributes=
   {"address"=>
     {"city"=>nil,
@@ -25,7 +25,7 @@ card.associate_to_customer('/customers/CU40AyvBB6ny9u3oelCwyc3C')
    "can_credit"=>true,
    "can_debit"=>true,
    "category"=>"other",
-   "created_at"=>"2014-11-14T19:36:40.117365Z",
+   "created_at"=>"2014-12-17T21:25:02.071736Z",
    "cvv"=>nil,
    "cvv_match"=>nil,
    "cvv_result"=>nil,
@@ -33,25 +33,25 @@ card.associate_to_customer('/customers/CU40AyvBB6ny9u3oelCwyc3C')
    "expiration_year"=>2020,
    "fingerprint"=>
     "7dc93d35b59078a1da8e0ebd2cbec65a6ca205760a1be1b90a143d7f2b00e355",
-   "href"=>"/cards/CC3IBNr3erYpVuuZDyWNFfet",
-   "id"=>"CC3IBNr3erYpVuuZDyWNFfet",
+   "href"=>"/cards/CC7bBGoeKPe5DBKWgduZd5Cl",
+   "id"=>"CC7bBGoeKPe5DBKWgduZd5Cl",
    "is_verified"=>true,
-   "links"=>{"customer"=>"CU40AyvBB6ny9u3oelCwyc3C"},
+   "links"=>{"customer"=>"CU68iUpvvUwpRpuuBL3u9Slq"},
    "meta"=>{},
    "name"=>"Johannes Bach",
    "number"=>"xxxxxxxxxxxx1118",
    "type"=>"debit",
-   "updated_at"=>"2014-11-14T19:36:40.602782Z"},
+   "updated_at"=>"2014-12-17T21:25:02.633343Z"},
  @hyperlinks=
   {"card_holds"=>
-    #<Proc:0x007fa0e1408880@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde3ac3bf0/lib/balanced/utils.rb:6 (lambda)>,
    "credits"=>
-    #<Proc:0x007fa0e140e9b0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde3ac1a30/lib/balanced/utils.rb:6 (lambda)>,
    "customer"=>
-    #<Proc:0x007fa0e140d010@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>,
+    #<Proc:0x007fcde3abbd38/lib/balanced/resources/resource.rb:56 (lambda)>,
    "debits"=>
-    #<Proc:0x007fa0e1413190@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde3ab9a60/lib/balanced/utils.rb:6 (lambda)>,
    "disputes"=>
-    #<Proc:0x007fa0e14112f0@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>}>
+    #<Proc:0x007fcde3ab3818/lib/balanced/utils.rb:6 (lambda)>}>
 
 % endif

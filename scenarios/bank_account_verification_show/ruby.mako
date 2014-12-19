@@ -3,25 +3,25 @@ Balanced::BankAccountVerification.fetch
 
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-verification = Balanced::BankAccountVerification.fetch('/verifications/BZ1eMAsKt13lIj2SkvvHlxfT')
+verification = Balanced::BankAccountVerification.fetch('/verifications/BZ6tLSIRoUIhzntA96EfMaQl')
 
 % elif mode == 'response':
-#<Balanced::BankAccountVerification:0x007fa0e13d84f0
+#<Balanced::BankAccountVerification:0x007fcde18e4fe8
  @attributes=
   {"attempts"=>0,
    "attempts_remaining"=>3,
-   "created_at"=>"2014-11-14T19:27:13.837146Z",
+   "created_at"=>"2014-12-17T21:24:23.094396Z",
    "deposit_status"=>"pending",
-   "href"=>"/verifications/BZ1eMAsKt13lIj2SkvvHlxfT",
-   "id"=>"BZ1eMAsKt13lIj2SkvvHlxfT",
-   "links"=>{"bank_account"=>"BA17zYxBNrmg9isvicjz9Ae4"},
+   "href"=>"/verifications/BZ6tLSIRoUIhzntA96EfMaQl",
+   "id"=>"BZ6tLSIRoUIhzntA96EfMaQl",
+   "links"=>{"bank_account"=>"BA6m4zboF7ocvKbkhjszP5NS"},
    "meta"=>{},
-   "updated_at"=>"2014-11-14T19:27:13.837148Z",
+   "updated_at"=>"2014-12-17T21:24:23.094398Z",
    "verification_status"=>"pending"},
  @hyperlinks=
   {"bank_account"=>
-    #<Proc:0x007fa0e13de800@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fcde18df020/lib/balanced/resources/resource.rb:56 (lambda)>}>
 
 % endif

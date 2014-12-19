@@ -2,30 +2,30 @@
 Balanced::Debit.dispute
 % elif mode == 'request':
 require 'balanced'
-Balanced.configure('ak-test-25ZY8HQwZPuQtDecrxb671LilUya5t5G0')
+Balanced.configure('ak-test-YoVGJWMjOpkCPo6dWMfuiYbBYIB8q2JX')
 
-debit = Balanced::Debit.fetch('/debits/WD4xfFIxpeQpeRHm55Qc2xV3')
+debit = Balanced::Debit.fetch('/debits/WD7M75BRYlRsQTImIHFf8O9W')
 dispute = debit.dispute
 
 % elif mode == 'response':
-#<Balanced::Dispute:0x007fa0e154e6b8
+#<Balanced::Dispute:0x007fcde08a0718
  @attributes=
   {"amount"=>5000,
-   "created_at"=>"2014-11-14T19:30:51.629240Z",
+   "created_at"=>"2014-12-17T21:25:45.321785Z",
    "currency"=>"USD",
-   "href"=>"/disputes/DT5bIvcPoUL541jY893QHQNB",
-   "id"=>"DT5bIvcPoUL541jY893QHQNB",
-   "initiated_at"=>"2014-11-14T19:29:48.523288Z",
-   "links"=>{"transaction"=>"WD4xfFIxpeQpeRHm55Qc2xV3"},
+   "href"=>"/disputes/DTbbQLxrNf790FmaKsgqRPa",
+   "id"=>"DTbbQLxrNf790FmaKsgqRPa",
+   "initiated_at"=>"2014-12-17T21:23:52.616968Z",
+   "links"=>{"transaction"=>"WD7M75BRYlRsQTImIHFf8O9W"},
    "meta"=>{},
    "reason"=>"fraud",
-   "respond_by"=>"2014-12-14T19:29:48.523291Z",
+   "respond_by"=>"2015-01-16T21:23:52.616970Z",
    "status"=>"pending",
-   "updated_at"=>"2014-11-14T19:30:51.629242Z"},
+   "updated_at"=>"2014-12-17T21:25:45.321787Z"},
  @hyperlinks=
   {"events"=>
-    #<Proc:0x007fa0e154c480@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/utils.rb:6 (lambda)>,
+    #<Proc:0x007fcde088ab70/lib/balanced/utils.rb:6 (lambda)>,
    "transaction"=>
-    #<Proc:0x007fa0e1552ad8@/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/gems/1.9.1/gems/balanced-1.1.1/lib/balanced/resources/resource.rb:60 (lambda)>}>
+    #<Proc:0x007fcde0851690/lib/balanced/resources/resource.rb:56 (lambda)>}>
 
 % endif
